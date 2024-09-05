@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-05 16:50:31.057953",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "nota_de_venta_a_facturar_section",
+  "sales_invoice_id",
+  "cliente",
+  "fecha_nota_de_venta"
+ ],
+ "fields": [
+  {
+   "fieldname": "nota_de_venta_a_facturar_section",
+   "fieldtype": "Section Break",
+   "label": "Nota de Venta a Facturar"
+  },
+  {
+   "fieldname": "sales_invoice_id",
+   "fieldtype": "Link",
+   "label": "Sales Invoice ID",
+   "options": "Sales Invoice"
+  },
+  {
+   "fetch_from": "sales_invoice_id.customer",
+   "fieldname": "cliente",
+   "fieldtype": "Link",
+   "label": "Cliente",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "sales_invoice_id.posting_date",
+   "fieldname": "fecha_nota_de_venta",
+   "fieldtype": "Link",
+   "label": "Fecha Nota de Venta",
+   "options": "Sales Invoice"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-05 17:02:09.368078",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "factura",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
