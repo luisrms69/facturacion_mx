@@ -11,6 +11,9 @@
   "fecha_nota_de_venta",
   "tax_id",
   "tax_category",
+  "billing_address_invoice",
+  "cp",
+  "full_address",
   "productos_section",
   "factura_product_array"
  ],
@@ -30,13 +33,15 @@
    "fieldname": "cliente",
    "fieldtype": "Link",
    "label": "Cliente",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "fieldname": "fecha_nota_de_venta",
    "fieldtype": "Link",
    "label": "Fecha Nota de Venta",
-   "options": "Sales Invoice"
+   "options": "Sales Invoice",
+   "read_only": 1
   },
   {
    "fieldname": "productos_section",
@@ -47,24 +52,47 @@
    "fieldname": "factura_product_array",
    "fieldtype": "Table",
    "label": "Productos en la Nota de Venta",
-   "options": "Product array"
+   "options": "Product array",
+   "read_only": 1
   },
   {
    "fieldname": "tax_id",
    "fieldtype": "Link",
    "label": "RFC",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "fieldname": "tax_category",
    "fieldtype": "Link",
    "label": "OO OJO",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "sales_invoice_id.customer_address",
+   "fieldname": "billing_address_invoice",
+   "fieldtype": "Link",
+   "label": "Direccion Registrada",
+   "options": "Address"
+  },
+  {
+   "fetch_from": "billing_address_invoice.pincode",
+   "fieldname": "cp",
+   "fieldtype": "Link",
+   "label": "Codigo Postal",
+   "options": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "full_address",
+   "fieldtype": "Read Only",
+   "label": "Direccion de Facturacion"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-05 18:52:12.327405",
+ "modified": "2024-09-05 22:51:57.258185",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "factura",

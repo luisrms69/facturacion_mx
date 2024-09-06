@@ -23,7 +23,7 @@ frappe.ui.form.on('factura', {
                 },
                 callback: function (r) {
                     if (r.message) {
-                        //                    console.log("---SALES INVOICE OBJECT--", r.message);
+                            //                console.log("---SALES INVOICE OBJECT--", r.message);
                         frm.set_value('cliente', r.message.customer);
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
 
@@ -50,7 +50,7 @@ frappe.ui.form.on('factura', {
                             },
                             callback: function (s) {
                                 if (r.message) {
-                                    //                                console.log("--CUSTOMER OBJECT---", s.message);
+                                      //                              console.log("--CUSTOMER OBJECT---", s.message);
 
                                     frm.set_value('tax_id', s.message.tax_id);
                                     frm.set_value('tax_category', s.message.tax_category);
