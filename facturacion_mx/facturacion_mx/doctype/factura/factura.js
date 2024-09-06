@@ -9,6 +9,9 @@
 
 frappe.ui.form.on('factura', {
     sales_invoice_id: function(frm) {
+        
+        frm.clear_table('factura_product_array');
+
     if (frm.doc.sales_invoice_id) {
         frappe.call({
             method: 'frappe.client.get',
