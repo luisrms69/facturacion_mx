@@ -27,14 +27,12 @@
    "options": "Sales Invoice"
   },
   {
-   "fetch_from": "sales_invoice_id.customer",
    "fieldname": "cliente",
    "fieldtype": "Link",
    "label": "Cliente",
    "options": "Customer"
   },
   {
-   "fetch_from": "sales_invoice_id.posting_date",
    "fieldname": "fecha_nota_de_venta",
    "fieldtype": "Link",
    "label": "Fecha Nota de Venta",
@@ -49,17 +47,15 @@
    "fieldname": "factura_product_array",
    "fieldtype": "Table",
    "label": "Productos en la Nota de Venta",
-   "options": "product array"
+   "options": "Product array"
   },
   {
-   "fetch_from": "cliente.tax_id",
    "fieldname": "tax_id",
    "fieldtype": "Link",
    "label": "RFC",
    "options": "Customer"
   },
   {
-   "fetch_from": "cliente.tax_category",
    "fieldname": "tax_category",
    "fieldtype": "Link",
    "label": "OO OJO",
@@ -68,7 +64,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-05 18:02:53.556914",
+ "modified": "2024-09-05 18:52:12.327405",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "factura",
