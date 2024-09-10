@@ -1,7 +1,9 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:FACT-{YY}-{MM}-{DD}-{####}",
  "creation": "2024-09-05 16:50:31.057953",
+ "description": "Se compone de la palabra FACT posteriormente A\u00f1o, mes y dia en dos caracteres y por ultimo un consecutivo hasta el 9999",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -12,10 +14,11 @@
   "tax_id",
   "tax_category",
   "billing_address_invoice",
-  "cp",
   "full_address",
+  "zip_code",
   "productos_section",
-  "factura_product_array"
+  "factura_product_array",
+  "amended_from"
  ],
  "fields": [
   {
@@ -26,10 +29,13 @@
   {
    "fieldname": "sales_invoice_id",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Sales Invoice ID",
-   "options": "Sales Invoice"
+   "options": "Sales Invoice",
+   "reqd": 1
   },
   {
+   "fetch_from": "sales_invoice_id.customer",
    "fieldname": "cliente",
    "fieldtype": "Link",
    "label": "Cliente",
@@ -38,10 +44,8 @@
   },
   {
    "fieldname": "fecha_nota_de_venta",
-   "fieldtype": "Link",
-   "label": "Fecha Nota de Venta",
-   "options": "Sales Invoice",
-   "read_only": 1
+   "fieldtype": "Data",
+   "label": "Fecha Nota de Venta"
   },
   {
    "fieldname": "productos_section",
@@ -57,17 +61,13 @@
   },
   {
    "fieldname": "tax_id",
-   "fieldtype": "Link",
-   "label": "RFC",
-   "options": "Customer",
-   "read_only": 1
+   "fieldtype": "Data",
+   "label": "RFC"
   },
   {
    "fieldname": "tax_category",
-   "fieldtype": "Link",
-   "label": "OO OJO",
-   "options": "Customer",
-   "read_only": 1
+   "fieldtype": "Data",
+   "label": "Regimen Fiscal"
   },
   {
    "fetch_from": "sales_invoice_id.customer_address",
@@ -77,25 +77,36 @@
    "options": "Address"
   },
   {
-   "fetch_from": "billing_address_invoice.pincode",
-   "fieldname": "cp",
-   "fieldtype": "Link",
-   "label": "Codigo Postal",
-   "options": "Address",
-   "read_only": 1
-  },
-  {
    "fieldname": "full_address",
    "fieldtype": "Read Only",
    "label": "Direccion de Facturacion"
+  },
+  {
+   "fetch_from": "billing_address_invoice.pincode",
+   "fieldname": "zip_code",
+   "fieldtype": "Data",
+   "label": "ZIP",
+   "options": "Address"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "factura",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-09-05 22:51:57.258185",
+ "modified": "2024-09-10 14:17:59.236992",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "factura",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
