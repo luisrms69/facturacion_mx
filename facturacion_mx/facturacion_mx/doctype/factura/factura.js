@@ -1,17 +1,13 @@
 // Copyright (c) 2024, Consultoria en Negocios y Aplicaciones and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("factura", {
-// 	refresh(frm) {
 
-// 	},
-// });
+//debug: se tiene que apretar varias veces save antes de que realmente se guarde
 
+//GET CLIENTE, FECHA DE VENTA, PRODUCTOS, RFC Y REGIMEN FISCAL
 frappe.ui.form.on('factura', {
     sales_invoice_id: function (frm) {
-
-        frm.clear_table('factura_product_array');
-
+        // frm.clear_table('factura_product_array');
         if (frm.doc.sales_invoice_id) {
             frappe.call({
                 method: 'frappe.client.get',
@@ -23,23 +19,20 @@ frappe.ui.form.on('factura', {
                 },
                 callback: function (r) {
                     if (r.message) {
-                            //                console.log("---SALES INVOICE OBJECT--", r.message);
                         frm.set_value('cliente', r.message.customer);
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
-
-                        frm.clear_table('factura_product_array');
+                        frm.clear_table('factura_product_array')
+                        // console.log("---LCIENTE--", r.message.customer);
+                        // console.log("---fecha--", r.message.posting_date);
 
                         r.message.items.forEach(function (item) {
                             var child = frm.add_child('factura_product_array');
-
                             child.producto = item.item_code;
                             child.descripcion = item.description;
                             child.cantidad = item.qty;
                             child.precio = item.rate;
                         });
-
                         frm.refresh_field('factura_product_array');
-
                         frappe.call({
                             method: 'frappe.client.get',
                             args: {
@@ -49,12 +42,9 @@ frappe.ui.form.on('factura', {
                                 }
                             },
                             callback: function (s) {
-                                if (r.message) {
-                                      //                              console.log("--CUSTOMER OBJECT---", s.message);
-
+                                if (s.message) {
                                     frm.set_value('tax_id', s.message.tax_id);
                                     frm.set_value('tax_category', s.message.tax_category);
-
                                 }
                             }
                         });
@@ -62,5 +52,24 @@ frappe.ui.form.on('factura', {
                 }
             });
         }
+    }
+});
+
+// GET COMPLETE ADDRESS
+frappe.ui.form.on("factura", "billing_address_invoice", function(frm, cdt, cdn) {
+    if(frm.doc.billing_address_invoice){
+      return frm.call({
+      method: "frappe.contacts.doctype.address.address.get_address_display",
+      args: {
+         "address_dict": frm.doc.billing_address_invoice
+      },
+      callback: function(r) {
+        if(r.message)
+            frm.set_value("full_address", r.message);
+      }
+     });
+    }
+    else{
+        frm.set_value("full_address", "SIN INFORMACION");
     }
 });
