@@ -61,7 +61,6 @@ class Factura(Document):
                },
                "items": items_info               
           }
-          #response = frappe.make_post_request(Facturapi_endpoint, json=data, headers=headers)
           response = requests.post(facturapi_endpoint,json=data,headers=headers)
 
           print("---termina envio---")

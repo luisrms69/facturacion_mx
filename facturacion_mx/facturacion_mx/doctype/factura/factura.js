@@ -7,7 +7,6 @@
 //GET CLIENTE, FECHA DE VENTA, PRODUCTOS, RFC Y REGIMEN FISCAL
 frappe.ui.form.on('Factura', {
     sales_invoice_id: function (frm) {
-        // frm.clear_table('Factura_product_array');
         if (frm.doc.sales_invoice_id) {
             frappe.call({
                 method: 'frappe.client.get',
@@ -22,8 +21,7 @@ frappe.ui.form.on('Factura', {
                         frm.set_value('cliente', r.message.customer);
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
                         frm.clear_table('factura_product_array')
-                        // console.log("---LCIENTE--", r.message.customer);
-                        // console.log("---fecha--", r.message.posting_date);
+
 
                         r.message.items.forEach(function (item) {
                             var child = frm.add_child('factura_product_array');
