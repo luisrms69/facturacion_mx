@@ -5,9 +5,9 @@
 //debug: se tiene que apretar varias veces save antes de que realmente se guarde
 
 //GET CLIENTE, FECHA DE VENTA, PRODUCTOS, RFC Y REGIMEN FISCAL
-frappe.ui.form.on('factura', {
+frappe.ui.form.on('Factura', {
     sales_invoice_id: function (frm) {
-        // frm.clear_table('factura_product_array');
+        // frm.clear_table('Factura_product_array');
         if (frm.doc.sales_invoice_id) {
             frappe.call({
                 method: 'frappe.client.get',
@@ -56,7 +56,7 @@ frappe.ui.form.on('factura', {
 });
 
 // GET COMPLETE ADDRESS
-frappe.ui.form.on("factura", "billing_address_invoice", function(frm, cdt, cdn) {
+frappe.ui.form.on("Factura", "billing_address_invoice", function(frm, cdt, cdn) {
     if(frm.doc.billing_address_invoice){
       return frm.call({
       method: "frappe.contacts.doctype.address.address.get_address_display",

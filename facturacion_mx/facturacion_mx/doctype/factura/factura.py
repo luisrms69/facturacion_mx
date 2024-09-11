@@ -8,13 +8,13 @@ import requests #Se utiliza para hacer el http request
 
 
 
-class factura(Document):
+class Factura(Document):
     def create_cfdi(self):
           print("----inicia after submit---")
           print("inicia envio")
           current_document = self.get_title()
           print(current_document)
-          sales_invoice_id = frappe.db.get_value('factura', current_document, 'sales_invoice_id' )
+          sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
           invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
           items_info = []
           for producto in invoice_data.items:
@@ -61,7 +61,7 @@ class factura(Document):
                },
                "items": items_info               
           }
-          #response = frappe.make_post_request(facturapi_endpoint, json=data, headers=headers)
+          #response = frappe.make_post_request(Facturapi_endpoint, json=data, headers=headers)
           response = requests.post(facturapi_endpoint,json=data,headers=headers)
 
           print("---termina envio---")
