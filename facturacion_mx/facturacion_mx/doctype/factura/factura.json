@@ -104,7 +104,8 @@
    "fieldname": "usocfdi",
    "fieldtype": "Link",
    "label": "Uso CFDI",
-   "options": "Uso CFDI"
+   "options": "Uso CFDI",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_fbwf",
@@ -114,7 +115,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-12 21:51:47.089603",
+ "modified": "2024-09-12 22:20:02.757697",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
