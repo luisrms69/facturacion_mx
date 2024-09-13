@@ -5,6 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
+from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
 
 class Factura(Document):
@@ -79,8 +80,12 @@ class Factura(Document):
         cliente = Factura.get_cliente(invoice_data)
         datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
 
-        facturapi_endpoint = "https://www.facturapi.io/v2/invoices"
-        api_token = "sk_test_rBbmpjK2Mq0oE8GXvx2Qe6E3blga45PnR9YkZOAJLQ"
+        facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
+     # facturapi_endpoint = "https://www.facturapi.io/v2/invoices"
+     #   api_token = frappe.db.get_single_value('Facturacion MX Settings','live_secret_key')
+    #    api_token = "sk_test_rBbmpjK2Mq0oE8GXvx2Qe6E3blga45PnR9YkZOAJLQ"
+    #    facturacion_settings = frappe.get_doc('Facturacion MX Settings')
+        api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
             "payment_form": Factura.get_metodo_de_pago(sales_invoice_id),
