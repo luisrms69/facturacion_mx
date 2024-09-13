@@ -1,0 +1,242 @@
+[
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Sin Efectos Fiscales",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:11:00.256480",
+  "name": "S01",
+  "uso_cfdi": "S01"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Nómina",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:12:41.670723",
+  "name": "CN01",
+  "uso_cfdi": "CN01"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Pagos",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:13:29.546354",
+  "name": "CP01",
+  "uso_cfdi": "CP01"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Pagos por servicios educativos (colegiaturas) ",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:14:19.387131",
+  "name": "D10",
+  "uso_cfdi": "D10"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:14:53.865127",
+  "name": "D09",
+  "uso_cfdi": "D09"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Gastos de transportación escolar obligatoria.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:15:32.755661",
+  "name": "D08",
+  "uso_cfdi": "D08"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Primas por seguros de gastos médicos.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:16:05.187204",
+  "name": "D07",
+  "uso_cfdi": "D07"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Aportaciones voluntarias al SAR.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:16:48.528665",
+  "name": "D06",
+  "uso_cfdi": "D06"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación).",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:17:15.005878",
+  "name": "D05",
+  "uso_cfdi": "D05"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Donativos",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:17:38.814713",
+  "name": "D04",
+  "uso_cfdi": "D04"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Gastos funerales.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:18:07.240006",
+  "name": "D03",
+  "uso_cfdi": "D03"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Gastos médicos por incapacidad o discapacidad.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:18:39.685781",
+  "name": "D02",
+  "uso_cfdi": "D02"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 0,
+  "descripción": "Honorarios médicos, dentales y gastos hospitalarios.",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:19:03.098800",
+  "name": "D01",
+  "uso_cfdi": "D01"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Comunicaciones satelitales",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:19:56.856535",
+  "name": "I07",
+  "uso_cfdi": "I07"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Dados, troqueles, moldes, matrices y herramental",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:20:47.170302",
+  "name": "I05",
+  "uso_cfdi": "I05"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Equipo de cómputo y accesorios",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:21:08.281804",
+  "name": "I04",
+  "uso_cfdi": "I04"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Equipo de transporte",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:21:46.019652",
+  "name": "I03",
+  "uso_cfdi": "I03"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Mobiliario y equipo de oficina por inversiones",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:22:06.966363",
+  "name": "I02",
+  "uso_cfdi": "I02"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Devoluciones, descuentos o bonificaciones",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:23:07.900274",
+  "name": "G02",
+  "uso_cfdi": "G02"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Adquisición de mercancías",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:23:31.060836",
+  "name": "G01",
+  "uso_cfdi": "G01"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Otra maquinaria y equipo",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:19:32.506230",
+  "name": "I08",
+  "uso_cfdi": "I08"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Comunicaciones telefónicas",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:20:22.139501",
+  "name": "I06",
+  "uso_cfdi": "I06"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Construcciones",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:22:25.783784",
+  "name": "I01",
+  "uso_cfdi": "I01"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Gastos en general ",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:22:44.401555",
+  "name": "G03",
+  "uso_cfdi": "G03"
+ }
+]
