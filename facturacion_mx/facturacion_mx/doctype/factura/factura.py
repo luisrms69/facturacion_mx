@@ -35,16 +35,6 @@ class Factura(Document):
           sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
           invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
           items_info = Factura.get_items_info(invoice_data)
-#          for producto in invoice_data.items:
-#               detalle_item = {
-#                    'quantity' : producto.qty,
-#                    'product' : {
-#                         'description' : producto.item_name,
-#                         'product_key' : Factura.get_product_key(producto.item_code),
-#                         'price' : producto.rate
-#                    }
-#               }
-#              items_info.append(detalle_item)
 
           cliente = invoice_data.customer
           customer_data = frappe.get_doc('Customer', cliente )
