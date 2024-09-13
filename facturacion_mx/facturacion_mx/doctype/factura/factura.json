@@ -17,7 +17,6 @@
   "usocfdi",
   "billing_address_invoice",
   "full_address",
-  "zip_code",
   "productos_section",
   "factura_product_array",
   "amended_from"
@@ -84,13 +83,6 @@
    "label": "Direccion de Facturacion"
   },
   {
-   "fetch_from": "billing_address_invoice.pincode",
-   "fieldname": "zip_code",
-   "fieldtype": "Data",
-   "label": "ZIP",
-   "options": "Address"
-  },
-  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -115,7 +107,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-12 22:20:02.757697",
+ "modified": "2024-09-12 22:24:32.852105",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
