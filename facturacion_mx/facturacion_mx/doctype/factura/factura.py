@@ -71,6 +71,32 @@ class Factura(Document):
             "Payment Entry", pay_entry, "mode_of_payment")[:2]
 
         return metodo_de_pago
+    
+
+    def check_pac_response(data,keys):
+        pac_response = {'status' : "Facturado" }
+        for key in keys:
+            if key in data.keys():
+                pac_response[key] = data[key]
+            else:
+                pac_response = { 'status' : "Rechazada" }
+
+        return pac_response
+    
+
+
+    def update_pac_response(self,pac_response):
+        self.db_set({
+            'id_pac': pac_response['id'],
+            'uuid' : pac_response['uuid'],
+            'url_de_verificación' : pac_response['verification_url'],
+            'serie_de_la_factura' : pac_response['series'],
+            'folio_de_factura' : pac_response['folio_number'],
+            'status' : pac_response['status']
+        })
+    
+
+    
 
     def create_cfdi(self):
         current_document = self.get_title()
@@ -99,6 +125,42 @@ class Factura(Document):
         }
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
+        
+        # frappe.msgprint(response.text)
+        data =response.json()
+        # factura_pac_keys = ['id_pac', 'uuid', 'url_de_verificación', 'serie_de_la_factura', 'folio_de_factura']
+        factura_pac_keys = ['id','uuid','verification_url','series','folio_number']
+
+        #######VALIDAR QUE LA RESPUESTA SEA CORRECTA####
+        ###verficar que contenga todos estos datos####
+        pac_response = Factura.check_pac_response(data,factura_pac_keys)
+
+        if pac_response['status'] == "Facturado":
+            self.update_pac_response(pac_response)
+        else:
+            self.db_set['status'] = "Rechazada"
+        
+
+        # frappe.msgprint(str(pac_response))
+
+        # self.db_set({
+        #     'id_pac': pac_response.id,
+        #     'uuid' : pac_response.uuid,
+        #     'url_de_verificación' : pac_response.verification_url,
+        #     'serie_de_la_factura' : pac_response.series,
+        #     'folio_de_factura' : pac_response.folio_number
+        # })
+        
+        
+        # doc = frappe.get_doc({
+        #     'doctype': 'Responses',
+        #     'title': 'Testing title',
+        #     'prueba_respuesta' : data['id']
+        # })
+
+
+        # doc.insert()
+
 
     def on_submit(self):
         self.create_cfdi()

@@ -19,13 +19,21 @@
   "full_address",
   "productos_section",
   "factura_product_array",
-  "amended_from"
+  "amended_from",
+  "resultado_de_la_solicitud_proporionados_por_pac_section",
+  "id_pac",
+  "uuid",
+  "url_de_verificaci\u00f3n",
+  "column_break_pdnt",
+  "serie_de_la_factura",
+  "folio_de_factura",
+  "status"
  ],
  "fields": [
   {
    "fieldname": "nota_de_venta_a_facturar_section",
    "fieldtype": "Section Break",
-   "label": "Nota de Venta a Facturar"
+   "label": "Datos de la Solicitud de Facturaci\u00f3n"
   },
   {
    "fieldname": "sales_invoice_id",
@@ -102,12 +110,54 @@
   {
    "fieldname": "column_break_fbwf",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "resultado_de_la_solicitud_proporionados_por_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Resultado de la solicitud (proporionados por PAC)"
+  },
+  {
+   "fieldname": "uuid",
+   "fieldtype": "Read Only",
+   "label": "Folio Fiscal (UUID)"
+  },
+  {
+   "fieldname": "url_de_verificaci\u00f3n",
+   "fieldtype": "Long Text",
+   "label": "URL de Verificaci\u00f3n (SAT)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_pdnt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "serie_de_la_factura",
+   "fieldtype": "Read Only",
+   "label": "Serie de la Factura"
+  },
+  {
+   "fieldname": "folio_de_factura",
+   "fieldtype": "Read Only",
+   "label": "Folio de Factura"
+  },
+  {
+   "fieldname": "id_pac",
+   "fieldtype": "Read Only",
+   "label": "ID PAC"
+  },
+  {
+   "default": "Sin enviar",
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "label": "Status",
+   "options": "Sin enviar\nFacturado\nRechazada"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-12 22:30:22.117701",
+ "modified": "2024-09-13 17:22:36.610702",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
@@ -129,5 +179,18 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Sin enviar"
+  },
+  {
+   "color": "Green",
+   "title": "Facturado"
+  },
+  {
+   "color": "Red",
+   "title": "Rechazada"
+  }
+ ]
 }
