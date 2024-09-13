@@ -70,19 +70,13 @@ class Factura(Document):
 
           return metodo_de_pago
 
-
-     
      
      def create_cfdi(self):
           current_document = self.get_title()
           sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
           invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
-#          items_info = Factura.get_items_info(invoice_data)
           cliente = Factura.get_cliente(invoice_data)
-#          tax_id = Factura.get_tax_id(cliente)
-#          regimen_fiscal = Factura.get_regimen_fiscal(cliente)
           datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
-#          metodo_de_pago = Factura.get_metodo_de_pago(sales_invoice_id)
 
           facturapi_endpoint = "https://www.facturapi.io/v2/invoices"
           api_token = "sk_test_rBbmpjK2Mq0oE8GXvx2Qe6E3blga45PnR9YkZOAJLQ"
