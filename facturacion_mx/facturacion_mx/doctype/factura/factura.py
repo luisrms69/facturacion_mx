@@ -16,10 +16,7 @@ class Factura(Document):
      
      
      def create_cfdi(self):
-          print("----inicia after submit---")
-          print("inicia envio")
           current_document = self.get_title()
-          print(current_document)
           sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
           invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
           items_info = []
@@ -70,11 +67,9 @@ class Factura(Document):
           }
           response = requests.post(facturapi_endpoint,json=data,headers=headers)
 
-          print("---termina envio---")
           
           
      def on_submit(self):
-         print("-----entro en on submit???----")
          self.create_cfdi()
 
 
