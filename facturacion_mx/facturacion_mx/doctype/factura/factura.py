@@ -6,6 +6,37 @@ from frappe import _
 from frappe.model.document import Document
 import requests #Se utiliza para hacer el http request
 
+import inspect
+
+def whatis(message, backend=True, frontend=True):
+	"""
+	This function is using in debugging, and shows an object's value, type, and call stack.
+	"""
+	inspected_stack = inspect.stack()
+
+	direct_caller = inspected_stack[1]
+	direct_caller_linenum = direct_caller[2]
+
+	parent_caller = inspected_stack[2]
+	parent_caller_function = parent_caller[3]
+	parent_caller_path = parent_caller[1]
+	parent_caller_line = parent_caller[2]
+
+	message_type = str(type(message)).replace('<', '').replace('>', '')
+	msg = f"---> DEBUG (frappe.whatis)\n"
+	msg += f"* Initiated on Line: {direct_caller_linenum}"
+	msg += f"\n  * Value: {message}\n  * Type: {message_type}"
+	msg += f"\n  * Caller: {parent_caller_function}"
+	msg += f"\n  * Caller Path: {parent_caller_path}\n  * Caller Line: {parent_caller_line}\n"
+
+	if backend:
+		print(msg)
+	if frontend:
+		msg = msg.replace('\n', '<br>')
+		frappe.msgprint(msg)
+
+
+
 
 
 class Factura(Document):
@@ -72,8 +103,10 @@ class Factura(Document):
           }
           response = requests.post(facturapi_endpoint,json=data,headers=headers)
 
-          
-          
+          whatis(response)
+
+
+                    
      def on_submit(self):
          self.create_cfdi()
 
