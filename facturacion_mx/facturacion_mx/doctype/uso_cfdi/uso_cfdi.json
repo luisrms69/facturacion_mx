@@ -21,11 +21,6 @@
    "unique": 1
   },
   {
-   "fieldname": "descripci\u00f3n",
-   "fieldtype": "Data",
-   "label": "Descripci\u00f3n"
-  },
-  {
    "default": "0",
    "fieldname": "aplica_para_persona_f\u00edsica",
    "fieldtype": "Check",
@@ -36,11 +31,16 @@
    "fieldname": "aplica_para_persona_moral",
    "fieldtype": "Check",
    "label": "Aplica para persona Moral"
+  },
+  {
+   "fieldname": "descripci\u00f3n",
+   "fieldtype": "Data",
+   "label": "Descripcion"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-12 21:12:00.504439",
+ "modified": "2024-09-12 22:04:34.678207",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Uso CFDI",
@@ -60,7 +60,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "descripci\u00f3n"
 }
