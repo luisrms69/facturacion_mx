@@ -1,0 +1,13 @@
+[
+    {
+    "doctype": "Custom Field",
+    "dt": "Item",
+    "fieldname": "product_key",
+    "fieldtype": "Link",
+    "insert_after": "stock_uom",
+    "label": "Clave del Producto o Servicio (SAT)",
+    "module": "Facturacion Mx",
+    "name": "product_key_name",
+    "options": "Clave Producto o Servicio"
+   }
+]
