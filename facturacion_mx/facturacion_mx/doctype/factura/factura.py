@@ -88,6 +88,8 @@ class Factura(Document):
     
 
 
+# refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
+
     def update_pac_response(self,pac_response):
         self.db_set({
             'id_pac': pac_response['id'],
