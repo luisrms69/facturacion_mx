@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-13 10:56:40.678633",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "endpoints_facturacion_section",
+  "endpoint_crear_facturas",
+  "api_settings_section",
+  "live_secret_key",
+  "user_secret_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "endpoints_facturacion_section",
+   "fieldtype": "Section Break",
+   "label": "Endpoints Facturacion"
+  },
+  {
+   "fieldname": "endpoint_crear_facturas",
+   "fieldtype": "Data",
+   "label": "Endpoint Crear Facturas"
+  },
+  {
+   "fieldname": "api_settings_section",
+   "fieldtype": "Section Break",
+   "label": "API Settings"
+  },
+  {
+   "fieldname": "live_secret_key",
+   "fieldtype": "Password",
+   "label": "Live Secret Key"
+  },
+  {
+   "fieldname": "user_secret_key",
+   "fieldtype": "Password",
+   "label": "User Secret Key"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-09-13 11:00:38.295459",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Facturacion MX Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
