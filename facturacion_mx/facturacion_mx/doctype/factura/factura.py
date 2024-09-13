@@ -77,32 +77,32 @@ class Factura(Document):
           current_document = self.get_title()
           sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
           invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
-          items_info = Factura.get_items_info(invoice_data)
+#          items_info = Factura.get_items_info(invoice_data)
           cliente = Factura.get_cliente(invoice_data)
-          tax_id = Factura.get_tax_id(cliente)
-          regimen_fiscal = Factura.get_regimen_fiscal(cliente)
+#          tax_id = Factura.get_tax_id(cliente)
+#          regimen_fiscal = Factura.get_regimen_fiscal(cliente)
           datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
-          metodo_de_pago = Factura.get_metodo_de_pago(sales_invoice_id)
+#          metodo_de_pago = Factura.get_metodo_de_pago(sales_invoice_id)
 
           facturapi_endpoint = "https://www.facturapi.io/v2/invoices"
           api_token = "sk_test_rBbmpjK2Mq0oE8GXvx2Qe6E3blga45PnR9YkZOAJLQ"
           headers = {"Authorization": f"Bearer {api_token}"}
           data = {
-               "payment_form" : metodo_de_pago,
+               "payment_form" : Factura.get_metodo_de_pago(sales_invoice_id),
                "use" : frappe.db.get_value('Factura', current_document,'usocfdi'),
                "customer" : {
                     "legal_name": cliente,
-                    "tax_id": tax_id,
-                    "tax_system": regimen_fiscal,
+                    "tax_id": Factura.get_tax_id(cliente),
+                    "tax_system": Factura.get_regimen_fiscal(cliente),
                     "email": datos_direccion.email_id,
                     "address": {
                          "zip": datos_direccion.pincode
                     },
                },
-               "items": items_info               
+               "items": Factura.get_items_info(invoice_data)               
           }
           response = requests.post(facturapi_endpoint,json=data,headers=headers)
-          
+
                     
      def on_submit(self):
          self.create_cfdi()
