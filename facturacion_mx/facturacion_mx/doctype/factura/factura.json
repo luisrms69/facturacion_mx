@@ -13,6 +13,8 @@
   "fecha_nota_de_venta",
   "tax_id",
   "tax_category",
+  "column_break_fbwf",
+  "usocfdi",
   "billing_address_invoice",
   "full_address",
   "zip_code",
@@ -93,16 +95,26 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "factura",
+   "options": "Factura",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "usocfdi",
+   "fieldtype": "Link",
+   "label": "Uso CFDI",
+   "options": "Uso CFDI"
+  },
+  {
+   "fieldname": "column_break_fbwf",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-10 14:17:59.236992",
+ "modified": "2024-09-12 21:29:49.859375",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
