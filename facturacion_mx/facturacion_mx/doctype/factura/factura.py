@@ -9,7 +9,13 @@ import requests #Se utiliza para hacer el http request
 
 
 class Factura(Document):
-    def create_cfdi(self):
+    
+     def get_product_key(item_code):
+            product_key = frappe.db.get_value("Item", item_code, "product_key")
+            return product_key
+     
+     
+     def create_cfdi(self):
           print("----inicia after submit---")
           print("inicia envio")
           current_document = self.get_title()
@@ -22,11 +28,12 @@ class Factura(Document):
                     'quantity' : producto.qty,
                     'product' : {
                          'description' : producto.item_name,
-                         'product_key' : "25172503",
+                         'product_key' : Factura.get_product_key(producto.item_code),
                          'price' : producto.rate
                     }
                }
                items_info.append(detalle_item)
+
           cliente = invoice_data.customer
           customer_data = frappe.get_doc('Customer', cliente )
           tax_id = customer_data.tax_id
@@ -65,7 +72,9 @@ class Factura(Document):
 
           print("---termina envio---")
           
-
-    def on_submit(self):
+          
+     def on_submit(self):
          print("-----entro en on submit???----")
          self.create_cfdi()
+
+
