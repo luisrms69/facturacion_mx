@@ -56,7 +56,7 @@ class Factura(Document):
           headers = {"Authorization": f"Bearer {api_token}"}
           data = {
                "payment_form" : metodo_de_pago,
-               "use" : "S01",
+               "use" : frappe.db.get_value('Factura', current_document,'usocfdi'),
                "customer" : {
                     "legal_name": cliente,
                     "tax_id": tax_id,
