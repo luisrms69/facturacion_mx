@@ -25,6 +25,7 @@
   "uuid",
   "url_de_verificaci\u00f3n",
   "column_break_pdnt",
+  "fecha_timbrado",
   "serie_de_la_factura",
   "folio_de_factura",
   "status"
@@ -150,14 +151,21 @@
    "default": "Sin enviar",
    "fieldname": "status",
    "fieldtype": "Small Text",
+   "hidden": 1,
    "label": "Status",
-   "options": "Sin enviar\nFacturado\nRechazada"
+   "options": "Sin enviar\nFacturado\nRechazada\nDesconocido"
+  },
+  {
+   "fieldname": "fecha_timbrado",
+   "fieldtype": "Data",
+   "label": "Fecha de Emision",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-13 17:22:36.610702",
+ "modified": "2024-09-13 17:44:03.022929",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
@@ -191,6 +199,10 @@
   {
    "color": "Red",
    "title": "Rechazada"
+  },
+  {
+   "color": "Gray",
+   "title": "Desconocido"
   }
  ]
 }
