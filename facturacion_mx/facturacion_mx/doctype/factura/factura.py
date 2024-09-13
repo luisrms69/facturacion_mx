@@ -14,11 +14,7 @@ class Factura(Document):
             product_key = frappe.db.get_value("Item", item_code, "product_key")
             return product_key
      
-     
-     def create_cfdi(self):
-          current_document = self.get_title()
-          sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
-          invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
+     def get_items_info(invoice_data):
           items_info = []
           for producto in invoice_data.items:
                detalle_item = {
@@ -30,6 +26,25 @@ class Factura(Document):
                     }
                }
                items_info.append(detalle_item)
+
+          return items_info
+     
+     
+     def create_cfdi(self):
+          current_document = self.get_title()
+          sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
+          invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
+          items_info = Factura.get_items_info(invoice_data)
+#          for producto in invoice_data.items:
+#               detalle_item = {
+#                    'quantity' : producto.qty,
+#                    'product' : {
+#                         'description' : producto.item_name,
+#                         'product_key' : Factura.get_product_key(producto.item_code),
+#                         'price' : producto.rate
+#                    }
+#               }
+#              items_info.append(detalle_item)
 
           cliente = invoice_data.customer
           customer_data = frappe.get_doc('Customer', cliente )
