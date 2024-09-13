@@ -9,5 +9,17 @@
     "module": "Facturacion Mx",
     "name": "product_key_name",
     "options": "Clave Producto o Servicio"
+   },
+   {
+    "doctype": "Custom Field",
+    "default": "Sin Facturar",
+    "dt": "Sales Invoice",
+    "fieldname": "custom_status_facturacion",
+    "fieldtype": "Read Only",
+    "insert_after": "company",
+    "label": "Status Facturacion",
+    "module": "Facturacion Mx",
+    "name": "Sales Invoice-custom_status_facturacion",
+    "options": "Sin facturar\nFactura Normal\nFactura Global\nAutofactura"
    }
 ]
