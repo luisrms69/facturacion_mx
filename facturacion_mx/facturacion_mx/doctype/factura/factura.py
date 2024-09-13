@@ -6,34 +6,34 @@ from frappe import _
 from frappe.model.document import Document
 import requests #Se utiliza para hacer el http request
 
-import inspect
+#import inspect
 
-def whatis(message, backend=True, frontend=True):
-	"""
-	This function is using in debugging, and shows an object's value, type, and call stack.
-	"""
-	inspected_stack = inspect.stack()
+# def whatis(message, backend=True, frontend=True):
+# 	"""
+# 	This function is using in debugging, and shows an object's value, type, and call stack.
+# 	"""
+# 	inspected_stack = inspect.stack()
 
-	direct_caller = inspected_stack[1]
-	direct_caller_linenum = direct_caller[2]
+# 	direct_caller = inspected_stack[1]
+# 	direct_caller_linenum = direct_caller[2]
 
-	parent_caller = inspected_stack[2]
-	parent_caller_function = parent_caller[3]
-	parent_caller_path = parent_caller[1]
-	parent_caller_line = parent_caller[2]
+# 	parent_caller = inspected_stack[2]
+# 	parent_caller_function = parent_caller[3]
+# 	parent_caller_path = parent_caller[1]
+# 	parent_caller_line = parent_caller[2]
 
-	message_type = str(type(message)).replace('<', '').replace('>', '')
-	msg = f"---> DEBUG (frappe.whatis)\n"
-	msg += f"* Initiated on Line: {direct_caller_linenum}"
-	msg += f"\n  * Value: {message}\n  * Type: {message_type}"
-	msg += f"\n  * Caller: {parent_caller_function}"
-	msg += f"\n  * Caller Path: {parent_caller_path}\n  * Caller Line: {parent_caller_line}\n"
+# 	message_type = str(type(message)).replace('<', '').replace('>', '')
+# 	msg = f"---> DEBUG (frappe.whatis)\n"
+# 	msg += f"* Initiated on Line: {direct_caller_linenum}"
+# 	msg += f"\n  * Value: {message}\n  * Type: {message_type}"
+# 	msg += f"\n  * Caller: {parent_caller_function}"
+# 	msg += f"\n  * Caller Path: {parent_caller_path}\n  * Caller Line: {parent_caller_line}\n"
 
-	if backend:
-		print(msg)
-	if frontend:
-		msg = msg.replace('\n', '<br>')
-		frappe.msgprint(msg)
+# 	if backend:
+# 		print(msg)
+# 	if frontend:
+# 		msg = msg.replace('\n', '<br>')
+# 		frappe.msgprint(msg)
 
 
 
@@ -60,17 +60,27 @@ class Factura(Document):
 
           return items_info
      
-     
-     def create_cfdi(self):
-          current_document = self.get_title()
-          sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
-          invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
-          items_info = Factura.get_items_info(invoice_data)
-
+     def get_cliente(invoice_data):
           cliente = invoice_data.customer
+
+          return cliente
+     
+     def get_customer_data(cliente):
           customer_data = frappe.get_doc('Customer', cliente )
-          tax_id = customer_data.tax_id
-          regimen_fiscal = customer_data.tax_category[:3]
+          
+          return customer_data
+     
+     def get_tax_id(cliente):
+          tax_id = Factura.get_customer_data(cliente).tax_id
+
+          return tax_id
+     
+     def get_regimen_fiscal(cliente):
+          regimen_fiscal = Factura.get_customer_data(cliente).tax_category[:3]
+
+          return regimen_fiscal
+     
+     def get_datos_direccion_facturacion(cliente):
           filters = [
                ["Dynamic Link", "link_doctype", "=", "Customer"],
                ["Dynamic Link", "link_name", "=", cliente],
@@ -78,12 +88,51 @@ class Factura(Document):
           ]
           company_address = frappe.get_all("Address", filters=filters)
           datos_direccion = frappe.db.get_value('Address', company_address,['pincode', 'email_id'], as_dict=1)
+
+          return datos_direccion
+     
+
+     def get_metodo_de_pago(sales_invoice_id):
           filters = [
                ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
                ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
           ]
           pay_entry = frappe.get_all("Payment Entry", filters=filters)
           metodo_de_pago = frappe.db.get_value("Payment Entry", pay_entry, "mode_of_payment")[:2]
+
+          return metodo_de_pago
+
+
+     
+     
+     def create_cfdi(self):
+          current_document = self.get_title()
+          sales_invoice_id = frappe.db.get_value('Factura', current_document, 'sales_invoice_id' )
+          invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id )
+          items_info = Factura.get_items_info(invoice_data)
+
+          cliente = Factura.get_cliente(invoice_data)
+#          customer_data = frappe.get_doc('Customer', cliente )
+#          tax_id = customer_data.tax_id
+          tax_id = Factura.get_tax_id(cliente)
+#          regimen_fiscal = customer_data.tax_category[:3]
+          regimen_fiscal = Factura.get_regimen_fiscal(cliente)
+          # filters = [
+          #      ["Dynamic Link", "link_doctype", "=", "Customer"],
+          #      ["Dynamic Link", "link_name", "=", cliente],
+          #      ["Address", "is_primary_address", "=", 1]
+          # ]
+          # company_address = frappe.get_all("Address", filters=filters)
+          # datos_direccion = frappe.db.get_value('Address', company_address,['pincode', 'email_id'], as_dict=1)
+          datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
+          # filters = [
+          #      ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
+          #      ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
+          # ]
+          # pay_entry = frappe.get_all("Payment Entry", filters=filters)
+          # metodo_de_pago = frappe.db.get_value("Payment Entry", pay_entry, "mode_of_payment")[:2]
+          metodo_de_pago = Factura.get_metodo_de_pago(sales_invoice_id)
+          
           facturapi_endpoint = "https://www.facturapi.io/v2/invoices"
           api_token = "sk_test_rBbmpjK2Mq0oE8GXvx2Qe6E3blga45PnR9YkZOAJLQ"
           headers = {"Authorization": f"Bearer {api_token}"}
@@ -103,7 +152,7 @@ class Factura(Document):
           }
           response = requests.post(facturapi_endpoint,json=data,headers=headers)
 
-          whatis(response)
+#          whatis(response)
 
 
                     
