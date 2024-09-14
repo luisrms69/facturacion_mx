@@ -122,6 +122,7 @@ class Factura(Document):
         data = {
             "payment_form": Factura.get_metodo_de_pago(sales_invoice_id),
             "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
+            "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
             "customer": {
                 "legal_name": cliente,
                 "tax_id": Factura.get_tax_id(cliente),
