@@ -20,6 +20,7 @@
     "label": "Status Facturacion",
     "module": "Facturacion Mx",
     "name": "Sales Invoice-custom_status_facturacion",
+    "allow_on_submit": 1,
     "options": "Sin facturar\nFactura Normal\nFactura Global\nAutofactura"
    }
 ]

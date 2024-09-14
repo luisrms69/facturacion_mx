@@ -100,6 +100,10 @@ class Factura(Document):
             'fecha_timbrado' : pac_response['created_at'],
             'status' : pac_response['status']
         })
+
+
+    def update_sales_invoice_status(sales_invoice_id):
+        frappe.set_value('Sales Invoice', sales_invoice_id, 'custom_status_facturacion', "Factura Normal")
     
 
     
@@ -140,6 +144,7 @@ class Factura(Document):
 
         if pac_response['status'] == "Facturado":
             self.update_pac_response(pac_response)
+            Factura.update_sales_invoice_status(sales_invoice_id)
         else:
             self.db_set['status'] = "Rechazada"
         
