@@ -15,6 +15,7 @@
   "tax_category",
   "column_break_fbwf",
   "usocfdi",
+  "metodo_pago_sat",
   "billing_address_invoice",
   "full_address",
   "productos_section",
@@ -161,12 +162,20 @@
    "fieldtype": "Data",
    "label": "Fecha de Emision",
    "read_only": 1
+  },
+  {
+   "default": "PUE Pago en una sola exhibici\u00f3n",
+   "fieldname": "metodo_pago_sat",
+   "fieldtype": "Select",
+   "label": "M\u00e9todo de Pago",
+   "options": "PUE Pago en una sola exhibici\u00f3n\nPPD Pago en parcialidades o diferido",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-13 19:45:47.186931",
+ "modified": "2024-09-14 15:10:23.758929",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
