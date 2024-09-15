@@ -91,14 +91,18 @@ class Factura(Document):
         tax_id_lenght = len(self.tax_id)
         if tax_id_lenght != 12:
             if tax_id_lenght != 13:
-                frappe.throw("RFC Incorrecto por favor verifícalo")
+                frappe.throw("RFC Incorrecto por favor verifícalo. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
     
     def validate_cp_factura(zip_code):
         if len(zip_code) != 5:
-            frappe.throw("El código postal es incorrecto, debe contener 5 numeros")
-        
+            frappe.throw("El código postal es incorrecto, debe contener 5 numeros. La correccion de esta información se realiza directamente en los datos del cliente, en la direccion primaria de facturación")
+
+    
+    def validate_tax_category_factura(tax_category):
+        if not 600 <= int(tax_category[:3]) <= 627:
+            frappe.throw("El regimen fiscal no esta correctamente seleccionado o esta vacío, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
     
 
@@ -169,6 +173,7 @@ class Factura(Document):
     def validate(self):
         Factura.validate_rfc_factura(self)
         Factura.validate_cp_factura(self.zip_code)
+        Factura.validate_tax_category_factura(self.tax_category)
 
     def on_submit(self):
         self.create_cfdi()

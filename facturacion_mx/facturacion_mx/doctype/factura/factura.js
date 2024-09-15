@@ -61,9 +61,9 @@ frappe.ui.form.on("Factura", "billing_address_invoice", function(frm, cdt, cdn) 
       args: {
          "address_dict": frm.doc.billing_address_invoice
       },
-      callback: function(r) {
-        if(r.message)
-            frm.set_value("full_address", r.message);
+      callback: function(t) {
+        if(t.message)
+            frm.set_value("full_address", t.message);
       }
      });
     }

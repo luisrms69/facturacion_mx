@@ -58,7 +58,8 @@
   {
    "fieldname": "fecha_nota_de_venta",
    "fieldtype": "Data",
-   "label": "Fecha Nota de Venta"
+   "label": "Fecha Nota de Venta",
+   "read_only": 1
   },
   {
    "fieldname": "productos_section",
@@ -81,16 +82,18 @@
   {
    "fieldname": "tax_category",
    "fieldtype": "Data",
-   "label": "Regimen Fiscal"
+   "label": "Regimen Fiscal",
+   "read_only": 1
   },
   {
-   "fetch_from": "sales_invoice_id.customer_address",
+   "fetch_from": "cliente.customer_primary_address",
    "fieldname": "billing_address_invoice",
    "fieldtype": "Link",
    "label": "Direccion Registrada",
    "options": "Address"
   },
   {
+   "fetch_from": "cliente.primary_address",
    "fieldname": "full_address",
    "fieldtype": "Read Only",
    "label": "Direccion de Facturacion"
@@ -178,13 +181,14 @@
    "fieldname": "zip_code",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Codigo Postal"
+   "label": "Codigo Postal",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-15 11:58:21.499415",
+ "modified": "2024-09-15 13:25:50.641576",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
