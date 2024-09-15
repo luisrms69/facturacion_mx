@@ -64,7 +64,8 @@
   {
    "fieldname": "productos_section",
    "fieldtype": "Section Break",
-   "label": "Productos"
+   "label": "Productos",
+   "read_only": 1
   },
   {
    "fieldname": "factura_product_array",
@@ -188,7 +189,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-15 13:25:50.641576",
+ "modified": "2024-09-15 13:46:54.670518",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
