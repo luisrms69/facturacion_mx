@@ -30,7 +30,9 @@
   "fecha_timbrado",
   "serie_de_la_factura",
   "folio_de_factura",
-  "status"
+  "status",
+  "informe_sobre_la_solicitud_rechazada_datos_del_pac_section",
+  "response_rechazada"
  ],
  "fields": [
   {
@@ -184,12 +186,24 @@
    "hidden": 1,
    "label": "Codigo Postal",
    "read_only": 1
+  },
+  {
+   "fieldname": "informe_sobre_la_solicitud_rechazada_datos_del_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Informe sobre la solicitud rechazada (datos del PAC)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "response_rechazada",
+   "fieldtype": "Read Only",
+   "label": "Respuesta de error",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-15 13:46:54.670518",
+ "modified": "2024-09-15 15:47:59.360582",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",

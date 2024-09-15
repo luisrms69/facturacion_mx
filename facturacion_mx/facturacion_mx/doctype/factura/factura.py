@@ -75,6 +75,12 @@ class Factura(Document):
 
         return metodo_de_pago
     
+    def check_pack_response_success(data_response):
+        if 'id' in data_response.keys():
+            return 1
+        else:
+            return 0
+    
 
     def check_pac_response(data_response,keys):
         pac_response = {'status' : "Facturado" }
@@ -135,7 +141,7 @@ class Factura(Document):
         cliente = Factura.get_cliente(invoice_data)
         datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
 
-        tax_id = Factura.get_tax_id(cliente)  #OJO eemplazar abajo si jala
+        tax_id = Factura.get_tax_id(cliente)  #refactor: eliminar esto y dejarlo directamente
 
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
         api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
@@ -160,15 +166,26 @@ class Factura(Document):
         
         data_response =response.json()
 
-        factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at']
 
-        pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
+        if Factura.check_pack_response_success(data_response) == 1:
+            factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at']
+            pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
 
-        if pac_response['status'] == "Facturado":
-            self.update_pac_response(pac_response)
-            Factura.update_sales_invoice_status(sales_invoice_id)
+            if pac_response['status'] == "Facturado":
+                self.update_pac_response(pac_response)
+                Factura.update_sales_invoice_status(sales_invoice_id)
+            else:
+                self.db_set['status'] = "Rechazada" # refactor: no creo que sea necesario este else
         else:
-            self.db_set['status'] = "Rechazada"
+            self.db_set({
+                'status' : "Rechazada",
+                'response_rechazada' : str(data_response)
+                         })
+            frappe.msgprint(
+                msg=str(data_response),
+                title='La solicitud de facturacion no fue exitosa'
+            )
+
         
     def validate(self):
         Factura.validate_rfc_factura(self)
