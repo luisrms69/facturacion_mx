@@ -85,6 +85,25 @@ class Factura(Document):
                 pac_response = { 'status' : "Rechazada" }
 
         return pac_response
+
+
+    def validate_rfc_factura(self):  #OJO Puede mejorar para revisar si es compañia o individuo
+        tax_id_lenght = len(self.tax_id)
+        if tax_id_lenght != 12:
+            if tax_id_lenght != 13:
+                frappe.throw("RFC Incorrecto por favor verifícalo. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
+
+
+    
+    def validate_cp_factura(zip_code):
+        if len(zip_code) != 5:
+            frappe.throw("El código postal es incorrecto, debe contener 5 numeros. La correccion de esta información se realiza directamente en los datos del cliente, en la direccion primaria de facturación")
+
+    
+    def validate_tax_category_factura(tax_category):
+        if not 600 <= int(tax_category[:3]) <= 627:
+            frappe.throw("El regimen fiscal no esta correctamente seleccionado o esta vacío, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
+
     
 
 
@@ -116,6 +135,8 @@ class Factura(Document):
         cliente = Factura.get_cliente(invoice_data)
         datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
 
+        tax_id = Factura.get_tax_id(cliente)  #OJO eemplazar abajo si jala
+
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
         api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
@@ -125,7 +146,7 @@ class Factura(Document):
             "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
             "customer": {
                 "legal_name": cliente,
-                "tax_id": Factura.get_tax_id(cliente),
+                "tax_id": tax_id,
                 "tax_system": Factura.get_regimen_fiscal(cliente),
                 "email": datos_direccion.email_id,
                 "address": {
@@ -149,6 +170,10 @@ class Factura(Document):
         else:
             self.db_set['status'] = "Rechazada"
         
+    def validate(self):
+        Factura.validate_rfc_factura(self)
+        Factura.validate_cp_factura(self.zip_code)
+        Factura.validate_tax_category_factura(self.tax_category)
 
     def on_submit(self):
         self.create_cfdi()
