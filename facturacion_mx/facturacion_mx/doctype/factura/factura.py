@@ -93,12 +93,11 @@ class Factura(Document):
             if tax_id_lenght != 13:
                 frappe.throw("RFC Incorrecto por favor verifícalo")
 
-    
-    # def validate_cp_factura(cliente):
-    #     datos_facturacion = self.get_datos_direccion_facturacion(cliente)
-    #     if len(self.datos_direccion.pincode) != 5:
-    #         frappe.throw("El código postal es incorrecto")
 
+    
+    def validate_cp_factura(zip_code):
+        if len(zip_code) != 5:
+            frappe.throw("El código postal es incorrecto, debe contener 5 numeros")
         
 
     
@@ -169,8 +168,7 @@ class Factura(Document):
         
     def validate(self):
         Factura.validate_rfc_factura(self)
-        # self.validate_cp_factura(self.cliente)
-
+        Factura.validate_cp_factura(self.zip_code)
 
     def on_submit(self):
         self.create_cfdi()
