@@ -18,6 +18,7 @@
   "metodo_pago_sat",
   "billing_address_invoice",
   "full_address",
+  "zip_code",
   "productos_section",
   "factura_product_array",
   "amended_from",
@@ -74,7 +75,8 @@
   {
    "fieldname": "tax_id",
    "fieldtype": "Data",
-   "label": "RFC"
+   "label": "RFC",
+   "read_only": 1
   },
   {
    "fieldname": "tax_category",
@@ -170,12 +172,19 @@
    "label": "M\u00e9todo de Pago",
    "options": "PUE Pago en una sola exhibici\u00f3n\nPPD Pago en parcialidades o diferido",
    "reqd": 1
+  },
+  {
+   "fetch_from": "billing_address_invoice.pincode",
+   "fieldname": "zip_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Codigo Postal"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-14 15:17:15.014454",
+ "modified": "2024-09-15 11:58:21.499415",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
