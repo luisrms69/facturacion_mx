@@ -17,6 +17,8 @@ frappe.ui.form.on('Factura', {
                     }
                 },
                 callback: function (r) {
+                    // console.log("#######r message#########")
+                    // console.log(r.message);
                     if (r.message) {
                         frm.set_value('cliente', r.message.customer);
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
@@ -48,6 +50,21 @@ frappe.ui.form.on('Factura', {
                         });
                     }
                 }
+            }),
+            frappe.call({
+                method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_metodo_de_pago',
+                args: {
+                    sales_invoice_id: frm.doc.sales_invoice_id
+                },
+                callback: function (t) {
+                    if (t.message) {
+                    // console.log("#######server script message#########");
+                    // console.log(t.message);
+                    frm.set_value('referencia_de_pago', t.message);
+                    } else {
+                    frm.set_value('referencia_de_pago', "No hay referencia de forma de pago")
+                }
+            }
             });
         }
     }
