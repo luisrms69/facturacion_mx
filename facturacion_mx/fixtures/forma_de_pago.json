@@ -1,0 +1,178 @@
+[
+ {
+  "descripcion": "Por definir",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "99",
+  "modified": "2024-09-16 14:14:54.607929",
+  "name": "99"
+ },
+ {
+  "descripcion": "Intermediario pagos",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "31",
+  "modified": "2024-09-16 14:15:44.239799",
+  "name": "31"
+ },
+ {
+  "descripcion": "Aplicación de anticipos",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "30",
+  "modified": "2024-09-16 14:16:11.695657",
+  "name": "30"
+ },
+ {
+  "descripcion": "Tarjeta de servicios",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "29",
+  "modified": "2024-09-16 14:16:41.302612",
+  "name": "29"
+ },
+ {
+  "descripcion": "Tarjeta de débito",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "28",
+  "modified": "2024-09-16 14:17:02.826170",
+  "name": "28"
+ },
+ {
+  "descripcion": "A satisfacción del acreedor",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "27",
+  "modified": "2024-09-16 14:17:30.368437",
+  "name": "27"
+ },
+ {
+  "descripcion": "Prescripción o caducidad",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "26",
+  "modified": "2024-09-16 14:18:05.103394",
+  "name": "26"
+ },
+ {
+  "descripcion": "Remisión de deuda",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "25",
+  "modified": "2024-09-16 14:18:47.535431",
+  "name": "25"
+ },
+ {
+  "descripcion": "Confusión",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "24",
+  "modified": "2024-09-16 14:19:11.182587",
+  "name": "24"
+ },
+ {
+  "descripcion": "Novación",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "23",
+  "modified": "2024-09-16 14:19:28.677726",
+  "name": "23"
+ },
+ {
+  "descripcion": "Compensación",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "17",
+  "modified": "2024-09-16 14:19:46.696406",
+  "name": "17"
+ },
+ {
+  "descripcion": "Condonación",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "15",
+  "modified": "2024-09-16 14:20:00.958046",
+  "name": "15"
+ },
+ {
+  "descripcion": "Pago por consignación",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "14",
+  "modified": "2024-09-16 14:20:26.199554",
+  "name": "14"
+ },
+ {
+  "descripcion": "Pago por subrogación",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "13",
+  "modified": "2024-09-16 14:21:16.182282",
+  "name": "13"
+ },
+ {
+  "descripcion": "Dación en pago",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "12",
+  "modified": "2024-09-16 14:21:30.829308",
+  "name": "12"
+ },
+ {
+  "descripcion": "Vales de despensa",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "08",
+  "modified": "2024-09-16 14:21:44.888596",
+  "name": "08"
+ },
+ {
+  "descripcion": "Dinero electrónico",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "06",
+  "modified": "2024-09-16 14:22:02.793558",
+  "name": "06"
+ },
+ {
+  "descripcion": "Monedero electrónico",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "05",
+  "modified": "2024-09-16 14:22:17.294377",
+  "name": "05"
+ },
+ {
+  "descripcion": "Tarjeta de crédito",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "04",
+  "modified": "2024-09-16 14:22:34.727230",
+  "name": "04"
+ },
+ {
+  "descripcion": "Cheque nominativo",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "02",
+  "modified": "2024-09-16 14:23:10.688215",
+  "name": "02"
+ },
+ {
+  "descripcion": "Transferencia electrónica de fondos",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "03",
+  "modified": "2024-09-16 14:22:54.768003",
+  "name": "03"
+ },
+ {
+  "descripcion": "Efectivo",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "01",
+  "modified": "2024-09-16 14:23:52.719784",
+  "name": "01"
+ }
+]
