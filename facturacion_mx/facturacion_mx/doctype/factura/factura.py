@@ -147,7 +147,7 @@ class Factura(Document):
         api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
-            "payment_form": Factura.get_metodo_de_pago(sales_invoice_id),
+            "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
             "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
             "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
             "customer": {
