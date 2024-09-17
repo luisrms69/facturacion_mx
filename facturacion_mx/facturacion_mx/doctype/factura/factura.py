@@ -6,6 +6,7 @@ from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
+from frappe.utils import validate_email_address
 
 
 class Factura(Document):
@@ -111,6 +112,13 @@ class Factura(Document):
             frappe.throw("El regimen fiscal no esta correctamente seleccionado o esta vacío, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
+#Verifica que el correo electrónico sea correcto
+    def validate_email_factura(email_id):
+        validate_email_address(email_id)
+        # if not frappe.utils.validate_type(email_id, "email"):
+        #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
+
+
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
 # Añade informacion en caso de exito al documento
     def update_pac_response(self,pac_response):
@@ -139,7 +147,8 @@ class Factura(Document):
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         cliente = Factura.get_cliente(invoice_data)
         datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
-        tax_id = Factura.get_tax_id(cliente)  #refactor: eliminar esto y dejarlo directamente
+        tax_id = Factura.get_tax_id(cliente)
+        email_id = datos_direccion.email_id
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
 #Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
@@ -154,7 +163,7 @@ class Factura(Document):
                 "legal_name": cliente,
                 "tax_id": tax_id,
                 "tax_system": Factura.get_regimen_fiscal(cliente),
-                "email": datos_direccion.email_id,
+                "email": email_id,
                 "address": {
                     "zip": datos_direccion.pincode
                 },
@@ -199,6 +208,7 @@ class Factura(Document):
         Factura.validate_rfc_factura(self)
         Factura.validate_cp_factura(self.zip_code)
         Factura.validate_tax_category_factura(self.tax_category)
+        Factura.validate_email_factura(self.email_id)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):

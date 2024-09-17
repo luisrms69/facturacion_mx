@@ -13,6 +13,7 @@
   "fecha_nota_de_venta",
   "tax_id",
   "tax_category",
+  "email_id",
   "column_break_fbwf",
   "usocfdi",
   "metodo_pago_sat",
@@ -212,12 +213,18 @@
    "label": "Foma de Pago (SAT)",
    "options": "Forma de Pago",
    "reqd": 1
+  },
+  {
+   "fetch_from": "billing_address_invoice.email_id",
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Correo Electr\u00f3nico"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-16 21:50:20.648876",
+ "modified": "2024-09-17 14:10:21.511568",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
