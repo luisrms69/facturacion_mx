@@ -16,7 +16,7 @@
   "column_break_fbwf",
   "usocfdi",
   "metodo_pago_sat",
-  "forma_de_pago",
+  "foma_de_pago_sat",
   "referencia_de_pago",
   "billing_address_invoice",
   "full_address",
@@ -207,9 +207,9 @@
    "label": "Forma de Pago Registrada"
   },
   {
-   "fieldname": "forma_de_pago",
+   "fieldname": "foma_de_pago_sat",
    "fieldtype": "Link",
-   "label": "Forma de Pago",
+   "label": "Foma de Pago (SAT)",
    "options": "Forma de Pago",
    "reqd": 1
   }
@@ -217,7 +217,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-16 14:25:37.673995",
+ "modified": "2024-09-16 21:50:20.648876",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
