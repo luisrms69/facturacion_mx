@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:forma_de_pago",
+ "creation": "2024-09-16 14:10:58.119275",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "forma_de_pago_section",
+  "forma_de_pago",
+  "descripcion"
+ ],
+ "fields": [
+  {
+   "fieldname": "forma_de_pago_section",
+   "fieldtype": "Section Break",
+   "label": "Forma de Pago"
+  },
+  {
+   "fieldname": "forma_de_pago",
+   "fieldtype": "Data",
+   "label": "Forma de Pago",
+   "unique": 1
+  },
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "label": "Descripion"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-16 14:14:07.753579",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Forma de Pago",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "descripcion"
+}

@@ -64,16 +64,16 @@ class Factura(Document):
 
         return datos_direccion
 
-    def get_metodo_de_pago(sales_invoice_id):
-        filters = [
-            ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
-            ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
-        ]
-        pay_entry = frappe.get_all("Payment Entry", filters=filters)
-        metodo_de_pago = frappe.db.get_value(
-            "Payment Entry", pay_entry, "mode_of_payment")[:2]
+    # def get_metodo_de_pago(sales_invoice_id):
+    #     filters = [
+    #         ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
+    #         ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
+    #     ]
+    #     pay_entry = frappe.get_all("Payment Entry", filters=filters)
+    #     metodo_de_pago = frappe.db.get_value(
+    #         "Payment Entry", pay_entry, "mode_of_payment")[:2]
 
-        return metodo_de_pago
+    #     return metodo_de_pago
     
     def check_pack_response_success(data_response):
         if 'id' in data_response.keys():
@@ -147,7 +147,7 @@ class Factura(Document):
         api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
-            "payment_form": Factura.get_metodo_de_pago(sales_invoice_id),
+            "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
             "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
             "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
             "customer": {
