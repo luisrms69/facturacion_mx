@@ -20,7 +20,6 @@ frappe.ui.form.on('Factura', {
                     // console.log("#######r message#########")
                     // console.log(r.message);
                     if (r.message) {
-                        // frm.set_value('cliente', r.message.customer);
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
                         frm.clear_table('factura_product_array')
 

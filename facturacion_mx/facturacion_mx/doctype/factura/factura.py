@@ -64,16 +64,6 @@ class Factura(Document):
 
         return datos_direccion
 
-    # def get_metodo_de_pago(sales_invoice_id):
-    #     filters = [
-    #         ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
-    #         ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
-    #     ]
-    #     pay_entry = frappe.get_all("Payment Entry", filters=filters)
-    #     metodo_de_pago = frappe.db.get_value(
-    #         "Payment Entry", pay_entry, "mode_of_payment")[:2]
-
-    #     return metodo_de_pago
     
     def check_pack_response_success(data_response):
         if 'id' in data_response.keys():
