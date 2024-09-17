@@ -105,10 +105,10 @@ class Factura(Document):
 
 #Verifica que el regimen fiscal este entre los numeros esperados    
     def validate_tax_category_factura(tax_category):
-        if not 600 <= int(tax_category[:3]) <= 627:
+        valor_inferior = 600
+        valor_superior = 627
+        if not valor_inferior <= int(tax_category[:3]) <= valor_superior:
             frappe.throw("El regimen fiscal no esta correctamente seleccionado o esta vacío, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
-
-    
 
 
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
