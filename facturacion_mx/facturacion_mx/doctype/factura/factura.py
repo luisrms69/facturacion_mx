@@ -64,7 +64,7 @@ class Factura(Document):
 
         return datos_direccion
 
-    
+
     def check_pack_response_success(data_response):
         if 'id' in data_response.keys():
             return 1
@@ -164,6 +164,10 @@ class Factura(Document):
             if pac_response['status'] == "Facturado":
                 self.update_pac_response(pac_response)
                 Factura.update_sales_invoice_status(sales_invoice_id)
+                frappe.msgprint(
+                    msg="La solicitud de facturación ha sido exittosa, puedes consultar los detalles de la confirmación proporcionados por el PAC en la parte inferior de este documento",
+                    title='Solicitud exitosa!!'                
+                )
             else:
                 self.db_set['status'] = "Rechazada" # refactor: no creo que sea necesario este else
         else:
