@@ -16,8 +16,8 @@ def get_forma_de_pago(sales_invoice_id):
         ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
     ]
     pay_entry = frappe.get_all("Payment Entry", filters=filters)
-    metodo_de_pago = frappe.db.get_value(
+    forma_de_pago = frappe.db.get_value(
         "Payment Entry", pay_entry, "mode_of_payment")
 
-    return metodo_de_pago
+    return forma_de_pago
 
