@@ -1,0 +1,85 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"zfwNHWZnPY\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Facturaci\u00f3n</span>\",\"col\":12}},{\"id\":\"AjWf5VT5U8\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Facturas exitosas\",\"col\":4}},{\"id\":\"3mFIc0muRy\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Facturas Rechazadas\",\"col\":4}},{\"id\":\"ICSwYiQIZz\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Solicitudes pendientes\",\"col\":4}},{\"id\":\"tm2HW-XDFx\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"fvMT-nRvJ7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Crear factura\",\"col\":3}},{\"id\":\"ypWpdDmxcM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Facturacion Settings\",\"col\":3}},{\"id\":\"TlqLCc9nIi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Facturas Realizadas\",\"col\":3}},{\"id\":\"1qN-oAwJs0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Facturas Rechazadas\",\"col\":3}},{\"id\":\"znEXv1HH-i\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Alta de Cliente\",\"col\":3}}]",
+ "creation": "2024-09-16 22:59:30.135967",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "liabilities",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Facturacion",
+ "links": [],
+ "modified": "2024-09-16 23:20:56.754950",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Facturacion",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Factura",
+   "label": "Facturas Rechazadas",
+   "quick_list_filter": "[[\"Factura\",\"status\",\"=\",\"Rechazada\",false]]"
+  },
+  {
+   "document_type": "Factura",
+   "label": "Facturas exitosas",
+   "quick_list_filter": "[[\"Factura\",\"status\",\"=\",\"Facturado\",false]]"
+  },
+  {
+   "document_type": "Factura",
+   "label": "Solicitudes pendientes",
+   "quick_list_filter": "[[\"Factura\",\"docstatus\",\"=\",\"0\",false]]"
+  }
+ ],
+ "roles": [],
+ "sequence_id": 41.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Facturacion Settings",
+   "link_to": "Facturacion MX Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Crear factura",
+   "link_to": "Factura",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Alta de Cliente",
+   "link_to": "Customer",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Facturas Realizadas",
+   "link_to": "Factura",
+   "stats_filter": "[[\"Factura\",\"status\",\"=\",\"Facturado\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Facturas Rechazadas",
+   "link_to": "Factura",
+   "stats_filter": "[[\"Factura\",\"status\",\"=\",\"Rechazada\",false]]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Facturacion"
+}
