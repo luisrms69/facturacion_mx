@@ -7,6 +7,8 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
+
+# Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
 @frappe.whitelist()
 def get_forma_de_pago(sales_invoice_id):
     filters = [
