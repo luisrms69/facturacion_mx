@@ -52,7 +52,7 @@ frappe.ui.form.on('Factura', {
                 }
             }),
             frappe.call({
-                method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_metodo_de_pago',
+                method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_forma_de_pago',
                 args: {
                     sales_invoice_id: frm.doc.sales_invoice_id
                 },

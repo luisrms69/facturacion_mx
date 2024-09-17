@@ -8,7 +8,7 @@ import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
 @frappe.whitelist()
-def get_metodo_de_pago(sales_invoice_id):
+def get_forma_de_pago(sales_invoice_id):
     filters = [
         ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
         ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
