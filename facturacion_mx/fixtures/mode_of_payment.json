@@ -1,0 +1,222 @@
+[
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "99 Por definir",
+  "modified": "2024-09-17 10:29:40.502537",
+  "name": "99 Por definir",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "31 Intermediario pagos",
+  "modified": "2024-09-17 10:29:57.343618",
+  "name": "31 Intermediario pagos",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "29 Tarjeta de servicios",
+  "modified": "2024-09-17 10:47:39.645765",
+  "name": "29 Tarjeta de servicios",
+  "type": "Bank"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "28 Tarjeta de débito",
+  "modified": "2024-09-17 10:47:26.127686",
+  "name": "28 Tarjeta de débito",
+  "type": "Bank"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "27 A satisfacción del acreedor",
+  "modified": "2024-09-17 10:34:15.267960",
+  "name": "27 A satisfacción del acreedor",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "26 Prescripción o caducidad",
+  "modified": "2024-09-17 10:34:37.756491",
+  "name": "26 Prescripción o caducidad",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "25 Remisión de deuda",
+  "modified": "2024-09-17 10:34:55.125874",
+  "name": "25 Remisión de deuda",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "24 Confusión",
+  "modified": "2024-09-17 10:35:05.423985",
+  "name": "24 Confusión",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "23 Novación",
+  "modified": "2024-09-17 10:35:27.938077",
+  "name": "23 Novación",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "17 Compensación",
+  "modified": "2024-09-17 10:36:24.119699",
+  "name": "17 Compensación",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "15 Condonación",
+  "modified": "2024-09-17 10:36:34.257587",
+  "name": "15 Condonación",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "14 Pago por consignación",
+  "modified": "2024-09-17 10:36:51.539935",
+  "name": "14 Pago por consignación",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "13 Pago por subrogación",
+  "modified": "2024-09-17 10:37:06.022845",
+  "name": "13 Pago por subrogación",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "12 Dación en pago",
+  "modified": "2024-09-17 10:37:17.091527",
+  "name": "12 Dación en pago",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "08 Vales de despensa",
+  "modified": "2024-09-17 10:40:32.316035",
+  "name": "08 Vales de despensa",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "06 Dinero electrónico",
+  "modified": "2024-09-17 10:41:35.408482",
+  "name": "06 Dinero electrónico",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "05 Monedero electrónico",
+  "modified": "2024-09-17 10:44:30.705437",
+  "name": "05 Monedero electrónico",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "04 Tarjeta de crédito",
+  "modified": "2024-09-17 10:46:42.350660",
+  "name": "04 Tarjeta de crédito",
+  "type": "Bank"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "03 Transferencia electrónica de fondos",
+  "modified": "2024-09-17 10:46:31.156092",
+  "name": "03 Transferencia electrónica de fondos",
+  "type": "Bank"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "02 Cheque nominativo",
+  "modified": "2024-09-17 10:46:19.638364",
+  "name": "02 Cheque nominativo",
+  "type": "Bank"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "30 Aplicación de anticipos",
+  "modified": "2024-09-17 10:53:07.742407",
+  "name": "30 Aplicación de anticipos",
+  "type": "Cash"
+ },
+ {
+  "accounts": [],
+  "docstatus": 0,
+  "doctype": "Mode of Payment",
+  "enabled": 1,
+  "mode_of_payment": "01 Efectivo",
+  "modified": "2024-09-17 10:46:04.334471",
+  "name": "01 Efectivo",
+  "type": "Cash"
+ }
+]
