@@ -20,7 +20,7 @@ frappe.ui.form.on('Factura', {
                     // console.log("#######r message#########")
                     // console.log(r.message);
                     if (r.message) {
-                        frm.set_value('cliente', r.message.customer);
+                        // frm.set_value('cliente', r.message.customer);
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
                         frm.clear_table('factura_product_array')
 
@@ -71,20 +71,20 @@ frappe.ui.form.on('Factura', {
 });
 
 // GET COMPLETE ADDRESS
-frappe.ui.form.on("Factura", "billing_address_invoice", function(frm, cdt, cdn) {
-    if(frm.doc.billing_address_invoice){
-      return frm.call({
-      method: "frappe.contacts.doctype.address.address.get_address_display",
-      args: {
-         "address_dict": frm.doc.billing_address_invoice
-      },
-      callback: function(t) {
-        if(t.message)
-            frm.set_value("full_address", t.message);
-      }
-     });
-    }
-    else{
-        frm.set_value("full_address", "SIN INFORMACION");
-    }
-});
+// frappe.ui.form.on("Factura", "billing_address_invoice", function(frm, cdt, cdn) {
+//     if(frm.doc.billing_address_invoice){
+//       return frm.call({
+//       method: "frappe.contacts.doctype.address.address.get_address_display",
+//       args: {
+//          "address_dict": frm.doc.billing_address_invoice
+//       },
+//       callback: function(t) {
+//         if(t.message)
+//             frm.set_value("full_address", t.message);
+//       }
+//      });
+//     }
+//     else{
+//         frm.set_value("full_address", "SIN INFORMACION");
+//     }
+// });
