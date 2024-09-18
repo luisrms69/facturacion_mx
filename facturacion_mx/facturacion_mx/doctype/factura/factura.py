@@ -114,8 +114,10 @@ class Factura(Document):
             frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
-#Verifica que el correo electrónico sea correcto
+#Verifica que el correo electrónico no este vacío y su formato sea correcto
     def validate_email_factura(email_id):
+        if not email_id:
+            frappe.throw("Se requiere capturar un correo electrónico para la dirección principal de facturación. La captura se realiza directamente en la sección de direcciones del cliente.")
         validate_email_address(email_id)
         # if not frappe.utils.validate_type(email_id, "email"):
         #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
