@@ -70,6 +70,8 @@ class Factura(Document):
         company_address = frappe.get_all("Address", filters=filters)
         datos_direccion = frappe.db.get_value('Address', company_address, [
                                               'pincode', 'email_id'], as_dict=1)
+        if datos_direccion == "":
+            frappe.throw("Hay un problema con la dirección de facturación registrada, revisa en la configuración del cliente, Direcciones y Contactos")
 
         return datos_direccion
 
@@ -152,8 +154,6 @@ class Factura(Document):
         cliente = Factura.get_cliente(invoice_data)
         datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
         tax_id = Factura.get_tax_id(cliente)
-        frappe.msgprint(str(cliente))
-        frappe.msgprint(str(datos_direccion))
         email_id = datos_direccion.email_id
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
