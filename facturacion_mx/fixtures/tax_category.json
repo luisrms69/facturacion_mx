@@ -1,0 +1,154 @@
+[
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:13:54.129922",
+  "name": "605 Sueldos y Salarios e Ingresos Asimilados a Salarios",
+  "title": "605 Sueldos y Salarios e Ingresos Asimilados a Salarios"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:14:15.096880",
+  "name": "606 Arrendamiento",
+  "title": "606 Arrendamiento"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:14:35.067799",
+  "name": "607 Régimen de Enajenación o Adquisición de Bienes",
+  "title": "607 Régimen de Enajenación o Adquisición de Bienes"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:15:06.806067",
+  "name": "608 Demás ingresos",
+  "title": "608 Demás ingresos"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:15:54.684334",
+  "name": "610 Residentes en el Extranjero sin Establecimiento Permanente en México",
+  "title": "610 Residentes en el Extranjero sin Establecimiento Permanente en México"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:18:45.225354",
+  "name": "611 Ingresos por Dividendos (socios y accionistas)",
+  "title": "611 Ingresos por Dividendos (socios y accionistas)"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:19:02.935142",
+  "name": "612 Personas Físicas con Actividades Empresariales y Profesionales",
+  "title": "612 Personas Físicas con Actividades Empresariales y Profesionales"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:19:22.799238",
+  "name": "614 Ingresos por intereses",
+  "title": "614 Ingresos por intereses"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:19:43.425472",
+  "name": "615 Régimen de los ingresos por obtención de premios",
+  "title": "615 Régimen de los ingresos por obtención de premios"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:20:01.009424",
+  "name": "616 Sin obligaciones fiscales",
+  "title": "616 Sin obligaciones fiscales"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:20:27.325412",
+  "name": "620 Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+  "title": "620 Sociedades Cooperativas de Producción que optan por diferir sus ingresos"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:20:46.334145",
+  "name": "621 Incorporación Fiscal",
+  "title": "621 Incorporación Fiscal"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:21:08.884697",
+  "name": "622 Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+  "title": "622 Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:21:30.769522",
+  "name": "623 Opcional para Grupos de Sociedades",
+  "title": "623 Opcional para Grupos de Sociedades"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:21:47.667132",
+  "name": "624 Coordinados",
+  "title": "624 Coordinados"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:22:07.395229",
+  "name": "625 Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+  "title": "625 Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-17 13:22:29.247709",
+  "name": "626 Régimen Simplificado de Confianza",
+  "title": "626 Régimen Simplificado de Confianza"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-08 14:10:00.883196",
+  "name": "601 General de Ley Personas Morales",
+  "title": "601 General de Ley Personas Morales"
+ },
+ {
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Tax Category",
+  "modified": "2024-09-08 14:10:14.863343",
+  "name": "603 Personas Morales con Fines no Lucrativos",
+  "title": "603 Personas Morales con Fines no Lucrativos"
+ }
+]
