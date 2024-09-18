@@ -97,8 +97,11 @@ class Factura(Document):
         return pac_response
 
 #Verifica la longitud del RFC, doce o trece son correctos
-    def validate_rfc_factura(self):  #feat: Puede mejorar para revisar si es compañia o individuo
-        tax_id_lenght = len(self.tax_id)
+    def validate_rfc_factura(tax_id):  #feat: Puede mejorar para revisar si es compañia o individuo
+        if not tax_id:
+            frappe.throw("La empresa no tiene registrado RFC. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
+
+        tax_id_lenght = len(tax_id)
         if tax_id_lenght != 12:
             if tax_id_lenght != 13:
                 frappe.throw("RFC Incorrecto por favor verifícalo. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
@@ -113,7 +116,7 @@ class Factura(Document):
         valor_inferior = 600
         valor_superior = 627
         if not tax_category:
-            frappe.throw("La empresa no cuenta con regimen fiscal seleccionado. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
+            frappe.throw("La empresa no tiene regimen fiscal seleccionado. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
         if not valor_inferior <= int(tax_category[:3]) <= valor_superior:
             frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
@@ -213,7 +216,7 @@ class Factura(Document):
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):
-        Factura.validate_rfc_factura(self)
+        Factura.validate_rfc_factura(self.tax_id)
         Factura.validate_cp_factura(self.zip_code)
         Factura.validate_tax_category_factura(self.tax_category)
         Factura.validate_email_factura(self.email_id)
