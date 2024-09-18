@@ -200,7 +200,8 @@ class Factura(Document):
                 Factura.update_sales_invoice_status(sales_invoice_id)
                 frappe.msgprint(
                     msg="La solicitud de facturación ha sido exittosa, puedes consultar los detalles de la confirmación proporcionados por el PAC en la parte inferior de este documento",
-                    title='Solicitud exitosa!!'                
+                    title='Solicitud exitosa!!',
+                    indicator='green'             
                 )
             else:
                 self.db_set['status'] = "Rechazada" # refactor: no creo que sea necesario este else
@@ -211,7 +212,8 @@ class Factura(Document):
                          })
             frappe.msgprint(
                 msg=str(data_response),
-                title='La solicitud de facturacion no fue exitosa'
+                title='La solicitud de facturacion no fue exitosa',
+                indicator='red'
             )
 
 #Metodo que se corre para validar si los campos son correctos        
