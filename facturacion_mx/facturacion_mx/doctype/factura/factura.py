@@ -30,6 +30,8 @@ class Factura(Document):
                     'price': producto.rate
                 }
             }
+            if not detalle_item['product']['product_key']:
+                frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
             items_info.append(detalle_item)
 
         return items_info
