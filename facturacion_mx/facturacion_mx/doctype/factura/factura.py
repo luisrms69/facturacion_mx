@@ -150,6 +150,8 @@ class Factura(Document):
         cliente = Factura.get_cliente(invoice_data)
         datos_direccion = Factura.get_datos_direccion_facturacion(cliente)
         tax_id = Factura.get_tax_id(cliente)
+        frappe.msgprint(str(cliente))
+        frappe.msgprint(str(datos_direccion))
         email_id = datos_direccion.email_id
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
