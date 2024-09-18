@@ -104,12 +104,14 @@ class Factura(Document):
         if len(zip_code) != 5:
             frappe.throw("El código postal es incorrecto, debe contener 5 numeros. La correccion de esta información se realiza directamente en los datos del cliente, en la direccion primaria de facturación")
 
-#Verifica que el regimen fiscal este entre los numeros esperados    
+#Verifica que el regimen fiscal este entre los numeros esperados y que no este vacía    
     def validate_tax_category_factura(tax_category):
         valor_inferior = 600
         valor_superior = 627
+        if not tax_category:
+            frappe.throw("La empresa no cuenta con regimen fiscal seleccionado. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
         if not valor_inferior <= int(tax_category[:3]) <= valor_superior:
-            frappe.throw("El regimen fiscal no esta correctamente seleccionado o esta vacío, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
+            frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
 #Verifica que el correo electrónico sea correcto
