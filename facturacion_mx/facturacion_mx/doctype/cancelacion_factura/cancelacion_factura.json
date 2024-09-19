@@ -1,12 +1,28 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:CX-FACT-{YY}-{MM}-{DD}-{####}",
  "creation": "2024-09-19 08:54:48.798210",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_ucdp",
   "factura_a_cancelar",
+  "column_break_zezp",
+  "fecha_de_facturaci\u00f3n",
+  "datos_de_la_factura_a_cancelar_section",
+  "cliente",
+  "fecha_de_venta",
+  "uso_del_cfdi",
+  "m\u00e9todo_de_pago",
+  "forma_de_pago",
+  "column_break_yefj",
+  "serie",
+  "folio",
+  "folio_fiscal_uuid",
+  "id_pac",
+  "id_erp",
+  "monto",
   "section_break_gagu",
   "amended_from"
  ],
@@ -36,15 +52,100 @@
   {
    "fieldname": "section_break_gagu",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "datos_de_la_factura_a_cancelar_section",
+   "fieldtype": "Section Break",
+   "label": "Datos de la factura a cancelar",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "factura_a_cancelar.cliente",
+   "fieldname": "cliente",
+   "fieldtype": "Read Only",
+   "label": "Cliente"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.fecha_timbrado",
+   "fieldname": "fecha_de_facturaci\u00f3n",
+   "fieldtype": "Read Only",
+   "label": "Fecha de emisi\u00f3n"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.fecha_nota_de_venta",
+   "fieldname": "fecha_de_venta",
+   "fieldtype": "Read Only",
+   "label": "Fecha de Venta"
+  },
+  {
+   "fieldname": "column_break_zezp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.usocfdi",
+   "fieldname": "uso_del_cfdi",
+   "fieldtype": "Read Only",
+   "label": "Uso del CFDI"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.metodo_pago_sat",
+   "fieldname": "m\u00e9todo_de_pago",
+   "fieldtype": "Read Only",
+   "label": "M\u00e9todo de Pago"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.foma_de_pago_sat",
+   "fieldname": "forma_de_pago",
+   "fieldtype": "Read Only",
+   "label": "Forma de Pago"
+  },
+  {
+   "fieldname": "column_break_yefj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.serie_de_la_factura",
+   "fieldname": "serie",
+   "fieldtype": "Read Only",
+   "label": "Serie"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.folio_de_factura",
+   "fieldname": "folio",
+   "fieldtype": "Read Only",
+   "label": "Folio"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.uuid",
+   "fieldname": "folio_fiscal_uuid",
+   "fieldtype": "Read Only",
+   "label": "Folio Fiscal (UUID)"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.id_pac",
+   "fieldname": "id_pac",
+   "fieldtype": "Read Only",
+   "label": "ID PAC"
+  },
+  {
+   "fieldname": "id_erp",
+   "fieldtype": "Data",
+   "label": "ID ERP"
+  },
+  {
+   "fieldname": "monto",
+   "fieldtype": "Data",
+   "label": "Monto"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 08:57:27.150722",
+ "modified": "2024-09-19 09:15:08.638869",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Cancelacion Factura",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
