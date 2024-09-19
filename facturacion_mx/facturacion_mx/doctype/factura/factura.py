@@ -78,7 +78,7 @@ class Factura(Document):
         return datos_direccion
 
 #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
-    def check_pack_response_success(data_response):
+    def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
         if 'id' in data_response.keys():
             return 1
         else:
@@ -209,7 +209,7 @@ class Factura(Document):
         else:
             self.db_set({
                 'status' : "Rechazada",
-                'response_rechazada' : str(data_response)
+                'response_rechazada' : str(data_response)  #refactor: dejar en una sola seccion exito y fracaso
                          })
             frappe.msgprint(
                 msg=str(data_response),
