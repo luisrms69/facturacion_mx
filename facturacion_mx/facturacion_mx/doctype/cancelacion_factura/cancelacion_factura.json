@@ -13,6 +13,7 @@
   "datos_de_la_factura_a_cancelar_section",
   "cliente",
   "fecha_de_venta",
+  "monto",
   "uso_del_cfdi",
   "m\u00e9todo_de_pago",
   "forma_de_pago",
@@ -21,8 +22,6 @@
   "folio",
   "folio_fiscal_uuid",
   "id_pac",
-  "id_erp",
-  "monto",
   "section_break_gagu",
   "amended_from"
  ],
@@ -101,7 +100,8 @@
   },
   {
    "fieldname": "column_break_yefj",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "label": "Datos Proporcionados por PAC"
   },
   {
    "fetch_from": "factura_a_cancelar.serie_de_la_factura",
@@ -128,20 +128,17 @@
    "label": "ID PAC"
   },
   {
-   "fieldname": "id_erp",
-   "fieldtype": "Data",
-   "label": "ID ERP"
-  },
-  {
+   "fetch_from": "factura_a_cancelar.monto_total",
    "fieldname": "monto",
-   "fieldtype": "Data",
-   "label": "Monto"
+   "fieldtype": "Currency",
+   "label": "Monto",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 09:15:08.638869",
+ "modified": "2024-09-19 09:31:59.118354",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Cancelacion Factura",
