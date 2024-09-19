@@ -34,6 +34,7 @@
   "serie_de_la_factura",
   "folio_de_factura",
   "status",
+  "monto_total",
   "informe_sobre_la_solicitud_rechazada_datos_del_pac_section",
   "response_rechazada"
  ],
@@ -220,12 +221,17 @@
    "fieldtype": "Data",
    "label": "Correo Electr\u00f3nico",
    "read_only": 1
+  },
+  {
+   "fieldname": "monto_total",
+   "fieldtype": "Read Only",
+   "label": "Monto Total de la Factura"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-17 19:26:29.952800",
+ "modified": "2024-09-19 09:21:47.635498",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",

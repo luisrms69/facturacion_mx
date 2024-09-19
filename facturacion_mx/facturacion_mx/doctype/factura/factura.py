@@ -139,8 +139,9 @@ class Factura(Document):
             'url_de_verificación' : pac_response['verification_url'],
             'serie_de_la_factura' : pac_response['series'],
             'folio_de_factura' : pac_response['folio_number'],
-            'fecha_timbrado' : pac_response['created_at'],
-            'status' : pac_response['status']
+            'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
+            'status' : pac_response['status'],
+            'monto_total' : pac_response['total']
         })
 
 #Actualiza el sales invoice como facturado Normal
@@ -192,7 +193,7 @@ class Factura(Document):
 
 
         if Factura.check_pack_response_success(data_response) == 1:
-            factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at']
+            factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at', 'total']
             pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
 
             if pac_response['status'] == "Facturado":
