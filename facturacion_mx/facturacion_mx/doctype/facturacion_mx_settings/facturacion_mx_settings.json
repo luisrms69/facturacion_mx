@@ -7,6 +7,7 @@
  "field_order": [
   "endpoints_facturacion_section",
   "endpoint_crear_facturas",
+  "endpoint_cancelar_facturas",
   "api_settings_section",
   "live_secret_key",
   "user_secret_key"
@@ -36,12 +37,17 @@
    "fieldname": "user_secret_key",
    "fieldtype": "Password",
    "label": "User Secret Key"
+  },
+  {
+   "fieldname": "endpoint_cancelar_facturas",
+   "fieldtype": "Data",
+   "label": "Endpoint Cancelar Facturas"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-13 11:00:38.295459",
+ "modified": "2024-09-19 09:36:15.124236",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
