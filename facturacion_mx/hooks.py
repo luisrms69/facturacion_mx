@@ -242,4 +242,4 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
-fixtures = [ "Custom Field", "Uso CFDI", "Mode of Payment", "Forma de Pago", "Tax Category" ]
+# fixtures = [ "Custom Field", "Uso CFDI", "Mode of Payment", "Forma de Pago", "Tax Category" , "Motivo de Cancelacion"]
