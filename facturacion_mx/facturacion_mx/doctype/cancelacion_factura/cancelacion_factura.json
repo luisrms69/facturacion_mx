@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-19 08:54:48.798210",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ucdp",
+  "factura_a_cancelar",
+  "section_break_gagu",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ucdp",
+   "fieldtype": "Section Break",
+   "label": "Datos de la Solicitud de Cancelaci\u00f3n"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cancelacion Factura",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "factura_a_cancelar",
+   "fieldtype": "Link",
+   "label": "Factura a cancelar",
+   "link_filters": "[[\"Factura\",\"status\",\"=\",\"Facturado\"]]",
+   "options": "Factura"
+  },
+  {
+   "fieldname": "section_break_gagu",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-09-19 08:57:27.150722",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Cancelacion Factura",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
