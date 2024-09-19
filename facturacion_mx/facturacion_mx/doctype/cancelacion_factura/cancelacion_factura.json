@@ -8,6 +8,7 @@
  "field_order": [
   "section_break_ucdp",
   "factura_a_cancelar",
+  "motivo_de_cancelacion",
   "column_break_zezp",
   "fecha_de_facturaci\u00f3n",
   "datos_de_la_factura_a_cancelar_section",
@@ -22,6 +23,10 @@
   "folio",
   "folio_fiscal_uuid",
   "id_pac",
+  "resultados_de_la_solicitud_proporcionados_por_el_pac_section",
+  "mensaje_de_error",
+  "status",
+  "id_cancelacion_pac",
   "section_break_gagu",
   "amended_from"
  ],
@@ -133,12 +138,40 @@
    "fieldtype": "Currency",
    "label": "Monto",
    "read_only": 1
+  },
+  {
+   "fieldname": "motivo_de_cancelacion",
+   "fieldtype": "Link",
+   "label": "Motivo de Cancelaci\u00f3n",
+   "options": "Motivo de Cancelacion"
+  },
+  {
+   "fieldname": "resultados_de_la_solicitud_proporcionados_por_el_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Resultados de la solicitud (proporcionados por el PAC)"
+  },
+  {
+   "fieldname": "mensaje_de_error",
+   "fieldtype": "Read Only",
+   "label": "Mensaje de Error"
+  },
+  {
+   "default": "Sin enviar",
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "label": "Status",
+   "options": "Sin enviar\nCancelacion Exitosa\nSolicitud Rechazada\nDesconocido"
+  },
+  {
+   "fieldname": "id_cancelacion_pac",
+   "fieldtype": "Read Only",
+   "label": "ID Cancelacion PAC"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 09:31:59.118354",
+ "modified": "2024-09-19 14:33:46.405481",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Cancelacion Factura",
@@ -161,5 +194,22 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Sin enviar"
+  },
+  {
+   "color": "Green",
+   "title": "Cancelacion Exitosa"
+  },
+  {
+   "color": "Red",
+   "title": "Solicitud Rechazada"
+  },
+  {
+   "color": "Gray",
+   "title": "Desconocido"
+  }
+ ]
 }
