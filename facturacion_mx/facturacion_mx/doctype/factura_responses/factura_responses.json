@@ -9,7 +9,7 @@
  "field_order": [
   "datos_generales_de_la_respuesta_section",
   "response_id",
-  "status",
+  "status_response",
   "cancellation_status",
   "verification_url",
   "uuid",
@@ -39,11 +39,6 @@
    "fieldname": "fecha_de_creacion",
    "fieldtype": "Data",
    "label": "Fecha de creacion"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Data",
-   "label": "Status"
   },
   {
    "fieldname": "cancellation_status",
@@ -133,12 +128,17 @@
   {
    "fieldname": "column_break_glhj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status_response",
+   "fieldtype": "Data",
+   "label": "Status Response"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-19 16:16:32.982224",
+ "modified": "2024-09-19 18:08:53.180162",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Responses",
