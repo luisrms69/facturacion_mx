@@ -25,7 +25,6 @@ class CancelacionFactura(Document):
 			return 0
 		
 	def anade_response_record(self):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-		# doc = frappe.get_doc("Cancelacion Factura", self.get_title())
 		self.append("respuestas", 
 				  {
 					  'response_id': "response id",
@@ -46,7 +45,7 @@ class CancelacionFactura(Document):
 					  'numero_de_certificado_sat': "certificado sat",
 					  'firma_sat': "firma sat"
 					  })
-		# self.add_comment('Comment', "con self unicamente")
+
 		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
@@ -93,8 +92,6 @@ class CancelacionFactura(Document):
 
 		data_response =response.json()
 
-		# frappe.msgprint(str(data_response))
-
 		resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
 
 		self.actualizar_cancelacion_respuesta_pac(data_response)
@@ -107,48 +104,3 @@ class CancelacionFactura(Document):
 	def on_update(self):
 		self.anade_response_record()
 
-	
-
-    
-
-    # def cancel_cfdi(self):
-    #     factura_a_cancelar = self.get_factura_id()
-    #     motivo_cancelacion = self.get_motivo_cancelacion()
-    #     api_token = get_decrypted_password(
-    #         'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
-    #     headers = {"Authorization": f"Bearer {api_token}"}
-    #     facturapi_endpoint = frappe.db.get_single_value(
-    #         'Facturacion MX Settings', 'endpoint_cancelar_facturas')
-    #     query = f"{factura_a_cancelar}?motive={motivo_cancelacion}"
-    #     final_url = f"{facturapi_endpoint}/{query}"
-    #     response = requests.delete(final_url, headers=headers)
-
-    #     data_response = response.json()
-
-    #     frappe.msgprint(str(data_response))
-
-    #     # frappe.msgprint(final_url)
-    #     # return final_url
-
-    # def on_submit(self):
-    #     self.cancel_cfdi()
-
-	    # def get_factura_id(self):
-    #     factura_id = frappe.db.get_value(
-    #         "Cancelacion Factura", self.get_title(), 'id_pac')
-
-    #     return factura_id
-
-
-	# def determine_status(data_response):
-    #         if 'id' in data_response.keys:
-    #                return 1
-    #         else:
-    #                return 0
-
-    # def get_motivo_cancelacion(self):
-    #     motivo_cancelacion = frappe.db.get_value(
-    #         "Cancelacion Factura", self.get_title(), 'motivo_de_cancelacion')
-    #     id_motivo_cancelacion = frappe.db.get_value(
-    #         "Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
-    #     return id_motivo_cancelacion
