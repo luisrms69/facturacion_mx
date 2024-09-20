@@ -24,6 +24,30 @@ class CancelacionFactura(Document):
 		else:
 			return 0
 		
+	def anade_response_record(self):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
+		# doc = frappe.get_doc("Cancelacion Factura", self.get_title())
+		self.append("respuestas", 
+				  {
+					  'response_id': "response id",
+					  'status_response' : "status response",
+					  'cancellation_status' : "cancellation status",
+					  'verification_url' : "verification url",
+					  'uuid' : "UUID",
+					  'fecha_de_creacion' : "fecha decreacion",
+					  'folio' : "folio numero",
+					  'serie_de_facturacion': "serie fact",
+					  'monto_total': "monto 23456",
+					  'forma_de_pago': "forma",
+					  'id_del_cliente': "client ID",
+					  'nombre_del_cliente': "nombre",
+					  'rfc': "RFC",
+					  'signature': "signature",
+					  'fecha_de_sellado': "fecha de sellado",
+					  'numero_de_certificado_sat': "certificado sat",
+					  'firma_sat': "firma sat"
+					  })
+		# self.add_comment('Comment', "con self unicamente")
+		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
 			self.db_set({
@@ -71,13 +95,17 @@ class CancelacionFactura(Document):
 
 		# frappe.msgprint(str(data_response))
 
-		resultado = CancelacionFactura.determine_resultado(data_response)
+		resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
 
 		self.actualizar_cancelacion_respuesta_pac(data_response)
+
+
 
 	def on_submit(self):
 		self.cancel_cfdi()
 
+	def on_update(self):
+		self.anade_response_record()
 
 	
 
