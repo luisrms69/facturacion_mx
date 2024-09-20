@@ -39,16 +39,12 @@ def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se debe
         return status
         
 def actualizar_status_factura(doc, status):
-    #   doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar) #refactor: duplicado abajo se pued calcular antes y pasar a los metodos
       doc.db_set({
             'status' : status
       })
 
 
-#fix:refacto este metodo se trajo de cx factura, esta duplicado
 def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-    # if CancelacionFactura.determine_resultado(pac_response) == 1:
-    # doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
     doc.append("respuestas", 
                 {
                     'response_id': pac_response['id'],
@@ -71,9 +67,6 @@ def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar 
                     })
     doc.save()
 
-
-
-
         
 @frappe.whitelist()
 def status_check_cx_factura(id_factura, factura_a_cancelar):
@@ -82,6 +75,3 @@ def status_check_cx_factura(id_factura, factura_a_cancelar):
         doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
         anade_response_record(doc, factura_object)
         actualizar_status_factura(doc,status)
-
-
-        # frappe.msgprint(str(factura_object))
