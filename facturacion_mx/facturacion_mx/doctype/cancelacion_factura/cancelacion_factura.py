@@ -7,7 +7,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 # se importa para poder acceder al password
 from frappe.utils.password import get_decrypted_password
-from .api import test_access, actualizar_cancelacion_respuesta_pac	#Para utilizar las funciones definidas en api de cancelacion factura
+from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_factura	#Para utilizar las funciones definidas en api de cancelacion factura
 
 
 class CancelacionFactura(Document):
@@ -52,7 +52,7 @@ class CancelacionFactura(Document):
 		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
-			actualizar_cancelacion_respuesta_pac(pac_response)
+			status =actualizar_cancelacion_respuesta_pac(pac_response)
 			# test_access()
 			# message_status = str(pac_response['status'])
 			# message_cancellation_status = str(pac_response['cancellation_status'])
@@ -67,9 +67,9 @@ class CancelacionFactura(Document):
 			# 		msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
 			# 		title='La solicitud de cancelación fue exitosa.',
 			# 		indicator='green')
-			self.db_set({
-			'status' : "Cancelacion Requiere VoBo"
-        })
+		# 	self.db_set({
+		# 	'status' : "Cancelacion Requiere VoBo"
+        # })
 		else:
 			frappe.msgprint(
                 msg=str(pac_response),
@@ -77,9 +77,13 @@ class CancelacionFactura(Document):
                 indicator='red'
 			)
 			self.db_set({
-			'status' : "Solicitud Rechazada",
+		# 	'status' : "Solicitud Rechazada",
             'mensaje_de_error' : pac_response['message']
         })
+			status = "Solicitud Rechazada"
+			#FIX: falta mensaje de error
+			
+		return status
 
 
 	def get_motivo_cancelacion(self):
@@ -105,7 +109,10 @@ class CancelacionFactura(Document):
 
 		# resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
 
-		self.actualizar_cancelacion_respuesta_pac(data_response)
+		status = self.actualizar_cancelacion_respuesta_pac(data_response)
+		# frappe.msgprint("Status before")
+		# frappe.msgprint(status)
+		actualizar_status_factura(self, status)
 		self.anade_response_record(data_response)
 
 
