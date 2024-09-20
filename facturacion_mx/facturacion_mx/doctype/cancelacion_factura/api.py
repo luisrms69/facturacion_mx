@@ -69,10 +69,11 @@ def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar 
 
         
 @frappe.whitelist()
-def status_check_cx_factura(id_cx_factura, factura_a_cancelar):
+def status_check_cx_factura(id_cx_factura, factura_cx):
         factura_object = get_factura_object(id_cx_factura)
         status = actualizar_cancelacion_respuesta_pac(factura_object)
-        doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
+        doc = frappe.get_doc("Cancelacion Factura", factura_cx)
         anade_response_record(doc, factura_object)
         actualizar_status_cx_factura(doc,status)
+
 

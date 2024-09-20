@@ -12,7 +12,7 @@ frappe.ui.form.on('Cancelacion Factura', {
                         method: 'facturacion_mx.facturacion_mx.doctype.cancelacion_factura.api.status_check_cx_factura',
                         args: {
                             id_cx_factura: frm.doc.id_pac,
-                            factura_a_cancelar: frm.docname
+                            factura_cx: frm.docname
                         },
                         callback: function (r) {
                             if (r.message) {
