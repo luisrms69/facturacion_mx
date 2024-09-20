@@ -163,7 +163,7 @@
    "fieldtype": "Small Text",
    "hidden": 1,
    "label": "Status",
-   "options": "Sin enviar\nCancelacion Exitosa\nSolicitud Rechazada\nDesconocido"
+   "options": "Sin enviar\nCancelacion Exitosa\nSolicitud Rechazada\nCancelacion Requiere VoBo\nDesconocido"
   },
   {
    "fieldname": "id_cancelacion_pac",
@@ -187,7 +187,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 19:33:49.353908",
+ "modified": "2024-09-19 22:29:26.806498",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Cancelacion Factura",
@@ -226,6 +226,10 @@
   {
    "color": "Gray",
    "title": "Desconocido"
+  },
+  {
+   "color": "Yellow",
+   "title": "Cancelacion Requiere VoBo"
   }
  ]
 }
