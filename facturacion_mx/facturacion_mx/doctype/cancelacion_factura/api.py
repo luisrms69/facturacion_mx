@@ -22,9 +22,41 @@ def get_factura_object(factura_a_revisar):
 
         return data_response
         
+
+#refactor:fix:bug: este metodo lo estoy trayendo de cx facturas no puede estar duplicado		
+def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
+    # if CancelacionFactura.determine_resultado(pac_response) == 1:
+        message_status = str(pac_response['status'])
+        message_cancellation_status = str(pac_response['cancellation_status'])
+        if message_status == "canceled":
+            status = "Cancelacion Exitosa"
+        else:
+            if message_status == "valid" and message_cancellation_status == "pending":
+                status = "Cancelacion Requiere VoBo"
+            else:
+                status ="Desconocido"
+        frappe.msgprint(
+                msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
+                title='La solicitud de cancelación fue exitosa.',
+                indicator='green')
+    #     self.db_set({
+    #     'status' : status
+    # })
+    # else:
+    #     frappe.msgprint(
+    #         msg=str(pac_response),
+    #         title='La solicitud de facturacion no fue exitosa',
+    #         indicator='red'
+    #     )
+    #     self.db_set({
+    #     'status' : "Solicitud Rechazada",
+    #     'mensaje_de_error' : pac_response['message']
+    # })
+
         
 @frappe.whitelist()
 def status_check_cx_factura(factura_a_revisar):
         factura_object = get_factura_object(factura_a_revisar)
+        actualizar_cancelacion_respuesta_pac(factura_object)
 
-        frappe.msgprint(str(factura_object))
+        # frappe.msgprint(str(factura_object))
