@@ -7,6 +7,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 # se importa para poder acceder al password
 from frappe.utils.password import get_decrypted_password
+from .api import test_access, actualizar_cancelacion_respuesta_pac	#Para utilizar las funciones definidas en api de cancelacion factura
 
 
 class CancelacionFactura(Document):
@@ -51,21 +52,23 @@ class CancelacionFactura(Document):
 		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
-			message_status = str(pac_response['status'])
-			message_cancellation_status = str(pac_response['cancellation_status'])
-			if message_status == "canceled":
-				status = "Cancelacion Exitosa"
-			else:
-				if message_status == "valid" and message_cancellation_status == "pending":
-					status = "Cancelacion Requiere VoBo"
-				else:
-					status ="Desconocido"
-			frappe.msgprint(
-					msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
-					title='La solicitud de cancelación fue exitosa.',
-					indicator='green')
+			actualizar_cancelacion_respuesta_pac(pac_response)
+			# test_access()
+			# message_status = str(pac_response['status'])
+			# message_cancellation_status = str(pac_response['cancellation_status'])
+			# if message_status == "canceled":
+			# 	status = "Cancelacion Exitosa"
+			# else:
+			# 	if message_status == "valid" and message_cancellation_status == "pending":
+			# 		status = "Cancelacion Requiere VoBo"
+			# 	else:
+			# 		status ="Desconocido"
+			# frappe.msgprint(
+			# 		msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
+			# 		title='La solicitud de cancelación fue exitosa.',
+			# 		indicator='green')
 			self.db_set({
-			'status' : status
+			'status' : "Cancelacion Requiere VoBo"
         })
 		else:
 			frappe.msgprint(
@@ -112,5 +115,5 @@ class CancelacionFactura(Document):
 			#OJO OJO  OJO MOVER A CANCEL_CFDI UNA VEZ PROBADA
 
 	# def on_update(self):
-	# 	self.anade_response_record()
+	# 	test_access()
 
