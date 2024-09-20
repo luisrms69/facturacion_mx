@@ -8,8 +8,6 @@ import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
 
-# Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
-# @frappe.whitelist()
 def get_factura_object(factura_a_revisar):
         api_token = get_decrypted_password('Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
         headers ={ "Authorization": f"Bearer {api_token}"}
@@ -22,10 +20,8 @@ def get_factura_object(factura_a_revisar):
 
         return data_response
         
-
-#refactor:fix:bug: este metodo lo estoy trayendo de cx facturas no puede estar duplicado		
+	
 def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
-    # if CancelacionFactura.determine_resultado(pac_response) == 1:
         message_status = str(pac_response['status'])
         message_cancellation_status = str(pac_response['cancellation_status'])
         if message_status == "canceled":
@@ -43,30 +39,12 @@ def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se debe
         return status
         
 def actualizar_status_factura(doc, status):
-    #   doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar) #refactor: duplicado abajo se pued calcular antes y pasar a los metodos
       doc.db_set({
             'status' : status
       })
-      
-    #     self.db_set({
-    #     'status' : status
-    # })
-    # else:
-    #     frappe.msgprint(
-    #         msg=str(pac_response),
-    #         title='La solicitud de facturacion no fue exitosa',
-    #         indicator='red'
-    #     )
-    #     self.db_set({
-    #     'status' : "Solicitud Rechazada",
-    #     'mensaje_de_error' : pac_response['message']
-    # })
 
 
-#fix:refacto este metodo se trajo de cx factura, esta duplicado
 def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-    # if CancelacionFactura.determine_resultado(pac_response) == 1:
-    # doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
     doc.append("respuestas", 
                 {
                     'response_id': pac_response['id'],
@@ -89,9 +67,6 @@ def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar 
                     })
     doc.save()
 
-
-
-
         
 @frappe.whitelist()
 def status_check_cx_factura(id_factura, factura_a_cancelar):
@@ -100,6 +75,3 @@ def status_check_cx_factura(id_factura, factura_a_cancelar):
         doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
         anade_response_record(doc, factura_object)
         actualizar_status_factura(doc,status)
-
-
-        # frappe.msgprint(str(factura_object))

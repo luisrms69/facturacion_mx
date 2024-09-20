@@ -7,6 +7,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 # se importa para poder acceder al password
 from frappe.utils.password import get_decrypted_password
+from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_factura, anade_response_record	#Para utilizar las funciones definidas en api de cancelacion factura
 
 
 class CancelacionFactura(Document):
@@ -24,49 +25,14 @@ class CancelacionFactura(Document):
 		else:
 			return 0
 		
-	def anade_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
+	def anadir_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
-			self.append("respuestas", 
-					{
-						'response_id': pac_response['id'],
-						'status_response' : pac_response['status'],
-						'cancellation_status' : pac_response['cancellation_status'],
-						'verification_url' : pac_response['verification_url'],
-						'uuid' : pac_response['uuid'],
-						'fecha_de_creacion' : pac_response['created_at'],
-						'folio' : pac_response['folio_number'],
-						'serie_de_facturacion': pac_response['series'],
-						'monto_total': pac_response['total'],
-						'forma_de_pago': pac_response['payment_form'],
-						'id_del_cliente': pac_response['customer']['id'],
-						'nombre_del_cliente': pac_response['customer']['legal_name'],
-						'rfc': pac_response['customer']['tax_id'],
-						'signature': pac_response['stamp']['signature'],
-						'fecha_de_sellado': pac_response['stamp']['date'],
-						'numero_de_certificado_sat': pac_response['stamp']['sat_cert_number'],
-						'firma_sat': pac_response['stamp']['signature']
-						})
-			self.save()
+			anade_response_record(self,pac_response)
 
 		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
-			message_status = str(pac_response['status'])
-			message_cancellation_status = str(pac_response['cancellation_status'])
-			if message_status == "canceled":
-				status = "Cancelacion Exitosa"
-			else:
-				if message_status == "valid" and message_cancellation_status == "pending":
-					status = "Cancelacion Requiere VoBo"
-				else:
-					status ="Desconocido"
-			frappe.msgprint(
-					msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
-					title='La solicitud de cancelación fue exitosa.',
-					indicator='green')
-			self.db_set({
-			'status' : status
-        })
+			status =actualizar_cancelacion_respuesta_pac(pac_response)
 		else:
 			frappe.msgprint(
                 msg=str(pac_response),
@@ -74,9 +40,11 @@ class CancelacionFactura(Document):
                 indicator='red'
 			)
 			self.db_set({
-			'status' : "Solicitud Rechazada",
             'mensaje_de_error' : pac_response['message']
         })
+			status = "Solicitud Rechazada"
+			
+		return status
 
 
 	def get_motivo_cancelacion(self):
@@ -100,17 +68,15 @@ class CancelacionFactura(Document):
 
 		data_response =response.json()
 
-		# resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
-
-		self.actualizar_cancelacion_respuesta_pac(data_response)
-		self.anade_response_record(data_response)
+		status = self.actualizar_cancelacion_respuesta_pac(data_response)
+		actualizar_status_factura(self, status)
+		self.anadir_response_record(data_response)
 
 
 
 	def on_submit(self):
 		self.cancel_cfdi()
-			#OJO OJO  OJO MOVER A CANCEL_CFDI UNA VEZ PROBADA
 
 	# def on_update(self):
-	# 	self.anade_response_record()
+	# 	test_access()
 
