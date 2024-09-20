@@ -27,6 +27,8 @@
   "mensaje_de_error",
   "status",
   "id_cancelacion_pac",
+  "historia_de_respuestas_del_pac_section",
+  "respuestas",
   "section_break_gagu",
   "amended_from"
  ],
@@ -159,6 +161,7 @@
    "default": "Sin enviar",
    "fieldname": "status",
    "fieldtype": "Small Text",
+   "hidden": 1,
    "label": "Status",
    "options": "Sin enviar\nCancelacion Exitosa\nSolicitud Rechazada\nDesconocido"
   },
@@ -166,12 +169,25 @@
    "fieldname": "id_cancelacion_pac",
    "fieldtype": "Read Only",
    "label": "ID Cancelacion PAC"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "historia_de_respuestas_del_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Historia de Respuestas del PAC"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "respuestas",
+   "fieldtype": "Table",
+   "label": "Respuestas",
+   "options": "Factura Responses"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 14:33:46.405481",
+ "modified": "2024-09-19 19:33:49.353908",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Cancelacion Factura",

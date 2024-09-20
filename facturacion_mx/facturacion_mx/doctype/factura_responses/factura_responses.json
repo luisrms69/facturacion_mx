@@ -8,13 +8,13 @@
  "engine": "InnoDB",
  "field_order": [
   "datos_generales_de_la_respuesta_section",
-  "response_id",
-  "status",
+  "fecha_de_creacion",
+  "status_response",
   "cancellation_status",
   "verification_url",
-  "uuid",
   "column_break_glhj",
-  "fecha_de_creacion",
+  "response_id",
+  "uuid",
   "folio",
   "serie_de_facturacion",
   "monto_total",
@@ -22,12 +22,14 @@
   "datos_del_cliente_section",
   "id_del_cliente",
   "nombre_del_cliente",
+  "column_break_nzvs",
   "rfc",
   "sellado_section",
   "signature",
   "fecha_de_sellado",
-  "numero_de_certificado_sat",
-  "firma_sat"
+  "column_break_zazd",
+  "firma_sat",
+  "numero_de_certificado_sat"
  ],
  "fields": [
   {
@@ -41,18 +43,13 @@
    "label": "Fecha de creacion"
   },
   {
-   "fieldname": "status",
-   "fieldtype": "Data",
-   "label": "Status"
-  },
-  {
    "fieldname": "cancellation_status",
    "fieldtype": "Data",
    "label": "Cancellation Status"
   },
   {
    "fieldname": "verification_url",
-   "fieldtype": "Data",
+   "fieldtype": "Long Text",
    "label": "Verification URL"
   },
   {
@@ -107,7 +104,7 @@
   },
   {
    "fieldname": "signature",
-   "fieldtype": "Data",
+   "fieldtype": "Long Text",
    "label": "Signature"
   },
   {
@@ -122,7 +119,7 @@
   },
   {
    "fieldname": "firma_sat",
-   "fieldtype": "Data",
+   "fieldtype": "Long Text",
    "label": "Firma SAT"
   },
   {
@@ -133,12 +130,25 @@
   {
    "fieldname": "column_break_glhj",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status_response",
+   "fieldtype": "Data",
+   "label": "Status Response"
+  },
+  {
+   "fieldname": "column_break_nzvs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zazd",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-19 16:16:32.982224",
+ "modified": "2024-09-19 19:47:39.459573",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Responses",
