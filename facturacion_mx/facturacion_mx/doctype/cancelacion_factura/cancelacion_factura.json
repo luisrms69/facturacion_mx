@@ -27,6 +27,8 @@
   "mensaje_de_error",
   "status",
   "id_cancelacion_pac",
+  "historia_de_respuestas_del_pac_section",
+  "respuestas",
   "section_break_gagu",
   "amended_from"
  ],
@@ -166,12 +168,23 @@
    "fieldname": "id_cancelacion_pac",
    "fieldtype": "Read Only",
    "label": "ID Cancelacion PAC"
+  },
+  {
+   "fieldname": "historia_de_respuestas_del_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Historia de Respuestas del PAC"
+  },
+  {
+   "fieldname": "respuestas",
+   "fieldtype": "Table",
+   "label": "Respuestas",
+   "options": "Factura Responses"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 14:33:46.405481",
+ "modified": "2024-09-19 16:26:35.875199",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Cancelacion Factura",
