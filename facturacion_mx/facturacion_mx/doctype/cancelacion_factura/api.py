@@ -4,11 +4,20 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-# import requests  # Se utiliza para hacer el http request
-# from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
+import requests  # Se utiliza para hacer el http request
+from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
 
 # Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
 @frappe.whitelist()
-def status_check_cx_factura():
-    frappe.msgprint("dot path correcto")
+def status_check_cx_factura(factura_a_revisar):
+        api_token = get_decrypted_password('Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        headers ={ "Authorization": f"Bearer {api_token}"}
+        factura_endpoint = frappe.db.get_single_value('Facturacion MX Settings', 'endpoint_obtener_facturas')
+        final_url= f"{factura_endpoint}/{factura_a_revisar}"
+        
+        response = requests.get(final_url, headers=headers)
+        
+        data_response =response.json()
+        
+        frappe.msgprint(str(data_response))
