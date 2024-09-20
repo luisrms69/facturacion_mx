@@ -24,40 +24,48 @@ class CancelacionFactura(Document):
 		else:
 			return 0
 		
-	def anade_response_record(self):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-		self.append("respuestas", 
-				  {
-					  'response_id': "response id",
-					  'status_response' : "status response",
-					  'cancellation_status' : "cancellation status",
-					  'verification_url' : "verification url",
-					  'uuid' : "UUID",
-					  'fecha_de_creacion' : "fecha decreacion",
-					  'folio' : "folio numero",
-					  'serie_de_facturacion': "serie fact",
-					  'monto_total': "monto 23456",
-					  'forma_de_pago': "forma",
-					  'id_del_cliente': "client ID",
-					  'nombre_del_cliente': "nombre",
-					  'rfc': "RFC",
-					  'signature': "signature",
-					  'fecha_de_sellado': "fecha de sellado",
-					  'numero_de_certificado_sat': "certificado sat",
-					  'firma_sat': "firma sat"
-					  })
+	def anade_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
+		if CancelacionFactura.determine_resultado(pac_response) == 1:
+			self.append("respuestas", 
+					{
+						'response_id': pac_response['id'],
+						'status_response' : pac_response['status'],
+						'cancellation_status' : pac_response['cancellation_status'],
+						'verification_url' : pac_response['verification_url'],
+						'uuid' : pac_response['uuid'],
+						'fecha_de_creacion' : pac_response['created_at'],
+						'folio' : pac_response['folio_number'],
+						'serie_de_facturacion': pac_response['series'],
+						'monto_total': pac_response['total'],
+						'forma_de_pago': pac_response['payment_form'],
+						'id_del_cliente': pac_response['customer']['id'],
+						'nombre_del_cliente': pac_response['customer']['legal_name'],
+						'rfc': pac_response['customer']['tax_id'],
+						'signature': pac_response['stamp']['signature'],
+						'fecha_de_sellado': pac_response['stamp']['date'],
+						'numero_de_certificado_sat': pac_response['stamp']['sat_cert_number'],
+						'firma_sat': pac_response['stamp']['signature']
+						})
+			self.save()
 
 		
-	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar
+	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
+			message_status = str(pac_response['status'])
+			message_cancellation_status = str(pac_response['cancellation_status'])
+			if message_status == "canceled":
+				status = "Cancelacion Exitosa"
+			else:
+				if message_status == "valid" and message_cancellation_status == "pending":
+					status = "Cancelacion Requiere VoBo"
+				else:
+					status ="Desconocido"
+			frappe.msgprint(
+					msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
+					title='La solicitud de cancelación fue exitosa.',
+					indicator='green')
 			self.db_set({
-            'id_cancelacion_pac': pac_response['id'],
-            # 'uuid' : pac_response['uuid'],
-            # 'url_de_verificación' : pac_response['verification_url'],
-            # 'serie_de_la_factura' : pac_response['series'],
-            # 'folio_de_factura' : pac_response['folio_number'],
-            # 'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
-            # 'status' : pac_response['status'],
-            'status' : "Cancelacion Exitosa"
+			'status' : status
         })
 		else:
 			frappe.msgprint(
@@ -92,15 +100,17 @@ class CancelacionFactura(Document):
 
 		data_response =response.json()
 
-		resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
+		# resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
 
 		self.actualizar_cancelacion_respuesta_pac(data_response)
+		self.anade_response_record(data_response)
 
 
 
 	def on_submit(self):
 		self.cancel_cfdi()
+			#OJO OJO  OJO MOVER A CANCEL_CFDI UNA VEZ PROBADA
 
-	def on_update(self):
-		self.anade_response_record()
+	# def on_update(self):
+	# 	self.anade_response_record()
 
