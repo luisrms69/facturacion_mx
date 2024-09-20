@@ -53,23 +53,6 @@ class CancelacionFactura(Document):
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
 			status =actualizar_cancelacion_respuesta_pac(pac_response)
-			# test_access()
-			# message_status = str(pac_response['status'])
-			# message_cancellation_status = str(pac_response['cancellation_status'])
-			# if message_status == "canceled":
-			# 	status = "Cancelacion Exitosa"
-			# else:
-			# 	if message_status == "valid" and message_cancellation_status == "pending":
-			# 		status = "Cancelacion Requiere VoBo"
-			# 	else:
-			# 		status ="Desconocido"
-			# frappe.msgprint(
-			# 		msg=f"El estatus reportado por el PAC en la solicitud es: {message_status} y el estatus de cancelación es: {message_cancellation_status}",
-			# 		title='La solicitud de cancelación fue exitosa.',
-			# 		indicator='green')
-		# 	self.db_set({
-		# 	'status' : "Cancelacion Requiere VoBo"
-        # })
 		else:
 			frappe.msgprint(
                 msg=str(pac_response),
@@ -77,11 +60,9 @@ class CancelacionFactura(Document):
                 indicator='red'
 			)
 			self.db_set({
-		# 	'status' : "Solicitud Rechazada",
             'mensaje_de_error' : pac_response['message']
         })
 			status = "Solicitud Rechazada"
-			#FIX: falta mensaje de error
 			
 		return status
 
@@ -107,11 +88,7 @@ class CancelacionFactura(Document):
 
 		data_response =response.json()
 
-		# resultado = CancelacionFactura.determine_resultado(data_response) #AL PARECER NO SE USA
-
 		status = self.actualizar_cancelacion_respuesta_pac(data_response)
-		# frappe.msgprint("Status before")
-		# frappe.msgprint(status)
 		actualizar_status_factura(self, status)
 		self.anade_response_record(data_response)
 
@@ -119,7 +96,6 @@ class CancelacionFactura(Document):
 
 	def on_submit(self):
 		self.cancel_cfdi()
-			#OJO OJO  OJO MOVER A CANCEL_CFDI UNA VEZ PROBADA
 
 	# def on_update(self):
 	# 	test_access()

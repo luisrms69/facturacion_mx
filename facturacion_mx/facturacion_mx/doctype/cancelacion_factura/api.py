@@ -8,8 +8,6 @@ import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
 
-# Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
-# @frappe.whitelist()
 def get_factura_object(factura_a_revisar):
         api_token = get_decrypted_password('Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
         headers ={ "Authorization": f"Bearer {api_token}"}
@@ -22,10 +20,8 @@ def get_factura_object(factura_a_revisar):
 
         return data_response
         
-
-#refactor:fix:bug: este metodo lo estoy trayendo de cx facturas no puede estar duplicado		
+	
 def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
-    # if CancelacionFactura.determine_resultado(pac_response) == 1:
         message_status = str(pac_response['status'])
         message_cancellation_status = str(pac_response['cancellation_status'])
         if message_status == "canceled":
@@ -47,20 +43,6 @@ def actualizar_status_factura(doc, status):
       doc.db_set({
             'status' : status
       })
-      
-    #     self.db_set({
-    #     'status' : status
-    # })
-    # else:
-    #     frappe.msgprint(
-    #         msg=str(pac_response),
-    #         title='La solicitud de facturacion no fue exitosa',
-    #         indicator='red'
-    #     )
-    #     self.db_set({
-    #     'status' : "Solicitud Rechazada",
-    #     'mensaje_de_error' : pac_response['message']
-    # })
 
 
 #fix:refacto este metodo se trajo de cx factura, esta duplicado
