@@ -7,7 +7,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 # se importa para poder acceder al password
 from frappe.utils.password import get_decrypted_password
-from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_factura, anade_response_record	#Para utilizar las funciones definidas en api de cancelacion factura
+from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_cx_factura, anade_response_record	#Para utilizar las funciones definidas en api de cancelacion factura
 
 
 class CancelacionFactura(Document):
@@ -32,7 +32,7 @@ class CancelacionFactura(Document):
 		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
-			status =actualizar_cancelacion_respuesta_pac(pac_response)
+			status = actualizar_cancelacion_respuesta_pac(pac_response)
 		else:
 			frappe.msgprint(
                 msg=str(pac_response),
@@ -69,7 +69,7 @@ class CancelacionFactura(Document):
 		data_response =response.json()
 
 		status = self.actualizar_cancelacion_respuesta_pac(data_response)
-		actualizar_status_factura(self, status)
+		actualizar_status_cx_factura(self, status)
 		self.anadir_response_record(data_response)
 
 

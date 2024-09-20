@@ -38,7 +38,7 @@ def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se debe
         
         return status
         
-def actualizar_status_factura(doc, status):
+def actualizar_status_cx_factura(doc, status):
       doc.db_set({
             'status' : status
       })
@@ -74,4 +74,4 @@ def status_check_cx_factura(id_factura, factura_a_cancelar):
         status = actualizar_cancelacion_respuesta_pac(factura_object)
         doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
         anade_response_record(doc, factura_object)
-        actualizar_status_factura(doc,status)
+        actualizar_status_cx_factura(doc,status)
