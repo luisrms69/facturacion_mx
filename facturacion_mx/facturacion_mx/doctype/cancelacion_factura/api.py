@@ -24,8 +24,8 @@ def get_factura_object(factura_a_revisar):
 def actualizar_status_factura_invoice(factura_cx):
       factura_a_cancelar = frappe.db.get_value("Cancelacion Factura", factura_cx, 'factura_a_cancelar')
       frappe.db.set_value("Factura", factura_a_cancelar,'status',"Cancelada")
-      sales_invoice_Afectada = frappe.db._get_value("Factura", factura_a_cancelar, 'sales_invoice_id')
-      frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,'status','Sin Facturar')
+      sales_invoice_Afectada = frappe.db.get_value("Factura", factura_a_cancelar, 'sales_invoice_id')
+      frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,'custom_status_facturacion','Sin Facturar')
 
 
 def check_status_actual(status):

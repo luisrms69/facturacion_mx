@@ -7,7 +7,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 # se importa para poder acceder al password
 from frappe.utils.password import get_decrypted_password
-from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_cx_factura, anade_response_record	#Para utilizar las funciones definidas en api de cancelacion factura
+from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_cx_factura, anade_response_record, actualizar_status_factura_invoice	#Para utilizar las funciones definidas en api de cancelacion factura
 
 
 class CancelacionFactura(Document):
@@ -72,6 +72,8 @@ class CancelacionFactura(Document):
 		actualizar_status_cx_factura(self, status)
 		self.anadir_response_record(data_response)
 
+		if status == "Cancelacion Exitosa" :
+			actualizar_status_factura_invoice(self.name)
 
 
 	def on_submit(self):
