@@ -28,7 +28,7 @@ def actualizar_status_factura_invoice(factura_cx):
       frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,'status','Sin Facturar')
 
 
-def check_status_actual(status)
+def check_status_actual(status):
       if status == "Cancelacion Exitosa":
             return 1
       else:
