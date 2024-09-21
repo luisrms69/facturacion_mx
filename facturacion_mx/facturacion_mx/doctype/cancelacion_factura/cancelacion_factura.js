@@ -4,6 +4,8 @@
 //refactor:deberia poder llamar a la funcion con el dotted path
 //refactor: debe tenerse el codigo hardocded en alguna variable
 
+// Codigo que genera un boton en la forma Cancelacion Factura, unicamnete para los casos donde se requiere
+//VOBO del cliente.  El boton llama a revisar el status actual y tomar las acciones reaultantes
 frappe.ui.form.on('Cancelacion Factura', {
 	refresh: function(frm) {
         if (frm.doc.status == "Cancelacion Requiere VoBo"){

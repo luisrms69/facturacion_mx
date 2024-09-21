@@ -7,7 +7,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 
-
+# Metodo para  obtern un objeto en forma de JSON de la factura
 def get_factura_object(factura_a_revisar):
         api_token = get_decrypted_password('Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
         headers ={ "Authorization": f"Bearer {api_token}"}
@@ -20,14 +20,14 @@ def get_factura_object(factura_a_revisar):
 
         return data_response
         
-
+# Si la cancelacion es exitosa actualiza los status tanto de la factura como del invoice
 def actualizar_status_factura_invoice(factura_cx):
       factura_a_cancelar = frappe.db.get_value("Cancelacion Factura", factura_cx, 'factura_a_cancelar')
       frappe.db.set_value("Factura", factura_a_cancelar,'status',"Cancelada")
       sales_invoice_Afectada = frappe.db.get_value("Factura", factura_a_cancelar, 'sales_invoice_id')
       frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,'custom_status_facturacion','Sin Facturar')
 
-
+# Verifica el status actual de la factura
 def check_status_actual(status):
       if status == "Cancelacion Exitosa":
             return 1
@@ -35,6 +35,7 @@ def check_status_actual(status):
             return 0
       
 #fix: urge quitar hardcoded y ponerlo en variables, tanto aqui como con cx_factura (ENUM)
+# Maneja el response obtenido del pac, realiza los avisos y regresa el valor status
 def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
         message_status = str(pac_response['status'])
         message_cancellation_status = str(pac_response['cancellation_status'])
@@ -51,13 +52,14 @@ def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se debe
                 indicator='green')
         
         return status
-        
+
+# Actualiza el valor de status de la cancelacion de factura        
 def actualizar_status_cx_factura(doc, status):
       doc.db_set({
             'status' : status
       })
 
-
+#Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
 def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
     doc.append("respuestas", 
                 {
@@ -81,7 +83,9 @@ def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar 
                     })
     doc.save()
 
-        
+# Metodo al que se llaman en JS para revisar cual es el status de la factura, se utiliza en aquellos
+# casos donde la primer respuesta es que se requiere VOBO del cliente, se llama con un boton
+# unicamente disponible para Cancelaciones en este status        
 @frappe.whitelist()
 def status_check_cx_factura(id_cx_factura, factura_cx):
         factura_object = get_factura_object(id_cx_factura)

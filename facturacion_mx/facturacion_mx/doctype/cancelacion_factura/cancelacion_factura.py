@@ -11,25 +11,28 @@ from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_cx_fact
 
 
 class CancelacionFactura(Document):
-#    
+#Metodo para obtener el id de la factura que se va a cancelar, este es el ID proporcionado por el PAC   
 	def get_factura_id(self):
 		factura_id = frappe.db.get_value(
 			"Cancelacion Factura", self.get_title(), 'id_pac'
 		)
 
 		return factura_id
-	
+
+#Metodo para evaluar si la respuesta del PAC es de exito o fracaso, en fracasos no hay id	
 	def determine_resultado(data_response):
 		if 'id' in data_response.keys():
 			return 1
 		else:
 			return 0
-		
+
+#Metodo que llama al metodo que añade en el child table de cancelar factura el response del PAC		
 	def anadir_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
 			anade_response_record(self,pac_response)
 
-		
+#Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
+# Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if CancelacionFactura.determine_resultado(pac_response) == 1:
 			status = actualizar_cancelacion_respuesta_pac(pac_response)
@@ -46,7 +49,7 @@ class CancelacionFactura(Document):
 			
 		return status
 
-
+# Metodo que jala el motivo de cancelacion introducido por el usuario
 	def get_motivo_cancelacion(self):
 		motivo_cancelacion = frappe.db.get_value(
 			"Cancelacion Factura", self.get_title(), 'motivo_de_cancelacion'
@@ -54,7 +57,12 @@ class CancelacionFactura(Document):
 		id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
 
 		return id_motivo_cancelacion
-	
+
+# Metodo que se encarga de enviar a cancelar
+# Primero determina los valores del query que se adicionaran al http request
+# Posteriormente define los elementos del request headers y authorization
+# Envía el request y con base en la respuesta actualiza el documento
+# Si la cancelacion es exitosa tambien actualiza el status de la factura y el invoice
 	def cancel_cfdi(self):
 		factura_a_cancelar = self.get_factura_id()
 		motivo_cancelacion = self.get_motivo_cancelacion()
@@ -75,7 +83,7 @@ class CancelacionFactura(Document):
 		if status == "Cancelacion Exitosa" :
 			actualizar_status_factura_invoice(self.name)
 
-
+# Se ejecuta el HOOK al dar click en Submit
 	def on_submit(self):
 		self.cancel_cfdi()
 
