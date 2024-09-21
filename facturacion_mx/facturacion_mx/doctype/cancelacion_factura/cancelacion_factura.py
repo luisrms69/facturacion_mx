@@ -11,8 +11,8 @@ from .api import actualizar_cancelacion_respuesta_pac, actualizar_status_cx_fact
 
 
 class CancelacionFactura(Document):
-    
-	def get_factura_id(self):
+#    
+	def get_factura_cx_id(self):
 		factura_id = frappe.db.get_value(
 			"Cancelacion Factura", self.get_title(), 'id_pac'
 		)
@@ -56,7 +56,7 @@ class CancelacionFactura(Document):
 		return id_motivo_cancelacion
 	
 	def cancel_cfdi(self):
-		factura_a_cancelar = self.get_factura_id()
+		factura_a_cancelar = self.get_factura_cx_id()
 		motivo_cancelacion = self.get_motivo_cancelacion()
 		api_token = get_decrypted_password('Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
 		headers ={ "Authorization": f"Bearer {api_token}"}
