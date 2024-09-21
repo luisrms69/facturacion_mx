@@ -1,0 +1,235 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:CX-FACT-{YY}-{MM}-{DD}-{####}",
+ "creation": "2024-09-19 08:54:48.798210",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ucdp",
+  "factura_a_cancelar",
+  "motivo_de_cancelacion",
+  "column_break_zezp",
+  "fecha_de_facturaci\u00f3n",
+  "datos_de_la_factura_a_cancelar_section",
+  "cliente",
+  "fecha_de_venta",
+  "monto",
+  "uso_del_cfdi",
+  "m\u00e9todo_de_pago",
+  "forma_de_pago",
+  "column_break_yefj",
+  "serie",
+  "folio",
+  "folio_fiscal_uuid",
+  "id_pac",
+  "resultados_de_la_solicitud_proporcionados_por_el_pac_section",
+  "mensaje_de_error",
+  "status",
+  "id_cancelacion_pac",
+  "historia_de_respuestas_del_pac_section",
+  "respuestas",
+  "section_break_gagu",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ucdp",
+   "fieldtype": "Section Break",
+   "label": "Datos de la Solicitud de Cancelaci\u00f3n"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cancelacion Factura",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "factura_a_cancelar",
+   "fieldtype": "Link",
+   "label": "Factura a cancelar",
+   "link_filters": "[[\"Factura\",\"status\",\"=\",\"Facturado\"]]",
+   "options": "Factura"
+  },
+  {
+   "fieldname": "section_break_gagu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "datos_de_la_factura_a_cancelar_section",
+   "fieldtype": "Section Break",
+   "label": "Datos de la factura a cancelar",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "factura_a_cancelar.cliente",
+   "fieldname": "cliente",
+   "fieldtype": "Read Only",
+   "label": "Cliente"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.fecha_timbrado",
+   "fieldname": "fecha_de_facturaci\u00f3n",
+   "fieldtype": "Read Only",
+   "label": "Fecha de emisi\u00f3n"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.fecha_nota_de_venta",
+   "fieldname": "fecha_de_venta",
+   "fieldtype": "Read Only",
+   "label": "Fecha de Venta"
+  },
+  {
+   "fieldname": "column_break_zezp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.usocfdi",
+   "fieldname": "uso_del_cfdi",
+   "fieldtype": "Read Only",
+   "label": "Uso del CFDI"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.metodo_pago_sat",
+   "fieldname": "m\u00e9todo_de_pago",
+   "fieldtype": "Read Only",
+   "label": "M\u00e9todo de Pago"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.foma_de_pago_sat",
+   "fieldname": "forma_de_pago",
+   "fieldtype": "Read Only",
+   "label": "Forma de Pago"
+  },
+  {
+   "fieldname": "column_break_yefj",
+   "fieldtype": "Column Break",
+   "label": "Datos Proporcionados por PAC"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.serie_de_la_factura",
+   "fieldname": "serie",
+   "fieldtype": "Read Only",
+   "label": "Serie"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.folio_de_factura",
+   "fieldname": "folio",
+   "fieldtype": "Read Only",
+   "label": "Folio"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.uuid",
+   "fieldname": "folio_fiscal_uuid",
+   "fieldtype": "Read Only",
+   "label": "Folio Fiscal (UUID)"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.id_pac",
+   "fieldname": "id_pac",
+   "fieldtype": "Read Only",
+   "label": "ID PAC"
+  },
+  {
+   "fetch_from": "factura_a_cancelar.monto_total",
+   "fieldname": "monto",
+   "fieldtype": "Currency",
+   "label": "Monto",
+   "read_only": 1
+  },
+  {
+   "fieldname": "motivo_de_cancelacion",
+   "fieldtype": "Link",
+   "label": "Motivo de Cancelaci\u00f3n",
+   "options": "Motivo de Cancelacion"
+  },
+  {
+   "fieldname": "resultados_de_la_solicitud_proporcionados_por_el_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Resultados de la solicitud (proporcionados por el PAC)"
+  },
+  {
+   "fieldname": "mensaje_de_error",
+   "fieldtype": "Read Only",
+   "label": "Mensaje de Error"
+  },
+  {
+   "default": "Sin enviar",
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Sin enviar\nCancelacion Exitosa\nSolicitud Rechazada\nCancelacion Requiere VoBo\nDesconocido"
+  },
+  {
+   "fieldname": "id_cancelacion_pac",
+   "fieldtype": "Read Only",
+   "label": "ID Cancelacion PAC"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "historia_de_respuestas_del_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Historia de Respuestas del PAC"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "respuestas",
+   "fieldtype": "Table",
+   "label": "Respuestas",
+   "options": "Factura Responses"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-09-20 12:26:02.581876",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Cancelacion Factura",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Sin enviar"
+  },
+  {
+   "color": "Green",
+   "title": "Cancelacion Exitosa"
+  },
+  {
+   "color": "Red",
+   "title": "Solicitud Rechazada"
+  },
+  {
+   "color": "Gray",
+   "title": "Desconocido"
+  },
+  {
+   "color": "Yellow",
+   "title": "Cancelacion Requiere VoBo"
+  }
+ ]
+}

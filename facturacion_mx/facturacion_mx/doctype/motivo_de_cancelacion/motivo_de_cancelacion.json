@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:MOTIVO-CX-{motivo_de_cancelaci\u00f3n}",
+ "creation": "2024-09-19 09:52:30.928840",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "motivo_de_cancelaci\u00f3n",
+  "descripcion",
+  "aplicaci\u00f3n"
+ ],
+ "fields": [
+  {
+   "fieldname": "motivo_de_cancelaci\u00f3n",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Motivo de Cancelaci\u00f3n",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "label": "Descripcion"
+  },
+  {
+   "fieldname": "aplicaci\u00f3n",
+   "fieldtype": "Data",
+   "label": "Aplicaci\u00f3n"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-19 10:12:37.633106",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Motivo de Cancelacion",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "descripcion"
+}
