@@ -5,10 +5,18 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "nota_de_venta_para_emision_de_recibo_autofactura_section",
   "sales_invoice_id",
-  "cliente",
+  "fecha_hora_recibo",
+  "column_break_amdu",
   "fecha_nota_de_venta",
+  "forma_de_pago_registrada",
+  "section_break_uzup",
+  "cliente",
+  "column_break_nenm",
   "rfc",
+  "productos_section",
+  "recibo_product_array",
   "section_break_cnp7",
   "amended_from"
  ],
@@ -41,7 +49,8 @@
    "fieldname": "cliente",
    "fieldtype": "Link",
    "label": "Cliente",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "fetch_from": "sales_invoice_id.posting_date",
@@ -55,12 +64,53 @@
    "fieldtype": "Data",
    "label": "RFC",
    "read_only": 1
+  },
+  {
+   "fieldname": "productos_section",
+   "fieldtype": "Section Break",
+   "label": "Productos"
+  },
+  {
+   "fieldname": "recibo_product_array",
+   "fieldtype": "Table",
+   "label": "Productos incluidos en el recibo",
+   "options": "Product array",
+   "read_only": 1
+  },
+  {
+   "fieldname": "forma_de_pago_registrada",
+   "fieldtype": "Read Only",
+   "label": "Forma de Pago Registrada"
+  },
+  {
+   "fieldname": "nota_de_venta_para_emision_de_recibo_autofactura_section",
+   "fieldtype": "Section Break",
+   "label": "Nota de venta para emisi{on de recibo (autofactura)"
+  },
+  {
+   "fieldname": "section_break_uzup",
+   "fieldtype": "Section Break",
+   "label": "Datos del Cliente (Informativo)"
+  },
+  {
+   "fieldname": "column_break_amdu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fecha_hora_recibo",
+   "fieldtype": "Datetime",
+   "label": "Fecha y Hora del Recibo",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nenm",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-20 21:31:14.204696",
+ "modified": "2024-09-20 22:20:03.841925",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
