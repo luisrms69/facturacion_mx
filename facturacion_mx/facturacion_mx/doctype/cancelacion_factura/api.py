@@ -20,7 +20,21 @@ def get_factura_object(factura_a_revisar):
 
         return data_response
         
-	
+
+def actualizar_status_factura_invoice(factura_cx):
+      factura_a_cancelar = frappe.db.get_value("Cancelacion Factura", factura_cx, 'factura_a_cancelar')
+      frappe.db.set_value("Factura", factura_a_cancelar,'status',"Cancelada")
+      sales_invoice_Afectada = frappe.db.get_value("Factura", factura_a_cancelar, 'sales_invoice_id')
+      frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,'custom_status_facturacion','Sin Facturar')
+
+
+def check_status_actual(status):
+      if status == "Cancelacion Exitosa":
+            return 1
+      else:
+            return 0
+      
+#fix: urge quitar hardcoded y ponerlo en variables, tanto aqui como con cx_factura (ENUM)
 def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
         message_status = str(pac_response['status'])
         message_cancellation_status = str(pac_response['cancellation_status'])
@@ -38,7 +52,7 @@ def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se debe
         
         return status
         
-def actualizar_status_factura(doc, status):
+def actualizar_status_cx_factura(doc, status):
       doc.db_set({
             'status' : status
       })
@@ -69,9 +83,13 @@ def anade_response_record(doc,pac_response):	#refactor: esta lista debera estar 
 
         
 @frappe.whitelist()
-def status_check_cx_factura(id_factura, factura_a_cancelar):
-        factura_object = get_factura_object(id_factura)
+def status_check_cx_factura(id_cx_factura, factura_cx):
+        factura_object = get_factura_object(id_cx_factura)
         status = actualizar_cancelacion_respuesta_pac(factura_object)
-        doc = frappe.get_doc("Cancelacion Factura", factura_a_cancelar)
+        doc = frappe.get_doc("Cancelacion Factura", factura_cx)
         anade_response_record(doc, factura_object)
-        actualizar_status_factura(doc,status)
+        actualizar_status_cx_factura(doc,status)
+        if check_status_actual == 1 :
+              actualizar_status_factura_invoice(factura_cx)
+
+
