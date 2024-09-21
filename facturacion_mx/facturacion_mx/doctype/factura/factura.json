@@ -167,7 +167,7 @@
    "fieldtype": "Small Text",
    "hidden": 1,
    "label": "Status",
-   "options": "Sin enviar\nFacturado\nRechazada\nDesconocido"
+   "options": "Sin enviar\nFacturado\nRechazada\nDesconocido\nCancelada"
   },
   {
    "fieldname": "fecha_timbrado",
@@ -231,7 +231,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-19 09:21:47.635498",
+ "modified": "2024-09-20 18:24:49.007166",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
@@ -269,6 +269,10 @@
   {
    "color": "Gray",
    "title": "Desconocido"
+  },
+  {
+   "color": "Purple",
+   "title": "Cancelada"
   }
  ]
 }
