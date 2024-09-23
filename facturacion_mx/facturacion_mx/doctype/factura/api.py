@@ -133,3 +133,8 @@ def validate_email_factura(email_id):
     validate_email_address(email_id)
     # if not frappe.utils.validate_type(email_id, "email"):
     #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
+
+# Metodo que se llaman en factura.js para enviar un correo de la factura
+@frappe.whitelist()
+def envia_factura_por_email(doc):
+    frappe.msgprint("exitoexito")

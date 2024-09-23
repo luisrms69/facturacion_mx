@@ -76,3 +76,30 @@ frappe.ui.form.on('Factura', {
 });
 
 
+
+
+
+//refactor:deberia poder llamar a la funcion con el dotted path
+//refactor: debe tenerse el codigo hardocded en alguna variable
+
+// Codigo que genera botones en la Factura
+frappe.ui.form.on('Factura', {
+	refresh: function(frm) {
+        if (frm.doc.status == "Facturado"){
+            frm.add_custom_button(__('Enviar por Correo'), function(){
+                frappe.call({
+                        method: 'facturacion_mx.facturacion_mx.doctype.factura.api.envia_factura_por_email',
+                        args: {
+                            doc: frm.doc
+                        },
+                        callback: function (r) {
+                            if (r.message) {
+                            console.log("#######server script message#########");
+                            console.log(r.message);
+                            }
+                        }
+                    });
+            });
+        }
+	}
+});
