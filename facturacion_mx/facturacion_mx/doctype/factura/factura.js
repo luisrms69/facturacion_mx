@@ -56,51 +56,67 @@ frappe.ui.form.on('Factura', {
                     }
                 }
             }),
-            frappe.call({
-                method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_forma_de_pago',
-                args: {
-                    sales_invoice_id: frm.doc.sales_invoice_id
-                },
-                callback: function (t) {
-                    if (t.message) {
-                    // console.log("#######server script message#########");
-                    // console.log(t.message);
-                    frm.set_value('referencia_de_pago', t.message);
-                    } else {
-                    frm.set_value('referencia_de_pago', "No hay referencia de forma de pago")
-                }
-            }
-            });
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_forma_de_pago',
+                    args: {
+                        sales_invoice_id: frm.doc.sales_invoice_id
+                    },
+                    callback: function (t) {
+                        if (t.message) {
+                            // console.log("#######server script message#########");
+                            // console.log(t.message);
+                            frm.set_value('referencia_de_pago', t.message);
+                        } else {
+                            frm.set_value('referencia_de_pago', "No hay referencia de forma de pago")
+                        }
+                    }
+                });
         }
     }
 });
 
 
-
-
-
 //refactor:deberia poder llamar a la funcion con el dotted path
 //refactor: debe tenerse el codigo hardocded en alguna variable
 
-// Codigo que genera botones en la Factura
+// Codigo que genera boton en la Factura para hacer el envio por correo y llama al método PY de envio
 frappe.ui.form.on('Factura', {
-	refresh: function(frm) {
-        if (frm.doc.status == "Facturado"){
-            frm.add_custom_button(__('Enviar por Correo'), function(){
-                frappe.call({
-                        method: 'facturacion_mx.facturacion_mx.doctype.factura.api.envia_factura_por_email',
-                        args: {
-                            current_document: frm.doc.id_pac,
-                            email_id : frm.doc.email_id
-                        },
-                        callback: function (r) {
-                            if (r.message) {
-                            console.log("#######server script message#########");
-                            console.log(r.message);
-                            }
+    refresh: function (frm) {
+        if (frm.doc.status == "Facturado") {
+            frm.add_custom_button(__('Enviar por Correo'), function () {
+                let d = new frappe.ui.Dialog({
+                    title: 'Selecciona el correo electronico al que quieres enviar la factura',
+                    fields: [
+                        {
+                            label: 'Correo Electronioco',
+                            fieldname: 'email_id',
+                            fieldtype: 'Data',
+                            default: frm.doc.email_id
                         }
-                    });
-            });
+                    ],
+                    size: 'small', // small, large, extra-large 
+                    primary_action_label: 'Submit',
+                    primary_action: function () {
+                        var data = d.get_values();
+                        frappe.call({
+                            method: 'facturacion_mx.facturacion_mx.doctype.factura.api.envia_factura_por_email',
+                            args: {
+                                current_document: frm.doc.id_pac,
+                                email_id: data.email_id
+                            },
+                            callback: function (r) {
+                                if (r.message) {
+                                    console.log("#######server script message#########");
+                                    console.log(r.message);
+                                }
+                                d.hide();
+                            }
+                        });
+                    }
+                });
+
+                d.show();
+            })
         }
-	}
+    }
 });
