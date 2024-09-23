@@ -10,6 +10,7 @@
   "endpoint_cancelar_facturas",
   "endpoint_obtener_facturas",
   "endpoint_crear_recibo_autofactura",
+  "endpoint_enviar_correo",
   "api_settings_section",
   "live_secret_key",
   "user_secret_key"
@@ -54,12 +55,17 @@
    "fieldname": "endpoint_crear_recibo_autofactura",
    "fieldtype": "Data",
    "label": "Endpoint Crear Recibo Autofactura"
+  },
+  {
+   "fieldname": "endpoint_enviar_correo",
+   "fieldtype": "Data",
+   "label": "Endopoint Envio Factura por Correo Electr\u00f3nico"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-22 17:59:11.186581",
+ "modified": "2024-09-22 22:23:03.217669",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
