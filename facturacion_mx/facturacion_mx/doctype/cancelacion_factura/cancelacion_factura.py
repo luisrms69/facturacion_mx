@@ -36,7 +36,7 @@ class CancelacionFactura(Document):
 # Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if check_pac_response_success(pac_response) == 1:
-			status = actualizar_cancelacion_respuesta_pac(pac_response)
+			status = status_respuesta_pac(pac_response)
 		else:
 			frappe.msgprint(
                 msg=str(pac_response),

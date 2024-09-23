@@ -36,7 +36,7 @@ def check_status_actual(status):
       
 #fix: urge quitar hardcoded y ponerlo en variables, tanto aqui como con cx_factura (ENUM)
 # Maneja el response obtenido del pac, realiza los avisos y regresa el valor status
-def actualizar_cancelacion_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
+def status_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
         message_status = str(pac_response['status'])
         message_cancellation_status = str(pac_response['cancellation_status'])
         if message_status == "canceled":
