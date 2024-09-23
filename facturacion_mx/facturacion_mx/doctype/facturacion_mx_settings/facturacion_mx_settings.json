@@ -9,6 +9,7 @@
   "endpoint_crear_facturas",
   "endpoint_cancelar_facturas",
   "endpoint_obtener_facturas",
+  "endpoint_crear_recibo_autofactura",
   "api_settings_section",
   "live_secret_key",
   "user_secret_key"
@@ -48,12 +49,17 @@
    "fieldname": "endpoint_obtener_facturas",
    "fieldtype": "Data",
    "label": "Endpoint Obtener Facturas"
+  },
+  {
+   "fieldname": "endpoint_crear_recibo_autofactura",
+   "fieldtype": "Data",
+   "label": "Endpoint Crear Recibo Autofactura"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-19 21:19:04.675704",
+ "modified": "2024-09-22 17:59:11.186581",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
