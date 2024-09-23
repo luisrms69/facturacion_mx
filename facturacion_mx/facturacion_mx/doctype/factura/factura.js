@@ -90,7 +90,8 @@ frappe.ui.form.on('Factura', {
                 frappe.call({
                         method: 'facturacion_mx.facturacion_mx.doctype.factura.api.envia_factura_por_email',
                         args: {
-                            doc: frm.doc
+                            current_document: frm.doc.id_pac,
+                            email_id : frm.doc.email_id
                         },
                         callback: function (r) {
                             if (r.message) {

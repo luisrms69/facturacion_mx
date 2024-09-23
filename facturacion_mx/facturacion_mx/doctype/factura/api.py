@@ -94,8 +94,16 @@ def get_items_info(invoice_data):
     return items_info
 
 #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
+#refactor:fix: utilizar el metodo de abajo, corregir en Factura, CX Factura y Recibo
 def check_pac_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
     if 'id' in data_response.keys():
+        return 1
+    else:
+        return 0
+    
+#Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
+def check_pac_response_success_keys(key, data_response):   #refactor: a lo mejor unir con el siguiente metodo
+    if key in data_response.keys():
         return 1
     else:
         return 0
@@ -136,5 +144,35 @@ def validate_email_factura(email_id):
 
 # Metodo que se llaman en factura.js para enviar un correo de la factura
 @frappe.whitelist()
-def envia_factura_por_email(doc):
-    frappe.msgprint("exitoexito")
+def envia_factura_por_email(current_document, email_id):
+#Primero solicita la definicion de variables del documento actual   
+
+#Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
+#Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
+        factura_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_enviar_correo')
+        api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
+        headers = {"Authorization": f"Bearer {api_token}"}
+        data = {
+                "email": email_id
+            }
+        final_url= f"{factura_endpoint}/{current_document}/email"
+
+# La respuesta se muestra en la pantalla
+        response = requests.post(
+            final_url, json=data, headers=headers)
+        
+        data_response =response.json()
+
+#refactor: Los textos no me gustan hardcoded,
+        if check_pac_response_success_keys("ok",data_response) == 1:
+                frappe.msgprint(
+                    msg="La información se envió al correo proporcionado", #refactor: Sería mejor que se incluyera el correo
+                    title='Solicitud exitosa!!',
+                    indicator='green'             
+                )
+        else:
+                frappe.msgprint(
+                msg=str(data_response),
+                title='No se envió el correo',
+                indicator='red'
+            )
