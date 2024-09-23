@@ -6,7 +6,7 @@ from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
-from frappe.utils import validate_email_address
+# from frappe.utils import validate_email_address
 from facturacion_mx.doctype.factura.api import *
 from .api import *
 
@@ -17,27 +17,27 @@ class ReciboAutofactura(Document):
 #refactor:issue:bug este codigo es una copia fiel de factura.py, se va a tener que pasar a api y usarse en ambas
 
 #Se optiene el product key, este es un campo que se añade por medio de fixtures
-    def get_product_key(item_code):
-        product_key = frappe.db.get_value("Item", item_code, "product_key")
-        return product_key
+    # def get_product_key(item_code):
+    #     product_key = frappe.db.get_value("Item", item_code, "product_key")
+    #     return product_key
 
 #Se obtienen los datos de producto, estan en un child table
-    def get_items_info(invoice_data):
-        items_info = []
-        for producto in invoice_data.items:
-            detalle_item = {
-                'quantity': producto.qty,
-                'product': {
-                    'description': producto.item_name,
-                    'product_key': Factura.get_product_key(producto.item_code),
-                    'price': producto.rate
-                }
-            }
-            if not detalle_item['product']['product_key']:
-                frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
-            items_info.append(detalle_item)
+    # def get_items_info(invoice_data):
+    #     items_info = []
+    #     for producto in invoice_data.items:
+    #         detalle_item = {
+    #             'quantity': producto.qty,
+    #             'product': {
+    #                 'description': producto.item_name,
+    #                 'product_key': Factura.get_product_key(producto.item_code),
+    #                 'price': producto.rate
+    #             }
+    #         }
+    #         if not detalle_item['product']['product_key']:
+    #             frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
+    #         items_info.append(detalle_item)
 
-        return items_info
+    #     return items_info
 
 #Se obtiene el nombre del cliente
     # def get_cliente(invoice_data):
@@ -46,10 +46,10 @@ class ReciboAutofactura(Document):
     #     return cliente
 
 #Obtiene todos los datos del cliente
-    def get_customer_data(cliente):
-        customer_data = frappe.get_doc('Customer', cliente)
+    # def get_customer_data(cliente):
+    #     customer_data = frappe.get_doc('Customer', cliente)
 
-        return customer_data
+    #     return customer_data
 
 #Utilizando los datos obtenidos del cliente, se obtiene el RFC
     # def get_tax_id(cliente):
@@ -81,11 +81,11 @@ class ReciboAutofactura(Document):
     #     return datos_direccion
 
 #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
-    def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
-        if 'id' in data_response.keys():
-            return 1
-        else:
-            return 0
+    # def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
+    #     if 'id' in data_response.keys():
+    #         return 1
+    #     else:
+    #         return 0
     
 #refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
 #toma la respuesta y las llaves deseadas y la prepara para escritura en el documento
