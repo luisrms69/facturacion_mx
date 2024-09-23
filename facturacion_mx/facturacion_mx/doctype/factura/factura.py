@@ -6,7 +6,7 @@ from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
-from frappe.utils import validate_email_address
+# from frappe.utils import validate_email_address
 from .api import *
 
 
@@ -37,12 +37,12 @@ class Factura(Document):
 
 #         return items_info
 
-#Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
-    def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
-        if 'id' in data_response.keys():
-            return 1
-        else:
-            return 0
+# #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
+#     def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
+#         if 'id' in data_response.keys():
+#             return 1
+#         else:
+#             return 0
     
 #refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
 #toma la respuesta y las llaves deseadas y la prepara para escritura en el documento
@@ -56,38 +56,38 @@ class Factura(Document):
 
         return pac_response
 
-#Verifica la longitud del RFC, doce o trece son correctos
-    def validate_rfc_factura(tax_id):  #feat: Puede mejorar para revisar si es compañia o individuo
-        if not tax_id:
-            frappe.throw("La empresa no tiene registrado RFC. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
+# #Verifica la longitud del RFC, doce o trece son correctos
+#     def validate_rfc_factura(tax_id):  #feat: Puede mejorar para revisar si es compañia o individuo
+#         if not tax_id:
+#             frappe.throw("La empresa no tiene registrado RFC. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
 
-        tax_id_lenght = len(tax_id)
-        if tax_id_lenght != 12:
-            if tax_id_lenght != 13:
-                frappe.throw("RFC Incorrecto por favor verifícalo. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
+#         tax_id_lenght = len(tax_id)
+#         if tax_id_lenght != 12:
+#             if tax_id_lenght != 13:
+#                 frappe.throw("RFC Incorrecto por favor verifícalo. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
-#Verfica que el codigo sea de 5 letras    
-    def validate_cp_factura(zip_code):
-        if len(zip_code) != 5:
-            frappe.throw("El código postal es incorrecto, debe contener 5 numeros. La correccion de esta información se realiza directamente en los datos del cliente, en la direccion primaria de facturación")
+# #Verfica que el codigo sea de 5 letras    
+#     def validate_cp_factura(zip_code):
+#         if len(zip_code) != 5:
+#             frappe.throw("El código postal es incorrecto, debe contener 5 numeros. La correccion de esta información se realiza directamente en los datos del cliente, en la direccion primaria de facturación")
 
-#Verifica que el regimen fiscal este entre los numeros esperados y que no este vacía    
-    def validate_tax_category_factura(tax_category):
-        valor_inferior = 600
-        valor_superior = 627
-        if not tax_category:
-            frappe.throw("La empresa no tiene regimen fiscal seleccionado. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
-        if not valor_inferior <= int(tax_category[:3]) <= valor_superior:
-            frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
+# #Verifica que el regimen fiscal este entre los numeros esperados y que no este vacía    
+#     def validate_tax_category_factura(tax_category):
+#         valor_inferior = 600
+#         valor_superior = 627
+#         if not tax_category:
+#             frappe.throw("La empresa no tiene regimen fiscal seleccionado. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
+#         if not valor_inferior <= int(tax_category[:3]) <= valor_superior:
+#             frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
-#Verifica que el correo electrónico no este vacío y su formato sea correcto
-    def validate_email_factura(email_id):
-        if not email_id:
-            frappe.throw("Se requiere capturar un correo electrónico para la dirección principal de facturación. La captura se realiza directamente en la sección de direcciones del cliente.")
-        validate_email_address(email_id)
-        # if not frappe.utils.validate_type(email_id, "email"):
-        #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
+# #Verifica que el correo electrónico no este vacío y su formato sea correcto
+#     def validate_email_factura(email_id):
+#         if not email_id:
+#             frappe.throw("Se requiere capturar un correo electrónico para la dirección principal de facturación. La captura se realiza directamente en la sección de direcciones del cliente.")
+#         validate_email_address(email_id)
+#         # if not frappe.utils.validate_type(email_id, "email"):
+#         #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
 
 
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
@@ -150,7 +150,7 @@ class Factura(Document):
         data_response =response.json()
 
 
-        if Factura.check_pack_response_success(data_response) == 1:
+        if check_pac_response_success(data_response) == 1:
             factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at', 'total']
             pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
 
@@ -177,10 +177,10 @@ class Factura(Document):
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):
-        Factura.validate_rfc_factura(self.tax_id)
-        Factura.validate_cp_factura(self.zip_code)
-        Factura.validate_tax_category_factura(self.tax_category)
-        Factura.validate_email_factura(self.email_id)
+        validate_rfc_factura(self.tax_id)
+        validate_cp_factura(self.zip_code)
+        validate_tax_category_factura(self.tax_category)
+        validate_email_factura(self.email_id)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
