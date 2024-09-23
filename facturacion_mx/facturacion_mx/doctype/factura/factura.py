@@ -12,37 +12,6 @@ from .api import *
 
 class Factura(Document):
 
-# refactor: facturado y rechazada son estados del documento, mejor en variable
-
-#Se optiene el product key, este es un campo que se añade por medio de fixtures
-    # def get_product_key(item_code):
-    #     product_key = frappe.db.get_value("Item", item_code, "product_key")
-    #     return product_key
-
-# #Se obtienen los datos de producto, estan en un child table
-#     def get_items_info(invoice_data):
-#         items_info = []
-#         for producto in invoice_data.items:
-#             detalle_item = {
-#                 'quantity': producto.qty,
-#                 'product': {
-#                     'description': producto.item_name,
-#                     'product_key': Factura.get_product_key(producto.item_code),
-#                     'price': producto.rate
-#                 }
-#             }
-#             if not detalle_item['product']['product_key']:
-#                 frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
-#             items_info.append(detalle_item)
-
-#         return items_info
-
-# #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
-#     def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
-#         if 'id' in data_response.keys():
-#             return 1
-#         else:
-#             return 0
     
 #refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
 #toma la respuesta y las llaves deseadas y la prepara para escritura en el documento
@@ -55,39 +24,6 @@ class Factura(Document):
                 pac_response = { 'status' : "Rechazada" }
 
         return pac_response
-
-# #Verifica la longitud del RFC, doce o trece son correctos
-#     def validate_rfc_factura(tax_id):  #feat: Puede mejorar para revisar si es compañia o individuo
-#         if not tax_id:
-#             frappe.throw("La empresa no tiene registrado RFC. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
-
-#         tax_id_lenght = len(tax_id)
-#         if tax_id_lenght != 12:
-#             if tax_id_lenght != 13:
-#                 frappe.throw("RFC Incorrecto por favor verifícalo. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
-
-# #Verfica que el codigo sea de 5 letras    
-#     def validate_cp_factura(zip_code):
-#         if len(zip_code) != 5:
-#             frappe.throw("El código postal es incorrecto, debe contener 5 numeros. La correccion de esta información se realiza directamente en los datos del cliente, en la direccion primaria de facturación")
-
-# #Verifica que el regimen fiscal este entre los numeros esperados y que no este vacía    
-#     def validate_tax_category_factura(tax_category):
-#         valor_inferior = 600
-#         valor_superior = 627
-#         if not tax_category:
-#             frappe.throw("La empresa no tiene regimen fiscal seleccionado. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
-#         if not valor_inferior <= int(tax_category[:3]) <= valor_superior:
-#             frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
-
-
-# #Verifica que el correo electrónico no este vacío y su formato sea correcto
-#     def validate_email_factura(email_id):
-#         if not email_id:
-#             frappe.throw("Se requiere capturar un correo electrónico para la dirección principal de facturación. La captura se realiza directamente en la sección de direcciones del cliente.")
-#         validate_email_address(email_id)
-#         # if not frappe.utils.validate_type(email_id, "email"):
-#         #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
 
 
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
