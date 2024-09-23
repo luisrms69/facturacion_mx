@@ -21,3 +21,50 @@ def get_forma_de_pago(sales_invoice_id):
 
     return forma_de_pago
 
+# Métodos que utilizan factura.py y reciboatofactura.py (de entrada esos dos, pero puende ser mas)
+
+#Se obtiene el nombre del cliente
+def get_cliente(invoice_data):
+    cliente = invoice_data.customer
+
+    return cliente
+
+#Obtiene todos los datos del cliente
+def get_customer_data(cliente):
+    customer_data = frappe.get_doc('Customer', cliente)
+
+    return customer_data
+
+
+#Utilizando los datos obtenidos del cliente, se obtiene el Rregimen fiscal, solo se regresan los primeros
+#tres caracteres que son el numero (600 y tantos), es lo que utiliza el API
+def get_regimen_fiscal(cliente):
+    regimen_fiscal = get_customer_data(cliente).tax_category[:3]
+
+    return regimen_fiscal
+
+
+
+#Se obtiene la direccion del cliente, tiene que tener definida direccion primaria, la que tiene en la Constancia
+#El regreso ya viene configurado para ser añadido al http request (data)
+def get_datos_direccion_facturacion(cliente):
+    filters = [
+        ["Dynamic Link", "link_doctype", "=", "Customer"],
+        ["Dynamic Link", "link_name", "=", cliente],
+        ["Address", "is_primary_address", "=", 1]
+    ]
+    company_address = frappe.get_all("Address", filters=filters)
+    datos_direccion = frappe.db.get_value('Address', company_address, [
+                                            'pincode', 'email_id'], as_dict=1)
+    if datos_direccion == "":
+        frappe.throw("Hay un problema con la dirección de facturación registrada, revisa en la configuración del cliente, Direcciones y Contactos")
+
+    return datos_direccion
+
+
+#Utilizando los datos obtenidos del cliente, se obtiene el RFC
+def get_tax_id(cliente):
+    tax_id = get_customer_data(cliente).tax_id
+
+    return tax_id
+
