@@ -8,8 +8,27 @@ import requests  # Se utiliza para hacer el http request
 # from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 # from frappe.utils import validate_email_address
 
-# Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
-
+#fix: urge quitar hardcoded y ponerlo en variables, tanto aqui como con cx_factura (ENUM)
+# Maneja el response obtenido del pac, realiza los avisos y regresa el valor status
+def actualizar_recibo_respuesta_pac(pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
+        message_status = str(pac_response['status'])
+        # message_cancellation_status = str(pac_response['cancellation_status'])
+        if message_status == "open":
+            status = "Emitido"
+        else:
+            if message_status == "canceled":
+                status = "Cancelado"
+            else:
+                if message_status == "invoiced_to_customer":
+                     status = "Autofacturado"
+                else:
+                     status ="Desconocido"
+        frappe.msgprint(
+                msg=f"El estatus reportado por el PAC en la solicitud es: {message_status}",
+                title='La solicitud de emision del recibo de autofactura fue exitosa.',
+                indicator='green')
+        
+        return status
 
 #Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
 def anade_recibo_response_record(doc,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
