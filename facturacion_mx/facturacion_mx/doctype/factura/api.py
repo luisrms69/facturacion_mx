@@ -68,3 +68,27 @@ def get_tax_id(cliente):
 
     return tax_id
 
+
+
+#Se optiene el product key, este es un campo que se añade por medio de fixtures
+def get_product_key(item_code):
+    product_key = frappe.db.get_value("Item", item_code, "product_key")
+    return product_key
+
+#Se obtienen los datos de producto, estan en un child table
+def get_items_info(invoice_data):
+    items_info = []
+    for producto in invoice_data.items:
+        detalle_item = {
+            'quantity': producto.qty,
+            'product': {
+                'description': producto.item_name,
+                'product_key': get_product_key(producto.item_code),
+                'price': producto.rate
+            }
+        }
+        if not detalle_item['product']['product_key']:
+            frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
+        items_info.append(detalle_item)
+
+    return items_info

@@ -15,27 +15,27 @@ class Factura(Document):
 # refactor: facturado y rechazada son estados del documento, mejor en variable
 
 #Se optiene el product key, este es un campo que se añade por medio de fixtures
-    def get_product_key(item_code):
-        product_key = frappe.db.get_value("Item", item_code, "product_key")
-        return product_key
+    # def get_product_key(item_code):
+    #     product_key = frappe.db.get_value("Item", item_code, "product_key")
+    #     return product_key
 
-#Se obtienen los datos de producto, estan en un child table
-    def get_items_info(invoice_data):
-        items_info = []
-        for producto in invoice_data.items:
-            detalle_item = {
-                'quantity': producto.qty,
-                'product': {
-                    'description': producto.item_name,
-                    'product_key': Factura.get_product_key(producto.item_code),
-                    'price': producto.rate
-                }
-            }
-            if not detalle_item['product']['product_key']:
-                frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
-            items_info.append(detalle_item)
+# #Se obtienen los datos de producto, estan en un child table
+#     def get_items_info(invoice_data):
+#         items_info = []
+#         for producto in invoice_data.items:
+#             detalle_item = {
+#                 'quantity': producto.qty,
+#                 'product': {
+#                     'description': producto.item_name,
+#                     'product_key': Factura.get_product_key(producto.item_code),
+#                     'price': producto.rate
+#                 }
+#             }
+#             if not detalle_item['product']['product_key']:
+#                 frappe.throw("Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
+#             items_info.append(detalle_item)
 
-        return items_info
+#         return items_info
 
 #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
     def check_pack_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
@@ -138,7 +138,7 @@ class Factura(Document):
                     "zip": datos_direccion.pincode
                 },
             },
-            "items": Factura.get_items_info(invoice_data)
+            "items": get_items_info(invoice_data)
         }
 
 # La respuesta se almacena, se convierte a JSON y se verifica si fue exitosa o rechazada
