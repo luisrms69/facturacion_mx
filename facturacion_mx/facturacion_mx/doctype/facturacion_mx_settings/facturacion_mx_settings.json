@@ -9,11 +9,13 @@
   "endpoint_crear_facturas",
   "endpoint_cancelar_facturas",
   "endpoint_obtener_facturas",
+  "column_break_boxz",
   "endpoint_crear_recibo_autofactura",
   "endpoint_enviar_correo",
   "endpoint_descarga_factura",
   "api_settings_section",
   "live_secret_key",
+  "column_break_rgni",
   "user_secret_key"
  ],
  "fields": [
@@ -66,12 +68,20 @@
    "fieldname": "endpoint_descarga_factura",
    "fieldtype": "Data",
    "label": "Endpoint Descarga Factura"
+  },
+  {
+   "fieldname": "column_break_boxz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rgni",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-23 09:45:28.941227",
+ "modified": "2024-09-24 15:18:01.523971",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
