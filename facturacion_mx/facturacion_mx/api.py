@@ -47,13 +47,26 @@ def descarga_factura(current_document,format):
         #              local_file.write(chunk)
 
 
-# def download(name):
-#         frappe.msgprint("entramos")
-#         file = frappe.get_doc("File", name)
-#         frappe.response.filename = file.file_name
-#         frappe.response.filecontent = file.get_content()
-#         frappe.msgprint("entramos")
-#         frappe.response.type="download"
-#         frappe.response.display_content_as = "attatchment"
 
-        
+
+@frappe.whitelist()
+def test_crud(doctype):
+        # frappe.msgprint("Testing CRUD") 
+        api_secret='b93d45547b0fa48'
+        api_key= '542c9e12488dca5'
+        url = 'http://127.0.0.1:8000/api/method/upload_file'
+        headers = {"Authorization": f"token {api_key}:{api_secret}",
+                   'Accept': "application/json"
+                #    'Content-Type': "pdf"
+                   }
+        files ={
+                'file': open('/home/erpnext/files/9036dbfa67b.pdf', 'rb'),
+        }
+        response = requests.post(url=url, headers=headers, files=files)
+        response.dict = json.loads(response.text)
+        frappe.errprint(response.dict)
+        frappe.errprint(response._content)
+        frappe.msgprint(str(response.status_code))
+        file_name = response.dict['message']['name']
+        frappe.msgprint(str(response._content))
+        frappe.msgprint(file_name)
