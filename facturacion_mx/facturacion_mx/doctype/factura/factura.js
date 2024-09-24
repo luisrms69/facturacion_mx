@@ -120,3 +120,75 @@ frappe.ui.form.on('Factura', {
         }
     }
 });
+
+// Codigo que genera boton en la Factura para desccargar el archivo deseados y llama al método PY de envio
+frappe.ui.form.on('Factura', {
+    refresh: function (frm) {
+        if (frm.doc.status == "Facturado") {
+            frm.add_custom_button(__('Descargar'), function () {
+                let d = new frappe.ui.Dialog({
+                    title: 'Selecciona el formato en que quieres descargar la factura',
+                    fields: [
+                        {
+                            label: 'Formato Deseado',
+                            fieldname: 'format',
+                            fieldtype: 'Select',
+                            default: 'zip',
+                            options: "xml\npdf\nzip"
+                        }
+                    ],
+                    size: 'small', // small, large, extra-large 
+                    primary_action_label: 'Submit',
+                    primary_action: function () {
+                        var data = d.get_values();
+                        frappe.call({
+                            method: 'facturacion_mx.facturacion_mx.api.descarga_factura',
+                            args: {
+                                current_document: frm.doc.id_pac,
+                                format: data.format
+                            },
+                            callback: function (r) {
+                                if (r.message) {
+                                    console.log("#######server script message#########");
+                                    console.log(r.message);
+                                }
+                                d.hide();
+                            }
+                        });
+                    }
+                });
+
+                d.show();
+            })
+        }
+    }
+});
+
+
+
+
+
+// Codigo que genera boton en la Factura para hacer el envio por correo y llama al método PY de envio
+// frappe.ui.form.on('Factura', {
+//     refresh: function (frm) {
+//         if (frm.doc.status == "Facturado") {
+//             frm.add_custom_button(__('Enviar por Correo'), function () {
+//                 frappe.call({
+//                     method: 'facturacion_mx.facturacion_mx.api.descarga_factura',
+//                     args: {
+//                         current_document: frm.doc.id_pac,
+//                         email_id: data.email_id
+//                     },
+//                     callback: function (r) {
+//                         if (r.message) {
+//                             console.log("#######server script message#########");
+//                             console.log(r.message);
+//                         }
+
+//                     }
+//                 });
+//             })
+//         }
+//     }
+// });
+
