@@ -31,13 +31,15 @@ class CancelacionFactura(Document):
 #Metodo que llama al metodo que añade en el child table de cancelar factura el response del PAC		
 	def anadir_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
 		if check_pac_response_success(pac_response) == 1:
-			anade_response_record(self,pac_response)
+			pac_response_json = pac_response.json()
+			anade_response_record(self,pac_response_json)
 
 #Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
 # Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 		if check_pac_response_success(pac_response) == 1:
-			status = status_respuesta_pac(pac_response)
+			pac_response_json = pac_response.json()			
+			status = status_respuesta_pac(pac_response_json)
 		else:
 			frappe.msgprint(
                 msg=str(pac_response),
@@ -78,9 +80,9 @@ class CancelacionFactura(Document):
 
 		data_response =response.json()
 
-		status = self.actualizar_cancelacion_respuesta_pac(data_response)
+		status = self.actualizar_cancelacion_respuesta_pac(response)
 		actualizar_status_cx_factura(self, status)
-		self.anadir_response_record(data_response)
+		self.anadir_response_record(response)
 
 		if status == "Cancelacion Exitosa" :
 			actualizar_status_factura_invoice(self.name)

@@ -89,7 +89,8 @@ def get_items_info(invoice_data):
 #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
 #refactor:fix: utilizar el metodo de abajo, corregir en Factura, CX Factura y Recibo
 def check_pac_response_success(data_response):   #refactor: a lo mejor unir con el siguiente metodo
-    if 'id' in data_response.keys():
+    if data_response.status_code == 200:
+#     if 'id' in data_response.keys():
         return 1
     else:
         return 0
@@ -337,7 +338,7 @@ def envia_factura_por_email(current_document, email_id):
         data_response =response.json()
 
 #refactor: Los textos no me gustan hardcoded,
-        if check_pac_response_success_keys("ok",data_response) == 1:
+        if check_pac_response_success(response) == 1:
                 frappe.msgprint(
                     msg="La información se envió al correo proporcionado", #refactor: Sería mejor que se incluyera el correo
                     title='Solicitud exitosa!!',

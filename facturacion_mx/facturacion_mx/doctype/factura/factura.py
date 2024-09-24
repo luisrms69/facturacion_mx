@@ -87,7 +87,7 @@ class Factura(Document):
         data_response =response.json()
 
 
-        if check_pac_response_success(data_response) == 1:
+        if check_pac_response_success(response) == 1:
             factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at', 'total']
             pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
 
