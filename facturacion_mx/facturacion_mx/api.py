@@ -28,7 +28,7 @@ def presenta_ultimos_caracteres(str_var, caracteres):
         return str_final
 
 # Graba el archivo de factura descargado y lo añade al documento Factura respectivo
-def save_to_factura(filename_dir):
+def save_to_factura(document_name,filename_dir):
         api_secret='b93d45547b0fa48'
         api_key= '542c9e12488dca5'
         url = 'http://127.0.0.1:8000/api/method/upload_file'
@@ -42,7 +42,7 @@ def save_to_factura(filename_dir):
         data = {
                 'is_private': 1,
                 'doctype': "Factura",
-                'docname': "FACT-24-09-22-0272"
+                'docname': document_name
         }
         response = requests.post(url=url, data=data, headers=headers, files=files)
         # response.dict = json.loads(response.text)
@@ -55,7 +55,7 @@ def save_to_factura(filename_dir):
 
 # Metodo que se llaman en factura.js para descargar la factura
 @frappe.whitelist()
-def descarga_factura(current_document,format): 
+def descarga_factura(document_name,current_document,format): 
 
 #Despues se arma el http request. endpoint, headers. Los valores de headers y endpoint se toman de settings
 
@@ -74,7 +74,7 @@ def descarga_factura(current_document,format):
         with open(filename_dir, 'wb') as file:
                 file.write(response.content)  #refactor: ver opcion señalada abajo para no ocupar tanto ram
 
-        save_to_factura(filename_dir)
+        save_to_factura(document_name,filename_dir)
         
         # refactor option: con esto podemos disminuir el uso del ram
         # with open("/home/erpnext/frappe-bench/apps/facturacion_mx/archivo.xml", 'wb') as local_file:

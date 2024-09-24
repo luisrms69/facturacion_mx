@@ -144,6 +144,7 @@ frappe.ui.form.on('Factura', {
                         frappe.call({
                             method: 'facturacion_mx.facturacion_mx.api.descarga_factura',
                             args: {
+                                document_name: frm.doc.name,
                                 current_document: frm.doc.id_pac,
                                 format: data.format
                             },
@@ -163,53 +164,4 @@ frappe.ui.form.on('Factura', {
         }
     }
 });
-
-
-
-// frappe.ui.form.on('Factura', {
-// 	refresh: function(frm) {
-//         if (frm.doc.status == "Facturado"){
-//             frm.add_custom_button(__('Test CRUD'), function(){
-//                 frappe.call({
-//                         method: 'facturacion_mx.facturacion_mx.api.test_crud',
-//                         args: {
-//                             doctype: "Factura"
-//                         },
-//                         callback: function (r) {
-//                             if (r.message) {
-//                             console.log("#######server script message#########");
-//                             console.log(r.message);
-//                             }
-//                         }
-//                     });
-//             });
-//         }
-// 	}
-// });
-
-
-
-// Codigo que genera boton en la Factura para hacer el envio por correo y llama al método PY de envio
-// frappe.ui.form.on('Factura', {
-//     refresh: function (frm) {
-//         if (frm.doc.status == "Facturado") {
-//             frm.add_custom_button(__('Enviar por Correo'), function () {
-//                 frappe.call({
-//                     method: 'facturacion_mx.facturacion_mx.api.descarga_factura',
-//                     args: {
-//                         current_document: frm.doc.id_pac,
-//                         email_id: data.email_id
-//                     },
-//                     callback: function (r) {
-//                         if (r.message) {
-//                             console.log("#######server script message#########");
-//                             console.log(r.message);
-//                         }
-
-//                     }
-//                 });
-//             })
-//         }
-//     }
-// });
 
