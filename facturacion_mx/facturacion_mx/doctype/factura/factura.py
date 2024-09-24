@@ -8,6 +8,7 @@ import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 # from frappe.utils import validate_email_address
 from .api import *
+from facturacion_mx.facturacion_mx.api import *
 
 
 class Factura(Document):

@@ -57,7 +57,7 @@ frappe.ui.form.on('Factura', {
                 }
             }),
                 frappe.call({
-                    method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_forma_de_pago',
+                    method: 'facturacion_mx.facturacion_mx.api.get_forma_de_pago',
                     args: {
                         sales_invoice_id: frm.doc.sales_invoice_id
                     },
@@ -99,7 +99,7 @@ frappe.ui.form.on('Factura', {
                     primary_action: function () {
                         var data = d.get_values();
                         frappe.call({
-                            method: 'facturacion_mx.facturacion_mx.doctype.factura.api.envia_factura_por_email',
+                            method: 'facturacion_mx.facturacion_mx.api.envia_factura_por_email',
                             args: {
                                 current_document: frm.doc.id_pac,
                                 email_id: data.email_id
