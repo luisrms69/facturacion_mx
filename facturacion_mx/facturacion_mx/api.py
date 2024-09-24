@@ -11,7 +11,7 @@ from frappe.utils.response import *
 import re #fix: Se incluye por que venía en el metodo para obtener el nombre del archivo en descarga factura, no estoy seguro si se usa
 import json # lo cargo para utilizar json.loads
 
-
+# Obtiene el nombre del archivo a partir de la response, content-disposition de los headers
 def get_filename_from_cd(cd):
         if not cd:
                 return None
@@ -20,12 +20,14 @@ def get_filename_from_cd(cd):
                 return None
         return fname[0]
 
+# Toma un string y devuelve los ultimos caracteres señalado
 def presenta_ultimos_caracteres(str_var, caracteres):
         length = len(str_var)
         str_final = str_var[length - caracteres:]
 
         return str_final
 
+# Graba el archivo de factura descargado y lo añade al documento Factura respectivo
 def save_to_factura(filename_dir):
         api_secret='b93d45547b0fa48'
         api_key= '542c9e12488dca5'
@@ -78,28 +80,3 @@ def descarga_factura(current_document,format):
         # with open("/home/erpnext/frappe-bench/apps/facturacion_mx/archivo.xml", 'wb') as local_file:
         #       for chunk in response.iter_content(chunk_size=128):
         #              local_file.write(chunk)
-
-
-
-
-# @frappe.whitelist()
-# def test_crud(filename_dir):
-#         # frappe.msgprint("Testing CRUD") 
-#         api_secret='b93d45547b0fa48'
-#         api_key= '542c9e12488dca5'
-#         url = 'http://127.0.0.1:8000/api/method/upload_file'
-#         headers = {"Authorization": f"token {api_key}:{api_secret}",
-#                    'Accept': "application/json"
-#                 #    'Content-Type': "pdf"
-#                    }
-#         files ={
-#                 'file': open(filename_dir, 'rb'),
-#         }
-#         response = requests.post(url=url, headers=headers, files=files)
-#         # response.dict = json.loads(response.text)
-
-#         # file_name = response.dict['message']['name']
-#         file_name = json.loads(response.text)['message']['name']
-#         # frappe.msgprint(file_name)
-
-#         return file_name
