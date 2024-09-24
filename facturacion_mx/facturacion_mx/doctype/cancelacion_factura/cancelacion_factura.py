@@ -10,6 +10,7 @@ from frappe.utils.password import get_decrypted_password
 from facturacion_mx.facturacion_mx.doctype.factura.api import *
 from .api import *	#Para utilizar las funciones definidas en api de cancelacion factura
 # from facturacion_mx.doctype.factura.api import *
+from facturacion_mx.facturacion_mx.api import *
 
 class CancelacionFactura(Document):
 #Metodo para obtener el id de la factura que se va a cancelar, este es el ID proporcionado por el PAC   

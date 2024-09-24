@@ -11,7 +11,7 @@ frappe.ui.form.on('Cancelacion Factura', {
         if (frm.doc.status == "Cancelacion Requiere VoBo"){
             frm.add_custom_button(__('Revisar Status Cancelacion'), function(){
                 frappe.call({
-                        method: 'facturacion_mx.facturacion_mx.doctype.cancelacion_factura.api.status_check_cx_factura',
+                        method: 'facturacion_mx.facturacion_mx.api.status_check_cx_factura',
                         args: {
                             id_cx_factura: frm.doc.id_pac,
                             factura_cx: frm.docname
