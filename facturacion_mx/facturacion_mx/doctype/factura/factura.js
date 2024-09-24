@@ -166,6 +166,27 @@ frappe.ui.form.on('Factura', {
 
 
 
+// frappe.ui.form.on('Factura', {
+// 	refresh: function(frm) {
+//         if (frm.doc.status == "Facturado"){
+//             frm.add_custom_button(__('Test CRUD'), function(){
+//                 frappe.call({
+//                         method: 'facturacion_mx.facturacion_mx.api.test_crud',
+//                         args: {
+//                             doctype: "Factura"
+//                         },
+//                         callback: function (r) {
+//                             if (r.message) {
+//                             console.log("#######server script message#########");
+//                             console.log(r.message);
+//                             }
+//                         }
+//                     });
+//             });
+//         }
+// 	}
+// });
+
 
 
 // Codigo que genera boton en la Factura para hacer el envio por correo y llama al método PY de envio
