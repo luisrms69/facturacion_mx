@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:c_meses",
+ "creation": "2024-09-24 18:35:20.562534",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "c_meses",
+  "descripcion"
+ ],
+ "fields": [
+  {
+   "fieldname": "c_meses",
+   "fieldtype": "Data",
+   "label": "c_Meses",
+   "unique": 1
+  },
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "label": "Descripcion"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-24 18:38:22.440592",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Meses y Bimestres SAT",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "descripcion"
+}
