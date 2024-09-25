@@ -16,7 +16,9 @@
   "api_settings_section",
   "live_secret_key",
   "column_break_rgni",
-  "user_secret_key"
+  "user_secret_key",
+  "configuracion_facturas_globales_section",
+  "serie"
  ],
  "fields": [
   {
@@ -76,12 +78,22 @@
   {
    "fieldname": "column_break_rgni",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "configuracion_facturas_globales_section",
+   "fieldtype": "Section Break",
+   "label": "Configuracion Facturas Globales"
+  },
+  {
+   "fieldname": "serie",
+   "fieldtype": "Data",
+   "label": "Serie"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-24 15:18:01.523971",
+ "modified": "2024-09-24 18:31:54.770011",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
