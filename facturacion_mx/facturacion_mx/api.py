@@ -96,11 +96,11 @@ def check_pac_response_success(data_response):   #refactor: a lo mejor unir con 
         return 0
     
 #Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
-def check_pac_response_success_keys(key, data_response):   #refactor: a lo mejor unir con el siguiente metodo
-    if key in data_response.keys():
-        return 1
-    else:
-        return 0
+# def check_pac_response_success_keys(key, data_response):   #refactor: a lo mejor unir con el siguiente metodo
+#     if key in data_response.keys():
+#         return 1
+#     else:
+#         return 0
 
 
 #Verifica la longitud del RFC, doce o trece son correctos
