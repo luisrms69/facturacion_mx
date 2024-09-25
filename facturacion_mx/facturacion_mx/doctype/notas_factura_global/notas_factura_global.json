@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-24 21:26:06.214076",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sales_invoice_id",
+  "fecha_nota_de_venta",
+  "valor_unitario",
+  "descuento",
+  "objeto_de_impuesto"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_invoice_id",
+   "fieldtype": "Data",
+   "label": "Sales Invoice ID"
+  },
+  {
+   "fieldname": "valor_unitario",
+   "fieldtype": "Data",
+   "label": "Valor Unitario"
+  },
+  {
+   "fieldname": "descuento",
+   "fieldtype": "Data",
+   "label": "Descuento"
+  },
+  {
+   "fieldname": "objeto_de_impuesto",
+   "fieldtype": "Data",
+   "label": "Objeto de Impuesto"
+  },
+  {
+   "fieldname": "fecha_nota_de_venta",
+   "fieldtype": "Data",
+   "label": "Fecha Nota de Venta"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-09-24 21:31:26.556066",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Notas Factura Global",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
