@@ -112,14 +112,6 @@
   "name": "13"
  },
  {
-  "descripcion": "Dación en pago",
-  "docstatus": 0,
-  "doctype": "Forma de Pago",
-  "forma_de_pago": "12",
-  "modified": "2024-09-16 14:21:30.829308",
-  "name": "12"
- },
- {
   "descripcion": "Vales de despensa",
   "docstatus": 0,
   "doctype": "Forma de Pago",
@@ -136,22 +128,6 @@
   "name": "06"
  },
  {
-  "descripcion": "Monedero electrónico",
-  "docstatus": 0,
-  "doctype": "Forma de Pago",
-  "forma_de_pago": "05",
-  "modified": "2024-09-16 14:22:17.294377",
-  "name": "05"
- },
- {
-  "descripcion": "Tarjeta de crédito",
-  "docstatus": 0,
-  "doctype": "Forma de Pago",
-  "forma_de_pago": "04",
-  "modified": "2024-09-16 14:22:34.727230",
-  "name": "04"
- },
- {
   "descripcion": "Cheque nominativo",
   "docstatus": 0,
   "doctype": "Forma de Pago",
@@ -166,6 +142,30 @@
   "forma_de_pago": "03",
   "modified": "2024-09-16 14:22:54.768003",
   "name": "03"
+ },
+ {
+  "descripcion": "Tarjeta de crédito",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "04",
+  "modified": "2024-09-16 14:22:34.727230",
+  "name": "04"
+ },
+ {
+  "descripcion": "Dación en pago",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "12",
+  "modified": "2024-09-16 14:21:30.829308",
+  "name": "12"
+ },
+ {
+  "descripcion": "Monedero electrónico",
+  "docstatus": 0,
+  "doctype": "Forma de Pago",
+  "forma_de_pago": "05",
+  "modified": "2024-09-16 14:22:17.294377",
+  "name": "05"
  },
  {
   "descripcion": "Efectivo",
