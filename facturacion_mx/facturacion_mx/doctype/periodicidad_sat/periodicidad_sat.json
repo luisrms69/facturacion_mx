@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:periodicidad",
+ "creation": "2024-09-24 18:25:55.060376",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_kzev",
+  "periodicidad",
+  "descripcion"
+ ],
+ "fields": [
+  {
+   "fieldname": "periodicidad",
+   "fieldtype": "Data",
+   "label": "Periodicidad",
+   "unique": 1
+  },
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "label": "Descripcion"
+  },
+  {
+   "fieldname": "section_break_kzev",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-24 18:28:44.547060",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Periodicidad SAT",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "descripcion"
+}
