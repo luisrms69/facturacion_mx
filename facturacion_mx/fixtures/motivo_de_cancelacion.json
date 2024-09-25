@@ -1,5 +1,14 @@
 [
  {
+  "aplicación": "Cuando el receptor requiere una factura nominativa por una venta que se incluyó en la factura global",
+  "descripcion": "Operación nominativa relacionada en la factura global",
+  "docstatus": 0,
+  "doctype": "Motivo de Cancelacion",
+  "modified": "2024-09-19 10:11:17.545982",
+  "motivo_de_cancelación": "04",
+  "name": "MOTIVO-CX-04"
+ },
+ {
   "aplicación": "Cuando la factura contiene errores y es necesario sustituirla",
   "descripcion": "Comprobante emitido con errores con relación",
   "docstatus": 0,
@@ -7,15 +16,6 @@
   "modified": "2024-09-19 10:06:06.990265",
   "motivo_de_cancelación": "01",
   "name": "MOTIVO-CX-01"
- },
- {
-  "aplicación": "Cuando la factura contiene errores y no se sustituirá.",
-  "descripcion": "Comprobante emitido con errores sin relación",
-  "docstatus": 0,
-  "doctype": "Motivo de Cancelacion",
-  "modified": "2024-09-19 10:04:49.079765",
-  "motivo_de_cancelación": "02",
-  "name": "MOTIVO-CX-02"
  },
  {
   "aplicación": "Cuando la operación no se concretó",
@@ -27,12 +27,12 @@
   "name": "MOTIVO-CX-03"
  },
  {
-  "aplicación": "Cuando el receptor requiere una factura nominativa por una venta que se incluyó en la factura global",
-  "descripcion": "Operación nominativa relacionada en la factura global",
+  "aplicación": "Cuando la factura contiene errores y no se sustituirá.",
+  "descripcion": "Comprobante emitido con errores sin relación",
   "docstatus": 0,
   "doctype": "Motivo de Cancelacion",
-  "modified": "2024-09-19 10:11:17.545982",
-  "motivo_de_cancelación": "04",
-  "name": "MOTIVO-CX-04"
+  "modified": "2024-09-19 10:04:49.079765",
+  "motivo_de_cancelación": "02",
+  "name": "MOTIVO-CX-02"
  }
 ]

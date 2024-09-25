@@ -132,16 +132,6 @@
  {
   "aplica_para_persona_física": 1,
   "aplica_para_persona_moral": 1,
-  "descripción": "Comunicaciones satelitales",
-  "docstatus": 0,
-  "doctype": "Uso CFDI",
-  "modified": "2024-09-12 21:19:56.856535",
-  "name": "I07",
-  "uso_cfdi": "I07"
- },
- {
-  "aplica_para_persona_física": 1,
-  "aplica_para_persona_moral": 1,
   "descripción": "Dados, troqueles, moldes, matrices y herramental",
   "docstatus": 0,
   "doctype": "Uso CFDI",
@@ -182,32 +172,32 @@
  {
   "aplica_para_persona_física": 1,
   "aplica_para_persona_moral": 1,
-  "descripción": "Devoluciones, descuentos o bonificaciones",
-  "docstatus": 0,
-  "doctype": "Uso CFDI",
-  "modified": "2024-09-12 21:23:07.900274",
-  "name": "G02",
-  "uso_cfdi": "G02"
- },
- {
-  "aplica_para_persona_física": 1,
-  "aplica_para_persona_moral": 1,
-  "descripción": "Adquisición de mercancías",
-  "docstatus": 0,
-  "doctype": "Uso CFDI",
-  "modified": "2024-09-12 21:23:31.060836",
-  "name": "G01",
-  "uso_cfdi": "G01"
- },
- {
-  "aplica_para_persona_física": 1,
-  "aplica_para_persona_moral": 1,
   "descripción": "Otra maquinaria y equipo",
   "docstatus": 0,
   "doctype": "Uso CFDI",
   "modified": "2024-09-12 21:19:32.506230",
   "name": "I08",
   "uso_cfdi": "I08"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Gastos en general ",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:22:44.401555",
+  "name": "G03",
+  "uso_cfdi": "G03"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Comunicaciones satelitales",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:19:56.856535",
+  "name": "I07",
+  "uso_cfdi": "I07"
  },
  {
   "aplica_para_persona_física": 1,
@@ -232,11 +222,21 @@
  {
   "aplica_para_persona_física": 1,
   "aplica_para_persona_moral": 1,
-  "descripción": "Gastos en general ",
+  "descripción": "Devoluciones, descuentos o bonificaciones",
   "docstatus": 0,
   "doctype": "Uso CFDI",
-  "modified": "2024-09-12 21:22:44.401555",
-  "name": "G03",
-  "uso_cfdi": "G03"
+  "modified": "2024-09-12 21:23:07.900274",
+  "name": "G02",
+  "uso_cfdi": "G02"
+ },
+ {
+  "aplica_para_persona_física": 1,
+  "aplica_para_persona_moral": 1,
+  "descripción": "Adquisición de mercancías",
+  "docstatus": 0,
+  "doctype": "Uso CFDI",
+  "modified": "2024-09-12 21:23:31.060836",
+  "name": "G01",
+  "uso_cfdi": "G01"
  }
 ]
