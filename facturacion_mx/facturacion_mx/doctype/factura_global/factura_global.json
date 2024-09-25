@@ -8,6 +8,8 @@
   "periodicity",
   "months",
   "year",
+  "notas_de_venta_a_incluir_section",
+  "notas_de_venta",
   "section_break_lbwi",
   "amended_from"
  ],
@@ -44,12 +46,23 @@
    "fieldtype": "Select",
    "label": "A\u00f1o",
    "options": "2023\n2024"
+  },
+  {
+   "fieldname": "notas_de_venta_a_incluir_section",
+   "fieldtype": "Section Break",
+   "label": "Notas de venta a incluir"
+  },
+  {
+   "fieldname": "notas_de_venta",
+   "fieldtype": "Table",
+   "label": "Notas de venta",
+   "options": "Notas Factura Global"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-24 18:56:33.099050",
+ "modified": "2024-09-24 21:30:46.289659",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Global",
