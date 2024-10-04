@@ -77,7 +77,8 @@ def get_items_info(invoice_data):
             'product': {
                 'description': producto.item_name,
                 'product_key': get_product_key(producto.item_code),
-                'price': producto.rate
+                'price': producto.rate,
+                'unit_key': producto.uom.partition(" ")[0]
             }
         }
         if not detalle_item['product']['product_key']:
