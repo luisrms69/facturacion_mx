@@ -1,0 +1,2352 @@
+[
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.073177",
+  "name": "MAT-UOM-CNV-00001",
+  "to_uom": "MTR Metro",
+  "value": 1.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.132968",
+  "name": "MAT-UOM-CNV-00002",
+  "to_uom": "Barleycorn",
+  "value": 118.11
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.143702",
+  "name": "MAT-UOM-CNV-00003",
+  "to_uom": "Calibre",
+  "value": 39.37
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.151726",
+  "name": "MAT-UOM-CNV-00004",
+  "to_uom": "Cable Length (UK)",
+  "value": 0.005396
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.157154",
+  "name": "MAT-UOM-CNV-00005",
+  "to_uom": "Cable Length (US)",
+  "value": 0.004557
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.161725",
+  "name": "MAT-UOM-CNV-00006",
+  "to_uom": "Cable Length",
+  "value": 0.0054
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.166577",
+  "name": "MAT-UOM-CNV-00007",
+  "to_uom": "LC Centimetro lineal",
+  "value": 100.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.172037",
+  "name": "MAT-UOM-CNV-00008",
+  "to_uom": "M49 Cadena",
+  "value": 0.04971
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.176786",
+  "name": "MAT-UOM-CNV-00009",
+  "to_uom": "DMT Decimetro",
+  "value": 10.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.181872",
+  "name": "MAT-UOM-CNV-00010",
+  "to_uom": "Ells (UK)",
+  "value": 0.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.186524",
+  "name": "MAT-UOM-CNV-00011",
+  "to_uom": "Ems(Pica)",
+  "value": 236.222
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.191242",
+  "name": "MAT-UOM-CNV-00012",
+  "to_uom": "AK Braza",
+  "value": 0.546807
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.196429",
+  "name": "MAT-UOM-CNV-00013",
+  "to_uom": "FOT Pie",
+  "value": 3.28084
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.200916",
+  "name": "MAT-UOM-CNV-00014",
+  "to_uom": "Furlong",
+  "value": 0.004971
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.205449",
+  "name": "MAT-UOM-CNV-00015",
+  "to_uom": "Hand",
+  "value": 9.84252
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.210166",
+  "name": "MAT-UOM-CNV-00016",
+  "to_uom": "HMT Hectómetro",
+  "value": 0.01
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.215244",
+  "name": "MAT-UOM-CNV-00017",
+  "to_uom": "LI Pulgada lineal",
+  "value": 39.370079
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.219890",
+  "name": "MAT-UOM-CNV-00018",
+  "to_uom": "KMT Kilometro",
+  "value": 0.001
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.225089",
+  "name": "MAT-UOM-CNV-00019",
+  "to_uom": "Enlace",
+  "value": 4.975124
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.229861",
+  "name": "MAT-UOM-CNV-00020",
+  "to_uom": "Micrometer",
+  "value": 1000000.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.234408",
+  "name": "MAT-UOM-CNV-00021",
+  "to_uom": "M52 Milla",
+  "value": 0.000621
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.244298",
+  "name": "MAT-UOM-CNV-00022",
+  "to_uom": "Mile (Nautical)",
+  "value": 0.00054
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.251860",
+  "name": "MAT-UOM-CNV-00023",
+  "to_uom": "Millimeter",
+  "value": 1000.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.258697",
+  "name": "MAT-UOM-CNV-00024",
+  "to_uom": "Nanometer",
+  "value": 1000000000.0
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.266835",
+  "name": "MAT-UOM-CNV-00025",
+  "to_uom": "Rod",
+  "value": 0.198839
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.273574",
+  "name": "MAT-UOM-CNV-00026",
+  "to_uom": "Vara",
+  "value": 1.19303
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.280069",
+  "name": "MAT-UOM-CNV-00027",
+  "to_uom": "Versta",
+  "value": 0.000937
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.285959",
+  "name": "MAT-UOM-CNV-00028",
+  "to_uom": "LY Yarda lineal",
+  "value": 1.0936133
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.292155",
+  "name": "MAT-UOM-CNV-00029",
+  "to_uom": "Arshin",
+  "value": 1.406074
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.298355",
+  "name": "MAT-UOM-CNV-00030",
+  "to_uom": "Sazhen",
+  "value": 0.468691
+ },
+ {
+  "category": "Largo",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTR Metro",
+  "modified": "2022-11-26 17:22:07.304746",
+  "name": "MAT-UOM-CNV-00031",
+  "to_uom": "Medio Metro",
+  "value": 2.0
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.313173",
+  "name": "MAT-UOM-CNV-00032",
+  "to_uom": "MTK Metro cuadrado",
+  "value": 1.0
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.333630",
+  "name": "MAT-UOM-CNV-00033",
+  "to_uom": "Centiarea",
+  "value": 1.0
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.343893",
+  "name": "MAT-UOM-CNV-00034",
+  "to_uom": "Manzana",
+  "value": 0.000143
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.348698",
+  "name": "MAT-UOM-CNV-00035",
+  "to_uom": "Caballeria",
+  "value": 7e-06
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.354065",
+  "name": "MAT-UOM-CNV-00036",
+  "to_uom": "Square Kilometer",
+  "value": 1e-06
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.362886",
+  "name": "MAT-UOM-CNV-00037",
+  "to_uom": "Are",
+  "value": 0.01
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.367747",
+  "name": "MAT-UOM-CNV-00038",
+  "to_uom": "Acre",
+  "value": 0.000247
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.372695",
+  "name": "MAT-UOM-CNV-00039",
+  "to_uom": "Acre (US)",
+  "value": 0.000247
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.377480",
+  "name": "MAT-UOM-CNV-00040",
+  "to_uom": "HAR Hectárea",
+  "value": 0.0001
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.383828",
+  "name": "MAT-UOM-CNV-00041",
+  "to_uom": "Square Yard",
+  "value": 1.19599
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.388288",
+  "name": "MAT-UOM-CNV-00042",
+  "to_uom": "FTK Pie cuadrado",
+  "value": 10.76391
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.393007",
+  "name": "MAT-UOM-CNV-00043",
+  "to_uom": "Square Inch",
+  "value": 1550.0031
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.397952",
+  "name": "MAT-UOM-CNV-00044",
+  "to_uom": "Square Centimeter",
+  "value": 10000.0
+ },
+ {
+  "category": "Zona",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "MTK Metro cuadrado",
+  "modified": "2022-11-26 17:22:07.402956",
+  "name": "MAT-UOM-CNV-00045",
+  "to_uom": "MIK Milla cudrada",
+  "value": 3.86e-07
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.408984",
+  "name": "MAT-UOM-CNV-00046",
+  "to_uom": "Meter/Second",
+  "value": 1.0
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.413919",
+  "name": "MAT-UOM-CNV-00047",
+  "to_uom": "Inch/Minute",
+  "value": 2362.204724
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.419312",
+  "name": "MAT-UOM-CNV-00048",
+  "to_uom": "FR Pie por minuto",
+  "value": 196.850394
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.426257",
+  "name": "MAT-UOM-CNV-00049",
+  "to_uom": "Inch/Second",
+  "value": 39.370079
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.433663",
+  "name": "MAT-UOM-CNV-00050",
+  "to_uom": "Kilometer/Hour",
+  "value": 3.6
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.441691",
+  "name": "MAT-UOM-CNV-00051",
+  "to_uom": "FS Pie por segundo",
+  "value": 3.28084
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.446790",
+  "name": "MAT-UOM-CNV-00052",
+  "to_uom": "Mile/Hour",
+  "value": 2.236936
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.452786",
+  "name": "MAT-UOM-CNV-00053",
+  "to_uom": "KNT Nudo",
+  "value": 1.943844
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.458871",
+  "name": "MAT-UOM-CNV-00054",
+  "to_uom": "Mile/Minute",
+  "value": 0.037283
+ },
+ {
+  "category": "Speed",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Meter/Second",
+  "modified": "2022-11-26 17:22:07.465440",
+  "name": "MAT-UOM-CNV-00055",
+  "to_uom": "Mile/Second",
+  "value": 0.000621
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.474483",
+  "name": "MAT-UOM-CNV-00056",
+  "to_uom": "Carat",
+  "value": 5000.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.480446",
+  "name": "MAT-UOM-CNV-00057",
+  "to_uom": "Cental",
+  "value": 0.022046
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.485065",
+  "name": "MAT-UOM-CNV-00058",
+  "to_uom": "Dram",
+  "value": 564.383391
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.491513",
+  "name": "MAT-UOM-CNV-00059",
+  "to_uom": "Grain",
+  "value": 15432.358353
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.497603",
+  "name": "MAT-UOM-CNV-00060",
+  "to_uom": "GRM Gramo",
+  "value": 1000.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.503259",
+  "name": "MAT-UOM-CNV-00061",
+  "to_uom": "Hundredweight (UK)",
+  "value": 0.019684
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.508273",
+  "name": "MAT-UOM-CNV-00062",
+  "to_uom": "Hundredweight (US)",
+  "value": 0.022046
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.513838",
+  "name": "MAT-UOM-CNV-00063",
+  "to_uom": "Quintal",
+  "value": 0.01
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.518443",
+  "name": "MAT-UOM-CNV-00064",
+  "to_uom": "KGM Kilogramo",
+  "value": 1.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.524377",
+  "name": "MAT-UOM-CNV-00065",
+  "to_uom": "Microgram",
+  "value": 1000000000.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.531451",
+  "name": "MAT-UOM-CNV-00066",
+  "to_uom": "MGM Miligramo",
+  "value": 1000000.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.541395",
+  "name": "MAT-UOM-CNV-00067",
+  "to_uom": "Ounce",
+  "value": 35.273962
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.550078",
+  "name": "MAT-UOM-CNV-00068",
+  "to_uom": "Pood",
+  "value": 0.061048
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.558469",
+  "name": "MAT-UOM-CNV-00069",
+  "to_uom": "Pound",
+  "value": 2.204623
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.565664",
+  "name": "MAT-UOM-CNV-00070",
+  "to_uom": "F13 Slug",
+  "value": 0.0685218
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.575536",
+  "name": "MAT-UOM-CNV-00071",
+  "to_uom": "Stone",
+  "value": 0.157473
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.581064",
+  "name": "MAT-UOM-CNV-00072",
+  "to_uom": "Tonne",
+  "value": 0.001
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "KGM Kilogramo",
+  "modified": "2022-11-26 17:22:07.589304",
+  "name": "MAT-UOM-CNV-00073",
+  "to_uom": "Kip",
+  "value": 0.002205
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.596115",
+  "name": "MAT-UOM-CNV-00074",
+  "to_uom": "Barrel(Beer)",
+  "value": 0.008522
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.603058",
+  "name": "MAT-UOM-CNV-00075",
+  "to_uom": "Barrel (Oil)",
+  "value": 0.00629
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.608943",
+  "name": "MAT-UOM-CNV-00076",
+  "to_uom": "Bushel (UK)",
+  "value": 0.027496
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.614038",
+  "name": "MAT-UOM-CNV-00077",
+  "to_uom": "Bushel (US Dry Level)",
+  "value": 0.028378
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.619114",
+  "name": "MAT-UOM-CNV-00078",
+  "to_uom": "Centilitre",
+  "value": 100.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.624751",
+  "name": "MAT-UOM-CNV-00079",
+  "to_uom": "Cubic Centimeter",
+  "value": 1000.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.629637",
+  "name": "MAT-UOM-CNV-00080",
+  "to_uom": "DMQ Decímetro cúbico",
+  "value": 1.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.636226",
+  "name": "MAT-UOM-CNV-00081",
+  "to_uom": "FTQ Pie cúbico",
+  "value": 0.035315
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.641936",
+  "name": "MAT-UOM-CNV-00082",
+  "to_uom": "Cubic Inch",
+  "value": 61.023744
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.646852",
+  "name": "MAT-UOM-CNV-00083",
+  "to_uom": "Cubic Meter",
+  "value": 0.001
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.651747",
+  "name": "MAT-UOM-CNV-00084",
+  "to_uom": "Cubic Millimeter",
+  "value": 1000000.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.656567",
+  "name": "MAT-UOM-CNV-00085",
+  "to_uom": "Cubic Yard",
+  "value": 0.001308
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.662219",
+  "name": "MAT-UOM-CNV-00086",
+  "to_uom": "G21 Taza",
+  "value": 4.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.667138",
+  "name": "MAT-UOM-CNV-00087",
+  "to_uom": "DLT Decilitro",
+  "value": 10.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.671840",
+  "name": "MAT-UOM-CNV-00088",
+  "to_uom": "Fluid Ounce (UK)",
+  "value": 35.19508
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.676666",
+  "name": "MAT-UOM-CNV-00089",
+  "to_uom": "Fluid Ounce (US)",
+  "value": 33.814023
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.682446",
+  "name": "MAT-UOM-CNV-00090",
+  "to_uom": "Gallon (UK)",
+  "value": 0.21997
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.687506",
+  "name": "MAT-UOM-CNV-00091",
+  "to_uom": "Gallon Dry (US)",
+  "value": 0.227021
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.692359",
+  "name": "MAT-UOM-CNV-00092",
+  "to_uom": "Gallon Liquid (US)",
+  "value": 0.264172
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.699121",
+  "name": "MAT-UOM-CNV-00093",
+  "to_uom": "LTR Litro",
+  "value": 1.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.711128",
+  "name": "MAT-UOM-CNV-00094",
+  "to_uom": "MLT Millilitro",
+  "value": 1000.0
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.720834",
+  "name": "MAT-UOM-CNV-00095",
+  "to_uom": "Peck",
+  "value": 0.113511
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.733029",
+  "name": "MAT-UOM-CNV-00096",
+  "to_uom": "Pint (UK)",
+  "value": 1.759754
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.742406",
+  "name": "MAT-UOM-CNV-00097",
+  "to_uom": "Pint, Dry (US)",
+  "value": 1.816166
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.751126",
+  "name": "MAT-UOM-CNV-00098",
+  "to_uom": "Pint, Liquid (US)",
+  "value": 2.113376
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.760059",
+  "name": "MAT-UOM-CNV-00099",
+  "to_uom": "Quart (UK)",
+  "value": 0.879877
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.768575",
+  "name": "MAT-UOM-CNV-00100",
+  "to_uom": "Quart Dry (US)",
+  "value": 0.908083
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.776028",
+  "name": "MAT-UOM-CNV-00101",
+  "to_uom": "Quart Liquid (US)",
+  "value": 1.056688
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.785726",
+  "name": "MAT-UOM-CNV-00102",
+  "to_uom": "Tablespoon (US)",
+  "value": 67.628045
+ },
+ {
+  "category": "Volume",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "LTR Litro",
+  "modified": "2022-11-26 17:22:07.793973",
+  "name": "MAT-UOM-CNV-00103",
+  "to_uom": "Teaspoon",
+  "value": 202.884136
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.805041",
+  "name": "MAT-UOM-CNV-00104",
+  "to_uom": "DAY Día",
+  "value": 1.1574e-05
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.814167",
+  "name": "MAT-UOM-CNV-00105",
+  "to_uom": "HUR Hora",
+  "value": 0.000277778
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.822159",
+  "name": "MAT-UOM-CNV-00106",
+  "to_uom": "Minuto",
+  "value": 0.016667
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.830519",
+  "name": "MAT-UOM-CNV-00107",
+  "to_uom": "Second",
+  "value": 1.0
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.838602",
+  "name": "MAT-UOM-CNV-00108",
+  "to_uom": "Millisecond",
+  "value": 1000.0
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.846907",
+  "name": "MAT-UOM-CNV-00109",
+  "to_uom": "Microsecond",
+  "value": 1000000.0
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.854607",
+  "name": "MAT-UOM-CNV-00110",
+  "to_uom": "Nanosecond",
+  "value": 1000000000.0
+ },
+ {
+  "category": "Hora",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Second",
+  "modified": "2022-11-26 17:22:07.861864",
+  "name": "MAT-UOM-CNV-00111",
+  "to_uom": "Semana",
+  "value": 1.653e-06
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.872090",
+  "name": "MAT-UOM-CNV-00112",
+  "to_uom": "Atmosphere",
+  "value": 9.869e-06
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.881373",
+  "name": "MAT-UOM-CNV-00113",
+  "to_uom": "Pascal",
+  "value": 1.0
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.889958",
+  "name": "MAT-UOM-CNV-00114",
+  "to_uom": "Bar",
+  "value": 1e-05
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.898351",
+  "name": "MAT-UOM-CNV-00115",
+  "to_uom": "Foot Of Water",
+  "value": 0.000334562
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.907760",
+  "name": "MAT-UOM-CNV-00116",
+  "to_uom": "Hectopascal",
+  "value": 0.01
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.915700",
+  "name": "MAT-UOM-CNV-00117",
+  "to_uom": "Iches Of Water",
+  "value": 0.00401474
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.924335",
+  "name": "MAT-UOM-CNV-00118",
+  "to_uom": "Inches Of Mercury",
+  "value": 0.0002953
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.932360",
+  "name": "MAT-UOM-CNV-00119",
+  "to_uom": "Kilopascal",
+  "value": 0.001
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.940274",
+  "name": "MAT-UOM-CNV-00120",
+  "to_uom": "Meter Of Water",
+  "value": 0.00010197
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.948112",
+  "name": "MAT-UOM-CNV-00121",
+  "to_uom": "Microbar",
+  "value": 10.0
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.956750",
+  "name": "MAT-UOM-CNV-00122",
+  "to_uom": "Milibar",
+  "value": 0.01
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.964474",
+  "name": "MAT-UOM-CNV-00123",
+  "to_uom": "Millimeter Of Mercury",
+  "value": 0.007501
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:07.986535",
+  "name": "MAT-UOM-CNV-00124",
+  "to_uom": "Millimeter Of Water",
+  "value": 0.101974
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:08.003182",
+  "name": "MAT-UOM-CNV-00125",
+  "to_uom": "Technical Atmosphere",
+  "value": 1.0197e-05
+ },
+ {
+  "category": "Pressure",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pascal",
+  "modified": "2022-11-26 17:22:08.012271",
+  "name": "MAT-UOM-CNV-00126",
+  "to_uom": "Torr",
+  "value": 0.007500615
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.025165",
+  "name": "MAT-UOM-CNV-00127",
+  "to_uom": "Dyne",
+  "value": 100000.0
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.037055",
+  "name": "MAT-UOM-CNV-00128",
+  "to_uom": "Gram-Force",
+  "value": 101.971621298
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.045679",
+  "name": "MAT-UOM-CNV-00129",
+  "to_uom": "Joule/Meter",
+  "value": 1.0
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.054398",
+  "name": "MAT-UOM-CNV-00130",
+  "to_uom": "Kilogram-Force",
+  "value": 0.101971621
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.062644",
+  "name": "MAT-UOM-CNV-00131",
+  "to_uom": "Kilopond",
+  "value": 0.101971621
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.071186",
+  "name": "MAT-UOM-CNV-00132",
+  "to_uom": "Kilopound-Force",
+  "value": 0.000224809
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.105150",
+  "name": "MAT-UOM-CNV-00133",
+  "to_uom": "Newton",
+  "value": 1.0
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.115974",
+  "name": "MAT-UOM-CNV-00134",
+  "to_uom": "Ounce-Force",
+  "value": 3.59694309
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.130918",
+  "name": "MAT-UOM-CNV-00135",
+  "to_uom": "Pond",
+  "value": 101.9716213
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.147982",
+  "name": "MAT-UOM-CNV-00136",
+  "to_uom": "Pound-Force",
+  "value": 0.224808943
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.158887",
+  "name": "MAT-UOM-CNV-00137",
+  "to_uom": "Poundal",
+  "value": 7.23301408
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.167960",
+  "name": "MAT-UOM-CNV-00138",
+  "to_uom": "Tonne-Force(Metric)",
+  "value": 0.000101972
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.176678",
+  "name": "MAT-UOM-CNV-00139",
+  "to_uom": "Ton-Force (UK)",
+  "value": 0.000100361
+ },
+ {
+  "category": "Fuerza",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Newton",
+  "modified": "2022-11-26 17:22:08.185053",
+  "name": "MAT-UOM-CNV-00140",
+  "to_uom": "Ton-Force (US)",
+  "value": 0.000112404
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.195280",
+  "name": "MAT-UOM-CNV-00141",
+  "to_uom": "Btu (It)",
+  "value": 0.000947817
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.204109",
+  "name": "MAT-UOM-CNV-00142",
+  "to_uom": "Btu (Th)",
+  "value": 0.000948452
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.213033",
+  "name": "MAT-UOM-CNV-00143",
+  "to_uom": "Btu (Mean)",
+  "value": 0.000947086
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.221617",
+  "name": "MAT-UOM-CNV-00144",
+  "to_uom": "Calorie (It)",
+  "value": 0.238845897
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.229198",
+  "name": "MAT-UOM-CNV-00145",
+  "to_uom": "Calorie (Th)",
+  "value": 0.239005736
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.236474",
+  "name": "MAT-UOM-CNV-00146",
+  "to_uom": "Calorie (Mean)",
+  "value": 0.238662345
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.244198",
+  "name": "MAT-UOM-CNV-00147",
+  "to_uom": "Calorie (Food)",
+  "value": 0.000238892
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.251930",
+  "name": "MAT-UOM-CNV-00148",
+  "to_uom": "Erg",
+  "value": 10000000.0
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.259162",
+  "name": "MAT-UOM-CNV-00149",
+  "to_uom": "Horsepower-Hours",
+  "value": 3.73e-07
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.267488",
+  "name": "MAT-UOM-CNV-00150",
+  "to_uom": "Inch Pound-Force",
+  "value": 8.850745791
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.275431",
+  "name": "MAT-UOM-CNV-00151",
+  "to_uom": "Joule",
+  "value": 1.0
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.282408",
+  "name": "MAT-UOM-CNV-00152",
+  "to_uom": "Kilojoule",
+  "value": 0.0011
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.290763",
+  "name": "MAT-UOM-CNV-00153",
+  "to_uom": "Kilocalorie",
+  "value": 0.000239006
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.299376",
+  "name": "MAT-UOM-CNV-00154",
+  "to_uom": "Kilowatt-Hour",
+  "value": 2.78e-07
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.307964",
+  "name": "MAT-UOM-CNV-00155",
+  "to_uom": "Litre-Atmosphere",
+  "value": 0.0098692
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.316653",
+  "name": "MAT-UOM-CNV-00156",
+  "to_uom": "Megajoule",
+  "value": 1e-06
+ },
+ {
+  "category": "Energía",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Joule",
+  "modified": "2022-11-26 17:22:08.323893",
+  "name": "MAT-UOM-CNV-00157",
+  "to_uom": "Watt-Hour",
+  "value": 0.000277778
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.332431",
+  "name": "MAT-UOM-CNV-00158",
+  "to_uom": "Btu/Hour",
+  "value": 3.41214245
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.339558",
+  "name": "MAT-UOM-CNV-00159",
+  "to_uom": "Btu/Minutes",
+  "value": 0.056869027
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.345443",
+  "name": "MAT-UOM-CNV-00160",
+  "to_uom": "Btu/Seconds",
+  "value": 0.000947817
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.351685",
+  "name": "MAT-UOM-CNV-00161",
+  "to_uom": "Calorie/Seconds",
+  "value": 0.238845897
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.357628",
+  "name": "MAT-UOM-CNV-00162",
+  "to_uom": "Horsepower",
+  "value": 0.001341022
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.365373",
+  "name": "MAT-UOM-CNV-00163",
+  "to_uom": "Kilowatt",
+  "value": 0.001
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.372549",
+  "name": "MAT-UOM-CNV-00164",
+  "to_uom": "Megawatt",
+  "value": 1e-06
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.378831",
+  "name": "MAT-UOM-CNV-00165",
+  "to_uom": "Volt-Ampere",
+  "value": 1.0
+ },
+ {
+  "category": "Power",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Watt",
+  "modified": "2022-11-26 17:22:08.384836",
+  "name": "MAT-UOM-CNV-00166",
+  "to_uom": "Watt",
+  "value": 1.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.393253",
+  "name": "MAT-UOM-CNV-00167",
+  "to_uom": "Centigram/Litre",
+  "value": 100.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.400365",
+  "name": "MAT-UOM-CNV-00168",
+  "to_uom": "Decigram/Litre",
+  "value": 10.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.406819",
+  "name": "MAT-UOM-CNV-00169",
+  "to_uom": "Dekagram/Litre",
+  "value": 0.1
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.413026",
+  "name": "MAT-UOM-CNV-00170",
+  "to_uom": "Hectogram/Litre",
+  "value": 0.01
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.419367",
+  "name": "MAT-UOM-CNV-00171",
+  "to_uom": "Gram/Cubic Meter",
+  "value": 1000.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.426496",
+  "name": "MAT-UOM-CNV-00172",
+  "to_uom": "Gram/Cubic Centimeter",
+  "value": 0.001
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.432565",
+  "name": "MAT-UOM-CNV-00173",
+  "to_uom": "Gram/Cubic Millimeter",
+  "value": 1e-06
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.439618",
+  "name": "MAT-UOM-CNV-00174",
+  "to_uom": "Gram/Litre",
+  "value": 1.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.445392",
+  "name": "MAT-UOM-CNV-00175",
+  "to_uom": "Grain/Gallon (US)",
+  "value": 58.4178306
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.451594",
+  "name": "MAT-UOM-CNV-00176",
+  "to_uom": "Grain/Gallon (UK)",
+  "value": 70.156887638
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.458612",
+  "name": "MAT-UOM-CNV-00177",
+  "to_uom": "Grain/Cubic Foot",
+  "value": 436.996
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.465261",
+  "name": "MAT-UOM-CNV-00178",
+  "to_uom": "Kilogram/Cubic Meter",
+  "value": 1.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.472162",
+  "name": "MAT-UOM-CNV-00179",
+  "to_uom": "Kilogram/Cubic Centimeter",
+  "value": 1e-06
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.478663",
+  "name": "MAT-UOM-CNV-00180",
+  "to_uom": "Kilogram/Litre",
+  "value": 0.001
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.486193",
+  "name": "MAT-UOM-CNV-00181",
+  "to_uom": "Milligram/Cubic Meter",
+  "value": 1000000.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.494645",
+  "name": "MAT-UOM-CNV-00182",
+  "to_uom": "Milligram/Cubic Centimeter",
+  "value": 1.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.510778",
+  "name": "MAT-UOM-CNV-00183",
+  "to_uom": "Milligram/Cubic Millimeter",
+  "value": 0.001
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.517075",
+  "name": "MAT-UOM-CNV-00184",
+  "to_uom": "Megagram/Litre",
+  "value": 1e-06
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.524798",
+  "name": "MAT-UOM-CNV-00185",
+  "to_uom": "Milligram/Litre",
+  "value": 1000.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.533703",
+  "name": "MAT-UOM-CNV-00186",
+  "to_uom": "Microgram/Litre",
+  "value": 1000000.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.542770",
+  "name": "MAT-UOM-CNV-00187",
+  "to_uom": "Nanogram/Litre",
+  "value": 1000000000.0
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.549670",
+  "name": "MAT-UOM-CNV-00188",
+  "to_uom": "Ounce/Cubic Inch",
+  "value": 0.000578037
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.555848",
+  "name": "MAT-UOM-CNV-00189",
+  "to_uom": "Ounce/Cubic Foot",
+  "value": 0.998847369
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.562436",
+  "name": "MAT-UOM-CNV-00190",
+  "to_uom": "Ounce/Gallon (US)",
+  "value": 0.133526471
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.569205",
+  "name": "MAT-UOM-CNV-00191",
+  "to_uom": "Ounce/Gallon (UK)",
+  "value": 0.160358605
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.575640",
+  "name": "MAT-UOM-CNV-00192",
+  "to_uom": "Pound/Cubic Inch",
+  "value": 3.6127e-05
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.582366",
+  "name": "MAT-UOM-CNV-00193",
+  "to_uom": "Pound/Cubic Foot",
+  "value": 0.062427961
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.588944",
+  "name": "MAT-UOM-CNV-00194",
+  "to_uom": "Pound/Cubic Yard",
+  "value": 1.685554936
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.596815",
+  "name": "MAT-UOM-CNV-00195",
+  "to_uom": "Pound/Gallon (US)",
+  "value": 0.008345404
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.602875",
+  "name": "MAT-UOM-CNV-00196",
+  "to_uom": "Pound/Gallon (UK)",
+  "value": 0.010022413
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.609993",
+  "name": "MAT-UOM-CNV-00197",
+  "to_uom": "Psi/1000 Feet",
+  "value": 0.433527504
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.616545",
+  "name": "MAT-UOM-CNV-00198",
+  "to_uom": "Slug/Cubic Foot",
+  "value": 0.00194032
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.623051",
+  "name": "MAT-UOM-CNV-00199",
+  "to_uom": "Ton (Short)/Cubic Yard",
+  "value": 0.000842778
+ },
+ {
+  "category": "Density",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gram/Litre",
+  "modified": "2022-11-26 17:22:08.629433",
+  "name": "MAT-UOM-CNV-00200",
+  "to_uom": "Ton (Long)/Cubic Yard",
+  "value": 0.00075248
+ },
+ {
+  "category": "Temperature",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Celsius",
+  "modified": "2022-11-26 17:22:08.636738",
+  "name": "MAT-UOM-CNV-00201",
+  "to_uom": "Celsius",
+  "value": 1.0
+ },
+ {
+  "category": "Temperature",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Celsius",
+  "modified": "2022-11-26 17:22:08.643521",
+  "name": "MAT-UOM-CNV-00202",
+  "to_uom": "Fahrenheit",
+  "value": 33.8
+ },
+ {
+  "category": "Temperature",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Celsius",
+  "modified": "2022-11-26 17:22:08.649967",
+  "name": "MAT-UOM-CNV-00203",
+  "to_uom": "Kelvin",
+  "value": 274.15
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.657781",
+  "name": "MAT-UOM-CNV-00204",
+  "to_uom": "Cycle/Second",
+  "value": 1.0
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.664532",
+  "name": "MAT-UOM-CNV-00205",
+  "to_uom": "Nanohertz",
+  "value": 1000000000.0
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.671237",
+  "name": "MAT-UOM-CNV-00206",
+  "to_uom": "Millihertz",
+  "value": 1000.0
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.680751",
+  "name": "MAT-UOM-CNV-00207",
+  "to_uom": "Hertz",
+  "value": 1.0
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.693273",
+  "name": "MAT-UOM-CNV-00208",
+  "to_uom": "KHZ Kilohertz",
+  "value": 0.001
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.706926",
+  "name": "MAT-UOM-CNV-00209",
+  "to_uom": "MHZ Megahertz",
+  "value": 1e-06
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.718208",
+  "name": "MAT-UOM-CNV-00210",
+  "to_uom": "Wavelength In Gigametres",
+  "value": 0.299792458
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.727720",
+  "name": "MAT-UOM-CNV-00211",
+  "to_uom": "Wavelength In Megametres",
+  "value": 299.792458
+ },
+ {
+  "category": "Frequency and Wavelength",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Hertz",
+  "modified": "2022-11-26 17:22:08.739719",
+  "name": "MAT-UOM-CNV-00212",
+  "to_uom": "Wavelength In Kilometres",
+  "value": 299792.458
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.751876",
+  "name": "MAT-UOM-CNV-00213",
+  "to_uom": "Ampere-Hour",
+  "value": 0.000277778
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.762169",
+  "name": "MAT-UOM-CNV-00214",
+  "to_uom": "Ampere-Minute",
+  "value": 0.016666667
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.771743",
+  "name": "MAT-UOM-CNV-00215",
+  "to_uom": "Ampere-Second",
+  "value": 1.0
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.779793",
+  "name": "MAT-UOM-CNV-00216",
+  "to_uom": "Coulomb",
+  "value": 1.0
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.785774",
+  "name": "MAT-UOM-CNV-00217",
+  "to_uom": "EMU Of Charge",
+  "value": 0.1
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.792228",
+  "name": "MAT-UOM-CNV-00218",
+  "to_uom": "Faraday",
+  "value": 1.0364e-05
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.799552",
+  "name": "MAT-UOM-CNV-00219",
+  "to_uom": "Kilocoulomb",
+  "value": 0.001
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.804855",
+  "name": "MAT-UOM-CNV-00220",
+  "to_uom": "Megacoulomb",
+  "value": 1e-06
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.809846",
+  "name": "MAT-UOM-CNV-00221",
+  "to_uom": "Millicoulomb",
+  "value": 1000.0
+ },
+ {
+  "category": "Electrical Charge",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Coulomb",
+  "modified": "2022-11-26 17:22:08.814816",
+  "name": "MAT-UOM-CNV-00222",
+  "to_uom": "Nanocoulomb",
+  "value": 1000000000.0
+ },
+ {
+  "category": "Electric Current",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Ampere",
+  "modified": "2022-11-26 17:22:08.821367",
+  "name": "MAT-UOM-CNV-00223",
+  "to_uom": "Ampere",
+  "value": 1.0
+ },
+ {
+  "category": "Electric Current",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Ampere",
+  "modified": "2022-11-26 17:22:08.826936",
+  "name": "MAT-UOM-CNV-00224",
+  "to_uom": "Abampere",
+  "value": 0.1
+ },
+ {
+  "category": "Electric Current",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Ampere",
+  "modified": "2022-11-26 17:22:08.831874",
+  "name": "MAT-UOM-CNV-00225",
+  "to_uom": "Biot",
+  "value": 0.1
+ },
+ {
+  "category": "Electric Current",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Ampere",
+  "modified": "2022-11-26 17:22:08.836823",
+  "name": "MAT-UOM-CNV-00226",
+  "to_uom": "EMU of current",
+  "value": 0.1
+ },
+ {
+  "category": "Electric Current",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Ampere",
+  "modified": "2022-11-26 17:22:08.842190",
+  "name": "MAT-UOM-CNV-00227",
+  "to_uom": "Kiloampere",
+  "value": 0.001
+ },
+ {
+  "category": "Electric Current",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Ampere",
+  "modified": "2022-11-26 17:22:08.847083",
+  "name": "MAT-UOM-CNV-00228",
+  "to_uom": "Milliampere",
+  "value": 1000.0
+ },
+ {
+  "category": "Magnetic Induction",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gauss",
+  "modified": "2022-11-26 17:22:08.853253",
+  "name": "MAT-UOM-CNV-00229",
+  "to_uom": "Gamma",
+  "value": 100000.0
+ },
+ {
+  "category": "Magnetic Induction",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gauss",
+  "modified": "2022-11-26 17:22:08.859338",
+  "name": "MAT-UOM-CNV-00230",
+  "to_uom": "Gauss",
+  "value": 1.0
+ },
+ {
+  "category": "Magnetic Induction",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Gauss",
+  "modified": "2022-11-26 17:22:08.863947",
+  "name": "MAT-UOM-CNV-00231",
+  "to_uom": "Tesla",
+  "value": 0.0001
+ },
+ {
+  "category": "Agricultura",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Por ciento",
+  "modified": "2022-11-26 17:22:08.870244",
+  "name": "MAT-UOM-CNV-00232",
+  "to_uom": "Por ciento",
+  "value": 1.0
+ },
+ {
+  "category": "Agricultura",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Por ciento",
+  "modified": "2022-11-26 17:22:08.875907",
+  "name": "MAT-UOM-CNV-00233",
+  "to_uom": "Parts Per Million",
+  "value": 10000.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "Pound",
+  "modified": "2022-11-26 17:22:08.885900",
+  "name": "MAT-UOM-CNV-00234",
+  "to_uom": "Ounce",
+  "value": 16.0
+ },
+ {
+  "category": "Mass",
+  "docstatus": 0,
+  "doctype": "UOM Conversion Factor",
+  "from_uom": "GRM Gramo",
+  "modified": "2022-11-26 17:22:08.893057",
+  "name": "MAT-UOM-CNV-00235",
+  "to_uom": "Ounce",
+  "value": 0.035274
+ }
+]
