@@ -660,51 +660,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.764466",
-  "must_be_whole_number": 0,
-  "name": "Barleycorn",
-  "uom_name": "Barleycorn"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.765126",
-  "must_be_whole_number": 0,
-  "name": "Calibre",
-  "uom_name": "Calibre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.765775",
-  "must_be_whole_number": 0,
-  "name": "Cable Length (UK)",
-  "uom_name": "Cable Length (UK)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.766447",
-  "must_be_whole_number": 0,
-  "name": "Cable Length (US)",
-  "uom_name": "Cable Length (US)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.767680",
-  "must_be_whole_number": 0,
-  "name": "Cable Length",
-  "uom_name": "Cable Length"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.769174",
   "must_be_whole_number": 0,
   "name": "M49 Cadena",
@@ -894,33 +849,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.784999",
-  "must_be_whole_number": 0,
-  "name": "Arshin",
-  "uom_name": "Arshin"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.785645",
-  "must_be_whole_number": 0,
-  "name": "Sazhen",
-  "uom_name": "Sazhen"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.786367",
-  "must_be_whole_number": 0,
-  "name": "Medio Metro",
-  "uom_name": "Medio Metro"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.787034",
   "must_be_whole_number": 0,
   "name": "MTK Metro cuadrado",
@@ -930,37 +858,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.787682",
-  "must_be_whole_number": 0,
-  "name": "Centiarea",
-  "uom_name": "Centiarea"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.788332",
   "must_be_whole_number": 0,
   "name": "Zona",
   "uom_name": "Zona"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.788976",
-  "must_be_whole_number": 0,
-  "name": "Manzana",
-  "uom_name": "Manzana"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.789643",
-  "must_be_whole_number": 0,
-  "name": "Caballeria",
-  "uom_name": "Caballeria"
  },
  {
   "docstatus": 0,
@@ -988,15 +889,6 @@
   "must_be_whole_number": 0,
   "name": "Acre",
   "uom_name": "Acre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.792719",
-  "must_be_whole_number": 0,
-  "name": "Acre (US)",
-  "uom_name": "Acre (US)"
  },
  {
   "docstatus": 0,
@@ -1146,15 +1038,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.806417",
-  "must_be_whole_number": 0,
-  "name": "Carat",
-  "uom_name": "Carat"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.807218",
   "must_be_whole_number": 0,
   "name": "Cental",
@@ -1191,28 +1074,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.810085",
-  "must_be_whole_number": 0,
-  "name": "Hundredweight (UK)",
-  "uom_name": "Hundredweight (UK)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.811104",
   "must_be_whole_number": 0,
   "name": "Hundredweight (US)",
   "uom_name": "Hundredweight (US)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.811785",
-  "must_be_whole_number": 0,
-  "name": "Quintal",
-  "uom_name": "Quintal"
  },
  {
   "docstatus": 0,
@@ -1254,15 +1119,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.815370",
-  "must_be_whole_number": 0,
-  "name": "Pood",
-  "uom_name": "Pood"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.816083",
   "must_be_whole_number": 0,
   "name": "Pound",
@@ -1281,37 +1137,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.817427",
-  "must_be_whole_number": 0,
-  "name": "Stone",
-  "uom_name": "Stone"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.818197",
   "must_be_whole_number": 0,
   "name": "Tonne",
   "uom_name": "Tonne"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.818867",
-  "must_be_whole_number": 0,
-  "name": "Kip",
-  "uom_name": "Kip"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.819723",
-  "must_be_whole_number": 0,
-  "name": "Barrel(Beer)",
-  "uom_name": "Barrel(Beer)"
  },
  {
   "docstatus": 0,
