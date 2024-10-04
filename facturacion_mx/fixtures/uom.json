@@ -678,24 +678,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.770616",
-  "must_be_whole_number": 0,
-  "name": "Ells (UK)",
-  "uom_name": "Ells (UK)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.771794",
-  "must_be_whole_number": 0,
-  "name": "Ems(Pica)",
-  "uom_name": "Ems(Pica)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.772471",
   "must_be_whole_number": 0,
   "name": "AK Braza",
@@ -709,24 +691,6 @@
   "must_be_whole_number": 0,
   "name": "FOT Pie",
   "uom_name": "FOT Pie"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.773781",
-  "must_be_whole_number": 0,
-  "name": "Furlong",
-  "uom_name": "Furlong"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.774476",
-  "must_be_whole_number": 0,
-  "name": "Hand",
-  "uom_name": "Hand"
  },
  {
   "docstatus": 0,
@@ -759,24 +723,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.777410",
-  "must_be_whole_number": 0,
-  "name": "Enlace",
-  "uom_name": "Enlace"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.778068",
-  "must_be_whole_number": 0,
-  "name": "Micrometer",
-  "uom_name": "Micrometer"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.778723",
   "must_be_whole_number": 0,
   "name": "M52 Milla",
@@ -790,15 +736,6 @@
   "must_be_whole_number": 0,
   "name": "Mile (Nautical)",
   "uom_name": "Mile (Nautical)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.780506",
-  "must_be_whole_number": 0,
-  "name": "Millimeter",
-  "uom_name": "Millimeter"
  },
  {
   "docstatus": 0,

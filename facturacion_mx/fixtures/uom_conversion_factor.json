@@ -40,23 +40,13 @@
   "value": 10.0
  },
  {
-  "category": "Largo",
+  "category": "Length",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.181872",
-  "name": "MAT-UOM-CNV-00010",
-  "to_uom": "Ells (UK)",
-  "value": 0.0
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.186524",
+  "modified": "2024-10-04 17:40:20.510250",
   "name": "MAT-UOM-CNV-00011",
-  "to_uom": "Ems(Pica)",
+  "to_uom": "R1 Pica",
   "value": 236.222
  },
  {
@@ -78,26 +68,6 @@
   "name": "MAT-UOM-CNV-00013",
   "to_uom": "FOT Pie",
   "value": 3.28084
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.200916",
-  "name": "MAT-UOM-CNV-00014",
-  "to_uom": "Furlong",
-  "value": 0.004971
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.205449",
-  "name": "MAT-UOM-CNV-00015",
-  "to_uom": "Hand",
-  "value": 9.84252
  },
  {
   "category": "Largo",
@@ -130,23 +100,13 @@
   "value": 0.001
  },
  {
-  "category": "Largo",
+  "category": "Length",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.225089",
-  "name": "MAT-UOM-CNV-00019",
-  "to_uom": "Enlace",
-  "value": 4.975124
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.229861",
+  "modified": "2024-10-04 17:41:12.301659",
   "name": "MAT-UOM-CNV-00020",
-  "to_uom": "Micrometer",
+  "to_uom": "4H Micra Micrómetro Micrón",
   "value": 1000000.0
  },
  {
@@ -170,13 +130,13 @@
   "value": 0.00054
  },
  {
-  "category": "Largo",
+  "category": "Length",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.251860",
+  "modified": "2024-10-04 17:45:01.779129",
   "name": "MAT-UOM-CNV-00023",
-  "to_uom": "Millimeter",
+  "to_uom": "MMT Milímetro",
   "value": 1000.0
  },
  {
