@@ -653,8 +653,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.834223",
   "must_be_whole_number": 0,
-  "name": "Peck",
-  "uom_name": "Peck"
+  "name": "G23 Peck",
+  "uom_name": "G23 Peck"
  },
  {
   "docstatus": 0,
@@ -761,8 +761,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.842545",
   "must_be_whole_number": 0,
-  "name": "Second",
-  "uom_name": "Second"
+  "name": "SEC Segundo",
+  "uom_name": "SEC Segundo"
  },
  {
   "docstatus": 0,
@@ -806,8 +806,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.847494",
   "must_be_whole_number": 0,
-  "name": "Atmosphere",
-  "uom_name": "Atmosphere"
+  "name": "ATM Atmósfera",
+  "uom_name": "ATM Atmósfera"
  },
  {
   "docstatus": 0,
@@ -815,8 +815,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.848310",
   "must_be_whole_number": 0,
-  "name": "Pascal",
-  "uom_name": "Pascal"
+  "name": "PAL Pascal",
+  "uom_name": "PAL Pascal"
  },
  {
   "docstatus": 0,
@@ -824,8 +824,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.848980",
   "must_be_whole_number": 0,
-  "name": "Bar",
-  "uom_name": "Bar"
+  "name": "BAR Bar",
+  "uom_name": "BAR Bar"
  },
  {
   "docstatus": 0,
@@ -833,8 +833,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.849625",
   "must_be_whole_number": 0,
-  "name": "Foot Of Water",
-  "uom_name": "Foot Of Water"
+  "name": "K24 Pie de agua",
+  "uom_name": "K24 Pie de agua"
  },
  {
   "docstatus": 0,
@@ -842,8 +842,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.850275",
   "must_be_whole_number": 0,
-  "name": "Hectopascal",
-  "uom_name": "Hectopascal"
+  "name": "A97 Hectopascal",
+  "uom_name": "A97 Hectopascal"
  },
  {
   "docstatus": 0,
@@ -869,8 +869,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.852222",
   "must_be_whole_number": 0,
-  "name": "Kilopascal",
-  "uom_name": "Kilopascal"
+  "name": "KPA Kilopascal",
+  "uom_name": "KPA Kilopascal"
  },
  {
   "docstatus": 0,
@@ -887,8 +887,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.853631",
   "must_be_whole_number": 0,
-  "name": "Microbar",
-  "uom_name": "Microbar"
+  "name": "B85 Microbar",
+  "uom_name": "B85 Microbar"
  },
  {
   "docstatus": 0,
@@ -896,8 +896,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.854289",
   "must_be_whole_number": 0,
-  "name": "Milibar",
-  "uom_name": "Milibar"
+  "name": "MBR Milibar",
+  "uom_name": "MBR Milibar"
  },
  {
   "docstatus": 0,
@@ -923,8 +923,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.856300",
   "must_be_whole_number": 0,
-  "name": "Technical Atmosphere",
-  "uom_name": "Technical Atmosphere"
+  "name": "ATT Atmósfera técnica",
+  "uom_name": "ATT Atmósfera técnica"
  },
  {
   "docstatus": 0,
@@ -932,8 +932,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.856988",
   "must_be_whole_number": 0,
-  "name": "Torr",
-  "uom_name": "Torr"
+  "name": "UA Torr",
+  "uom_name": "UA Torr"
  },
  {
   "docstatus": 0,
@@ -941,8 +941,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.857743",
   "must_be_whole_number": 0,
-  "name": "Dyne",
-  "uom_name": "Dyne"
+  "name": "DU Dina",
+  "uom_name": "DU Dina"
  },
  {
   "docstatus": 0,
@@ -959,8 +959,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.859066",
   "must_be_whole_number": 0,
-  "name": "Joule/Meter",
-  "uom_name": "Joule/Meter"
+  "name": "B12 Joule por metro",
+  "uom_name": "B12 Joule por metro"
  },
  {
   "docstatus": 0,
@@ -1157,8 +1157,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.878614",
   "must_be_whole_number": 0,
-  "name": "Joule",
-  "uom_name": "Joule"
+  "name": "JOU Joule",
+  "uom_name": "JOU Joule"
  },
  {
   "docstatus": 0,
@@ -1166,8 +1166,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.879542",
   "must_be_whole_number": 0,
-  "name": "Kilojoule",
-  "uom_name": "Kilojoule"
+  "name": "KJO Kilojoule",
+  "uom_name": "KJO Kilojoule"
  },
  {
   "docstatus": 0,
@@ -1184,8 +1184,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.881260",
   "must_be_whole_number": 0,
-  "name": "Kilowatt-Hour",
-  "uom_name": "Kilowatt-Hour"
+  "name": "KWH Kilowatt hora",
+  "uom_name": "KWH Kilowatt hora"
  },
  {
   "docstatus": 0,
@@ -1202,8 +1202,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.882661",
   "must_be_whole_number": 0,
-  "name": "Megajoule",
-  "uom_name": "Megajoule"
+  "name": "3B Megajoule",
+  "uom_name": "3B Megajoule"
  },
  {
   "docstatus": 0,
@@ -1211,8 +1211,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.883343",
   "must_be_whole_number": 0,
-  "name": "Watt-Hour",
-  "uom_name": "Watt-Hour"
+  "name": "WHT Watt hora",
+  "uom_name": "WHT Watt hora"
  },
  {
   "docstatus": 0,
@@ -1265,8 +1265,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.887567",
   "must_be_whole_number": 0,
-  "name": "Kilowatt",
-  "uom_name": "Kilowatt"
+  "name": "KWT Kilowatt",
+  "uom_name": "KWT Kilowatt"
  },
  {
   "docstatus": 0,
@@ -1274,8 +1274,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.888227",
   "must_be_whole_number": 0,
-  "name": "Megawatt",
-  "uom_name": "Megawatt"
+  "name": "MAW Megawatt",
+  "uom_name": "MAW Megawatt"
  },
  {
   "docstatus": 0,
@@ -1292,44 +1292,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.889547",
   "must_be_whole_number": 0,
-  "name": "Watt",
-  "uom_name": "Watt"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.890246",
-  "must_be_whole_number": 0,
-  "name": "Centigram/Litre",
-  "uom_name": "Centigram/Litre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.891477",
-  "must_be_whole_number": 0,
-  "name": "Decigram/Litre",
-  "uom_name": "Decigram/Litre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.892338",
-  "must_be_whole_number": 0,
-  "name": "Dekagram/Litre",
-  "uom_name": "Dekagram/Litre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.893032",
-  "must_be_whole_number": 0,
-  "name": "Hectogram/Litre",
-  "uom_name": "Hectogram/Litre"
+  "name": "WTT Watt",
+  "uom_name": "WTT Watt"
  },
  {
   "docstatus": 0,
@@ -1337,8 +1301,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.893704",
   "must_be_whole_number": 0,
-  "name": "Gram/Cubic Meter",
-  "uom_name": "Gram/Cubic Meter"
+  "name": "A93 Gramo por metro cúbico",
+  "uom_name": "A93 Gramo por metro cúbico"
  },
  {
   "docstatus": 0,
@@ -1346,8 +1310,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.894366",
   "must_be_whole_number": 0,
-  "name": "Gram/Cubic Centimeter",
-  "uom_name": "Gram/Cubic Centimeter"
+  "name": "23 Gramo por centímetro cúbico",
+  "uom_name": "23 Gramo por centímetro cúbico"
  },
  {
   "docstatus": 0,
@@ -1364,8 +1328,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.908225",
   "must_be_whole_number": 0,
-  "name": "Gram/Litre",
-  "uom_name": "Gram/Litre"
+  "name": "GL Gramo por litro",
+  "uom_name": "GL Gramo por litro"
  },
  {
   "docstatus": 0,
@@ -1427,26 +1391,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.913798",
   "must_be_whole_number": 0,
-  "name": "Milligram/Cubic Meter",
-  "uom_name": "Milligram/Cubic Meter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.914654",
-  "must_be_whole_number": 0,
-  "name": "Milligram/Cubic Centimeter",
-  "uom_name": "Milligram/Cubic Centimeter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.915359",
-  "must_be_whole_number": 0,
-  "name": "Milligram/Cubic Millimeter",
-  "uom_name": "Milligram/Cubic Millimeter"
+  "name": "GP Miligramo por metro cúbico",
+  "uom_name": "GP Miligramo por metro cúbico"
  },
  {
   "docstatus": 0,
@@ -1463,8 +1409,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.916740",
   "must_be_whole_number": 0,
-  "name": "Milligram/Litre",
-  "uom_name": "Milligram/Litre"
+  "name": "M1 Miligramo por litro",
+  "uom_name": "M1 Miligramo por litro"
  },
  {
   "docstatus": 0,
