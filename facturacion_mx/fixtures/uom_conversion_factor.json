@@ -266,7 +266,7 @@
   "from_uom": "MTK Metro cuadrado",
   "modified": "2022-11-26 17:22:07.402956",
   "name": "MAT-UOM-CNV-00045",
-  "to_uom": "MIK Milla cudrada",
+  "to_uom": "MIK Milla cuadrada",
   "value": 3.86e-07
  },
  {
@@ -816,7 +816,7 @@
   "from_uom": "Second",
   "modified": "2022-11-26 17:22:07.838602",
   "name": "MAT-UOM-CNV-00108",
-  "to_uom": "Millisecond",
+  "to_uom": "C26 Milisegundo",
   "value": 1000.0
  },
  {
@@ -826,7 +826,7 @@
   "from_uom": "Second",
   "modified": "2022-11-26 17:22:07.846907",
   "name": "MAT-UOM-CNV-00109",
-  "to_uom": "Microsecond",
+  "to_uom": "B98 Microsegundo",
   "value": 1000000.0
  },
  {
@@ -836,7 +836,7 @@
   "from_uom": "Second",
   "modified": "2022-11-26 17:22:07.854607",
   "name": "MAT-UOM-CNV-00110",
-  "to_uom": "Nanosecond",
+  "to_uom": "C47 Nanosegundo",
   "value": 1000000000.0
  },
  {
@@ -846,7 +846,7 @@
   "from_uom": "Second",
   "modified": "2022-11-26 17:22:07.861864",
   "name": "MAT-UOM-CNV-00111",
-  "to_uom": "Semana",
+  "to_uom": "WEE Semana",
   "value": 1.653e-06
  },
  {

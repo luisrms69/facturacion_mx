@@ -84,42 +84,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:23.963010",
-  "must_be_whole_number": 0,
-  "name": "Foot",
-  "uom_name": "Foot"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.979959",
-  "must_be_whole_number": 0,
-  "name": "Hectometer",
-  "uom_name": "Hectometer"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.984811",
-  "must_be_whole_number": 0,
-  "name": "Inch",
-  "uom_name": "Inch"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.988271",
-  "must_be_whole_number": 0,
-  "name": "Kilometer",
-  "uom_name": "Kilometer"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2024-09-17 12:34:23.991531",
   "must_be_whole_number": 0,
   "name": "Link",
@@ -129,64 +93,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:23.998578",
-  "must_be_whole_number": 0,
-  "name": "Mile",
-  "uom_name": "Mile"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.022166",
-  "must_be_whole_number": 0,
-  "name": "Yard",
-  "uom_name": "Yard"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.035510",
-  "must_be_whole_number": 0,
-  "name": "Square Meter",
-  "uom_name": "Square Meter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2024-09-17 12:34:24.042548",
   "must_be_whole_number": 0,
   "name": "Area",
   "uom_name": "Area"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.071473",
-  "must_be_whole_number": 0,
-  "name": "Hectare",
-  "uom_name": "Hectare"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.077883",
-  "must_be_whole_number": 0,
-  "name": "Square Foot",
-  "uom_name": "Square Foot"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.088057",
-  "must_be_whole_number": 0,
-  "name": "Square Mile",
-  "uom_name": "Square Mile"
  },
  {
   "docstatus": 0,
@@ -219,33 +129,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:24.140121",
-  "must_be_whole_number": 0,
-  "name": "Gram",
-  "uom_name": "Gram"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.158936",
-  "must_be_whole_number": 0,
-  "name": "Kg",
-  "uom_name": "Kg"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.171226",
-  "must_be_whole_number": 0,
-  "name": "Milligram",
-  "uom_name": "Milligram"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2024-09-17 12:34:24.185807",
   "must_be_whole_number": 0,
   "name": "Slug",
@@ -255,82 +138,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:24.221071",
-  "must_be_whole_number": 0,
-  "name": "Cubic Decimeter",
-  "uom_name": "Cubic Decimeter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.224857",
-  "must_be_whole_number": 0,
-  "name": "Cubic Foot",
-  "uom_name": "Cubic Foot"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2024-09-17 12:34:24.242812",
   "must_be_whole_number": 0,
   "name": "Cup",
   "uom_name": "Cup"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.246238",
-  "must_be_whole_number": 0,
-  "name": "Decilitre",
-  "uom_name": "Decilitre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.273873",
-  "must_be_whole_number": 0,
-  "name": "Litre",
-  "uom_name": "Litre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.277862",
-  "must_be_whole_number": 0,
-  "name": "Millilitre",
-  "uom_name": "Millilitre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.316409",
-  "must_be_whole_number": 0,
-  "name": "Hour",
-  "uom_name": "Hour"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.320050",
-  "must_be_whole_number": 0,
-  "name": "Minute",
-  "uom_name": "Minute"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.337272",
-  "must_be_whole_number": 0,
-  "name": "Week",
-  "uom_name": "Week"
  },
  {
   "docstatus": 0,
@@ -761,8 +572,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.796725",
   "must_be_whole_number": 0,
-  "name": "MIK Milla cudrada",
-  "uom_name": "MIK Milla cudrada"
+  "name": "MIK Milla cuadrada",
+  "uom_name": "MIK Milla cuadrada"
  },
  {
   "docstatus": 0,
@@ -1094,8 +905,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.843250",
   "must_be_whole_number": 0,
-  "name": "Millisecond",
-  "uom_name": "Millisecond"
+  "name": "C26 Milisegundo",
+  "uom_name": "C26 Milisegundo"
  },
  {
   "docstatus": 0,
@@ -1103,8 +914,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.844504",
   "must_be_whole_number": 0,
-  "name": "Microsecond",
-  "uom_name": "Microsecond"
+  "name": "B98 Microsegundo",
+  "uom_name": "B98 Microsegundo"
  },
  {
   "docstatus": 0,
@@ -1112,8 +923,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.845393",
   "must_be_whole_number": 0,
-  "name": "Nanosecond",
-  "uom_name": "Nanosecond"
+  "name": "C47 Nanosegundo",
+  "uom_name": "C47 Nanosegundo"
  },
  {
   "docstatus": 0,
@@ -1121,8 +932,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.846234",
   "must_be_whole_number": 0,
-  "name": "Semana",
-  "uom_name": "Semana"
+  "name": "WEE Semana",
+  "uom_name": "WEE Semana"
  },
  {
   "docstatus": 0,
