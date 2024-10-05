@@ -374,9 +374,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.480446",
+  "modified": "2024-10-04 19:40:20.472230",
   "name": "MAT-UOM-CNV-00057",
-  "to_uom": "Cental",
+  "to_uom": "CNT Cental (UK)",
   "value": 0.022046
  },
  {
@@ -384,19 +384,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.485065",
-  "name": "MAT-UOM-CNV-00058",
-  "to_uom": "Dram",
-  "value": 564.383391
- },
- {
-  "category": "Mass",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.491513",
+  "modified": "2024-10-04 19:41:01.680926",
   "name": "MAT-UOM-CNV-00059",
-  "to_uom": "Grain",
+  "to_uom": "GRN Grano",
   "value": 15432.358353
  },
  {
@@ -414,9 +404,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.508273",
+  "modified": "2024-10-04 19:43:01.527663",
   "name": "MAT-UOM-CNV-00062",
-  "to_uom": "Hundredweight (US)",
+  "to_uom": "CWI Hundredweight (US)",
   "value": 0.022046
  },
  {
@@ -434,9 +424,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.524377",
+  "modified": "2024-10-04 19:43:34.441691",
   "name": "MAT-UOM-CNV-00065",
-  "to_uom": "Microgram",
+  "to_uom": "MC Microgramo",
   "value": 1000000000.0
  },
  {
@@ -454,9 +444,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.541395",
+  "modified": "2024-10-04 19:45:59.827929",
   "name": "MAT-UOM-CNV-00067",
-  "to_uom": "Ounce",
+  "to_uom": "OZ Onza AV",
   "value": 35.273962
  },
  {
@@ -484,9 +474,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.581064",
+  "modified": "2024-10-04 19:46:58.626311",
   "name": "MAT-UOM-CNV-00072",
-  "to_uom": "Tonne",
+  "to_uom": "TNE Tonelada métrica",
   "value": 0.001
  },
  {
@@ -494,9 +484,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "LTR Litro",
-  "modified": "2022-11-26 17:22:07.603058",
+  "modified": "2024-10-04 19:47:24.021495",
   "name": "MAT-UOM-CNV-00075",
-  "to_uom": "Barrel (Oil)",
+  "to_uom": "BLL Barril (Oil, EUA)",
   "value": 0.00629
  },
  {
@@ -504,9 +494,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "LTR Litro",
-  "modified": "2022-11-26 17:22:07.608943",
+  "modified": "2024-10-04 19:47:50.714692",
   "name": "MAT-UOM-CNV-00076",
-  "to_uom": "Bushel (UK)",
+  "to_uom": "BUI Bushel (UK)",
   "value": 0.027496
  },
  {
@@ -514,9 +504,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "LTR Litro",
-  "modified": "2022-11-26 17:22:07.614038",
+  "modified": "2024-10-04 19:48:11.679428",
   "name": "MAT-UOM-CNV-00077",
-  "to_uom": "Bushel (US Dry Level)",
+  "to_uom": "BUA Bushel (US Dry Level)",
   "value": 0.028378
  },
  {
@@ -524,9 +514,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "LTR Litro",
-  "modified": "2022-11-26 17:22:07.619114",
+  "modified": "2024-10-04 19:48:47.146799",
   "name": "MAT-UOM-CNV-00078",
-  "to_uom": "Centilitre",
+  "to_uom": "CLT Centilitro",
   "value": 100.0
  },
  {
@@ -534,9 +524,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "LTR Litro",
-  "modified": "2022-11-26 17:22:07.624751",
+  "modified": "2024-10-04 19:49:22.574842",
   "name": "MAT-UOM-CNV-00079",
-  "to_uom": "Cubic Centimeter",
+  "to_uom": "CMQ Centímetro cúbico",
   "value": 1000.0
  },
  {
@@ -2084,9 +2074,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "Pound",
-  "modified": "2022-11-26 17:22:08.885900",
+  "modified": "2024-10-04 19:46:14.382227",
   "name": "MAT-UOM-CNV-00234",
-  "to_uom": "Ounce",
+  "to_uom": "OZ Onza AV",
   "value": 16.0
  },
  {
@@ -2094,9 +2084,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "GRM Gramo",
-  "modified": "2022-11-26 17:22:08.893057",
+  "modified": "2024-10-04 19:46:33.310479",
   "name": "MAT-UOM-CNV-00235",
-  "to_uom": "Ounce",
+  "to_uom": "OZ Onza AV",
   "value": 0.035274
  }
 ]

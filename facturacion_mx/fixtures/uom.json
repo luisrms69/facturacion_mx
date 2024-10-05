@@ -813,46 +813,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.807218",
-  "must_be_whole_number": 0,
-  "name": "Cental",
-  "uom_name": "Cental"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.807948",
-  "must_be_whole_number": 0,
-  "name": "Dram",
-  "uom_name": "Dram"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.808756",
-  "must_be_whole_number": 0,
-  "name": "Grain",
-  "uom_name": "Grain"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.809435",
   "must_be_whole_number": 0,
   "name": "GRM Gramo",
   "uom_name": "GRM Gramo"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.811104",
-  "must_be_whole_number": 0,
-  "name": "Hundredweight (US)",
-  "uom_name": "Hundredweight (US)"
  },
  {
   "docstatus": 0,
@@ -867,28 +831,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.813345",
-  "must_be_whole_number": 0,
-  "name": "Microgram",
-  "uom_name": "Microgram"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.814063",
   "must_be_whole_number": 0,
   "name": "MGM Miligramo",
   "uom_name": "MGM Miligramo"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.814721",
-  "must_be_whole_number": 0,
-  "name": "Ounce",
-  "uom_name": "Ounce"
  },
  {
   "docstatus": 0,
@@ -907,60 +853,6 @@
   "must_be_whole_number": 0,
   "name": "F13 Slug",
   "uom_name": "F13 Slug"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.818197",
-  "must_be_whole_number": 0,
-  "name": "Tonne",
-  "uom_name": "Tonne"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.820397",
-  "must_be_whole_number": 0,
-  "name": "Barrel (Oil)",
-  "uom_name": "Barrel (Oil)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.821091",
-  "must_be_whole_number": 0,
-  "name": "Bushel (UK)",
-  "uom_name": "Bushel (UK)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.821741",
-  "must_be_whole_number": 0,
-  "name": "Bushel (US Dry Level)",
-  "uom_name": "Bushel (US Dry Level)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.822391",
-  "must_be_whole_number": 0,
-  "name": "Centilitre",
-  "uom_name": "Centilitre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.823038",
-  "must_be_whole_number": 0,
-  "name": "Cubic Centimeter",
-  "uom_name": "Cubic Centimeter"
  },
  {
   "docstatus": 0,
