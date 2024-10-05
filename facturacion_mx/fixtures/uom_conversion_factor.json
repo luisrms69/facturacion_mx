@@ -124,9 +124,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.244298",
+  "modified": "2024-10-04 19:18:21.092064",
   "name": "MAT-UOM-CNV-00022",
-  "to_uom": "Mile (Nautical)",
+  "to_uom": "NMI Milla naútica",
   "value": 0.00054
  },
  {
@@ -144,9 +144,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.258697",
+  "modified": "2024-10-04 19:19:02.987902",
   "name": "MAT-UOM-CNV-00024",
-  "to_uom": "Nanometer",
+  "to_uom": "C45 Nanómetro",
   "value": 1000000000.0
  },
  {
@@ -154,30 +154,10 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.266835",
+  "modified": "2024-10-04 19:19:50.101113",
   "name": "MAT-UOM-CNV-00025",
-  "to_uom": "Rod",
+  "to_uom": "F49 Rod (unidad de distancia)",
   "value": 0.198839
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.273574",
-  "name": "MAT-UOM-CNV-00026",
-  "to_uom": "Vara",
-  "value": 1.19303
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.280069",
-  "name": "MAT-UOM-CNV-00027",
-  "to_uom": "Versta",
-  "value": 0.000937
  },
  {
   "category": "Largo",
@@ -204,9 +184,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.354065",
+  "modified": "2024-10-04 19:21:04.179591",
   "name": "MAT-UOM-CNV-00036",
-  "to_uom": "Square Kilometer",
+  "to_uom": "KMK Kilómetro cuadrado",
   "value": 1e-06
  },
  {
@@ -214,9 +194,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.362886",
+  "modified": "2024-10-04 19:21:34.390011",
   "name": "MAT-UOM-CNV-00037",
-  "to_uom": "Are",
+  "to_uom": "ARE Are",
   "value": 0.01
  },
  {
@@ -224,9 +204,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.367747",
+  "modified": "2024-10-04 19:22:10.036292",
   "name": "MAT-UOM-CNV-00038",
-  "to_uom": "Acre",
+  "to_uom": "ACR Acre",
   "value": 0.000247
  },
  {
@@ -244,9 +224,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.383828",
+  "modified": "2024-10-04 19:23:02.611493",
   "name": "MAT-UOM-CNV-00041",
-  "to_uom": "Square Yard",
+  "to_uom": "YDK Yarda cuadrada",
   "value": 1.19599
  },
  {
@@ -264,9 +244,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.393007",
+  "modified": "2024-10-04 19:23:38.408182",
   "name": "MAT-UOM-CNV-00043",
-  "to_uom": "Square Inch",
+  "to_uom": "INK Pulgada cuadrada",
   "value": 1550.0031
  },
  {
@@ -274,9 +254,9 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.397952",
+  "modified": "2024-10-04 19:24:07.612947",
   "name": "MAT-UOM-CNV-00044",
-  "to_uom": "Square Centimeter",
+  "to_uom": "CMK Centímetro cuadrado",
   "value": 10000.0
  },
  {
@@ -293,28 +273,28 @@
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.408984",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:24:53.574645",
   "name": "MAT-UOM-CNV-00046",
-  "to_uom": "Meter/Second",
+  "to_uom": "MTS Metro por segundo",
   "value": 1.0
  },
  {
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.413919",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:27:47.240992",
   "name": "MAT-UOM-CNV-00047",
-  "to_uom": "Inch/Minute",
+  "to_uom": "M63 Pulgada por minuto",
   "value": 2362.204724
  },
  {
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.419312",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:28:30.520533",
   "name": "MAT-UOM-CNV-00048",
   "to_uom": "FR Pie por minuto",
   "value": 196.850394
@@ -323,28 +303,28 @@
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.426257",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:29:08.049148",
   "name": "MAT-UOM-CNV-00049",
-  "to_uom": "Inch/Second",
+  "to_uom": "IU Pulgada por segundo",
   "value": 39.370079
  },
  {
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.433663",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:29:55.433706",
   "name": "MAT-UOM-CNV-00050",
-  "to_uom": "Kilometer/Hour",
+  "to_uom": "KMH Kilómetro por hora",
   "value": 3.6
  },
  {
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.441691",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:30:20.675944",
   "name": "MAT-UOM-CNV-00051",
   "to_uom": "FS Pie por segundo",
   "value": 3.28084
@@ -353,18 +333,18 @@
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.446790",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:31:02.542615",
   "name": "MAT-UOM-CNV-00052",
-  "to_uom": "Mile/Hour",
+  "to_uom": "HM Milla por hora (milla estatal)",
   "value": 2.236936
  },
  {
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.452786",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:31:44.011588",
   "name": "MAT-UOM-CNV-00053",
   "to_uom": "KNT Nudo",
   "value": 1.943844
@@ -373,20 +353,20 @@
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.458871",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:32:17.907642",
   "name": "MAT-UOM-CNV-00054",
-  "to_uom": "Mile/Minute",
+  "to_uom": "M57 Milla por minuto",
   "value": 0.037283
  },
  {
   "category": "Speed",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Meter/Second",
-  "modified": "2022-11-26 17:22:07.465440",
+  "from_uom": "MTS Metro por segundo",
+  "modified": "2024-10-04 19:32:55.803919",
   "name": "MAT-UOM-CNV-00055",
-  "to_uom": "Mile/Second",
+  "to_uom": "M58 Milla por segundo",
   "value": 0.000621
  },
  {

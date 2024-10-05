@@ -732,51 +732,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.779785",
-  "must_be_whole_number": 0,
-  "name": "Mile (Nautical)",
-  "uom_name": "Mile (Nautical)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.781651",
-  "must_be_whole_number": 0,
-  "name": "Nanometer",
-  "uom_name": "Nanometer"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.782319",
-  "must_be_whole_number": 0,
-  "name": "Rod",
-  "uom_name": "Rod"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.782968",
-  "must_be_whole_number": 0,
-  "name": "Vara",
-  "uom_name": "Vara"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.783614",
-  "must_be_whole_number": 0,
-  "name": "Versta",
-  "uom_name": "Versta"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.784335",
   "must_be_whole_number": 0,
   "name": "LY Yarda lineal",
@@ -804,46 +759,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.790305",
-  "must_be_whole_number": 0,
-  "name": "Square Kilometer",
-  "uom_name": "Square Kilometer"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.791362",
-  "must_be_whole_number": 0,
-  "name": "Are",
-  "uom_name": "Are"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.792065",
-  "must_be_whole_number": 0,
-  "name": "Acre",
-  "uom_name": "Acre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.793367",
   "must_be_whole_number": 0,
   "name": "HAR Hectárea",
   "uom_name": "HAR Hectárea"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.794013",
-  "must_be_whole_number": 0,
-  "name": "Square Yard",
-  "uom_name": "Square Yard"
  },
  {
   "docstatus": 0,
@@ -858,46 +777,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.795306",
-  "must_be_whole_number": 0,
-  "name": "Square Inch",
-  "uom_name": "Square Inch"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.795956",
-  "must_be_whole_number": 0,
-  "name": "Square Centimeter",
-  "uom_name": "Square Centimeter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.796725",
   "must_be_whole_number": 0,
   "name": "MIK Milla cudrada",
   "uom_name": "MIK Milla cudrada"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.797441",
-  "must_be_whole_number": 0,
-  "name": "Meter/Second",
-  "uom_name": "Meter/Second"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.798105",
-  "must_be_whole_number": 0,
-  "name": "Inch/Minute",
-  "uom_name": "Inch/Minute"
  },
  {
   "docstatus": 0,
@@ -912,24 +795,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.799409",
-  "must_be_whole_number": 0,
-  "name": "Inch/Second",
-  "uom_name": "Inch/Second"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.800059",
-  "must_be_whole_number": 0,
-  "name": "Kilometer/Hour",
-  "uom_name": "Kilometer/Hour"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.800745",
   "must_be_whole_number": 0,
   "name": "FS Pie por segundo",
@@ -939,37 +804,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.801441",
-  "must_be_whole_number": 0,
-  "name": "Mile/Hour",
-  "uom_name": "Mile/Hour"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.802113",
   "must_be_whole_number": 0,
   "name": "KNT Nudo",
   "uom_name": "KNT Nudo"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.802772",
-  "must_be_whole_number": 0,
-  "name": "Mile/Minute",
-  "uom_name": "Mile/Minute"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.805506",
-  "must_be_whole_number": 0,
-  "name": "Mile/Second",
-  "uom_name": "Mile/Second"
  },
  {
   "docstatus": 0,
