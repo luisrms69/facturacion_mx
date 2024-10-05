@@ -968,8 +968,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.859714",
   "must_be_whole_number": 0,
-  "name": "Kilogram-Force",
-  "uom_name": "Kilogram-Force"
+  "name": "B37 Kilogramo fuerza",
+  "uom_name": "B37 Kilogramo fuerza"
  },
  {
   "docstatus": 0,
@@ -986,8 +986,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.861015",
   "must_be_whole_number": 0,
-  "name": "Kilopound-Force",
-  "uom_name": "Kilopound-Force"
+  "name": "M75 Kilolibra fuerza",
+  "uom_name": "M75 Kilolibra fuerza"
  },
  {
   "docstatus": 0,
@@ -995,8 +995,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.865287",
   "must_be_whole_number": 0,
-  "name": "Newton",
-  "uom_name": "Newton"
+  "name": "NEW Newton",
+  "uom_name": "NEW Newton"
  },
  {
   "docstatus": 0,
@@ -1004,8 +1004,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.866278",
   "must_be_whole_number": 0,
-  "name": "Ounce-Force",
-  "uom_name": "Ounce-Force"
+  "name": "L40 Onza Fuerza",
+  "uom_name": "L40 Onza Fuerza"
  },
  {
   "docstatus": 0,
@@ -1022,8 +1022,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.867695",
   "must_be_whole_number": 0,
-  "name": "Pound-Force",
-  "uom_name": "Pound-Force"
+  "name": "C78 Libra fuerza",
+  "uom_name": "C78 Libra fuerza"
  },
  {
   "docstatus": 0,
@@ -1040,8 +1040,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.869218",
   "must_be_whole_number": 0,
-  "name": "Tonne-Force(Metric)",
-  "uom_name": "Tonne-Force(Metric)"
+  "name": "L94 Tonelada Fuerza (Metric)",
+  "uom_name": "L94 Tonelada Fuerza (Metric)"
  },
  {
   "docstatus": 0,
@@ -1317,15 +1317,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.907308",
-  "must_be_whole_number": 0,
-  "name": "Gram/Cubic Millimeter",
-  "uom_name": "Gram/Cubic Millimeter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.908225",
   "must_be_whole_number": 0,
   "name": "GL Gramo por litro",
@@ -1364,8 +1355,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.911338",
   "must_be_whole_number": 0,
-  "name": "Kilogram/Cubic Meter",
-  "uom_name": "Kilogram/Cubic Meter"
+  "name": "KMQ Kilogramo por metro cúbico",
+  "uom_name": "KMQ Kilogramo por metro cúbico"
  },
  {
   "docstatus": 0,
@@ -1373,8 +1364,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.912127",
   "must_be_whole_number": 0,
-  "name": "Kilogram/Cubic Centimeter",
-  "uom_name": "Kilogram/Cubic Centimeter"
+  "name": "G31 Kilogramo por centímetro cúbico",
+  "uom_name": "G31 Kilogramo por centímetro cúbico"
  },
  {
   "docstatus": 0,
@@ -1382,8 +1373,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.913043",
   "must_be_whole_number": 0,
-  "name": "Kilogram/Litre",
-  "uom_name": "Kilogram/Litre"
+  "name": "B35 Kilogramo por litro",
+  "uom_name": "B35 Kilogramo por litro"
  },
  {
   "docstatus": 0,
@@ -1393,15 +1384,6 @@
   "must_be_whole_number": 0,
   "name": "GP Miligramo por metro cúbico",
   "uom_name": "GP Miligramo por metro cúbico"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.916035",
-  "must_be_whole_number": 0,
-  "name": "Megagram/Litre",
-  "uom_name": "Megagram/Litre"
  },
  {
   "docstatus": 0,
@@ -1418,17 +1400,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.917431",
   "must_be_whole_number": 0,
-  "name": "Microgram/Litre",
-  "uom_name": "Microgram/Litre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.918141",
-  "must_be_whole_number": 0,
-  "name": "Nanogram/Litre",
-  "uom_name": "Nanogram/Litre"
+  "name": "H29 Microgramo por litro",
+  "uom_name": "H29 Microgramo por litro"
  },
  {
   "docstatus": 0,
@@ -1553,8 +1526,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.934478",
   "must_be_whole_number": 0,
-  "name": "Celsius",
-  "uom_name": "Celsius"
+  "name": "CEL Celsius",
+  "uom_name": "CEL Celsius"
  },
  {
   "docstatus": 0,
@@ -1562,8 +1535,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.937013",
   "must_be_whole_number": 0,
-  "name": "Fahrenheit",
-  "uom_name": "Fahrenheit"
+  "name": "FAH Fahrenheit",
+  "uom_name": "FAH Fahrenheit"
  },
  {
   "docstatus": 0,
@@ -1571,8 +1544,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.941922",
   "must_be_whole_number": 0,
-  "name": "Kelvin",
-  "uom_name": "Kelvin"
+  "name": "KEL Kelvin",
+  "uom_name": "KEL Kelvin"
  },
  {
   "docstatus": 0,
@@ -1587,28 +1560,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.949177",
-  "must_be_whole_number": 0,
-  "name": "Nanohertz",
-  "uom_name": "Nanohertz"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.951387",
-  "must_be_whole_number": 0,
-  "name": "Millihertz",
-  "uom_name": "Millihertz"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.954113",
   "must_be_whole_number": 0,
-  "name": "Hertz",
-  "uom_name": "Hertz"
+  "name": "HTZ Hertz",
+  "uom_name": "HTZ Hertz"
  },
  {
   "docstatus": 0,
