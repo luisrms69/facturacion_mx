@@ -3,82 +3,10 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:23.887463",
-  "must_be_whole_number": 1,
-  "name": "Unit",
-  "uom_name": "Unit"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.891087",
-  "must_be_whole_number": 1,
-  "name": "Box",
-  "uom_name": "Box"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2024-09-17 12:34:23.896942",
   "must_be_whole_number": 1,
   "name": "Nos",
   "uom_name": "Nos"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.901947",
-  "must_be_whole_number": 1,
-  "name": "Pair",
-  "uom_name": "Pair"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.908441",
-  "must_be_whole_number": 0,
-  "name": "Meter",
-  "uom_name": "Meter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.931903",
-  "must_be_whole_number": 0,
-  "name": "Centimeter",
-  "uom_name": "Centimeter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.935958",
-  "must_be_whole_number": 0,
-  "name": "Chain",
-  "uom_name": "Chain"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.940488",
-  "must_be_whole_number": 0,
-  "name": "Decimeter",
-  "uom_name": "Decimeter"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:23.955886",
-  "must_be_whole_number": 0,
-  "name": "Fathom",
-  "uom_name": "Fathom"
  },
  {
   "docstatus": 0,
@@ -97,69 +25,6 @@
   "must_be_whole_number": 0,
   "name": "Area",
   "uom_name": "Area"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.098408",
-  "must_be_whole_number": 0,
-  "name": "Foot/Minute",
-  "uom_name": "Foot/Minute"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.108927",
-  "must_be_whole_number": 0,
-  "name": "Foot/Second",
-  "uom_name": "Foot/Second"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.115820",
-  "must_be_whole_number": 0,
-  "name": "Knot",
-  "uom_name": "Knot"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.185807",
-  "must_be_whole_number": 0,
-  "name": "Slug",
-  "uom_name": "Slug"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.242812",
-  "must_be_whole_number": 0,
-  "name": "Cup",
-  "uom_name": "Cup"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.693028",
-  "must_be_whole_number": 0,
-  "name": "Kilohertz",
-  "uom_name": "Kilohertz"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.695529",
-  "must_be_whole_number": 0,
-  "name": "Megahertz",
-  "uom_name": "Megahertz"
  },
  {
   "docstatus": 0,
