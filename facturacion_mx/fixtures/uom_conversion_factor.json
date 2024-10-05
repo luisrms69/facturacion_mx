@@ -556,7 +556,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.641936",
   "name": "MAT-UOM-CNV-00082",
-  "to_uom": "Cubic Inch",
+  "to_uom": "INQ Pulgada cúbica",
   "value": 61.023744
  },
  {
@@ -566,7 +566,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.646852",
   "name": "MAT-UOM-CNV-00083",
-  "to_uom": "Cubic Meter",
+  "to_uom": "MTQ Metro cúbico",
   "value": 0.001
  },
  {
@@ -576,7 +576,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.651747",
   "name": "MAT-UOM-CNV-00084",
-  "to_uom": "Cubic Millimeter",
+  "to_uom": "MMQ Milímetro cúbico",
   "value": 1000000.0
  },
  {
@@ -586,7 +586,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.656567",
   "name": "MAT-UOM-CNV-00085",
-  "to_uom": "Cubic Yard",
+  "to_uom": "YDQ Yarda cúbica",
   "value": 0.001308
  },
  {
@@ -796,7 +796,7 @@
   "from_uom": "Second",
   "modified": "2022-11-26 17:22:07.822159",
   "name": "MAT-UOM-CNV-00106",
-  "to_uom": "Minuto",
+  "to_uom": "MIN Minuto",
   "value": 0.016667
  },
  {

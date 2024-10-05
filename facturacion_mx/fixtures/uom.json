@@ -39,15 +39,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:23.905164",
-  "must_be_whole_number": 1,
-  "name": "Set",
-  "uom_name": "Set"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2024-09-17 12:34:23.908441",
   "must_be_whole_number": 0,
   "name": "Meter",
@@ -313,15 +304,6 @@
   "must_be_whole_number": 0,
   "name": "Millilitre",
   "uom_name": "Millilitre"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.313063",
-  "must_be_whole_number": 0,
-  "name": "Day",
-  "uom_name": "Day"
  },
  {
   "docstatus": 0,
@@ -752,8 +734,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.788332",
   "must_be_whole_number": 0,
-  "name": "Zona",
-  "uom_name": "Zona"
+  "name": "E57 Zona",
+  "uom_name": "E57 Zona"
  },
  {
   "docstatus": 0,
@@ -878,8 +860,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.825415",
   "must_be_whole_number": 0,
-  "name": "Cubic Inch",
-  "uom_name": "Cubic Inch"
+  "name": "INQ Pulgada cúbica",
+  "uom_name": "INQ Pulgada cúbica"
  },
  {
   "docstatus": 0,
@@ -887,8 +869,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.826070",
   "must_be_whole_number": 0,
-  "name": "Cubic Meter",
-  "uom_name": "Cubic Meter"
+  "name": "MTQ Metro cúbico",
+  "uom_name": "MTQ Metro cúbico"
  },
  {
   "docstatus": 0,
@@ -896,8 +878,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.826721",
   "must_be_whole_number": 0,
-  "name": "Cubic Millimeter",
-  "uom_name": "Cubic Millimeter"
+  "name": "MMQ Milímetro cúbico",
+  "uom_name": "MMQ Milímetro cúbico"
  },
  {
   "docstatus": 0,
@@ -905,8 +887,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.827367",
   "must_be_whole_number": 0,
-  "name": "Cubic Yard",
-  "uom_name": "Cubic Yard"
+  "name": "YDQ Yarda cúbica",
+  "uom_name": "YDQ Yarda cúbica"
  },
  {
   "docstatus": 0,
@@ -1094,8 +1076,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.841898",
   "must_be_whole_number": 0,
-  "name": "Minuto",
-  "uom_name": "Minuto"
+  "name": "MIN Minuto",
+  "uom_name": "MIN Minuto"
  },
  {
   "docstatus": 0,
@@ -2464,5 +2446,14 @@
   "must_be_whole_number": 0,
   "name": "E48 Unidad de Servicio",
   "uom_name": "E48 Unidad de Servicio"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "UOM",
+  "enabled": 1,
+  "modified": "2024-10-05 10:12:57.872958",
+  "must_be_whole_number": 0,
+  "name": "H87 Pieza",
+  "uom_name": "H87 Pieza"
  }
 ]
