@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:FACT-GLOBAL-{YY}-{MM}-{DD}-{####}",
  "creation": "2024-09-24 18:17:08.358571",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -62,10 +63,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-24 21:30:46.289659",
+ "modified": "2024-10-08 10:28:43.804229",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Global",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

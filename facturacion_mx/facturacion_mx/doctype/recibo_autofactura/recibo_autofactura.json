@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:AUTOFACT-{YY}-{MM}-{DD}-{####}",
  "creation": "2024-09-20 21:24:17.119894",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -110,10 +111,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-09-20 22:20:03.841925",
+ "modified": "2024-10-08 10:27:32.496681",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
