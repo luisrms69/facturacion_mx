@@ -12,33 +12,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2024-09-17 12:34:23.991531",
-  "must_be_whole_number": 0,
-  "name": "Link",
-  "uom_name": "Link"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.042548",
-  "must_be_whole_number": 0,
-  "name": "Area",
-  "uom_name": "Area"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2024-09-17 12:34:24.786457",
-  "must_be_whole_number": 0,
-  "name": "Percent",
-  "uom_name": "Percent"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.771794",
   "must_be_whole_number": 0,
   "name": "R1 Pica",
@@ -500,8 +473,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.816083",
   "must_be_whole_number": 0,
-  "name": "Pound",
-  "uom_name": "Pound"
+  "name": "LBR Libra",
+  "uom_name": "LBR Libra"
  },
  {
   "docstatus": 0,
@@ -590,8 +563,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.829325",
   "must_be_whole_number": 0,
-  "name": "Fluid Ounce (UK)",
-  "uom_name": "Fluid Ounce (UK)"
+  "name": "OZI Onza líquida (UK)",
+  "uom_name": "OZI Onza líquida (UK)"
  },
  {
   "docstatus": 0,
@@ -599,8 +572,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.830234",
   "must_be_whole_number": 0,
-  "name": "Fluid Ounce (US)",
-  "uom_name": "Fluid Ounce (US)"
+  "name": "OZA Onza líquida (estados unidos)",
+  "uom_name": "OZA Onza líquida (estados unidos)"
  },
  {
   "docstatus": 0,
@@ -608,8 +581,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.830955",
   "must_be_whole_number": 0,
-  "name": "Gallon (UK)",
-  "uom_name": "Gallon (UK)"
+  "name": "GLI Galón (UK)",
+  "uom_name": "GLI Galón (UK)"
  },
  {
   "docstatus": 0,
@@ -617,8 +590,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.831615",
   "must_be_whole_number": 0,
-  "name": "Gallon Dry (US)",
-  "uom_name": "Gallon Dry (US)"
+  "name": "GLD Galón Seco (US)",
+  "uom_name": "GLD Galón Seco (US)"
  },
  {
   "docstatus": 0,
@@ -626,8 +599,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.832263",
   "must_be_whole_number": 0,
-  "name": "Gallon Liquid (US)",
-  "uom_name": "Gallon Liquid (US)"
+  "name": "A76 Galón líquido (US)",
+  "uom_name": "A76 Galón líquido (US)"
  },
  {
   "docstatus": 0,
@@ -662,8 +635,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.834873",
   "must_be_whole_number": 0,
-  "name": "Pint (UK)",
-  "uom_name": "Pint (UK)"
+  "name": "PTI Pint (UK)",
+  "uom_name": "PTI Pint (UK)"
  },
  {
   "docstatus": 0,
@@ -671,8 +644,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.835517",
   "must_be_whole_number": 0,
-  "name": "Pint, Dry (US)",
-  "uom_name": "Pint, Dry (US)"
+  "name": "PTD Pinta seca (estados unidos)",
+  "uom_name": "PTD Pinta seca (estados unidos)"
  },
  {
   "docstatus": 0,
@@ -680,8 +653,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.836163",
   "must_be_whole_number": 0,
-  "name": "Pint, Liquid (US)",
-  "uom_name": "Pint, Liquid (US)"
+  "name": "PTL Pinta líquida (US)",
+  "uom_name": "PTL Pinta líquida (US)"
  },
  {
   "docstatus": 0,
@@ -689,8 +662,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.836930",
   "must_be_whole_number": 0,
-  "name": "Quart (UK)",
-  "uom_name": "Quart (UK)"
+  "name": "QTI Cuarto (UK)",
+  "uom_name": "QTI Cuarto (UK)"
  },
  {
   "docstatus": 0,
@@ -698,8 +671,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.837599",
   "must_be_whole_number": 0,
-  "name": "Quart Dry (US)",
-  "uom_name": "Quart Dry (US)"
+  "name": "QTD Cuarto Seco (US)",
+  "uom_name": "QTD Cuarto Seco (US)"
  },
  {
   "docstatus": 0,
@@ -707,8 +680,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.838252",
   "must_be_whole_number": 0,
-  "name": "Quart Liquid (US)",
-  "uom_name": "Quart Liquid (US)"
+  "name": "QTL Cuarto líquido (US)",
+  "uom_name": "QTL Cuarto líquido (US)"
  },
  {
   "docstatus": 0,
@@ -716,8 +689,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.838906",
   "must_be_whole_number": 0,
-  "name": "Tablespoon (US)",
-  "uom_name": "Tablespoon (US)"
+  "name": "G24 Cucharada (US)",
+  "uom_name": "G24 Cucharada (US)"
  },
  {
   "docstatus": 0,
@@ -725,8 +698,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.839554",
   "must_be_whole_number": 0,
-  "name": "Teaspoon",
-  "uom_name": "Teaspoon"
+  "name": "G25 Cucharilla (US)",
+  "uom_name": "G25 Cucharilla (US)"
  },
  {
   "docstatus": 0,
@@ -1283,8 +1256,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.888887",
   "must_be_whole_number": 0,
-  "name": "Volt-Ampere",
-  "uom_name": "Volt-Ampere"
+  "name": "D46 Voltio-amperio",
+  "uom_name": "D46 Voltio-amperio"
  },
  {
   "docstatus": 0,
@@ -1328,17 +1301,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.908980",
   "must_be_whole_number": 0,
-  "name": "Grain/Gallon (US)",
-  "uom_name": "Grain/Gallon (US)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.909679",
-  "must_be_whole_number": 0,
-  "name": "Grain/Gallon (UK)",
-  "uom_name": "Grain/Gallon (UK)"
+  "name": "K41 Grano por galón (EUA)",
+  "uom_name": "K41 Grano por galón (EUA)"
  },
  {
   "docstatus": 0,
@@ -1407,42 +1371,6 @@
   "docstatus": 0,
   "doctype": "UOM",
   "enabled": 1,
-  "modified": "2022-11-26 17:22:06.919223",
-  "must_be_whole_number": 0,
-  "name": "Ounce/Cubic Inch",
-  "uom_name": "Ounce/Cubic Inch"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.920052",
-  "must_be_whole_number": 0,
-  "name": "Ounce/Cubic Foot",
-  "uom_name": "Ounce/Cubic Foot"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.921167",
-  "must_be_whole_number": 0,
-  "name": "Ounce/Gallon (US)",
-  "uom_name": "Ounce/Gallon (US)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.921853",
-  "must_be_whole_number": 0,
-  "name": "Ounce/Gallon (UK)",
-  "uom_name": "Ounce/Gallon (UK)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
   "modified": "2022-11-26 17:22:06.922523",
   "must_be_whole_number": 0,
   "name": "Pound/Cubic Inch",
@@ -1472,17 +1400,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.925377",
   "must_be_whole_number": 0,
-  "name": "Pound/Gallon (US)",
-  "uom_name": "Pound/Gallon (US)"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.926071",
-  "must_be_whole_number": 0,
-  "name": "Pound/Gallon (UK)",
-  "uom_name": "Pound/Gallon (UK)"
+  "name": "GE Libra por galón (US)",
+  "uom_name": "GE Libra por galón (US)"
  },
  {
   "docstatus": 0,
@@ -1616,8 +1535,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.966237",
   "must_be_whole_number": 0,
-  "name": "Ampere-Hour",
-  "uom_name": "Ampere-Hour"
+  "name": "AMH Amperio hora",
+  "uom_name": "AMH Amperio hora"
  },
  {
   "docstatus": 0,
@@ -1625,8 +1544,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.967764",
   "must_be_whole_number": 0,
-  "name": "Ampere-Minute",
-  "uom_name": "Ampere-Minute"
+  "name": "N95 Amperio minuto",
+  "uom_name": "N95 Amperio minuto"
  },
  {
   "docstatus": 0,
@@ -1634,8 +1553,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.971389",
   "must_be_whole_number": 0,
-  "name": "Ampere-Second",
-  "uom_name": "Ampere-Second"
+  "name": "A8 Amperio segundo",
+  "uom_name": "A8 Amperio segundo"
  },
  {
   "docstatus": 0,
@@ -1643,8 +1562,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.973225",
   "must_be_whole_number": 0,
-  "name": "Coulomb",
-  "uom_name": "Coulomb"
+  "name": "COU Culombio",
+  "uom_name": "COU Culombio"
  },
  {
   "docstatus": 0,
@@ -1670,8 +1589,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.976634",
   "must_be_whole_number": 0,
-  "name": "Kilocoulomb",
-  "uom_name": "Kilocoulomb"
+  "name": "B26 KiloCulombio",
+  "uom_name": "B26 KiloCulombio"
  },
  {
   "docstatus": 0,
@@ -1679,8 +1598,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.977831",
   "must_be_whole_number": 0,
-  "name": "Megacoulomb",
-  "uom_name": "Megacoulomb"
+  "name": "D77 MegaCulombio",
+  "uom_name": "D77 MegaCulombio"
  },
  {
   "docstatus": 0,
@@ -1688,8 +1607,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.979003",
   "must_be_whole_number": 0,
-  "name": "Millicoulomb",
-  "uom_name": "Millicoulomb"
+  "name": "D86 MiliCulombio",
+  "uom_name": "D86 MiliCulombio"
  },
  {
   "docstatus": 0,
@@ -1697,8 +1616,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.980082",
   "must_be_whole_number": 0,
-  "name": "Nanocoulomb",
-  "uom_name": "Nanocoulomb"
+  "name": "C40 NanoCulombio",
+  "uom_name": "C40 NanoCulombio"
  },
  {
   "docstatus": 0,
@@ -1706,17 +1625,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.981459",
   "must_be_whole_number": 0,
-  "name": "Ampere",
-  "uom_name": "Ampere"
- },
- {
-  "docstatus": 0,
-  "doctype": "UOM",
-  "enabled": 1,
-  "modified": "2022-11-26 17:22:06.983811",
-  "must_be_whole_number": 0,
-  "name": "Abampere",
-  "uom_name": "Abampere"
+  "name": "AMP Amperio",
+  "uom_name": "AMP Amperio"
  },
  {
   "docstatus": 0,
@@ -1742,8 +1652,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.991389",
   "must_be_whole_number": 0,
-  "name": "Kiloampere",
-  "uom_name": "Kiloampere"
+  "name": "B22 Kiloamperio",
+  "uom_name": "B22 Kiloamperio"
  },
  {
   "docstatus": 0,
@@ -1751,8 +1661,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.992920",
   "must_be_whole_number": 0,
-  "name": "Milliampere",
-  "uom_name": "Milliampere"
+  "name": "4K Miliamperio",
+  "uom_name": "4K Miliamperio"
  },
  {
   "docstatus": 0,
@@ -1769,8 +1679,8 @@
   "enabled": 1,
   "modified": "2022-11-26 17:22:06.995210",
   "must_be_whole_number": 0,
-  "name": "Gauss",
-  "uom_name": "Gauss"
+  "name": "76 Gauss",
+  "uom_name": "76 Gauss"
  },
  {
   "docstatus": 0,

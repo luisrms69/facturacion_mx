@@ -456,7 +456,7 @@
   "from_uom": "KGM Kilogramo",
   "modified": "2022-11-26 17:22:07.558469",
   "name": "MAT-UOM-CNV-00069",
-  "to_uom": "Pound",
+  "to_uom": "LBR Libra",
   "value": 2.204623
  },
  {
@@ -616,7 +616,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.671840",
   "name": "MAT-UOM-CNV-00088",
-  "to_uom": "Fluid Ounce (UK)",
+  "to_uom": "OZI Onza líquida (UK)",
   "value": 35.19508
  },
  {
@@ -626,7 +626,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.676666",
   "name": "MAT-UOM-CNV-00089",
-  "to_uom": "Fluid Ounce (US)",
+  "to_uom": "OZA Onza líquida (estados unidos)",
   "value": 33.814023
  },
  {
@@ -636,7 +636,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.682446",
   "name": "MAT-UOM-CNV-00090",
-  "to_uom": "Gallon (UK)",
+  "to_uom": "GLI Galón (UK)",
   "value": 0.21997
  },
  {
@@ -646,7 +646,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.687506",
   "name": "MAT-UOM-CNV-00091",
-  "to_uom": "Gallon Dry (US)",
+  "to_uom": "GLD Galón Seco (US)",
   "value": 0.227021
  },
  {
@@ -656,7 +656,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.692359",
   "name": "MAT-UOM-CNV-00092",
-  "to_uom": "Gallon Liquid (US)",
+  "to_uom": "A76 Galón líquido (US)",
   "value": 0.264172
  },
  {
@@ -696,7 +696,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.733029",
   "name": "MAT-UOM-CNV-00096",
-  "to_uom": "Pint (UK)",
+  "to_uom": "PTI Pint (UK)",
   "value": 1.759754
  },
  {
@@ -706,7 +706,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.742406",
   "name": "MAT-UOM-CNV-00097",
-  "to_uom": "Pint, Dry (US)",
+  "to_uom": "PTD Pinta seca (estados unidos)",
   "value": 1.816166
  },
  {
@@ -716,7 +716,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.751126",
   "name": "MAT-UOM-CNV-00098",
-  "to_uom": "Pint, Liquid (US)",
+  "to_uom": "PTL Pinta líquida (US)",
   "value": 2.113376
  },
  {
@@ -726,7 +726,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.760059",
   "name": "MAT-UOM-CNV-00099",
-  "to_uom": "Quart (UK)",
+  "to_uom": "QTI Cuarto (UK)",
   "value": 0.879877
  },
  {
@@ -736,7 +736,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.768575",
   "name": "MAT-UOM-CNV-00100",
-  "to_uom": "Quart Dry (US)",
+  "to_uom": "QTD Cuarto Seco (US)",
   "value": 0.908083
  },
  {
@@ -746,7 +746,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.776028",
   "name": "MAT-UOM-CNV-00101",
-  "to_uom": "Quart Liquid (US)",
+  "to_uom": "QTL Cuarto líquido (US)",
   "value": 1.056688
  },
  {
@@ -756,7 +756,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.785726",
   "name": "MAT-UOM-CNV-00102",
-  "to_uom": "Tablespoon (US)",
+  "to_uom": "G24 Cucharada (US)",
   "value": 67.628045
  },
  {
@@ -766,7 +766,7 @@
   "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.793973",
   "name": "MAT-UOM-CNV-00103",
-  "to_uom": "Teaspoon",
+  "to_uom": "G25 Cucharilla (US)",
   "value": 202.884136
  },
  {
@@ -1386,7 +1386,7 @@
   "from_uom": "WTT Watt",
   "modified": "2022-11-26 17:22:08.378831",
   "name": "MAT-UOM-CNV-00165",
-  "to_uom": "Volt-Ampere",
+  "to_uom": "D46 Voltio-amperio",
   "value": 1.0
  },
  {
@@ -1436,18 +1436,8 @@
   "from_uom": "GL Gramo por litro",
   "modified": "2022-11-26 17:22:08.445392",
   "name": "MAT-UOM-CNV-00175",
-  "to_uom": "Grain/Gallon (US)",
+  "to_uom": "K41 Grano por galón (EUA)",
   "value": 58.4178306
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.451594",
-  "name": "MAT-UOM-CNV-00176",
-  "to_uom": "Grain/Gallon (UK)",
-  "value": 70.156887638
  },
  {
   "category": "Density",
@@ -1524,46 +1514,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.549670",
-  "name": "MAT-UOM-CNV-00188",
-  "to_uom": "Ounce/Cubic Inch",
-  "value": 0.000578037
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.555848",
-  "name": "MAT-UOM-CNV-00189",
-  "to_uom": "Ounce/Cubic Foot",
-  "value": 0.998847369
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.562436",
-  "name": "MAT-UOM-CNV-00190",
-  "to_uom": "Ounce/Gallon (US)",
-  "value": 0.133526471
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.569205",
-  "name": "MAT-UOM-CNV-00191",
-  "to_uom": "Ounce/Gallon (UK)",
-  "value": 0.160358605
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
   "modified": "2022-11-26 17:22:08.575640",
   "name": "MAT-UOM-CNV-00192",
   "to_uom": "Pound/Cubic Inch",
@@ -1596,18 +1546,8 @@
   "from_uom": "GL Gramo por litro",
   "modified": "2022-11-26 17:22:08.596815",
   "name": "MAT-UOM-CNV-00195",
-  "to_uom": "Pound/Gallon (US)",
+  "to_uom": "GE Libra por galón (US)",
   "value": 0.008345404
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.602875",
-  "name": "MAT-UOM-CNV-00196",
-  "to_uom": "Pound/Gallon (UK)",
-  "value": 0.010022413
  },
  {
   "category": "Density",
@@ -1753,47 +1693,47 @@
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.751876",
   "name": "MAT-UOM-CNV-00213",
-  "to_uom": "Ampere-Hour",
+  "to_uom": "AMH Amperio hora",
   "value": 0.000277778
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.762169",
   "name": "MAT-UOM-CNV-00214",
-  "to_uom": "Ampere-Minute",
+  "to_uom": "N95 Amperio minuto",
   "value": 0.016666667
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.771743",
   "name": "MAT-UOM-CNV-00215",
-  "to_uom": "Ampere-Second",
+  "to_uom": "A8 Amperio segundo",
   "value": 1.0
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.779793",
   "name": "MAT-UOM-CNV-00216",
-  "to_uom": "Coulomb",
+  "to_uom": "COU Culombio",
   "value": 1.0
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.785774",
   "name": "MAT-UOM-CNV-00217",
   "to_uom": "EMU Of Charge",
@@ -1803,7 +1743,7 @@
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.792228",
   "name": "MAT-UOM-CNV-00218",
   "to_uom": "Faraday",
@@ -1813,67 +1753,57 @@
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.799552",
   "name": "MAT-UOM-CNV-00219",
-  "to_uom": "Kilocoulomb",
+  "to_uom": "B26 KiloCulombio",
   "value": 0.001
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.804855",
   "name": "MAT-UOM-CNV-00220",
-  "to_uom": "Megacoulomb",
+  "to_uom": "D77 MegaCulombio",
   "value": 1e-06
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.809846",
   "name": "MAT-UOM-CNV-00221",
-  "to_uom": "Millicoulomb",
+  "to_uom": "D86 MiliCulombio",
   "value": 1000.0
  },
  {
   "category": "Electrical Charge",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Coulomb",
+  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.814816",
   "name": "MAT-UOM-CNV-00222",
-  "to_uom": "Nanocoulomb",
+  "to_uom": "C40 NanoCulombio",
   "value": 1000000000.0
  },
  {
   "category": "Electric Current",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Ampere",
+  "from_uom": "AMP Amperio",
   "modified": "2022-11-26 17:22:08.821367",
   "name": "MAT-UOM-CNV-00223",
-  "to_uom": "Ampere",
+  "to_uom": "AMP Amperio",
   "value": 1.0
  },
  {
   "category": "Electric Current",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Ampere",
-  "modified": "2022-11-26 17:22:08.826936",
-  "name": "MAT-UOM-CNV-00224",
-  "to_uom": "Abampere",
-  "value": 0.1
- },
- {
-  "category": "Electric Current",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "Ampere",
+  "from_uom": "AMP Amperio",
   "modified": "2022-11-26 17:22:08.831874",
   "name": "MAT-UOM-CNV-00225",
   "to_uom": "Biot",
@@ -1883,7 +1813,7 @@
   "category": "Electric Current",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Ampere",
+  "from_uom": "AMP Amperio",
   "modified": "2022-11-26 17:22:08.836823",
   "name": "MAT-UOM-CNV-00226",
   "to_uom": "EMU of current",
@@ -1893,27 +1823,27 @@
   "category": "Electric Current",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Ampere",
+  "from_uom": "AMP Amperio",
   "modified": "2022-11-26 17:22:08.842190",
   "name": "MAT-UOM-CNV-00227",
-  "to_uom": "Kiloampere",
+  "to_uom": "B22 Kiloamperio",
   "value": 0.001
  },
  {
   "category": "Electric Current",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Ampere",
+  "from_uom": "AMP Amperio",
   "modified": "2022-11-26 17:22:08.847083",
   "name": "MAT-UOM-CNV-00228",
-  "to_uom": "Milliampere",
+  "to_uom": "4K Miliamperio",
   "value": 1000.0
  },
  {
   "category": "Magnetic Induction",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Gauss",
+  "from_uom": "76 Gauss",
   "modified": "2022-11-26 17:22:08.853253",
   "name": "MAT-UOM-CNV-00229",
   "to_uom": "Gamma",
@@ -1923,17 +1853,17 @@
   "category": "Magnetic Induction",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Gauss",
+  "from_uom": "76 Gauss",
   "modified": "2022-11-26 17:22:08.859338",
   "name": "MAT-UOM-CNV-00230",
-  "to_uom": "Gauss",
+  "to_uom": "76 Gauss",
   "value": 1.0
  },
  {
   "category": "Magnetic Induction",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Gauss",
+  "from_uom": "76 Gauss",
   "modified": "2022-11-26 17:22:08.863947",
   "name": "MAT-UOM-CNV-00231",
   "to_uom": "Tesla",
@@ -1963,7 +1893,7 @@
   "category": "Mass",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
-  "from_uom": "Pound",
+  "from_uom": "LBR Libra",
   "modified": "2024-10-04 19:46:14.382227",
   "name": "MAT-UOM-CNV-00234",
   "to_uom": "OZ Onza AV",
