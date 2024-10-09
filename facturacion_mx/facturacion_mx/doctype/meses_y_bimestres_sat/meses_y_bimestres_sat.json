@@ -22,9 +22,10 @@
    "label": "Descripcion"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 18:38:22.440592",
+ "modified": "2024-10-08 20:46:31.818236",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Meses y Bimestres SAT",

@@ -29,9 +29,10 @@
    "label": "Descripion"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-16 14:14:07.753579",
+ "modified": "2024-10-08 19:55:39.497460",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Forma de Pago",

@@ -27,9 +27,10 @@
    "fieldtype": "Section Break"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 18:28:44.547060",
+ "modified": "2024-10-08 20:45:46.262737",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Periodicidad SAT",

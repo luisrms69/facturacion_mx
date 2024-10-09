@@ -30,9 +30,10 @@
    "label": "Aplicaci\u00f3n"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-19 10:12:37.633106",
+ "modified": "2024-10-08 19:53:47.907294",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Motivo de Cancelacion",
