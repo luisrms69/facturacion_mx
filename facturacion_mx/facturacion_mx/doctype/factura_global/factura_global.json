@@ -9,8 +9,14 @@
   "periodicity",
   "months",
   "year",
+  "column_break_jmds",
+  "fecha_inicial",
+  "fecha_final",
+  "lugar_de_emision",
   "notas_de_venta_a_incluir_section",
   "notas_de_venta",
+  "respuestas",
+  "respuestas_del_pac",
   "section_break_lbwi",
   "amended_from"
  ],
@@ -33,20 +39,23 @@
    "fieldname": "periodicity",
    "fieldtype": "Link",
    "label": "Periodicidad",
-   "options": "Periodicidad SAT"
+   "options": "Periodicidad SAT",
+   "reqd": 1
   },
   {
    "fieldname": "months",
    "fieldtype": "Link",
    "label": "Mes",
-   "options": "Meses y Bimestres SAT"
+   "options": "Meses y Bimestres SAT",
+   "reqd": 1
   },
   {
    "default": "2023",
    "fieldname": "year",
    "fieldtype": "Select",
    "label": "A\u00f1o",
-   "options": "2023\n2024"
+   "options": "2023\n2024",
+   "reqd": 1
   },
   {
    "fieldname": "notas_de_venta_a_incluir_section",
@@ -58,12 +67,48 @@
    "fieldtype": "Table",
    "label": "Notas de venta",
    "options": "Notas Factura Global"
+  },
+  {
+   "fieldname": "column_break_jmds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fecha_inicial",
+   "fieldtype": "Date",
+   "label": "Fecha Inicial",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fecha_final",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Fecha Final",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lugar_de_emision",
+   "fieldtype": "Link",
+   "label": "Lugar de emision",
+   "link_filters": "[[\"Address\",\"is_your_company_address\",\"=\",1]]",
+   "options": "Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "respuestas",
+   "fieldtype": "Section Break",
+   "label": "Respuesta del PAC"
+  },
+  {
+   "fieldname": "respuestas_del_pac",
+   "fieldtype": "Table",
+   "label": "Respuestas del PAC",
+   "options": "Factura Responses"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-10-08 10:28:43.804229",
+ "modified": "2024-10-12 19:51:56.227364",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Global",

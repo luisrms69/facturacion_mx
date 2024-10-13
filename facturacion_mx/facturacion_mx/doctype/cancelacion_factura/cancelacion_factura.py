@@ -78,7 +78,7 @@ class CancelacionFactura(Document):
 
 		response = requests.delete(final_url, headers=headers)
 
-		data_response =response.json()
+		data_response =response.json()  #refactor:pareciera que no se usa
 
 		status = self.actualizar_cancelacion_respuesta_pac(response)
 		actualizar_status_cx_factura(self, status)
