@@ -451,11 +451,12 @@ def status_check_cx_factura(id_cx_factura, factura_cx):
 
 # Método para obtener la lista de notas de venta que se van a incluir en la factura global
 # refactor: se necesita un ENUM para los estados de sales Invoice status facturacion
-def get_invoices_factura_global():
+def get_invoices_factura_global(fecha_inicial, fecha_final):
      invoice_list = frappe.db.get_list('Sales Invoice',
                                      filters={
                                           'custom_status_facturacion': "Sin facturar",
-                                          'status': "paid"
+                                          'status': "paid",
+                                          'posting_date': ['between',[fecha_inicial,fecha_final]]
                                      },
                                      fields=[
                                          'name', 'base_total', 'base_net_total', 'base_total_taxes_and_charges']

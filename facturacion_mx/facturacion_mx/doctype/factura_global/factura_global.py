@@ -48,7 +48,9 @@ class FacturaGlobal(Document):
 #Metodo para solicitar la creacion de una factura global
 	def create_cfdi_global(self):
 		current_document = self.get_title()
-		invoice_list = get_invoices_factura_global()
+		fecha_inicial = frappe.db.get_value('Factura Global', current_document, 'fecha_inicial')
+		fecha_final = frappe.db.get_value('Factura Global', current_document, 'fecha_final')
+		invoice_list = get_invoices_factura_global(fecha_inicial,fecha_final)
 		forma_de_pago = get_forma_de_pago_global(invoice_list)
 		cliente = validate_cliente_publico_en_general()
 		uso_cfdi_global = "S01"
@@ -92,8 +94,21 @@ class FacturaGlobal(Document):
         }
 
 
-		frappe.msgprint(str(data))
+		frappe.msgprint(str(forma_de_pago))
 
+
+
+		# response = requests.post(facturapi_endpoint, json=data, headers=headers)
+		# 		self.anadir_response_record(response)
+
+		# data_response =response.json()
+
+		# status = self.actualizar_cancelacion_respuesta_pac(response)
+		# actualizar_status_cx_factura(self, status)
+		# self.anadir_response_record(response)
+
+		# if status == "Cancelacion Exitosa" :
+		# 	actualizar_status_factura_invoice(self.name)
 
 
 # # La respuesta se almacena, se convierte a JSON y se verifica si fue exitosa o rechazada
