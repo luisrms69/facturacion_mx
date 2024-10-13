@@ -18,7 +18,8 @@
   "column_break_rgni",
   "user_secret_key",
   "configuracion_facturas_globales_section",
-  "serie"
+  "serie",
+  "cliente_factura_global"
  ],
  "fields": [
   {
@@ -88,12 +89,18 @@
    "fieldname": "serie",
    "fieldtype": "Data",
    "label": "Serie"
+  },
+  {
+   "fieldname": "cliente_factura_global",
+   "fieldtype": "Link",
+   "label": "Cliente Factura Global",
+   "options": "Customer"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-24 18:31:54.770011",
+ "modified": "2024-10-12 17:24:20.437083",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",

@@ -41,6 +41,8 @@ def get_regimen_fiscal(cliente):
 
 # Se obtiene la direccion del cliente, tiene que tener definida direccion primaria, la que tiene en la Constancia
 # El regreso ya viene configurado para ser añadido al http request (data)
+
+#refactor: evaluar juntar con el siguiente metodo, la opcion sería dividir esto en dos y la parte comun juntarla
 def get_datos_direccion_facturacion(cliente):
     filters = [
         ["Dynamic Link", "link_doctype", "=", "Customer"],
@@ -55,6 +57,17 @@ def get_datos_direccion_facturacion(cliente):
             "Hay un problema con la dirección de facturación registrada, revisa en la configuración del cliente, Direcciones y Contactos")
 
     return datos_direccion
+
+def get_zipcode_email_from_address(address):
+    datos_direccion = frappe.db.get_value('Address', address, [
+                                            'pincode', 'email_id'], as_dict=1)
+    if datos_direccion == "":
+        frappe.throw(
+            "Hay un problema con la dirección registrada, revisa en la configuración")
+
+    return datos_direccion
+     
+     
 
 
 # Utilizando los datos obtenidos del cliente, se obtiene el RFC
@@ -82,6 +95,41 @@ def get_items_info(invoice_data):
                 'product_key': get_product_key(producto.item_code),
                 'price': producto.rate,
                 'unit_key': producto.uom.partition(" ")[0]
+            }
+        }
+        if not detalle_item['product']['product_key']:
+            frappe.throw(
+                "Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
+        items_info.append(detalle_item)
+
+    return items_info
+
+
+def prepare_conceptos_cfdi_global(invoice_list):
+    clave_producto_servicio = "01010101"
+    cantidad = 1
+    clave_unidad = "ACT"
+    descripcion = "Venta"
+    taxability = "02" # fix: esto se debe definir en otro lugar
+    tax_type ="002"  # fix: esto se debe definir en otro lugar
+    tax_rate = 0.16  # fix: esto se debe definir en otro lugar
+    items_info = []  #Se define como conceptos en la guia de CFDI
+    for invoice in invoice_list:
+        detalle_item = {
+            'quantity': cantidad,
+            'discount' : invoice.base_total - invoice.base_net_total,
+            'product': {
+                'description': descripcion,
+                'product_key': clave_producto_servicio,
+                'price': invoice.base_total,
+                'unit_key': clave_unidad,
+                'taxability' : taxability,
+                'taxes':[
+                     {
+                          'type': tax_type,
+                          'rate': tax_rate
+                     }
+                ]
             }
         }
         if not detalle_item['product']['product_key']:
@@ -345,34 +393,36 @@ def get_forma_de_pago(sales_invoice_id):
     return forma_de_pago
 
 
-
 # Metodo que se llaman en factura.js para enviar un correo de la factura
 @frappe.whitelist()
 def envia_factura_por_email(current_document, email_id):
-#Primero solicita la definicion de variables del documento actual   
+# Primero solicita la definicion de variables del documento actual
 
-#Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
-#Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
-        factura_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_enviar_correo')
-        api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
+# Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
+# Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
+        factura_endpoint = frappe.db.get_single_value(
+            'Facturacion MX Settings', 'endpoint_enviar_correo')
+        api_token = get_decrypted_password(
+            'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
                 "email": email_id
             }
-        final_url= f"{factura_endpoint}/{current_document}/email"
+        final_url = f"{factura_endpoint}/{current_document}/email"
 
 # La respuesta se muestra en la pantalla
         response = requests.post(
             final_url, json=data, headers=headers)
-        
-        data_response =response.json()
 
-#refactor: Los textos no me gustan hardcoded,
+        data_response = response.json()
+
+# refactor: Los textos no me gustan hardcoded,
         if check_pac_response_success(response) == 1:
                 frappe.msgprint(
-                    msg="La información se envió al correo proporcionado", #refactor: Sería mejor que se incluyera el correo
+                    # refactor: Sería mejor que se incluyera el correo
+                    msg="La información se envió al correo proporcionado",
                     title='Solicitud exitosa!!',
-                    indicator='green'             
+                    indicator='green'
                 )
         else:
                 frappe.msgprint(
@@ -380,20 +430,81 @@ def envia_factura_por_email(current_document, email_id):
                 title='No se envió el correo',
                 indicator='red'
             )
-                
 
 
 # Metodo al que se llaman en JS para revisar cual es el status de la factura, se utiliza en aquellos
 # casos donde la primer respuesta es que se requiere VOBO del cliente, se llama con un boton
-# unicamente disponible para Cancelaciones en este status        
+# unicamente disponible para Cancelaciones en este status
 @frappe.whitelist()
 def status_check_cx_factura(id_cx_factura, factura_cx):
         factura_object = get_factura_object(id_cx_factura)
         status = actualizar_cancelacion_respuesta_pac(factura_object)
         doc = frappe.get_doc("Cancelacion Factura", factura_cx)
         anade_response_record(doc, factura_object)
-        actualizar_status_cx_factura(doc,status)
-        if check_status_actual == 1 :
+        actualizar_status_cx_factura(doc, status)
+        if check_status_actual == 1:
               actualizar_status_factura_invoice(factura_cx)
 
 
+
+# METODOS UTILIZADOS POR FACTURA GLOBAL
+
+# Método para obtener la lista de notas de venta que se van a incluir en la factura global
+# refactor: se necesita un ENUM para los estados de sales Invoice status facturacion
+def get_invoices_factura_global():
+     invoice_list = frappe.db.get_list('Sales Invoice',
+                                     filters={
+                                          'custom_status_facturacion': "Sin facturar",
+                                          'status': "paid"
+                                     },
+                                     fields=[
+                                         'name', 'base_total', 'base_net_total', 'base_total_taxes_and_charges']
+                                     )
+     return invoice_list
+
+
+def get_nota_mayor(invoice_list):
+     nota_mayor = ""
+     monto_nota_mayor = 0
+     for nota_venta in invoice_list:
+          if nota_venta['base_net_total'] > monto_nota_mayor:
+            monto_nota_mayor = nota_venta['base_net_total']
+            nota_mayor = nota_venta['name']
+            
+     return nota_mayor  
+
+
+#Metodo que devuelve la forma de pago a utilizar, es la que se tiene en el monto mayor
+def get_forma_de_pago_global(invoice_list):
+     nota_mayor = get_nota_mayor(invoice_list)
+     forma_de_pago = get_forma_de_pago(nota_mayor)
+
+     return forma_de_pago
+
+
+     
+    
+
+
+
+# Metodo que Verfica que se haya definido el usuario PUBLICO EN GENERAL de mnaera correcta
+
+
+def validate_cliente_publico_en_general():
+    msg_cliente_no_existe = "El cliente Público en General no ha sido definido o no ha sido asignado. Revisa que exista como cliente y que este dado de alta en la configuración de facturación"
+    msg_rfc_incorrecto = "El RFC del cliente Público en General es incorrecto"
+    rfc_correcto = "XAXX010101000"
+    cliente_publico_general = frappe.db.get_single_value('Facturacion MX Settings', 'cliente_factura_global')
+    datos_cliente_publico_general = frappe.get_doc('Customer', cliente_publico_general)
+    if cliente_publico_general != "":
+        tax_id= datos_cliente_publico_general.tax_id
+        if tax_id != rfc_correcto:
+             frappe.throw(msg_rfc_incorrecto)         
+    else:
+        frappe.throw(msg_cliente_no_existe)
+
+    return cliente_publico_general
+
+
+
+     
