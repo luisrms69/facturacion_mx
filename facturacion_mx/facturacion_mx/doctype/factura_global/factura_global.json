@@ -15,6 +15,8 @@
   "lugar_de_emision",
   "notas_de_venta_a_incluir_section",
   "notas_de_venta",
+  "respuestas",
+  "respuestas_del_pac",
   "section_break_lbwi",
   "amended_from"
  ],
@@ -74,7 +76,7 @@
    "fieldname": "fecha_inicial",
    "fieldtype": "Date",
    "label": "Fecha Inicial",
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "fecha_final",
@@ -90,12 +92,23 @@
    "link_filters": "[[\"Address\",\"is_your_company_address\",\"=\",1]]",
    "options": "Address",
    "reqd": 1
+  },
+  {
+   "fieldname": "respuestas",
+   "fieldtype": "Section Break",
+   "label": "Respuesta del PAC"
+  },
+  {
+   "fieldname": "respuestas_del_pac",
+   "fieldtype": "Table",
+   "label": "Respuestas del PAC",
+   "options": "Factura Responses"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-10-12 17:37:45.057262",
+ "modified": "2024-10-12 19:51:56.227364",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Global",
