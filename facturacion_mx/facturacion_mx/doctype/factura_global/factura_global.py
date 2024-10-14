@@ -148,8 +148,11 @@ class FacturaGlobal(Document):
 #Metodo que se corre para validar si los campos son correctos        
 	def validate(self):
 		validate_cliente_publico_en_general()
-		msg_invoice_empty = ("No existen notas de venta pendientes de facturación para el periodo seleccionado")
+		msg_orden_fechas =  "La fecha inicial es posterior a la fecha final"
+		validate_orden_fechas(self.fecha_inicial, self.fecha_final, msg_orden_fechas)
+		msg_invoice_empty = "No existen notas de venta pendientes de facturación para el periodo seleccionado"
 		validate_not_empty(self.notas_de_venta, msg_invoice_empty)
+
 
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura

@@ -512,4 +512,7 @@ def validate_not_empty(variable, msg):
      if len(variable) == 0:
           frappe.throw(msg)
 
-     
+
+def validate_orden_fechas(fecha_inicial,fecha_final,msg):
+     if (fecha_inicial > fecha_final):
+          frappe.throw(msg)
