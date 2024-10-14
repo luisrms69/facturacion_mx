@@ -98,10 +98,11 @@ class FacturaGlobal(Document):
 
 
 
-		# response = requests.post(facturapi_endpoint, json=data, headers=headers)
+		response = requests.post(facturapi_endpoint, json=data, headers=headers)
 		# 		self.anadir_response_record(response)
 
-		# data_response =response.json()
+		data_response =response.json()
+		frappe.msgprint(str(data_response))
 
 		# status = self.actualizar_cancelacion_respuesta_pac(response)
 		# actualizar_status_cx_factura(self, status)
@@ -156,7 +157,7 @@ class FacturaGlobal(Document):
 
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
-	def on_update(self):
+	def on_submit(self):
 		self.create_cfdi_global()
 	# def on_update(self):
 	# 	invoice_list_test = get_invoices_factura_global()

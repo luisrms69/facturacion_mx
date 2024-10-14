@@ -111,7 +111,7 @@ def prepare_conceptos_cfdi_global(invoice_list):
     clave_unidad = "ACT"
     descripcion = "Venta"
     taxability = "02" # fix: esto se debe definir en otro lugar
-    tax_type ="002"  # fix: esto se debe definir en otro lugar
+    tax_type ="IVA"  # fix: esto se debe definir en otro lugar
     tax_rate = 0.16  # fix: esto se debe definir en otro lugar
     items_info = []  #Se define como conceptos en la guia de CFDI
     for invoice in invoice_list:
@@ -516,3 +516,4 @@ def validate_not_empty(variable, msg):
 def validate_orden_fechas(fecha_inicial,fecha_final,msg):
      if (fecha_inicial > fecha_final):
           frappe.throw(msg)
+
