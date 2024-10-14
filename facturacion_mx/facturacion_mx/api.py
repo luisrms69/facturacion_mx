@@ -507,5 +507,8 @@ def validate_cliente_publico_en_general():
     return cliente_publico_general
 
 
+def validate_not_empty(variable, msg):
+     if len(variable) == 0:
+          frappe.throw(msg)
 
      
