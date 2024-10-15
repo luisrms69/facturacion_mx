@@ -16,34 +16,34 @@ class Factura(Document):
     
 #refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
 #toma la respuesta y las llaves deseadas y la prepara para escritura en el documento
-    def check_pac_response(data_response,keys):
-        pac_response = {'status' : "Facturado" }
-        for key in keys:
-            if key in data_response.keys():
-                pac_response[key] = data_response[key]
-            else:
-                pac_response = { 'status' : "Rechazada" }
+    # def check_pac_response(data_response,keys):
+    #     pac_response = {'status' : "Facturado" }
+    #     for key in keys:
+    #         if key in data_response.keys():
+    #             pac_response[key] = data_response[key]
+    #         else:
+    #             pac_response = { 'status' : "Rechazada" }
 
-        return pac_response
+    #     return pac_response
 
 
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
 # Añade informacion en caso de exito al documento
-    def update_pac_response(self,pac_response):
-        self.db_set({
-            'id_pac': pac_response['id'],
-            'uuid' : pac_response['uuid'],
-            'url_de_verificación' : pac_response['verification_url'],
-            'serie_de_la_factura' : pac_response['series'],
-            'folio_de_factura' : pac_response['folio_number'],
-            'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
-            'status' : pac_response['status'],
-            'monto_total' : pac_response['total']
-        })
+    # def update_pac_response(self,pac_response):
+    #     self.db_set({
+    #         'id_pac': pac_response['id'],
+    #         'uuid' : pac_response['uuid'],
+    #         'url_de_verificación' : pac_response['verification_url'],
+    #         'serie_de_la_factura' : pac_response['series'],
+    #         'folio_de_factura' : pac_response['folio_number'],
+    #         'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
+    #         'status' : pac_response['status'],
+    #         'monto_total' : pac_response['total']
+    #     })
 
 #Actualiza el sales invoice como facturado Normal
-    def update_sales_invoice_status(sales_invoice_id):
-        frappe.set_value('Sales Invoice', sales_invoice_id, 'custom_status_facturacion', "Factura Normal")
+    # def update_sales_invoice_status(sales_invoice_id):
+    #     frappe.set_value('Sales Invoice', sales_invoice_id, 'custom_status_facturacion', "Factura Normal")
     
 #Metodo para solicitar la creacion de una factura
     def create_cfdi(self):
@@ -78,39 +78,61 @@ class Factura(Document):
             "items": get_items_info(invoice_data)
         }
 
-# La respuesta se almacena, se convierte a JSON y se verifica si fue exitosa o rechazada
-#se avisa al usuario el resultado y se escribe en el documento dependiendo del resultado
-# Si fue exitosa se marca en sales invoice com facturado
+		#Cambia el estado de las notaas de venta a enviadas a PAC
+        actualizar_status_sales_invoice(sales_invoice_id,"Enviado a PAC")
+
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
         
         data_response =response.json()
-
-
+        
+        table_respuestas = "respuesta_pac"
+        anade_response_record(table_respuestas, self,data_response)   #refactor: mucho codigo duplicado con factura global, cambien ombre variables en algunos casos
         if check_pac_response_success(response) == 1:
-            factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at', 'total']
-            pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
-
-            if pac_response['status'] == "Facturado":
-                self.update_pac_response(pac_response)
-                Factura.update_sales_invoice_status(sales_invoice_id)
-                frappe.msgprint(
-                    msg="La solicitud de facturación ha sido exittosa, puedes consultar los detalles de la confirmación proporcionados por el PAC en la parte inferior de este documento",
-                    title='Solicitud exitosa!!',
-                    indicator='green'             
-                )
-            else:
-                self.db_set['status'] = "Rechazada" # refactor: no creo que sea necesario este else
+            sale_invoice_status = "Factura Normal"
+            factura_status = "Facturado"
+            aviso_message = "La Facturación fue exitosa, consulta los detalles en la tabla Respuesta del PAC"
+            aviso_titulo = "Facturación Exitosa"
+            aviso_color = "green"
         else:
-            self.db_set({
-                'status' : "Rechazada",
-                'response_rechazada' : str(data_response)  #refactor: dejar en una sola seccion exito y fracaso
-                         })
-            frappe.msgprint(
-                msg=str(data_response),
-                title='La solicitud de facturacion no fue exitosa',
-                indicator='red'
-            )
+            sale_invoice_status = "Sin facturar"
+            factura_status = "Rechazada"
+            aviso_message = str(data_response)
+            aviso_titulo = "Hubo problema con la solicitud, revisa el reporte"
+            aviso_color = "red"
+
+        actualizar_status_sales_invoice(sales_invoice_id,sale_invoice_status)
+        actualizar_status_doc(self, factura_status)
+        despliega_aviso(title=aviso_titulo, msg=aviso_message, color=aviso_color)
+
+
+        # data_response =response.json()
+
+
+        # if check_pac_response_success(response) == 1:
+        #     # factura_pac_keys = ['id','uuid','verification_url','series','folio_number', 'created_at', 'total']
+        #     # pac_response = Factura.check_pac_response(data_response,factura_pac_keys)
+
+        #     # if pac_response['status'] == "Facturado":
+        #         # self.update_pac_response(pac_response)
+        #         Factura.update_sales_invoice_status(sales_invoice_id)
+        #         frappe.msgprint(
+        #             msg="La solicitud de facturación ha sido exittosa, puedes consultar los detalles de la confirmación proporcionados por el PAC en la parte inferior de este documento",
+        #             title='Solicitud exitosa!!',
+        #             indicator='green'             
+        #         )
+        #     else:
+        #         self.db_set['status'] = "Rechazada" # refactor: no creo que sea necesario este else
+        # else:
+        #     self.db_set({
+        #         'status' : "Rechazada",
+        #         'response_rechazada' : str(data_response)  #refactor: dejar en una sola seccion exito y fracaso
+        #                  })
+        #     frappe.msgprint(
+        #         msg=str(data_response),
+        #         title='La solicitud de facturacion no fue exitosa',
+        #         indicator='red'
+        #     )
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):
