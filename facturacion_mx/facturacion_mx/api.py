@@ -269,6 +269,16 @@ def actualizar_status_cx_factura(doc, status):
             'status': status
       })
 
+
+# Método para actualizar el status de un documento
+# fix: debe sustituir todos los metodos que traigo para actualizar status
+#fix:debe utilizarse ENUM para los status posibles
+
+def actualizar_status_sales_invoice(invoice, status):
+           frappe.db.set_value("Sales Invoice", invoice,
+                          'custom_status_facturacion', status)
+     
+
 # Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
 
 
@@ -517,3 +527,7 @@ def validate_orden_fechas(fecha_inicial,fecha_final,msg):
      if (fecha_inicial > fecha_final):
           frappe.throw(msg)
 
+
+def cambia_status_invoice_list_global(invoice_list, status):
+    for invoice in invoice_list:
+            actualizar_status_sales_invoice(invoice, status)

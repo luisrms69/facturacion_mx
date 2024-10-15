@@ -96,7 +96,8 @@ class FacturaGlobal(Document):
 
 		frappe.msgprint(str(forma_de_pago))
 
-
+		#Cambia el estado de las notaas de venta a enviadas a PAC
+		cambia_status_invoice_list_global(invoice_list,"Enviado a PAC")
 
 		response = requests.post(facturapi_endpoint, json=data, headers=headers)
 		# 		self.anadir_response_record(response)
