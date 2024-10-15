@@ -201,6 +201,15 @@ def validate_email_factura(email_id):
     #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
 
 
+# Método que se usa para imprimir avisos, utiliza tres variables, el titulo, el mensaje y el color del indicador
+def despliega_aviso(title="Aviso", msg="", color="green"):
+     frappe.msgprint(title=title, msg=msg, indicator=color)
+    
+
+
+
+
+
 # METODOS QUE SE TRAEN ORIGINALMENTE DE CX FACTURA API, ESTE SE ELIMINA
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
@@ -270,6 +279,15 @@ def actualizar_status_cx_factura(doc, status):
       })
 
 
+# Actualiza el valor de status de la cancelacion de factura
+
+
+def actualizar_status_doc(doc, status):
+      doc.db_set({
+            'status': status
+      })
+
+
 # Método para actualizar el status de un documento
 # fix: debe sustituir todos los metodos que traigo para actualizar status
 #fix:debe utilizarse ENUM para los status posibles
@@ -283,8 +301,8 @@ def actualizar_status_sales_invoice(invoice, status):
 
 
 # refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-def anade_response_record(doc, pac_response):
-    doc.append("respuestas",
+def anade_response_record(table_respuestas, doc, pac_response):
+    doc.append(table_respuestas,
                 {
                     'response_id': pac_response['id'],
                     'status_response': pac_response['status'],
@@ -465,7 +483,7 @@ def status_check_cx_factura(id_cx_factura, factura_cx):
 def get_invoices_factura_global(fecha_inicial, fecha_final):
      invoice_list = frappe.db.get_list('Sales Invoice',
                                      filters={
-                                          'custom_status_facturacion': "Sin facturar",
+                                        #   'custom_status_facturacion': "Sin facturar", SE ELIMINA MOMENTANEAMENTE PARA PRUEBAS UNICAMCENTE
                                           'status': "paid",
                                           'posting_date': ['between',[fecha_inicial,fecha_final]]
                                      },

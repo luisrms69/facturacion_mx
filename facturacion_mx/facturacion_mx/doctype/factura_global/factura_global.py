@@ -96,6 +96,8 @@ class FacturaGlobal(Document):
 
 		frappe.msgprint(str(forma_de_pago))
 
+
+		# Tareeas a realizar con la respuesta
 		#Cambia el estado de las notaas de venta a enviadas a PAC
 		cambia_status_invoice_list_global(invoice_list,"Enviado a PAC")
 
@@ -103,7 +105,28 @@ class FacturaGlobal(Document):
 		# 		self.anadir_response_record(response)
 
 		data_response =response.json()
-		frappe.msgprint(str(data_response))
+		# frappe.msgprint(str(data_response))
+
+		table_respuestas = "respuestas_del_pac"
+		anade_response_record(table_respuestas, self,data_response)
+
+		if check_pac_response_success(response) == 1:
+			sale_invoice_status = "Factura Global"
+			factura_global_status = "Facturado"
+			aviso_message = "La Facturación fue exitosa, consulta los detalles en la tabla Respuesta del PAC"
+			aviso_titulo = "Facturación Exitosa"
+			aviso_color = "green"
+		else:
+			sale_invoice_status = "Sin facturar"
+			factura_global_status = "Rechazada"
+			aviso_message = str(data_response)
+			aviso_titulo = "Hubo problema con la solicitud, revisa el reporte"
+			aviso_color = "red"
+
+		cambia_status_invoice_list_global(invoice_list, sale_invoice_status)
+		actualizar_status_doc(self, factura_global_status)
+		despliega_aviso(title=aviso_titulo, msg=aviso_message, color=aviso_color)
+
 
 		# status = self.actualizar_cancelacion_respuesta_pac(response)
 		# actualizar_status_cx_factura(self, status)
@@ -160,8 +183,11 @@ class FacturaGlobal(Document):
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
 	def on_submit(self):
 		self.create_cfdi_global()
+
+
 	# def on_update(self):
-	# 	invoice_list_test = get_invoices_factura_global()
+	# 	despliega_aviso(title="titulo", msg="test message red", color="red")
+			# 	invoice_list_test = get_invoices_factura_global()
 	# 	frappe.msgprint(str(invoice_list_test))
 	# 	forma_pago_test = get_forma_de_pago_global(invoice_list_test)
 	# 	validate_cliente_publico_en_general()

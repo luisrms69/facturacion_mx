@@ -32,7 +32,7 @@ class CancelacionFactura(Document):
 	def anadir_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
 		if check_pac_response_success(pac_response) == 1:
 			pac_response_json = pac_response.json()
-			anade_response_record(self,pac_response_json)
+			anade_response_record("respuestas",self,pac_response_json)
 
 #Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
 # Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
@@ -81,7 +81,7 @@ class CancelacionFactura(Document):
 		data_response =response.json()  #refactor:pareciera que no se usa
 
 		status = self.actualizar_cancelacion_respuesta_pac(response)
-		actualizar_status_cx_factura(self, status)
+		actualizar_status_cx_factura(self, status) #refactor: Se va a modificar el nombre a actualizar_status_doc
 		self.anadir_response_record(response)
 
 		if status == "Cancelacion Exitosa" :

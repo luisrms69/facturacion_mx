@@ -18,7 +18,8 @@
   "respuestas",
   "respuestas_del_pac",
   "section_break_lbwi",
-  "amended_from"
+  "amended_from",
+  "status"
  ],
  "fields": [
   {
@@ -101,16 +102,25 @@
    "label": "Respuesta del PAC"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "respuestas_del_pac",
    "fieldtype": "Table",
    "label": "Respuestas del PAC",
    "options": "Factura Responses"
+  },
+  {
+   "default": "Sin enviar",
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Sin enviar\nFacturado\nRechazada\nDesconocido\nCancelada"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-10-14 11:09:02.608478",
+ "modified": "2024-10-15 09:27:01.408504",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Global",
@@ -133,5 +143,26 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Sin enviar"
+  },
+  {
+   "color": "Green",
+   "title": "Facturado"
+  },
+  {
+   "color": "Red",
+   "title": "Rechazada"
+  },
+  {
+   "color": "Gray",
+   "title": "Desconocido"
+  },
+  {
+   "color": "Purple",
+   "title": "Cancelada"
+  }
+ ]
 }
