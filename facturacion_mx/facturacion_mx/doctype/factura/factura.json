@@ -25,8 +25,6 @@
   "productos_section",
   "factura_product_array",
   "amended_from",
-  "respuesta_recibida_del_pac_section",
-  "respuesta_pac",
   "resultado_de_la_solicitud_proporionados_por_pac_section",
   "id_pac",
   "uuid",
@@ -228,43 +226,18 @@
    "fieldname": "monto_total",
    "fieldtype": "Read Only",
    "label": "Monto Total de la Factura"
-  },
-  {
-   "fieldname": "respuesta_recibida_del_pac_section",
-   "fieldtype": "Section Break",
-   "label": "Respuesta recibida del PAC"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "respuesta_pac",
-   "fieldtype": "Table",
-   "label": "Respuesta PAC",
-   "options": "Factura Responses"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-10-15 13:00:53.364797",
+ "modified": "2024-10-15 17:59:49.313228",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
  "naming_rule": "Expression",
  "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  }
- ],
+ "permissions": [],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [

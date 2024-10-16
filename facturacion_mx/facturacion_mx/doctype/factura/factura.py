@@ -85,16 +85,21 @@ class Factura(Document):
             facturapi_endpoint, json=data, headers=headers)
         
         data_response =response.json()
+
+        update_pac_response(self, response)
         
-        table_respuestas = "respuesta_pac"
-        anade_response_record(table_respuestas, self,data_response)   #refactor: mucho codigo duplicado con factura global, cambien ombre variables en algunos casos
+   #refactor: mucho codigo duplicado con factura global, cambien ombre variables en algunos casos
         if check_pac_response_success(response) == 1:
+            # update_pac_response(self, data_response)
+            # table_respuestas = "respuesta_pac"
+            # anade_response_record(table_respuestas, self,data_response)
             sale_invoice_status = "Factura Normal"
             factura_status = "Facturado"
-            aviso_message = "La Facturación fue exitosa, consulta los detalles en la tabla Respuesta del PAC"
+            aviso_message = "La Facturación fue exitosa"
             aviso_titulo = "Facturación Exitosa"
             aviso_color = "green"
         else:
+            # update_pac_response_rechazada(self,data_response)
             sale_invoice_status = "Sin facturar"
             factura_status = "Rechazada"
             aviso_message = str(data_response)

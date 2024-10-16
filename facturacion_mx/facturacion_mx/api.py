@@ -210,7 +210,55 @@ def despliega_aviso(title="Aviso", msg="", color="green"):
 
 
 
-# METODOS QUE SE TRAEN ORIGINALMENTE DE CX FACTURA API, ESTE SE ELIMINA
+# METODOS QUE SE TRAEN ORIGINALMENTE DE CX FACTURA API, ESTE SE ELIMINA.
+# añado tambien los metodos que quedaban en CX Factura.py
+
+
+#Metodo para obtener el id de la factura que se va a cancelar, este es el ID proporcionado por el PAC   
+def get_factura_id(document):
+    factura_id = frappe.db.get_value(
+        "Cancelacion Factura", document.get_title(), 'id_pac'
+    )
+
+    return factura_id
+
+
+# Metodo que jala el motivo de cancelacion introducido por el usuario
+def get_motivo_cancelacion(document):
+    motivo_cancelacion = frappe.db.get_value(
+        "Cancelacion Factura", document.get_title(), 'motivo_de_cancelacion'
+    )
+    id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
+
+    return id_motivo_cancelacion
+
+#Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
+# Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
+def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
+    pac_response_json = pac_response.json()	
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_respuesta_pac(pac_response_json)
+    else:
+        frappe.msgprint(str(pac_response_json))
+        frappe.msgprint(
+            msg=str(pac_response),
+            title='La solicitud de facturacion no fue exitosa',
+            indicator='red'
+        )
+        document.db_set({
+        'mensaje_de_error' : pac_response_json['message']
+    })
+        status = "Solicitud Rechazada"
+        
+    return status
+
+
+
+
+
+
+
+
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
 def get_factura_object(factura_a_revisar):
@@ -273,13 +321,13 @@ def status_respuesta_pac(pac_response):
 # Actualiza el valor de status de la cancelacion de factura
 
 
-def actualizar_status_cx_factura(doc, status):
-      doc.db_set({
-            'status': status
-      })
+# def actualizar_status_cx_factura(doc, status):
+#       doc.db_set({
+#             'status': status
+#       })
 
 
-# Actualiza el valor de status de la cancelacion de factura
+# Actualiza el valor de status de la cancelacion de un docuemtno
 
 
 def actualizar_status_doc(doc, status):
@@ -296,6 +344,41 @@ def actualizar_status_sales_invoice(invoice, status):
            frappe.db.set_value("Sales Invoice", invoice,
                           'custom_status_facturacion', status)
      
+
+# refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
+def update_pac_response(document,response):
+    pac_response = response.json()
+    if check_pac_response_success(response) == 1:
+        document.db_set({
+            'id_pac': pac_response['id'],
+            'uuid' : pac_response['uuid'],
+            'url_de_verificación' : pac_response['verification_url'],
+            'serie_de_la_factura' : pac_response['series'],
+            'folio_de_factura' : pac_response['folio_number'],
+            'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
+            'status' : pac_response['status'],
+            'monto_total' : pac_response['total']
+        })
+    else:
+        document.db_set({
+             'mensaje_de_error' : pac_response['message']
+    })
+         
+
+
+# def update_pac_response_rechazada(document, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
+#     document.db_set({
+#         'mensaje_de_error' : pac_response['message']
+#     })
+
+
+
+
+
+
+
+
+
 
 # Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
 
