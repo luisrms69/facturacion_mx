@@ -68,10 +68,9 @@ class FacturaGlobal(Document):
 		response = requests.post(facturapi_endpoint, json=data, headers=headers)
 		data_response =response.json()
 
-		table_respuestas = "respuestas_del_pac"
-		anade_response_record(table_respuestas, self,data_response)
-
 		if check_pac_response_success(response) == 1:
+			table_respuestas = "respuestas_del_pac"
+			anade_response_record(table_respuestas, self,data_response)
 			sale_invoice_status = "Factura Global"
 			factura_global_status = "Facturado"
 			aviso_message = "La Facturación fue exitosa, consulta los detalles en la tabla Respuesta del PAC"
@@ -81,7 +80,7 @@ class FacturaGlobal(Document):
 			sale_invoice_status = "Sin facturar"
 			factura_global_status = "Rechazada"
 			aviso_message = str(data_response)
-			aviso_titulo = "Hubo problema con la solicitud, revisa el reporte"
+			aviso_titulo = "Hubo problema con la solicitud, este es el mensaje recibido"
 			aviso_color = "red"
 
 		cambia_status_invoice_list_global(invoice_list, sale_invoice_status)
