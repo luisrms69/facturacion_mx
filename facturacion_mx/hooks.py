@@ -243,5 +243,5 @@ app_license = "mit"
 # }
 
 fixtures = [ "Custom Field", "Uso CFDI", "Mode of Payment", "Forma de Pago", "Tax Category" , "Motivo de Cancelacion", "Periodicidad SAT", "Meses y Bimestres SAT", "UOM","UOM Conversion Factor" ]
-
+# fixtures = [ "Custom Field"]
 # fixtures = [ "UOM","UOM Conversion Factor" ]
