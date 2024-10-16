@@ -90,10 +90,12 @@ def get_items_info(invoice_data):
     for producto in invoice_data.items:
         detalle_item = {
             'quantity': producto.qty,
+            'discount': producto.amount - producto.net_amount,
             'product': {
                 'description': producto.item_name,
                 'product_key': get_product_key(producto.item_code),
                 'price': producto.rate,
+                'tax_included': "false",
                 'unit_key': producto.uom.partition(" ")[0]
             }
         }
