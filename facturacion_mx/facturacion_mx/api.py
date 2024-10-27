@@ -82,6 +82,20 @@ def get_product_key(item_code):
     product_key = frappe.db.get_value("Item", item_code, "product_key")
     return product_key
 
+# Se obtienen los datos de impuestos
+
+
+# def get_tax_info(invoice_data):
+#     invoice_taxes = []
+#     for tax in invoice_data.taxes:
+#         detalle_tax = {
+#             'rate': tax.rate/100,
+#             'type': "IVA"  # fix: Hardcoded mejorar
+#         }
+#         invoice_taxes.append(detalle_tax)
+
+#     return invoice_taxes
+
 # Se obtienen los datos de producto, estan en un child table
 
 
@@ -96,6 +110,7 @@ def get_items_info(invoice_data):
                 'product_key': get_product_key(producto.item_code),
                 'price': producto.rate,
                 'tax_included': "false",
+                # 'taxes' : get_tax_id(invoice_data),
                 'unit_key': producto.uom.partition(" ")[0]
             }
         }
