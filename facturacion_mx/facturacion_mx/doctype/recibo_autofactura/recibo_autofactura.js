@@ -50,9 +50,9 @@ frappe.ui.form.on('Recibo Autofactura', {
                         });
                     }
                 }
-            }),
+            }), //refactor:duplicado con factura
             frappe.call({
-                method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_forma_de_pago',
+                    method: 'facturacion_mx.facturacion_mx.api.get_forma_de_pago',
                 args: {
                     sales_invoice_id: frm.doc.sales_invoice_id
                 },
@@ -60,7 +60,8 @@ frappe.ui.form.on('Recibo Autofactura', {
                     if (t.message) {
                     frm.set_value('forma_de_pago_registrada', t.message);
                     } else {
-                    frm.set_value('forma_de_pago_registrada', "No hay referencia de forma de pago")
+                    frm.set_value('forma_de_pago_registrada', "No hay referencia de forma de pago");
+                    frappe.msgprint("No existe registro de forma de pago, no es posible emitir recibo");
                 }
             }
             });

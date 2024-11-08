@@ -86,7 +86,7 @@
   {
    "fieldname": "nota_de_venta_para_emision_de_recibo_autofactura_section",
    "fieldtype": "Section Break",
-   "label": "Nota de venta para emisi{on de recibo (autofactura)"
+   "label": "Nota de venta para emisi\u00f3n de recibo (autofactura)"
   },
   {
    "fieldname": "section_break_uzup",
@@ -111,7 +111,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-10-08 10:27:32.496681",
+ "modified": "2024-11-07 21:02:00.466072",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
@@ -129,6 +129,29 @@
    "role": "System Manager",
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX Manager",
+   "share": 1,
    "write": 1
   }
  ],
