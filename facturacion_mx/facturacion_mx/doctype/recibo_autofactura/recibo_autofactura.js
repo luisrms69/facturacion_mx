@@ -60,7 +60,8 @@ frappe.ui.form.on('Recibo Autofactura', {
                     if (t.message) {
                     frm.set_value('forma_de_pago_registrada', t.message);
                     } else {
-                    frm.set_value('forma_de_pago_registrada', "No hay referencia de forma de pago")
+                    frm.set_value('forma_de_pago_registrada', "No hay referencia de forma de pago");
+                    frappe.msgprint("No existe registro de forma de pago, no es posible emitir recibo");
                 }
             }
             });
