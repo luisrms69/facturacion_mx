@@ -14,8 +14,10 @@
   "forma_de_pago_registrada",
   "section_break_uzup",
   "cliente",
+  "direccion_facturacion",
   "column_break_nenm",
   "rfc",
+  "cp",
   "productos_section",
   "recibo_product_array",
   "section_break_cnp7",
@@ -41,7 +43,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Nota de Venta",
-   "link_filters": "[[\"Sales Invoice\",\"custom_status_facturacion\",\"=\",\"Sin Facturar\"]]",
+   "link_filters": "[[\"Sales Invoice\",\"custom_status_facturacion\",\"=\",\"Sin Facturar\"],[\"Sales Invoice\",\"status\",\"=\",\"Paid\"]]",
    "options": "Sales Invoice",
    "reqd": 1
   },
@@ -106,12 +108,26 @@
   {
    "fieldname": "column_break_nenm",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "direccion_facturacion.pincode",
+   "fieldname": "cp",
+   "fieldtype": "Data",
+   "label": "C\u00f3digo Postal",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "cliente.customer_primary_address",
+   "fieldname": "direccion_facturacion",
+   "fieldtype": "Link",
+   "label": "Direccion de Facturacion",
+   "options": "Address"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-07 21:02:00.466072",
+ "modified": "2024-11-07 22:04:49.043659",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
