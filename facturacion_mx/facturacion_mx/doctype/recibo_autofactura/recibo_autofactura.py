@@ -9,7 +9,7 @@ from frappe.utils.password import get_decrypted_password #se importa para poder 
 
 from facturacion_mx.facturacion_mx.api import *
 # from facturacion_mx.doctype.factura.api import *
-from .api import *
+# from .api import *
 
 
 class ReciboAutofactura(Document):
