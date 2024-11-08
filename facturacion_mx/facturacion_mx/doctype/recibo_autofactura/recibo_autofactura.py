@@ -55,10 +55,7 @@ class ReciboAutofactura(Document):
             'Recibo Autofactura', current_document, 'sales_invoice_id')
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         cliente = get_cliente(invoice_data)
-        # cliente = ReciboAutofactura.get_cliente(invoice_data)
-        # datos_direccion = ReciboAutofactura.get_datos_direccion_facturacion(cliente)
         datos_direccion = get_datos_direccion_facturacion(cliente)
-        # tax_id = Factura.get_tax_id(cliente)
         tax_id = get_tax_id(cliente)
         email_id = datos_direccion.email_id
 
@@ -69,40 +66,21 @@ class ReciboAutofactura(Document):
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
             "payment_form": frappe.db.get_value('Recibo Autofactura', current_document, 'forma_de_pago_registrada')[:2],
-            # "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
-            # "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
-            # "customer": {
-            #     "legal_name": cliente,
-            #     "tax_id": tax_id,
-            #     "tax_system": get_regimen_fiscal(cliente),
-            #     "email": email_id,
-            #     "address": {
-            #         "zip": datos_direccion.pincode
-            #     },
-            # },
             "items": get_items_info(invoice_data)
         }
 
 # La respuesta se almacena, se convierte a JSON y se verifica si fue exitosa o rechazada
 #se avisa al usuario el resultado y se escribe en el documento dependiendo del resultado
-# Si fue exitosa se marca en sales invoice com facturado
+
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
         
         data_response =response.json()
-        # status = self.actualizar_cancelacion_respuesta_pac(data_response)
-        # actualizar_status_cx_factura(self, status)
-        # self.anadir_response_record(data_response)
-        # if status == "Cancelacion Exitosa" :
-        #     actualizar_status_factura_invoice(self.name)
-
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):
         validate_rfc_factura(self.rfc)
         validate_cp_factura(self.cp)
-        # validate_tax_category_factura(self.tax_category)
-        # validate_email_factura(self.email_id)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
