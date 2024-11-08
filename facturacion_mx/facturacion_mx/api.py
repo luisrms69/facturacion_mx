@@ -11,6 +11,7 @@ from frappe.utils import validate_email_address
 from frappe.utils.response import *
 import re  # fix: Se incluye por que venía en el metodo para obtener el nombre del archivo en descarga factura, no estoy seguro si se usa
 import json  # lo cargo para utilizar json.loads
+import ast
 
 
 # Métodos que utilizan por los doctypes de facturacion_mx.
@@ -84,23 +85,40 @@ def get_product_key(item_code):
 
 # Se obtienen los datos de impuestos
 
+def get_invoice_tax(taxes):
+     invoice_taxes = []
+     for tax in taxes:
+          tax_item = {
+               'rate' : tax.rate/100,
+               'type' : "IVA"  #fix:hardcoded
+          }
+          invoice_taxes.append(tax_item)
 
-# def get_tax_info(invoice_data):
-#     invoice_taxes = []
-#     for tax in invoice_data.taxes:
-#         detalle_tax = {
-#             'rate': tax.rate/100,
-#             'type': "IVA"  # fix: Hardcoded mejorar
-#         }
-#         invoice_taxes.append(detalle_tax)
+     return invoice_taxes
 
-#     return invoice_taxes
+#refactor: no creo que se necesite dividir en dos el calculo del impuesto, tenia un error de funcion cuando no jalo, llamaba a get_tax_id
+def get_tax_info(item_tax_rate,invoice_tax):
+    product_taxes = []
+    if item_tax_rate == "{}":
+        product_taxes = invoice_tax
+    else:
+        dict_item_tax_rate = ast.literal_eval(item_tax_rate)
+        keys = dict_item_tax_rate.keys()
+        for key  in keys:
+            product_tax = {
+                'rate': dict_item_tax_rate.get(key)/100,
+                'type': "IVA"  # fix: Hardcoded mejorar
+            }
+            product_taxes.append(product_tax)
+
+    return product_taxes
 
 # Se obtienen los datos de producto, estan en un child table
 
 
 def get_items_info(invoice_data):
     items_info = []
+    invoice_tax = get_invoice_tax(invoice_data.taxes)
     for producto in invoice_data.items:
         detalle_item = {
             'quantity': producto.qty,
@@ -110,7 +128,7 @@ def get_items_info(invoice_data):
                 'product_key': get_product_key(producto.item_code),
                 'price': producto.rate,
                 'tax_included': "false",
-                # 'taxes' : get_tax_id(invoice_data),
+                'taxes' : get_tax_info(producto.item_tax_rate,invoice_tax),
                 'unit_key': producto.uom.partition(" ")[0]
             }
         }
