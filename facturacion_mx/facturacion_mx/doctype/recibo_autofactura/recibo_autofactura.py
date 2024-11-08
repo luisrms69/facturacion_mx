@@ -14,36 +14,36 @@ from .api import *
 
 class ReciboAutofactura(Document):
     
-#refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
-#toma la respuesta y las llaves deseadas y la prepara para escritura en el documento
-    def check_pac_response(data_response,keys):
-        pac_response = {'status' : "Facturado" }
-        for key in keys:
-            if key in data_response.keys():
-                pac_response[key] = data_response[key]
-            else:
-                pac_response = { 'status' : "Rechazada" }
+# #refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
+# #toma la respuesta y las llaves deseadas y la prepara para escritura en el documento
+#     def check_pac_response(data_response,keys):
+#         pac_response = {'status' : "Facturado" }
+#         for key in keys:
+#             if key in data_response.keys():
+#                 pac_response[key] = data_response[key]
+#             else:
+#                 pac_response = { 'status' : "Rechazada" }
 
-        return pac_response
+#         return pac_response
 
 
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
 # Añade informacion en caso de exito al documento
-    def update_pac_response(self,pac_response):
-        self.db_set({
-            'id_pac': pac_response['id'],
-            'uuid' : pac_response['uuid'],
-            'url_de_verificación' : pac_response['verification_url'],
-            'serie_de_la_factura' : pac_response['series'],
-            'folio_de_factura' : pac_response['folio_number'],
-            'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
-            'status' : pac_response['status'],
-            'monto_total' : pac_response['total']
-        })
+#     def update_pac_response(self,pac_response):
+#         self.db_set({
+#             'id_pac': pac_response['id'],
+#             'uuid' : pac_response['uuid'],
+#             'url_de_verificación' : pac_response['verification_url'],
+#             'serie_de_la_factura' : pac_response['series'],
+#             'folio_de_factura' : pac_response['folio_number'],
+#             'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
+#             'status' : pac_response['status'],
+#             'monto_total' : pac_response['total']
+#         })
 
-#Actualiza el sales invoice como facturado Normal
-    def update_sales_invoice_status(sales_invoice_id):
-        frappe.set_value('Sales Invoice', sales_invoice_id, 'custom_status_facturacion', "Factura Normal")
+# #Actualiza el sales invoice como facturado Normal
+#     def update_sales_invoice_status(sales_invoice_id):
+#         frappe.set_value('Sales Invoice', sales_invoice_id, 'custom_status_facturacion', "Factura Normal")
     
 
     
