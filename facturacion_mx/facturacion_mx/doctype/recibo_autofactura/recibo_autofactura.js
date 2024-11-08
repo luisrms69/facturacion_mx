@@ -50,9 +50,9 @@ frappe.ui.form.on('Recibo Autofactura', {
                         });
                     }
                 }
-            }),
+            }), //refactor:duplicado con factura
             frappe.call({
-                method: 'facturacion_mx.facturacion_mx.doctype.factura.api.get_forma_de_pago',
+                    method: 'facturacion_mx.facturacion_mx.api.get_forma_de_pago',
                 args: {
                     sales_invoice_id: frm.doc.sales_invoice_id
                 },
