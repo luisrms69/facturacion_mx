@@ -100,7 +100,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-10-25 19:06:46.722194",
+ "modified": "2024-11-07 20:52:11.834455",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
@@ -117,14 +117,16 @@
    "write": 1
   },
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "print": 1,
    "read": 1,
    "role": "Facturacion MX Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Facturacion MX User"
   }
  ],
  "sort_field": "modified",

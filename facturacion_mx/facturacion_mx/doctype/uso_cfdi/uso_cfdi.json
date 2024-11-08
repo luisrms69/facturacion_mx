@@ -40,7 +40,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-12 22:04:34.678207",
+ "modified": "2024-11-07 20:54:29.972450",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Uso CFDI",
@@ -58,6 +58,24 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX User",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX Manager",
+   "share": 1
   }
  ],
  "show_title_field_in_link": 1,

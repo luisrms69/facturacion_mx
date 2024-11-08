@@ -25,7 +25,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-08 20:46:31.818236",
+ "modified": "2024-11-07 20:54:50.972392",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Meses y Bimestres SAT",
@@ -43,6 +43,24 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX User",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX Manager",
+   "share": 1
   }
  ],
  "show_title_field_in_link": 1,
