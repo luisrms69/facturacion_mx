@@ -68,18 +68,18 @@ class ReciboAutofactura(Document):
         api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
-            "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
-            "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
-            "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
-            "customer": {
-                "legal_name": cliente,
-                "tax_id": tax_id,
-                "tax_system": get_regimen_fiscal(cliente),
-                "email": email_id,
-                "address": {
-                    "zip": datos_direccion.pincode
-                },
-            },
+            "payment_form": frappe.db.get_value('Recibo Autofactura', current_document, 'forma_de_pago_registrada')[:2],
+            # "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
+            # "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
+            # "customer": {
+            #     "legal_name": cliente,
+            #     "tax_id": tax_id,
+            #     "tax_system": get_regimen_fiscal(cliente),
+            #     "email": email_id,
+            #     "address": {
+            #         "zip": datos_direccion.pincode
+            #     },
+            # },
             "items": get_items_info(invoice_data)
         }
 
@@ -90,19 +90,19 @@ class ReciboAutofactura(Document):
             facturapi_endpoint, json=data, headers=headers)
         
         data_response =response.json()
-        status = self.actualizar_cancelacion_respuesta_pac(data_response)
-        actualizar_status_cx_factura(self, status)
-        self.anadir_response_record(data_response)
-        if status == "Cancelacion Exitosa" :
-            actualizar_status_factura_invoice(self.name)
+        # status = self.actualizar_cancelacion_respuesta_pac(data_response)
+        # actualizar_status_cx_factura(self, status)
+        # self.anadir_response_record(data_response)
+        # if status == "Cancelacion Exitosa" :
+        #     actualizar_status_factura_invoice(self.name)
 
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):
-        validate_rfc_factura(self.tax_id)
-        validate_cp_factura(self.zip_code)
-        validate_tax_category_factura(self.tax_category)
-        validate_email_factura(self.email_id)
+        validate_rfc_factura(self.rfc)
+        validate_cp_factura(self.cp)
+        # validate_tax_category_factura(self.tax_category)
+        # validate_email_factura(self.email_id)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
