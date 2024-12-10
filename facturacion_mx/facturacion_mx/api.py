@@ -268,6 +268,7 @@ def get_motivo_cancelacion(document):
     return id_motivo_cancelacion
 
 #Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
+# refactor: voy a duplicar esta funcion usada en CX para ver si puedo mejorarla
 # Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
 def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
     pac_response_json = pac_response.json()	
@@ -290,6 +291,29 @@ def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: es
 
 
 
+def respuesta_pac(document, pac_response, status_options):
+    
+    
+    pac_response_json = pac_response.json()	
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_options.get(pac_response_json['status'])
+        title = 'Solicitud Exitosa!!!!!'
+        message = "El recibo se ha generado exitosamente, puedes checar los detalles en este documento"
+        indicator = "green"
+    else:
+        title = 'La solicitud de facturacion no fue exitosa'
+        message = str(pac_response)
+        indicator = "red"
+        status = status_options.get("rechazado")
+        document.db_set({
+        'mensaje_de_error' : pac_response_json['message']
+    })
+
+    despliega_aviso(title=title,msg=message,color=indicator)
+
+    frappe.msgprint(status)
+        
+    return status
 
 
 
@@ -321,6 +345,19 @@ def actualizar_status_factura_invoice(factura_cx):
           "Factura", factura_a_cancelar, 'sales_invoice_id')
       frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,
                           'custom_status_facturacion', 'Sin Facturar')
+
+
+# Se utiliza para acutalizar
+
+
+
+
+
+
+
+
+
+
 
 # Verifica el status actual de la factura
 
@@ -379,7 +416,7 @@ def actualizar_status_sales_invoice(invoice, status):
            frappe.db.set_value("Sales Invoice", invoice,
                           'custom_status_facturacion', status)
      
-
+#fix: desarrollo el método que esta abajo de este, es una mejora que se debe tomar en cuenta
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
 def update_pac_response(document,response):
     pac_response = response.json()
@@ -400,6 +437,30 @@ def update_pac_response(document,response):
     })
          
 
+# REVISAR SI SE UTILIZO POR FIN O NO EN RECEIPTS, ME ESTOY INCLINANDO POR LA VERSION ANADE_RESPONSE RECORD
+# def receipt_pac_response(document,response):
+#     pac_response = response.json()
+#     if check_pac_response_success(response) == 1:
+#         document.db_set({
+#             'id_pac': pac_response['id'],
+#             'uuid' : pac_response['uuid'],
+#             'url_de_verificación' : pac_response['verification_url'],
+#             'serie_de_la_factura' : pac_response['series'],
+#             'folio_de_factura' : pac_response['folio_number'],
+#             'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
+#             'status' : pac_response['status'],
+#             'monto_total' : pac_response['total']
+#         })
+#     else:
+#         document.db_set({
+#              'mensaje_de_error' : pac_response['message']
+#     })
+
+
+
+
+
+
 
 # def update_pac_response_rechazada(document, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
 #     document.db_set({
@@ -417,7 +478,7 @@ def update_pac_response(document,response):
 
 # Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
 
-
+# fix: voy a duplicar esta funcion, la idea es que la primera desparezca y quede solo la inferior, por el momento esta no puede desarparecer porque se usa en CX factura
 # refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
 def anade_response_record(table_respuestas, doc, pac_response):
     doc.append(table_respuestas,
@@ -441,6 +502,27 @@ def anade_response_record(table_respuestas, doc, pac_response):
                     'firma_sat': pac_response['stamp']['signature']
                     })
     doc.save()
+
+
+def add_response(table_respuestas, doc, pac_response, object_fields):
+    response_record = {}
+
+    for key in object_fields:
+         if key in object_fields.keys():
+              response_record[object_fields[key]] = pac_response[key]
+         
+    doc.append(table_respuestas, response_record)
+    doc.save()
+
+
+
+
+
+
+
+
+
+
 
 
 # Obtiene el nombre del archivo a partir de la response, content-disposition de los headers

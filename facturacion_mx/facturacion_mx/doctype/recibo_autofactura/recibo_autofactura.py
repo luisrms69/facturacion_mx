@@ -6,15 +6,10 @@ from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
-
 from facturacion_mx.facturacion_mx.api import *
-# from facturacion_mx.doctype.factura.api import *
-# from .api import *
 
 
 class ReciboAutofactura(Document):
-    
-# #refactor: este codigo ya no tiene sentido asi, ya verificamos el status en el metodo anterior
     
 #Metodo para solicitar la creacion de un recibo (se puede utilizar para autofacturacion)
     def create_recibo(self):
@@ -25,8 +20,10 @@ class ReciboAutofactura(Document):
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         cliente = get_cliente(invoice_data)
         datos_direccion = get_datos_direccion_facturacion(cliente)
-        tax_id = get_tax_id(cliente)
-        email_id = datos_direccion.email_id
+        # tax_id = get_tax_id(cliente)
+        # email_id = datos_direccion.email_id
+        receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
+        status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
 #Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
@@ -38,6 +35,9 @@ class ReciboAutofactura(Document):
             "items": get_items_info(invoice_data)
         }
 
+#Cambia el estado de las sale invoice a enviadas a PAC
+        # actualizar_status_sales_invoice(sales_invoice_id,"Enviado a PAC")
+
 # La respuesta se almacena, se convierte a JSON y se verifica si fue exitosa o rechazada
 #se avisa al usuario el resultado y se escribe en el documento dependiendo del resultado
 
@@ -46,6 +46,24 @@ class ReciboAutofactura(Document):
         
         data_response =response.json()
 
+        status = respuesta_pac(self,response,status_options_receipts)
+		# actualizar_status_cx_factura(self, status) #refactor: Se va a modificar el nombre a actualizar_status_doc
+        actualizar_status_doc(self,status)
+        
+        if check_pac_response_success(response) ==1:
+            table_respuestas = "respuestas_del_pac"
+            add_response(table_respuestas, self,data_response, receipt_object)
+
+#definir estatus del receipt, con base en eso actualizar status sales invoice, creo que ser{ia todo en esas funcion y no llamar de nuevo la funcion aqui}
+
+
+
+            actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC") # Enviado a Pac deberia esar en ENUM Global
+
+
+        # if status == "Cancelacion Exitosa" :
+        #     actualizar_status_factura_invoice(self.name)
+
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):
         validate_rfc_factura(self.rfc)
@@ -53,4 +71,5 @@ class ReciboAutofactura(Document):
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
+        actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC") # Enviado a Pac deberia esar en ENUM Global
         self.create_recibo()

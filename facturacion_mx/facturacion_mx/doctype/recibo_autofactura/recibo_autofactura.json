@@ -12,6 +12,7 @@
   "column_break_amdu",
   "fecha_nota_de_venta",
   "forma_de_pago_registrada",
+  "status",
   "section_break_uzup",
   "cliente",
   "direccion_facturacion",
@@ -20,6 +21,10 @@
   "cp",
   "productos_section",
   "recibo_product_array",
+  "historico_respuestas_pac_section",
+  "respuestas_del_pac",
+  "motivo_de_rechazo_section",
+  "mensaje_de_error",
   "section_break_cnp7",
   "amended_from"
  ],
@@ -122,12 +127,41 @@
    "fieldtype": "Link",
    "label": "Direccion de Facturacion",
    "options": "Address"
+  },
+  {
+   "fieldname": "historico_respuestas_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Historico Respuestas PAC"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "respuestas_del_pac",
+   "fieldtype": "Table",
+   "label": "Respuestas del PAC",
+   "options": "Receipt Object"
+  },
+  {
+   "fieldname": "motivo_de_rechazo_section",
+   "fieldtype": "Section Break",
+   "label": "Motivo de Rechazo"
+  },
+  {
+   "fieldname": "mensaje_de_error",
+   "fieldtype": "Read Only",
+   "label": "Mensaje de Error"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Abierto\nCancelado\nFacturado\nFactura Global\nSolicitud Rechazada"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-11-07 22:04:49.043659",
+ "modified": "2024-12-09 22:27:36.366752",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
@@ -173,5 +207,22 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Gray",
+   "title": "Abierto"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelado"
+  },
+  {
+   "color": "Green",
+   "title": "Facturado"
+  },
+  {
+   "color": "Blue",
+   "title": "Factura Global"
+  }
+ ]
 }
