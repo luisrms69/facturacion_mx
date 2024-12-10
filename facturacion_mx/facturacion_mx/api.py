@@ -15,7 +15,7 @@ import ast
 
 
 # Métodos que utilizan por los doctypes de facturacion_mx.
-# Estos metodos se traen del API de Factura, el cual se elimina
+# Se agrupan por funcionalidades
 
 # Se obtiene el nombre del cliente
 def get_cliente(invoice_data):
@@ -24,15 +24,13 @@ def get_cliente(invoice_data):
     return cliente
 
 # Obtiene todos los datos del cliente
-
-
 def get_customer_data(cliente):
     customer_data = frappe.get_doc('Customer', cliente)
 
     return customer_data
 
 
-# Utilizando los datos obtenidos del cliente, se obtiene el Rregimen fiscal, solo se regresan los primeros
+# Obtiene el Rregimen fiscal, solo se regresan los primeros
 # tres caracteres que son el numero (600 y tantos), es lo que utiliza el API
 def get_regimen_fiscal(cliente):
     regimen_fiscal = get_customer_data(cliente).tax_category[:3]
@@ -185,13 +183,6 @@ def check_pac_response_success(data_response):
         return 1
     else:
         return 0
-
-# Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
-# def check_pac_response_success_keys(key, data_response):   #refactor: a lo mejor unir con el siguiente metodo
-#     if key in data_response.keys():
-#         return 1
-#     else:
-#         return 0
 
 
 # Verifica la longitud del RFC, doce o trece son correctos
@@ -390,18 +381,8 @@ def status_respuesta_pac(pac_response):
 
         return status
 
-# Actualiza el valor de status de la cancelacion de factura
-
-
-# def actualizar_status_cx_factura(doc, status):
-#       doc.db_set({
-#             'status': status
-#       })
-
 
 # Actualiza el valor de status de la cancelacion de un docuemtno
-
-
 def actualizar_status_doc(doc, status):
       doc.db_set({
             'status': status
@@ -435,45 +416,6 @@ def update_pac_response(document,response):
         document.db_set({
              'mensaje_de_error' : pac_response['message']
     })
-         
-
-# REVISAR SI SE UTILIZO POR FIN O NO EN RECEIPTS, ME ESTOY INCLINANDO POR LA VERSION ANADE_RESPONSE RECORD
-# def receipt_pac_response(document,response):
-#     pac_response = response.json()
-#     if check_pac_response_success(response) == 1:
-#         document.db_set({
-#             'id_pac': pac_response['id'],
-#             'uuid' : pac_response['uuid'],
-#             'url_de_verificación' : pac_response['verification_url'],
-#             'serie_de_la_factura' : pac_response['series'],
-#             'folio_de_factura' : pac_response['folio_number'],
-#             'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
-#             'status' : pac_response['status'],
-#             'monto_total' : pac_response['total']
-#         })
-#     else:
-#         document.db_set({
-#              'mensaje_de_error' : pac_response['message']
-#     })
-
-
-
-
-
-
-
-# def update_pac_response_rechazada(document, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
-#     document.db_set({
-#         'mensaje_de_error' : pac_response['message']
-#     })
-
-
-
-
-
-
-
-
 
 
 # Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
@@ -513,16 +455,6 @@ def add_response(table_respuestas, doc, pac_response, object_fields):
          
     doc.append(table_respuestas, response_record)
     doc.save()
-
-
-
-
-
-
-
-
-
-
 
 
 # Obtiene el nombre del archivo a partir de la response, content-disposition de los headers
@@ -750,11 +682,6 @@ def get_forma_de_pago_global(invoice_list):
      forma_de_pago = get_forma_de_pago(nota_mayor)
 
      return forma_de_pago
-
-
-     
-    
-
 
 
 # Metodo que Verfica que se haya definido el usuario PUBLICO EN GENERAL de mnaera correcta
