@@ -705,6 +705,8 @@ def get_receipt_object(recibo_a_revisar):
 def status_check_receipt(id_receipt, receipt_docname):
      frappe.msgprint(id_receipt)
      frappe.msgprint(receipt_docname)
+
+     return
         
         # refactor: totalmente inaceptable, esto esta duplicado tiene que ser algo mas global
         # receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
