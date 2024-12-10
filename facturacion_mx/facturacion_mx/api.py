@@ -311,7 +311,7 @@ def respuesta_pac(document, pac_response, status_options):
 
     despliega_aviso(title=title,msg=message,color=indicator)
 
-    frappe.msgprint(status)
+    # frappe.msgprint(status)
         
     return status
 
@@ -692,44 +692,27 @@ def get_receipt_object(recibo_a_revisar):
         return data_response
 
 
-
-
-
-
-
-
 # Metodo al que se llaman en JS para revisar cual es el status del recibo, se utiliza 
 # para verificar si el cliente ya facturó o si todavía tiene pendiente hacerlo
 
 @frappe.whitelist()
 def status_check_receipt(id_receipt, receipt_docname):
-     frappe.msgprint(id_receipt)
-     frappe.msgprint(receipt_docname)
+    # refactor: totalmente inaceptable, esto esta duplicado tiene que ser algo mas global
+    receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
+    status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
+    
+    # refactor: falta condición para asegurar que no hubo error
+    receipt_object_update = get_receipt_object(id_receipt)
+    status = status_options_receipts.get(receipt_object_update.get('status'))
 
-     return
-        
-        # refactor: totalmente inaceptable, esto esta duplicado tiene que ser algo mas global
-        # receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
-        # status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
+# refactor:lo estoy tomando todo de recibo_autofactura.py debe mejorarse
+    table_respuestas = "respuestas_del_pac"
+    doc = frappe.get_doc("Recibo Autofactura", receipt_docname)
+    add_response(table_respuestas,doc,receipt_object_update,receipt_object)
+    actualizar_status_doc(doc,status)
+    actualizar_status_sales_invoice(doc.sales_invoice_id,status)
 
-
-        # receipt_object = get_receipt_object(id_recibo)
-        # status = respuesta_pac(self,response,status_options_receipts)
-		# # actualizar_status_cx_factura(self, status) #refactor: Se va a modificar el nombre a actualizar_status_doc
-        # actualizar_status_doc(self,status)
-
-
-
-        # status = actualizar_cancelacion_respuesta_pac(receipt_object)
-        # doc = frappe.get_doc("Cancelacion Factura", factura_cx)
-        # anade_response_record(doc, factura_object)
-        # actualizar_status_cx_factura(doc, status)
-        # if check_status_actual == 1:
-        #       actualizar_status_factura_invoice(factura_cx)
-
-
-
-
+    return
 
 
 # METODOS UTILIZADOS POR FACTURA GLOBAL
