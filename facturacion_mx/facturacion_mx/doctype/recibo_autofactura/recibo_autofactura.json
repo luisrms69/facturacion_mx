@@ -161,7 +161,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-09 22:27:36.366752",
+ "modified": "2024-12-09 22:44:42.304870",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
@@ -223,6 +223,10 @@
   {
    "color": "Blue",
    "title": "Factura Global"
+  },
+  {
+   "color": "Purple",
+   "title": "Solicitud Rechazada"
   }
  ]
 }

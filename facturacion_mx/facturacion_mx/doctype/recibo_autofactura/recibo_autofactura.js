@@ -69,3 +69,29 @@ frappe.ui.form.on('Recibo Autofactura', {
     }
 });
 
+//refactor:deberia poder llamar a la funcion con el dotted path
+//refactor: debe tenerse el codigo hardocded en alguna variable
+
+// Codigo que genera un boton en la forma Cancelacion Factura, unicamnete para los casos donde se requiere
+//VOBO del cliente.  El boton llama a revisar el status actual y tomar las acciones reaultantes
+frappe.ui.form.on('Recibo Autofactura', {
+	refresh: function(frm) {
+        if (frm.doc.status == "Abierto"){
+            frm.add_custom_button(__('Actualizar Status Recibo'), function(){
+                frappe.call({
+                        method: 'facturacion_mx.facturacion_mx.api.status_check_receipt',
+                        args: {
+                            id_receipt: frm.doc.respuestas_del_pac[0].id,
+                            receipt_docname: frm.docname
+                        },
+                        callback: function (r) {
+                            if (r.message) {
+                            // console.log("#######server script message#########");
+                            // console.log(r.message);
+                            }
+                        }
+                    });
+            });
+        }
+	}
+});

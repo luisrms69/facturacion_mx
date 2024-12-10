@@ -675,6 +675,61 @@ def status_check_cx_factura(id_cx_factura, factura_cx):
 
 
 
+
+# Metodo para  obtern un objeto actualizado de un e-receipt
+def get_receipt_object(recibo_a_revisar):
+        api_token = get_decrypted_password(
+            'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        headers = {"Authorization": f"Bearer {api_token}"}
+        recibo_endpoint = frappe.db.get_single_value(
+            'Facturacion MX Settings', 'endpoint_crear_recibo_autofactura')
+        final_url = f"{recibo_endpoint}/{recibo_a_revisar}"
+
+        response = requests.get(final_url, headers=headers)
+
+        data_response = response.json()
+
+        return data_response
+
+
+
+
+
+
+
+
+# Metodo al que se llaman en JS para revisar cual es el status del recibo, se utiliza 
+# para verificar si el cliente ya facturó o si todavía tiene pendiente hacerlo
+
+@frappe.whitelist()
+def status_check_receipt(id_receipt, receipt_docname):
+     frappe.msgprint(id_receipt)
+     frappe.msgprint(receipt_docname)
+        
+        # refactor: totalmente inaceptable, esto esta duplicado tiene que ser algo mas global
+        # receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
+        # status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
+
+
+        # receipt_object = get_receipt_object(id_recibo)
+        # status = respuesta_pac(self,response,status_options_receipts)
+		# # actualizar_status_cx_factura(self, status) #refactor: Se va a modificar el nombre a actualizar_status_doc
+        # actualizar_status_doc(self,status)
+
+
+
+        # status = actualizar_cancelacion_respuesta_pac(receipt_object)
+        # doc = frappe.get_doc("Cancelacion Factura", factura_cx)
+        # anade_response_record(doc, factura_object)
+        # actualizar_status_cx_factura(doc, status)
+        # if check_status_actual == 1:
+        #       actualizar_status_factura_invoice(factura_cx)
+
+
+
+
+
+
 # METODOS UTILIZADOS POR FACTURA GLOBAL
 
 # Método para obtener la lista de notas de venta que se van a incluir en la factura global
