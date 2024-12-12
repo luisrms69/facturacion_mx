@@ -16,7 +16,7 @@ class ReciboAutofactura(Document):
         sales_invoice_id = frappe.db.get_value(
             'Recibo Autofactura', current_document, 'sales_invoice_id')
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
-        cliente = get_cliente(invoice_data)
+        # cliente = get_cliente(invoice_data)
         status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
