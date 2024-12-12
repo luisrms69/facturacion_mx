@@ -17,7 +17,7 @@ class ReciboAutofactura(Document):
             'Recibo Autofactura', current_document, 'sales_invoice_id')
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         # cliente = get_cliente(invoice_data)
-        status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
+        # status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
 
 # Arma http request. endpoint, headers y data.
 
@@ -29,23 +29,19 @@ class ReciboAutofactura(Document):
             "items": get_items_info(invoice_data)
         }
 
-# Almacena respuesta y  verifica si fue exitosa o rechazada
+# Almacena respuesta y define el estatus
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
         
         # data_response =response.json()
 
-        status = respuesta_pac(self,response,status_options_receipts)
+        status , status_sales_invoice = respuesta_pac(self,response)
         actualizar_status_doc(self,status)
+        actualizar_status_sales_invoice(self.sales_invoice_id, status_sales_invoice)
         
         if check_pac_response_success(response) ==1:
             table_respuestas = "respuestas_del_pac"
             add_response(table_respuestas, self,response.json())
-
-#definir estatus del receipt, con base en eso actualizar status sales invoice, creo que ser{ia todo en esas funcion y no llamar de nuevo la funcion aqui}
-
-
-            # actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC") # Enviado a Pac deberia esar en ENUM Global
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):

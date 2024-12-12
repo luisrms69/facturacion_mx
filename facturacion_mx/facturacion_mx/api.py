@@ -17,8 +17,8 @@ import ast
 #  DEFINICION DE VARIABLES GLOBALES
     
 receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
-status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
-
+status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"}
+status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","sent" : "Enviado a PAC","invoiced_by_customer" : "Autoactura","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido"}
 
 # Métodos que utilizan por los doctypes de facturacion_mx.
 # Se agrupan por funcionalidades
@@ -288,12 +288,12 @@ def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: es
 
 
 
-def respuesta_pac(document, pac_response, status_options):
-    
+def respuesta_pac(document, pac_response):
     
     pac_response_json = pac_response.json()	
     if check_pac_response_success(pac_response) == 1:		
-        status = status_options.get(pac_response_json['status'])
+        status = status_options_receipts.get(pac_response_json['status'])
+        status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
         title = 'Solicitud Exitosa!!!!!'
         message = "El recibo se ha generado exitosamente, puedes checar los detalles en este documento"
         indicator = "green"
@@ -301,7 +301,8 @@ def respuesta_pac(document, pac_response, status_options):
         title = 'La solicitud de facturacion no fue exitosa'
         message = str(pac_response)
         indicator = "red"
-        status = status_options.get("rechazado")
+        status = status_options_receipts.get("rechazado")
+        status_sales_invoice = status_options_sales_invoice.get("initial")
         document.db_set({
         'mensaje_de_error' : pac_response_json['message']
     })
@@ -310,7 +311,7 @@ def respuesta_pac(document, pac_response, status_options):
 
     # frappe.msgprint(status)
         
-    return status
+    return status, status_sales_invoice
 
 
 
