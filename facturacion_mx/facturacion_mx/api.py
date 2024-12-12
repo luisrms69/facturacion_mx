@@ -614,21 +614,18 @@ def get_receipt_object(recibo_a_revisar):
 # para verificar si el cliente ya facturó o si todavía tiene pendiente hacerlo
 
 @frappe.whitelist()
-def status_check_receipt(id_receipt, receipt_docname):
-    # refactor: totalmente inaceptable, esto esta duplicado tiene que ser algo mas global
-    # receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
-    # status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
-    
+def status_check_receipt(id_receipt, receipt_docname):    
     # refactor: falta condición para asegurar que no hubo error
     receipt_object_update = get_receipt_object(id_receipt)
     status = status_options_receipts.get(receipt_object_update.get('status'))
+    status_sales_invoice =status_options_sales_invoice.get(receipt_object_update.get('status'))
 
 # refactor:lo estoy tomando todo de recibo_autofactura.py debe mejorarse
     table_respuestas = "respuestas_del_pac"
     doc = frappe.get_doc("Recibo Autofactura", receipt_docname)
     add_response(table_respuestas,doc,receipt_object_update)
     actualizar_status_doc(doc,status)
-    actualizar_status_sales_invoice(doc.sales_invoice_id,status)
+    actualizar_status_sales_invoice(doc.sales_invoice_id,status_sales_invoice)
 
     return
 
