@@ -5,6 +5,11 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "datos_del_recibo_section",
+  "selecciona_recibo",
+  "cliente",
+  "productos_section",
+  "productos_amparados_en_el_recibo",
   "section_break_lxmh",
   "amended_from"
  ],
@@ -22,12 +27,42 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "datos_del_recibo_section",
+   "fieldtype": "Section Break",
+   "label": "Datos del Recibo"
+  },
+  {
+   "fieldname": "selecciona_recibo",
+   "fieldtype": "Link",
+   "label": "Selecciona Recibo",
+   "link_filters": "[[\"Recibo Autofactura\",\"status\",\"=\",\"Abierto\"]]",
+   "options": "Recibo Autofactura"
+  },
+  {
+   "fetch_from": "selecciona_recibo.cliente",
+   "fieldname": "cliente",
+   "fieldtype": "Link",
+   "label": "Cliente",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "productos_section",
+   "fieldtype": "Section Break",
+   "label": "Productos"
+  },
+  {
+   "fieldname": "productos_amparados_en_el_recibo",
+   "fieldtype": "Table",
+   "label": "Productos Amparados en el Recibo",
+   "options": "Product array"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-12 15:50:00.734150",
+ "modified": "2024-12-12 16:01:37.712106",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Recibo",
