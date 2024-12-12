@@ -19,10 +19,10 @@ class ReciboAutofactura(Document):
             'Recibo Autofactura', current_document, 'sales_invoice_id')
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         cliente = get_cliente(invoice_data)
-        datos_direccion = get_datos_direccion_facturacion(cliente)
+        # datos_direccion = get_datos_direccion_facturacion(cliente)
         # tax_id = get_tax_id(cliente)
         # email_id = datos_direccion.email_id
-        receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
+        # receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
         status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
@@ -52,7 +52,8 @@ class ReciboAutofactura(Document):
         
         if check_pac_response_success(response) ==1:
             table_respuestas = "respuestas_del_pac"
-            add_response(table_respuestas, self,data_response, receipt_object)
+            add_response(table_respuestas, self,data_response)
+            # add_response(table_respuestas, self,data_response, receipt_object)
 
 #definir estatus del receipt, con base en eso actualizar status sales invoice, creo que ser{ia todo en esas funcion y no llamar de nuevo la funcion aqui}
 

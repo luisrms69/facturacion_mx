@@ -14,6 +14,12 @@ import json  # lo cargo para utilizar json.loads
 import ast
 
 
+#  DEFINICION DE VARIABLES GLOBALES
+    
+receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
+status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
+
+
 # Métodos que utilizan por los doctypes de facturacion_mx.
 # Se agrupan por funcionalidades
 
@@ -446,12 +452,12 @@ def anade_response_record(table_respuestas, doc, pac_response):
     doc.save()
 
 
-def add_response(table_respuestas, doc, pac_response, object_fields):
+def add_response(table_respuestas, doc, pac_response):
     response_record = {}
 
-    for key in object_fields:
-         if key in object_fields.keys():
-              response_record[object_fields[key]] = pac_response[key]
+    for key in receipt_object:
+         if key in receipt_object.keys():
+              response_record[receipt_object[key]] = pac_response[key]
          
     doc.append(table_respuestas, response_record)
     doc.save()
@@ -630,8 +636,8 @@ def get_receipt_object(recibo_a_revisar):
 @frappe.whitelist()
 def status_check_receipt(id_receipt, receipt_docname):
     # refactor: totalmente inaceptable, esto esta duplicado tiene que ser algo mas global
-    receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
-    status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
+    # receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
+    # status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
     
     # refactor: falta condición para asegurar que no hubo error
     receipt_object_update = get_receipt_object(id_receipt)
@@ -640,7 +646,7 @@ def status_check_receipt(id_receipt, receipt_docname):
 # refactor:lo estoy tomando todo de recibo_autofactura.py debe mejorarse
     table_respuestas = "respuestas_del_pac"
     doc = frappe.get_doc("Recibo Autofactura", receipt_docname)
-    add_response(table_respuestas,doc,receipt_object_update,receipt_object)
+    add_response(table_respuestas,doc,receipt_object_update)
     actualizar_status_doc(doc,status)
     actualizar_status_sales_invoice(doc.sales_invoice_id,status)
 
