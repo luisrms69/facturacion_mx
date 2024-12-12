@@ -13,6 +13,7 @@
   "endpoint_crear_recibo_autofactura",
   "endpoint_enviar_correo",
   "endpoint_descarga_factura",
+  "endpoint_facturar_recibo",
   "api_settings_section",
   "live_secret_key",
   "column_break_rgni",
@@ -95,12 +96,17 @@
    "fieldtype": "Link",
    "label": "Cliente Factura Global",
    "options": "Customer"
+  },
+  {
+   "fieldname": "endpoint_facturar_recibo",
+   "fieldtype": "Data",
+   "label": "Endpoint Facturar Recibo"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-11-07 20:52:11.834455",
+ "modified": "2024-12-12 15:20:45.686034",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
