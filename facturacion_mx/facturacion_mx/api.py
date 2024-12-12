@@ -237,6 +237,14 @@ def despliega_aviso(title="Aviso", msg="", color="green"):
      frappe.msgprint(title=title, msg=msg, indicator=color)
     
 
+def get_api_token_live():
+     api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
+
+     return api_token
+
+
+
+
 # METODOS QUE SE TRAEN ORIGINALMENTE DE CX FACTURA API, ESTE SE ELIMINA.
 # añado tambien los metodos que quedaban en CX Factura.py
 
@@ -628,6 +636,83 @@ def status_check_receipt(id_receipt, receipt_docname):
     actualizar_status_sales_invoice(doc.sales_invoice_id,status_sales_invoice)
 
     return
+
+# Metodo al que se llaman en JS para revisar cual es el status del recibo, se utiliza 
+# para verificar si el cliente ya facturó o si todavía tiene pendiente hacerlo
+
+# @frappe.whitelist()
+# def invoice_receipt(id_receipt, receipt_docname):    
+# #     # refactor: falta condición para asegurar que no hubo error
+# #     receipt_object_update = get_receipt_object(id_receipt)
+# #     status = status_options_receipts.get(receipt_object_update.get('status'))
+# #     status_sales_invoice =status_options_sales_invoice.get(receipt_object_update.get('status'))
+
+# # # refactor:lo estoy tomando todo de recibo_autofactura.py debe mejorarse
+# #     table_respuestas = "respuestas_del_pac"
+#     doc = frappe.get_doc("Recibo Autofactura", receipt_docname)
+# #     add_response(table_respuestas,doc,receipt_object_update)
+# #     actualizar_status_doc(doc,status)
+# #     actualizar_status_sales_invoice(doc.sales_invoice_id,status_sales_invoice)
+
+# #Metodo para solicitar la creacion de un recibo (se puede utilizar para autofacturacion)
+#     # def create_recibo(self):
+#     current_document = doc.get_title()
+#     sales_invoice_id = frappe.db.get_value(
+#             'Recibo Autofactura', current_document, 'sales_invoice_id')
+#     invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
+
+# # refactor: duplicado con factura.py, crear funcion y utilizar aqui y en factura py
+#     cliente = get_cliente(invoice_data)
+#     datos_direccion = get_datos_direccion_facturacion(cliente)
+#     tax_id = get_tax_id(cliente)
+#     email_id = datos_direccion.email_id
+
+
+
+
+
+
+
+
+
+
+# # Arma http request. endpoint, headers y data.
+
+#     facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_facturar_recibo')
+#     api_token = get_api_token_live
+#     headers = {"Authorization": f"Bearer {api_token}"}
+#     final_url= f"{factura_endpoint}/{id_receipt}/invoice"
+#     data = {
+#             # "use": frappe.db.get_value('Factura', current_document, 'usocfdi'), #fix: voy a ocupar por el momento el default PERO NO JALA ASI
+#             "customer": {
+#                 "legal_name": cliente,
+#                 "tax_id": tax_id,
+#                 "tax_system": get_regimen_fiscal(cliente),
+#                 "email": email_id,
+#                 "address": {
+#                     "zip": datos_direccion.pincode
+#                 },
+#             }
+#         }
+
+# # Almacena respuesta y define el estatus
+#     response = requests.post(
+#             final_url, json=data, headers=headers)
+
+#         status , status_sales_invoice = respuesta_pac(self,response)
+#         actualizar_status_doc(self,status)
+#         actualizar_status_sales_invoice(self.sales_invoice_id, status_sales_invoice)
+        
+#         if check_pac_response_success(response) ==1:
+#             table_respuestas = "respuestas_del_pac"
+#             add_response(table_respuestas, self,response.json())
+
+
+
+
+#     return
+
+
 
 
 # METODOS UTILIZADOS POR FACTURA GLOBAL
