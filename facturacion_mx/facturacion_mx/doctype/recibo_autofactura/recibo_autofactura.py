@@ -16,8 +16,6 @@ class ReciboAutofactura(Document):
         sales_invoice_id = frappe.db.get_value(
             'Recibo Autofactura', current_document, 'sales_invoice_id')
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
-        # cliente = get_cliente(invoice_data)
-        # status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"} # OJO ESTE DEBE SER GLOBAL
 
 # Arma http request. endpoint, headers y data.
 
@@ -32,8 +30,6 @@ class ReciboAutofactura(Document):
 # Almacena respuesta y define el estatus
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
-        
-        # data_response =response.json()
 
         status , status_sales_invoice = respuesta_pac(self,response)
         actualizar_status_doc(self,status)

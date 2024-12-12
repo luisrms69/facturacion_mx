@@ -13,7 +13,6 @@ import re  # fix: Se incluye por que venía en el metodo para obtener el nombre 
 import json  # lo cargo para utilizar json.loads
 import ast
 
-
 #  DEFINICION DE VARIABLES GLOBALES
     
 receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
@@ -238,10 +237,6 @@ def despliega_aviso(title="Aviso", msg="", color="green"):
      frappe.msgprint(title=title, msg=msg, indicator=color)
     
 
-
-
-
-
 # METODOS QUE SE TRAEN ORIGINALMENTE DE CX FACTURA API, ESTE SE ELIMINA.
 # añado tambien los metodos que quedaban en CX Factura.py
 
@@ -284,9 +279,6 @@ def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: es
         status = "Solicitud Rechazada"
         
     return status
-
-
-
 
 def respuesta_pac(document, pac_response):
     
@@ -334,7 +326,6 @@ def get_factura_object(factura_a_revisar):
 
 # Si la cancelacion es exitosa actualiza los status tanto de la factura como del invoice
 
-
 def actualizar_status_factura_invoice(factura_cx):
       factura_a_cancelar = frappe.db.get_value(
           "Cancelacion Factura", factura_cx, 'factura_a_cancelar')
@@ -343,18 +334,6 @@ def actualizar_status_factura_invoice(factura_cx):
           "Factura", factura_a_cancelar, 'sales_invoice_id')
       frappe.db.set_value("Sales Invoice", sales_invoice_Afectada,
                           'custom_status_facturacion', 'Sin Facturar')
-
-
-# Se utiliza para acutalizar
-
-
-
-
-
-
-
-
-
 
 
 # Verifica el status actual de la factura
