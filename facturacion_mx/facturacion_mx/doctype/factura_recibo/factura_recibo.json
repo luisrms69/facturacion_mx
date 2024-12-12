@@ -8,6 +8,7 @@
   "datos_del_recibo_section",
   "selecciona_recibo",
   "cliente",
+  "status",
   "productos_section",
   "productos_amparados_en_el_recibo",
   "section_break_lxmh",
@@ -57,12 +58,17 @@
    "fieldtype": "Table",
    "label": "Productos Amparados en el Recibo",
    "options": "Product array"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "label": "Status"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-12 16:01:37.712106",
+ "modified": "2024-12-12 16:08:12.527212",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Recibo",
