@@ -19,6 +19,19 @@ receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires
 status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"}
 status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","sent" : "Enviado a PAC","invoiced_to_customer" : "Autofactura","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido"}
 
+# Metodos de operaciones con matrices, listas, diccionarios
+
+def get_dictionary_keys(dict):
+    keys_list = []
+    for key in dict.keys():
+        keys_list.append(key)
+        
+    return keys_list
+
+
+
+
+
 # Métodos que utilizan por los doctypes de facturacion_mx.
 # Se agrupan por funcionalidades
 
@@ -717,39 +730,116 @@ def status_check_receipt(id_receipt, receipt_docname):
 
 # METODOS UTILIZADOS POR FACTURA GLOBAL
 
+# def get_ereceipts_factura_global(recibo_autofactura_list):
+#     receipts_list = []
+#     for recibo in recibo_autofactura_list:
+#         recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo)
+#         receipts_list.append(recibo_autofactura.respuestas_del_pac[0])
+
+
+#     for renglon in receipts_list:
+#          frappe.msgprint(renglon.id)
+#          frappe.msgprint(renglon.created_at)
+#          frappe.msgprint(renglon.total)
+#          frappe.msgprint(renglon.status_receipt)
+        
+#     return receipts_list
+
+
+
+
+
+def get_ereceipts_id_factura_global(recibo_autofactura_list):
+    receipts_list = []
+    for recibo in recibo_autofactura_list:
+        #  frappe.msgprint(str(recibo))
+         recibo_name = recibo.get('name')
+         recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo_name)
+         receipts_list.append(recibo_autofactura.respuestas_del_pac[0].id)
+
+        #  frappe.msgprint(str(recibo_autofactura))
+
+    for renglon in receipts_list:
+         frappe.msgprint(str(renglon))
+    #      frappe.msgprint(renglon.created_at)
+    #      frappe.msgprint(renglon.total)
+    #      frappe.msgprint(renglon.status_receipt)
+        
+    return receipts_list
+
+
+
+
+
+
 # Método para obtener la lista de notas de venta que se van a incluir en la factura global
 # refactor: se necesita un ENUM para los estados de sales Invoice status facturacion
 @frappe.whitelist()
-def get_invoices_factura_global(fecha_inicial, fecha_final):
-     invoice_list = frappe.db.get_list('Sales Invoice',
-                                     filters={
-                                        #   'custom_status_facturacion': "Sin facturar", SE ELIMINA MOMENTANEAMENTE PARA PRUEBAS UNICAMCENTE
-                                          'status': "paid",
-                                          'posting_date': ['between',[fecha_inicial,fecha_final]]
-                                     },
-                                     fields=[
-                                         'name', 'posting_date','base_total', 'base_net_total', 'base_total_taxes_and_charges']
-                                     )
-     return invoice_list
+def get_receipts_factura_global(fecha_inicial, fecha_final):
+    #  receipts_list = frappe.db.get_list('Recibo Autofactura', filters={ 'status': status_options_receipts.get("open"), 'fecha_nota_de_venta': ['between',[fecha_inicial,fecha_final]]},fields=['cliente'])
+     recibo_autofactura_list = frappe.db.get_list('Recibo Autofactura', filters={
+    #  recibo_autofactura_list = frappe.db.get_list('Recibo Autofactura', pluck= 'name', filters={
+          'status': status_options_receipts.get("open"),
+          'fecha_nota_de_venta': ['between',[fecha_inicial,fecha_final]]
+          },
+        #   fields= get_dictionary_keys(receipt_object)
+        # fields = id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'
+        # fields =['cliente','creation','sales_invoice_id']
+        fields = ['name', 'cliente', 'sales_invoice_id','creation','total_factura']  #fix: esto deber{ia estar en alguna variable}, hay dependencias en que name sea el indice cero
+     )
+
+    #  frappe.msgprint(fecha_final)
+    #  frappe.msgprint(fecha_inicial)    
+    #  frappe.msgprint(str(recibo_autofactura_list))
+
+    #  recibos_list = add_total_receipts(recibo_autofactura_list)
+
+    #  frappe.msgprint(str(receipts_list))
+
+     return recibo_autofactura_list
 
 
-def get_nota_mayor(invoice_list):
+
+
+def get_nota_mayor(invoice_id_list):
      nota_mayor = ""
      monto_nota_mayor = 0
-     for nota_venta in invoice_list:
-          if nota_venta['base_net_total'] > monto_nota_mayor:
-            monto_nota_mayor = nota_venta['base_net_total']
-            nota_mayor = nota_venta['name']
+     for nota_venta in invoice_id_list:
+          frappe.msgprint(str(nota_venta))
+          grand_total = frappe.db.get_value("Sales Invoice", nota_venta, "grand_total")
+          name = frappe.db.get_value("Sales Invoice", nota_venta, "name")
+          frappe.msgprint(str(grand_total))
+          if grand_total > monto_nota_mayor:
+            monto_nota_mayor = grand_total
+            nota_mayor = name
             
      return nota_mayor  
 
 
 #Metodo que devuelve la forma de pago a utilizar, es la que se tiene en el monto mayor
-def get_forma_de_pago_global(invoice_list):
-     nota_mayor = get_nota_mayor(invoice_list)
-     forma_de_pago = get_forma_de_pago(nota_mayor)
+def get_forma_de_pago_global(recibos_list):
 
-     return forma_de_pago
+    frappe.msgprint(str(recibos_list))
+     
+#refactor: lo copio tal cual de ereceipts id hay que evitar el cuplicado, se tiene que hacer una funcion que tome el parametro que se da en get y regrese el listado fix fix fix fix
+    receipts_invoice_id_list = []
+    for recibo in recibos_list:
+        #  frappe.msgprint(str(recibo))
+         recibo_sales_invoice_id = recibo.get('sales_invoice_id')
+         frappe.msgprint(str(recibo_sales_invoice_id))
+        #  recibo_invoice = frappe.get_doc("Sales Invoice", recibo_sales_invoice_id)
+        #  frappe.msgprint(str(recibo_invoice))
+        #  recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo_name)
+         receipts_invoice_id_list.append(recibo_sales_invoice_id)
+
+        #  frappe.msgprint(str(recibo_invoice['base_net_total']))
+
+    nota_mayor = get_nota_mayor(receipts_invoice_id_list)
+    forma_de_pago = get_forma_de_pago(nota_mayor)
+
+    frappe.msgprint(str(forma_de_pago))
+
+    return forma_de_pago
 
 
 # Metodo que Verfica que se haya definido el usuario PUBLICO EN GENERAL de mnaera correcta
