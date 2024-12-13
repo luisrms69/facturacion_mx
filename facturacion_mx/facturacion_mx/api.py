@@ -17,7 +17,7 @@ import ast
     
 receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
 status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"}
-status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","sent" : "Enviado a PAC","invoiced_by_customer" : "Autoactura","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido"}
+status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","sent" : "Enviado a PAC","invoiced_to_customer" : "Autofactura","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido"}
 
 # Métodos que utilizan por los doctypes de facturacion_mx.
 # Se agrupan por funcionalidades
