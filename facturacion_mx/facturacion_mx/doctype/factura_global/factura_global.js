@@ -13,7 +13,7 @@ frappe.ui.form.on('Factura Global', {
     fecha_final: function (frm) {
         if (frm.doc.fecha_final) {
             frappe.call({
-                method: 'facturacion_mx.facturacion_mx.api.get_invoices_factura_global',
+                method: 'facturacion_mx.facturacion_mx.api.get_receipts_factura_global',
                 args: {
                     fecha_inicial : frm.doc.fecha_inicial,
                     fecha_final: frm.doc.fecha_final
@@ -30,11 +30,11 @@ frappe.ui.form.on('Factura Global', {
 
                         r.message.forEach(function (nota) {
                             var child = frm.add_child('notas_de_venta');
-                            child.sales_invoice_id = nota.name;
-                            child.fecha_nota_de_venta = nota.posting_date;
-                            child.valor_unitario = nota.base_total;
-                            child.descuento = nota.base_total - nota.base_net_total;
-                            child.objeto_de_impuesto = "02";
+                            child.receipt = nota.name
+                            child.cliente = nota.cliente;
+                            child.fecha_nota_de_venta = nota.creation;
+                            child.sales_invoice_id = nota.sales_invoice_id;
+                            child.total = nota.total_factura;
                         });
                         frm.refresh_field('notas_de_venta');
                     }
@@ -45,13 +45,13 @@ frappe.ui.form.on('Factura Global', {
 });
 
 
-//fix: esto esta duplicado debe corregirse
+//fix: esto esta duplicado debe corregirse, ya me dio un dolor de cabeza por que se borraban los datos corregidos
 //fix: objeto de impuesto esta a mano
 frappe.ui.form.on('Factura Global', {
     fecha_inicial: function (frm) {
         if (frm.doc.fecha_inicial) {
             frappe.call({
-                method: 'facturacion_mx.facturacion_mx.api.get_invoices_factura_global',
+                method: 'facturacion_mx.facturacion_mx.api.get_receipts_factura_global',
                 args: {
                     fecha_inicial : frm.doc.fecha_inicial,
                     fecha_final: frm.doc.fecha_final
@@ -67,12 +67,14 @@ frappe.ui.form.on('Factura Global', {
 
 
                         r.message.forEach(function (nota) {
+                            // console.log(nota)
                             var child = frm.add_child('notas_de_venta');
-                            child.sales_invoice_id = nota.name;
-                            child.fecha_nota_de_venta = nota.posting_date;
-                            child.valor_unitario = nota.base_total;
-                            child.descuento = nota.base_total - nota.base_net_total;
-                            child.objeto_de_impuesto = "02";
+                            child.receipt = nota.name
+                            child.cliente = nota.cliente;
+                            child.fecha_nota_de_venta = nota.creation;
+                            child.sales_invoice_id = nota.sales_invoice_id;
+                            child.total = nota.total_factura;
+                            // child.objeto_de_impuesto = "02";
                         });
                         frm.refresh_field('notas_de_venta');
                     }
