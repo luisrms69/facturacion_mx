@@ -92,21 +92,9 @@ frappe.ui.form.on('Recibo Autofactura', {
                         }
                     });
             });
-            // frm.add_custom_button(__('Facturar Recibo'), function(){
-            //     frappe.call({
-            //             method: 'facturacion_mx.facturacion_mx.api.invoice_receipt',
-            //             args: {
-            //                 id_receipt: frm.doc.respuestas_del_pac[0].id,
-            //                 receipt_docname: frm.docname
-            //             },
-            //             callback: function (r) {
-            //                 if (r.message) {
-            //                 // console.log("#######server script message#########");
-            //                 // console.log(r.message);
-            //                 }
-            //             }
-            //         });
-            // });
+            frm.add_custom_button(__('Facturar Recibo'), function(){
+                var openlink = window.open(frm.doc.respuestas_del_pac[0].self_invoice_url)
+            });
         }
 	}
 });
