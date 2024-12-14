@@ -19,6 +19,7 @@ class Factura(Document):
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         cliente = get_cliente(invoice_data)
         datos_direccion = get_datos_direccion_facturacion(cliente)
+        use = get_uso_cfdi(cliente)
         tax_id = get_tax_id(cliente)
         email_id = datos_direccion.email_id
 
@@ -54,7 +55,7 @@ class Factura(Document):
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
             "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
-            "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
+            "use": use,
             "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
             "type": type,
             # "currency": currency, VIENE POR DEFAULT
@@ -96,10 +97,12 @@ class Factura(Document):
 #Metodo que se corre para validar si los campos son correctos
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
     def validate(self):
-        validate_rfc_factura(self.tax_id)
-        validate_cp_factura(self.zip_code)
-        validate_tax_category_factura(self.tax_category)
-        validate_email_factura(self.email_id)
+        validate_data_invoice(self)
+        # validate_rfc_factura(self.tax_id)
+        # validate_cp_factura(self.zip_code)
+        # validate_tax_category_factura(self.tax_category)
+        # validate_uso_cfid(self.usocfdi)
+        # validate_email_factura(self.email_id)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):

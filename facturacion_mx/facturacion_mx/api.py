@@ -94,6 +94,13 @@ def get_tax_id(cliente):
     return tax_id
 
 
+# Utilizando los datos obtenidos del cliente, se obtiene el uso CFDI
+def get_uso_cfdi(cliente):
+    uso_cfdi = frappe.db.get_value("Customer", cliente, "custom_uso_cfdi")
+
+    return uso_cfdi
+
+
 # Se optiene el product key, este es un campo que se añade por medio de fixtures
 def get_product_key(item_code):
     product_key = frappe.db.get_value("Item", item_code, "product_key")
@@ -235,11 +242,28 @@ def validate_tax_category_factura(tax_category):
         frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
+# Verifica que el regimen fiscal este entre los numeros esperados y que no este vacía
+
+
+def validate_uso_cfid(uso_cfdi):
+     if not uso_cfdi:
+        frappe.throw(
+            "La empresa no tiene registrado el Uso de CFDI para sus facturas. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
+
+
 # Verifica que el correo electrónico no este vacío y su formato sea correcto
 def validate_email_factura(email_id):
     if not email_id:
         frappe.throw("Se requiere capturar un correo electrónico para la dirección principal de facturación. La captura se realiza directamente en la sección de direcciones del cliente.")
     validate_email_address(email_id)
+
+# Verifica que la informacion para generar la factura este completa y correcta
+def validate_data_invoice(doc):
+        validate_rfc_factura(doc.tax_id)
+        validate_cp_factura(doc.zip_code)
+        validate_tax_category_factura(doc.tax_category)
+        validate_uso_cfid(doc.usocfdi)
+        validate_email_factura(doc.email_id)
 
 
 # Método que se usa para imprimir avisos, utiliza tres variables, el titulo, el mensaje y el color del indicador
