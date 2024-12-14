@@ -35,10 +35,6 @@ def get_dictionary_keys(dict):
         
     return keys_list
 
-
-
-
-
 # Métodos que utilizan por los doctypes de facturacion_mx.
 # Se agrupan por funcionalidades
 
@@ -91,9 +87,6 @@ def get_zipcode_email_from_address(address):
 
     return datos_direccion
      
-     
-
-
 # Utilizando los datos obtenidos del cliente, se obtiene el RFC
 def get_tax_id(cliente):
     tax_id = get_customer_data(cliente).tax_id
@@ -204,7 +197,6 @@ def prepare_conceptos_cfdi_global(invoice_list):
 # refactor: a lo mejor unir con el siguiente metodo
 def check_pac_response_success(data_response):
     if data_response.status_code == 200:
-#     if 'id' in data_response.keys():
         return 1
     else:
         return 0
@@ -248,8 +240,6 @@ def validate_email_factura(email_id):
     if not email_id:
         frappe.throw("Se requiere capturar un correo electrónico para la dirección principal de facturación. La captura se realiza directamente en la sección de direcciones del cliente.")
     validate_email_address(email_id)
-    # if not frappe.utils.validate_type(email_id, "email"):
-    #     frappe.throw("El correo electrónico proporcionado no es válido o no esta definido")
 
 
 # Método que se usa para imprimir avisos, utiliza tres variables, el titulo, el mensaje y el color del indicador
@@ -261,8 +251,6 @@ def get_api_token_live():
      api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
 
      return api_token
-
-
 
 
 # METODOS QUE SE TRAEN ORIGINALMENTE DE CX FACTURA API, ESTE SE ELIMINA.
@@ -331,8 +319,6 @@ def respuesta_pac(document, pac_response):
 
     despliega_aviso(title=title,msg=message,color=indicator)
 
-    # frappe.msgprint(status)
-        
     return status, status_sales_invoice
 
 
@@ -358,13 +344,8 @@ def respuesta_pac_factura(document, pac_response):
     })
 
     despliega_aviso(title=title,msg=message,color=indicator)
-
-    # frappe.msgprint(status)
         
     return status, status_sales_invoice
-
-
-
 
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
@@ -440,26 +421,6 @@ def actualizar_status_doc(doc, status):
 def actualizar_status_sales_invoice(invoice, status):
            frappe.db.set_value("Sales Invoice", invoice,
                           'custom_status_facturacion', status)
-     
-#fix: desarrollo el método que esta abajo de este, es una mejora que se debe tomar en cuenta
-# refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
-# def update_pac_response(document,response):
-#     pac_response = response.json()
-#     if check_pac_response_success(response) == 1:
-#         document.db_set({
-#             'id_pac': pac_response['id'],
-#             'uuid' : pac_response['uuid'],
-#             'url_de_verificación' : pac_response['verification_url'],
-#             'serie_de_la_factura' : pac_response['series'],
-#             'folio_de_factura' : pac_response['folio_number'],
-#             'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
-#             'status' : pac_response['status'],
-#             'monto_total' : pac_response['total']
-#         })
-#     else:
-#         document.db_set({
-#              'mensaje_de_error' : pac_response['message']
-#     })
 
 # refactor: no lo puedo ocupar porque los campos de mensaje de error son diferentes en factura y receipt
 def add_error_response(document,response):
@@ -505,9 +466,6 @@ def get_object_type(doc):
                object_type = invoice_object
           case "Recibo Autofactura":
                object_type =receipt_object
-               
-
-    #  frappe.msgprint(str(object_type))
 
      return object_type
 
@@ -712,104 +670,6 @@ def status_check_receipt(id_receipt, receipt_docname):
 
     return
 
-# Metodo al que se llaman en JS para revisar cual es el status del recibo, se utiliza 
-# para verificar si el cliente ya facturó o si todavía tiene pendiente hacerlo
-
-# @frappe.whitelist()
-# def invoice_receipt(id_receipt, receipt_docname):    
-# #     # refactor: falta condición para asegurar que no hubo error
-# #     receipt_object_update = get_receipt_object(id_receipt)
-# #     status = status_options_receipts.get(receipt_object_update.get('status'))
-# #     status_sales_invoice =status_options_sales_invoice.get(receipt_object_update.get('status'))
-
-# # # refactor:lo estoy tomando todo de recibo_autofactura.py debe mejorarse
-# #     table_respuestas = "respuestas_del_pac"
-#     doc = frappe.get_doc("Recibo Autofactura", receipt_docname)
-# #     add_response(table_respuestas,doc,receipt_object_update)
-# #     actualizar_status_doc(doc,status)
-# #     actualizar_status_sales_invoice(doc.sales_invoice_id,status_sales_invoice)
-
-# #Metodo para solicitar la creacion de un recibo (se puede utilizar para autofacturacion)
-#     # def create_recibo(self):
-#     current_document = doc.get_title()
-#     sales_invoice_id = frappe.db.get_value(
-#             'Recibo Autofactura', current_document, 'sales_invoice_id')
-#     invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
-
-# # refactor: duplicado con factura.py, crear funcion y utilizar aqui y en factura py
-#     cliente = get_cliente(invoice_data)
-#     datos_direccion = get_datos_direccion_facturacion(cliente)
-#     tax_id = get_tax_id(cliente)
-#     email_id = datos_direccion.email_id
-
-
-
-
-
-
-
-
-
-
-# # Arma http request. endpoint, headers y data.
-
-#     facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_facturar_recibo')
-#     api_token = get_api_token_live
-#     headers = {"Authorization": f"Bearer {api_token}"}
-#     final_url= f"{factura_endpoint}/{id_receipt}/invoice"
-#     data = {
-#             # "use": frappe.db.get_value('Factura', current_document, 'usocfdi'), #fix: voy a ocupar por el momento el default PERO NO JALA ASI
-#             "customer": {
-#                 "legal_name": cliente,
-#                 "tax_id": tax_id,
-#                 "tax_system": get_regimen_fiscal(cliente),
-#                 "email": email_id,
-#                 "address": {
-#                     "zip": datos_direccion.pincode
-#                 },
-#             }
-#         }
-
-# # Almacena respuesta y define el estatus
-#     response = requests.post(
-#             final_url, json=data, headers=headers)
-
-#         status , status_sales_invoice = respuesta_pac(self,response)
-#         actualizar_status_doc(self,status)
-#         actualizar_status_sales_invoice(self.sales_invoice_id, status_sales_invoice)
-        
-#         if check_pac_response_success(response) ==1:
-#             table_respuestas = "respuestas_del_pac"
-#             add_response(table_respuestas, self,response.json())
-
-
-
-
-#     return
-
-
-
-
-# METODOS UTILIZADOS POR FACTURA GLOBAL
-
-# def get_ereceipts_factura_global(recibo_autofactura_list):
-#     receipts_list = []
-#     for recibo in recibo_autofactura_list:
-#         recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo)
-#         receipts_list.append(recibo_autofactura.respuestas_del_pac[0])
-
-
-#     for renglon in receipts_list:
-#          frappe.msgprint(renglon.id)
-#          frappe.msgprint(renglon.created_at)
-#          frappe.msgprint(renglon.total)
-#          frappe.msgprint(renglon.status_receipt)
-        
-#     return receipts_list
-
-
-
-
 
 def get_ereceipts_id_factura_global(recibo_autofactura_list):
     receipts_list = []
@@ -830,33 +690,16 @@ def get_ereceipts_id_factura_global(recibo_autofactura_list):
     return receipts_list
 
 
-
-
-
-
 # Método para obtener la lista de notas de venta que se van a incluir en la factura global
 # refactor: se necesita un ENUM para los estados de sales Invoice status facturacion
 @frappe.whitelist()
 def get_receipts_factura_global(fecha_inicial, fecha_final):
-    #  receipts_list = frappe.db.get_list('Recibo Autofactura', filters={ 'status': status_options_receipts.get("open"), 'fecha_nota_de_venta': ['between',[fecha_inicial,fecha_final]]},fields=['cliente'])
      recibo_autofactura_list = frappe.db.get_list('Recibo Autofactura', filters={
-    #  recibo_autofactura_list = frappe.db.get_list('Recibo Autofactura', pluck= 'name', filters={
           'status': status_options_receipts.get("open"),
           'fecha_nota_de_venta': ['between',[fecha_inicial,fecha_final]]
           },
-        #   fields= get_dictionary_keys(receipt_object)
-        # fields = id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'
-        # fields =['cliente','creation','sales_invoice_id']
         fields = ['name', 'cliente', 'sales_invoice_id','creation','total_factura']  #fix: esto deber{ia estar en alguna variable}, hay dependencias en que name sea el indice cero
      )
-
-    #  frappe.msgprint(fecha_final)
-    #  frappe.msgprint(fecha_inicial)    
-    #  frappe.msgprint(str(recibo_autofactura_list))
-
-    #  recibos_list = add_total_receipts(recibo_autofactura_list)
-
-    #  frappe.msgprint(str(receipts_list))
 
      return recibo_autofactura_list
 
@@ -867,10 +710,8 @@ def get_nota_mayor(invoice_id_list):
      nota_mayor = ""
      monto_nota_mayor = 0
      for nota_venta in invoice_id_list:
-        #   frappe.msgprint(str(nota_venta))
           grand_total = frappe.db.get_value("Sales Invoice", nota_venta, "grand_total")
           name = frappe.db.get_value("Sales Invoice", nota_venta, "name")
-        #   frappe.msgprint(str(grand_total))
           if grand_total > monto_nota_mayor:
             monto_nota_mayor = grand_total
             nota_mayor = name
@@ -880,26 +721,15 @@ def get_nota_mayor(invoice_id_list):
 
 #Metodo que devuelve la forma de pago a utilizar, es la que se tiene en el monto mayor
 def get_forma_de_pago_global(recibos_list):
-
-    # frappe.msgprint(str(recibos_list))
      
 #refactor: lo copio tal cual de ereceipts id hay que evitar el cuplicado, se tiene que hacer una funcion que tome el parametro que se da en get y regrese el listado fix fix fix fix
     receipts_invoice_id_list = []
     for recibo in recibos_list:
-        #  frappe.msgprint(str(recibo))
          recibo_sales_invoice_id = recibo.get('sales_invoice_id')
-        #  frappe.msgprint(str(recibo_sales_invoice_id))
-        #  recibo_invoice = frappe.get_doc("Sales Invoice", recibo_sales_invoice_id)
-        #  frappe.msgprint(str(recibo_invoice))
-        #  recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo_name)
          receipts_invoice_id_list.append(recibo_sales_invoice_id)
-
-        #  frappe.msgprint(str(recibo_invoice['base_net_total']))
 
     nota_mayor = get_nota_mayor(receipts_invoice_id_list)
     forma_de_pago = get_forma_de_pago(nota_mayor)
-
-    # frappe.msgprint(str(forma_de_pago))
 
     return forma_de_pago
 

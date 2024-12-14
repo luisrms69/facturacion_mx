@@ -6,7 +6,6 @@ from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
-# from frappe.utils import validate_email_address
 from facturacion_mx.facturacion_mx.api import *
 
 class Factura(Document):
@@ -47,10 +46,6 @@ class Factura(Document):
         namespaces = []
         pdf_options = {}
 
-        
-
-        
-
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
 #Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
@@ -90,54 +85,16 @@ class Factura(Document):
             "items": get_items_info(invoice_data)
         }
 
-		#Cambia el estado de las notaas de venta a enviadas a PAC
-        # actualizar_status_sales_invoice(sales_invoice_id,"Enviado a PAC")
-
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
-        
-        # frappe.msgprint(str(response.json()))
-        
-        # data_response =response.json()
+
         status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
 
-        # update_pac_response(self, response)
         actualizar_status_doc(self,status_doc)
         actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
-        
-
-        # if check_pac_response_success(response) == 1:
-        #     table_respuestas = "response_pac"
-        #     add_response(table_respuestas,self,response.json())
-        #     aviso_message = "La Facturación fue exitosa"
-        #     aviso_titulo = "Facturación Exitosa"
-        #     aviso_color = "green"
-        # else:
-            # add_error_response(self,response)
-        #     aviso_message = str(response.json())
-        #     aviso_titulo = "Hubo problema con la solicitud, revisa el reporte"
-        #     aviso_color = "red"
-
-
-        # despliega_aviso(aviso_titulo,aviso_message,aviso_color)
-            
-
-
-#    refactor: mucho codigo duplicado con factura global, cambien ombre variables en algunos casos
-        # if check_pac_response_success(response) == 1:
-        #     sale_invoice_status = "Factura Normal"
-        #     factura_status = "Facturado"
-
-        # else:
-        #     sale_invoice_status = "Sin facturar"
-        #     factura_status = "Rechazada"
-
-
-        # actualizar_status_sales_invoice(sales_invoice_id,sale_invoice_status)
-        # actualizar_status_doc(self, factura_status)
-        # despliega_aviso(title=aviso_titulo, msg=aviso_message, color=aviso_color)
-
-#Metodo que se corre para validar si los campos son correctos        
+ 
+#Metodo que se corre para validar si los campos son correctos
+# refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
     def validate(self):
         validate_rfc_factura(self.tax_id)
         validate_cp_factura(self.zip_code)
