@@ -17,7 +17,9 @@ import ast
     
 receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
 status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"}
-status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","sent" : "Enviado a PAC","invoiced_to_customer" : "Autofactura","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido"}
+status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","pending" : "Enviado a PAC","invoiced_to_customer" : "Autofactura","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido","canceled" : "Sin Facturar","valid" : "Facturado","draft": "Enviado a PAC"}
+invoice_object = {'id': 'id', 'created_at':'created_at', 'livemode':'livemode', 'status':'status', 'cancellation_status': 'cancellation_status', 'verification_url':'verification_url', 'type':'type', 'customer':'customer', 'total': 'total', 'uuid': 'uuid', 'folio_number':'folio_number', 'series':'series', 'external_id':'external_id', 'idempotency_key': 'idempotency_key', 'payment_form': 'payment_form', 'is_ready_to_stamp':'is_ready_to_stamp','items':'items', 'related_documents': 'related_documents', 'currency': 'currency', 'exchange':'exchange', 'complements': 'complements', 'pdf_custom_section': 'pdf_custom_section', 'addenda':'addenda','namespaces':'namespaces', 'stamp': 'stamp', 'payment_related_ids': 'payment_related_ids'}
+status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador"}
 
 # Metodos de operaciones con matrices, listas, diccionarios
 
@@ -301,6 +303,8 @@ def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: es
         
     return status
 
+
+#refactor:fix: misma funcion para factura y e-receipt, en esta version tendresmos dos versiones
 def respuesta_pac(document, pac_response):
     
     pac_response_json = pac_response.json()	
@@ -309,6 +313,32 @@ def respuesta_pac(document, pac_response):
         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
         title = 'Solicitud Exitosa!!!!!'
         message = "El recibo se ha generado exitosamente, puedes checar los detalles en este documento"
+        indicator = "green"
+    else:
+        title = 'La solicitud de facturacion no fue exitosa'
+        message = str(pac_response)
+        indicator = "red"
+        status = status_options_receipts.get("rechazado")
+        status_sales_invoice = status_options_sales_invoice.get("initial")
+        document.db_set({
+        'mensaje_de_error' : pac_response_json['message']
+    })
+
+    despliega_aviso(title=title,msg=message,color=indicator)
+
+    # frappe.msgprint(status)
+        
+    return status, status_sales_invoice
+
+
+def respuesta_pac_factura(document, pac_response):
+    
+    pac_response_json = pac_response.json()	
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_options_sales_invoice.get(pac_response_json['status'])
+        status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        title = 'Solicitud Exitosa!!!!!'
+        message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
         indicator = "green"
     else:
         title = 'La solicitud de facturacion no fue exitosa'
