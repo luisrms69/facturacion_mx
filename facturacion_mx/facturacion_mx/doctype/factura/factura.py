@@ -28,8 +28,9 @@ class Factura(Document):
         type = "I"
         folio_number = 0
         series = ""
-        addenda = ""
+        addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
         pdf_custom_section = ""
+        payment_related_ids =[]
 
 # Pendiente configuración de estos campos, NO SE VAN A OCUPAR, SE DEJA EL PLACER
         currency = "MXN"
@@ -61,20 +62,22 @@ class Factura(Document):
             "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
             "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
             "type": type,
-            # "currency": currency,
-            # "exchange": exchange,
-            # "conditions": conditions,
-            # "realted_documents": related_documents,
-            # "export": export,
-            # "complements": complements,
+            # "currency": currency, VIENE POR DEFAULT
+            # "exchange": exchange, VIENE POR DEFAULT
+            # "conditions": conditions, NO VIENE PORQUE NO SE ENVIA, NO LO TENGO INCLUIDO EN LA DEFINICION DE INVOICE OBJECT
+            "related_documents": related_documents,
+            "export": export,
+            "complements": complements,
             # "status": status,
-            # "external_id": external_id,
+            "external_id": external_id,
             # "folio_number": folio_number,
             # "series": series,
-            # "pdf_custom_section": pdf_custom_section,
-            # "addenda": addenda,
-            # "namespaces": namespaces,
+            "pdf_custom_section": pdf_custom_section,
+            "addenda": addenda,
+            "namespaces": namespaces,
             # "pdf_options": pdf_options,
+            "idempotency_key" : idempotency_key,
+            # "payment_related_ids": payment_related_ids, SOLO LO ACEPTA CUANDO SE TRATA DE PPD
             "customer": {
                 "legal_name": cliente,
                 "tax_id": tax_id,
@@ -93,28 +96,46 @@ class Factura(Document):
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
         
+        # frappe.msgprint(str(response.json()))
+        
         # data_response =response.json()
         status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
 
-        update_pac_response(self, response)
+        # update_pac_response(self, response)
+        actualizar_status_doc(self,status_doc)
+        actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
         
-   #refactor: mucho codigo duplicado con factura global, cambien ombre variables en algunos casos
-        if check_pac_response_success(response) == 1:
-            sale_invoice_status = "Factura Normal"
-            factura_status = "Facturado"
-            aviso_message = "La Facturación fue exitosa"
-            aviso_titulo = "Facturación Exitosa"
-            aviso_color = "green"
-        else:
-            sale_invoice_status = "Sin facturar"
-            factura_status = "Rechazada"
-            aviso_message = str(data_response)
-            aviso_titulo = "Hubo problema con la solicitud, revisa el reporte"
-            aviso_color = "red"
 
-        actualizar_status_sales_invoice(sales_invoice_id,sale_invoice_status)
-        actualizar_status_doc(self, factura_status)
-        despliega_aviso(title=aviso_titulo, msg=aviso_message, color=aviso_color)
+        # if check_pac_response_success(response) == 1:
+        #     table_respuestas = "response_pac"
+        #     add_response(table_respuestas,self,response.json())
+        #     aviso_message = "La Facturación fue exitosa"
+        #     aviso_titulo = "Facturación Exitosa"
+        #     aviso_color = "green"
+        # else:
+            # add_error_response(self,response)
+        #     aviso_message = str(response.json())
+        #     aviso_titulo = "Hubo problema con la solicitud, revisa el reporte"
+        #     aviso_color = "red"
+
+
+        # despliega_aviso(aviso_titulo,aviso_message,aviso_color)
+            
+
+
+#    refactor: mucho codigo duplicado con factura global, cambien ombre variables en algunos casos
+        # if check_pac_response_success(response) == 1:
+        #     sale_invoice_status = "Factura Normal"
+        #     factura_status = "Facturado"
+
+        # else:
+        #     sale_invoice_status = "Sin facturar"
+        #     factura_status = "Rechazada"
+
+
+        # actualizar_status_sales_invoice(sales_invoice_id,sale_invoice_status)
+        # actualizar_status_doc(self, factura_status)
+        # despliega_aviso(title=aviso_titulo, msg=aviso_message, color=aviso_color)
 
 #Metodo que se corre para validar si los campos son correctos        
     def validate(self):

@@ -235,6 +235,7 @@
    "label": "Respuesta del PAC"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "response_pac",
    "fieldtype": "Table",
    "label": "Response PAC",
@@ -245,7 +246,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-13 20:15:10.849402",
+ "modified": "2024-12-14 11:42:45.392830",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",

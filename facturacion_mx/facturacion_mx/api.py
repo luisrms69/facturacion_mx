@@ -18,8 +18,13 @@ import ast
 receipt_object = {'id': 'id', 'created_at':'created_at', 'date':'date', 'expires_at':'expires_at', 'status':'status_receipt', 'self_invoice_url': 'self_invoice_url', 'total':'total', 'invoice':'invoice', 'key': 'key', 'folio_number': 'folio_number', 'branch':'branch'}
 status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced_to_customer" : "Facturado","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada"}
 status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","pending" : "Enviado a PAC","invoiced_to_customer" : "Autofactura","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido","canceled" : "Sin Facturar","valid" : "Facturado","draft": "Enviado a PAC"}
-invoice_object = {'id': 'id', 'created_at':'created_at', 'livemode':'livemode', 'status':'status', 'cancellation_status': 'cancellation_status', 'verification_url':'verification_url', 'type':'type', 'customer':'customer', 'total': 'total', 'uuid': 'uuid', 'folio_number':'folio_number', 'series':'series', 'external_id':'external_id', 'idempotency_key': 'idempotency_key', 'payment_form': 'payment_form', 'is_ready_to_stamp':'is_ready_to_stamp','items':'items', 'related_documents': 'related_documents', 'currency': 'currency', 'exchange':'exchange', 'complements': 'complements', 'pdf_custom_section': 'pdf_custom_section', 'addenda':'addenda','namespaces':'namespaces', 'stamp': 'stamp', 'payment_related_ids': 'payment_related_ids'}
-status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador"}
+invoice_object = {'id': 'id', 'created_at':'created_at', 'date':'date','livemode':'livemode', 'status':'status', 'cancellation_status': 'cancellation_status', 'verification_url':'verification_url', 'type':'type', 'customer':'customer', 'total': 'total', 'uuid': 'uuid', 'folio_number':'folio_number', 'series':'series', 'external_id':'external_id', 'idempotency_key': 'idempotency_key', 'payment_form': 'payment_form', 'is_ready_to_stamp':'is_ready_to_stamp','currency': 'currency', 'exchange':'exchange','pdf_custom_section': 'pdf_custom_section', 'addenda':'addenda','stamp': 'stamp', 'use':'use','payment_method':'payment_method','export':'export'}
+status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
+invoice_object_additionals = {'related_documents': 'related_documents', 'complements': 'complements','namespaces':'namespaces', 'payment_related_ids': 'payment_related_ids'}
+
+# invoice object additionals on response: CFDI Version, 
+# campos que no se pueden incluir siempre, debera haber un diccionario especial  yconformar los objectos acorde con el tipo de respeusta: namespaces, complements, related_documents, payment_related_ids
+
 
 # Metodos de operaciones con matrices, listas, diccionarios
 
@@ -337,6 +342,8 @@ def respuesta_pac_factura(document, pac_response):
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_sales_invoice.get(pac_response_json['status'])
         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        table_respuestas = "response_pac"
+        add_response(table_respuestas,document,pac_response.json())
         title = 'Solicitud Exitosa!!!!!'
         message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
         indicator = "green"
@@ -344,10 +351,10 @@ def respuesta_pac_factura(document, pac_response):
         title = 'La solicitud de facturacion no fue exitosa'
         message = str(pac_response)
         indicator = "red"
-        status = status_options_receipts.get("rechazado")
+        status = status_options_invoice.get("rechazado")
         status_sales_invoice = status_options_sales_invoice.get("initial")
         document.db_set({
-        'mensaje_de_error' : pac_response_json['message']
+        'response_rechazada' : pac_response_json['message']  #refactor:deberia poder usar la funcion add_error_message es un asunto de nombres de campos
     })
 
     despliega_aviso(title=title,msg=message,color=indicator)
@@ -436,22 +443,29 @@ def actualizar_status_sales_invoice(invoice, status):
      
 #fix: desarrollo el método que esta abajo de este, es una mejora que se debe tomar en cuenta
 # refactor: deberia poder tener la info de los campos a actualizar en una lista como la funcion de check_pac
-def update_pac_response(document,response):
+# def update_pac_response(document,response):
+#     pac_response = response.json()
+#     if check_pac_response_success(response) == 1:
+#         document.db_set({
+#             'id_pac': pac_response['id'],
+#             'uuid' : pac_response['uuid'],
+#             'url_de_verificación' : pac_response['verification_url'],
+#             'serie_de_la_factura' : pac_response['series'],
+#             'folio_de_factura' : pac_response['folio_number'],
+#             'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
+#             'status' : pac_response['status'],
+#             'monto_total' : pac_response['total']
+#         })
+#     else:
+#         document.db_set({
+#              'mensaje_de_error' : pac_response['message']
+#     })
+
+# refactor: no lo puedo ocupar porque los campos de mensaje de error son diferentes en factura y receipt
+def add_error_response(document,response):
     pac_response = response.json()
-    if check_pac_response_success(response) == 1:
-        document.db_set({
-            'id_pac': pac_response['id'],
-            'uuid' : pac_response['uuid'],
-            'url_de_verificación' : pac_response['verification_url'],
-            'serie_de_la_factura' : pac_response['series'],
-            'folio_de_factura' : pac_response['folio_number'],
-            'fecha_timbrado' : pac_response['created_at'],  #refactor: no se trata de la fecha de timbrado es la fehca de emision
-            'status' : pac_response['status'],
-            'monto_total' : pac_response['total']
-        })
-    else:
-        document.db_set({
-             'mensaje_de_error' : pac_response['message']
+    document.db_set({
+         'mensaje_de_error' : pac_response['message']
     })
 
 
@@ -483,12 +497,30 @@ def anade_response_record(table_respuestas, doc, pac_response):
     doc.save()
 
 
+def get_object_type(doc):
+     document_type = doc.doctype
+
+     match document_type:
+          case "Factura":
+               object_type = invoice_object
+          case "Recibo Autofactura":
+               object_type =receipt_object
+               
+
+    #  frappe.msgprint(str(object_type))
+
+     return object_type
+
+
+
 def add_response(table_respuestas, doc, pac_response):
     response_record = {}
 
-    for key in receipt_object:
-         if key in receipt_object.keys():
-              response_record[receipt_object[key]] = pac_response[key]
+    object_type = get_object_type(doc)
+
+    for key in object_type:
+         if key in object_type.keys():
+              response_record[object_type[key]] = pac_response[key]
          
     doc.append(table_respuestas, response_record)
     doc.save()

@@ -24,7 +24,6 @@
   "idempotency_key",
   "payment_form",
   "is_ready_to_stamp",
-  "items",
   "related_documents",
   "currency",
   "exchange",
@@ -43,7 +42,7 @@
   },
   {
    "fieldname": "created_at",
-   "fieldtype": "Datetime",
+   "fieldtype": "Data",
    "label": "Created at"
   },
   {
@@ -63,12 +62,12 @@
   },
   {
    "fieldname": "verification_url",
-   "fieldtype": "Data",
+   "fieldtype": "Long Text",
    "label": "Verification URL"
   },
   {
    "fieldname": "date",
-   "fieldtype": "Datetime",
+   "fieldtype": "Data",
    "label": "Date"
   },
   {
@@ -127,11 +126,6 @@
    "label": "Is ready to stamp"
   },
   {
-   "fieldname": "items",
-   "fieldtype": "Data",
-   "label": "Items"
-  },
-  {
    "fieldname": "related_documents",
    "fieldtype": "Data",
    "label": "Related Documents"
@@ -168,7 +162,7 @@
   },
   {
    "fieldname": "stamp",
-   "fieldtype": "Data",
+   "fieldtype": "JSON",
    "label": "Stamp"
   },
   {
@@ -180,7 +174,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-12-13 20:03:34.509195",
+ "modified": "2024-12-14 12:04:00.245000",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Invoice Object",
