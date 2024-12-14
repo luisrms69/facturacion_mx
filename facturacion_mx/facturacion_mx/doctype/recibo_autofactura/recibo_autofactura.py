@@ -12,24 +12,12 @@ class ReciboAutofactura(Document):
     
 #Metodo para solicitar la creacion de un recibo (se puede utilizar para autofacturacion)
     def create_recibo(self):
-        # payload = payload_recibo_autofactura(self)
-
-        # current_document = self.get_title()
-        # sales_invoice_id = frappe.db.get_value(
-        #     'Recibo Autofactura', current_document, 'sales_invoice_id')
-        # invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
-
 # Arma http request. endpoint, headers y data.
 
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_recibo_autofactura')
         api_token = get_api_token_live()
-        # api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = payload_recibo_autofactura(self)
-        # data = {
-        #     "payment_form": frappe.db.get_value('Recibo Autofactura', current_document, 'forma_de_pago_registrada')[:2],
-        #     "items": get_items_info(invoice_data)
-        # }
 
 # Almacena respuesta y define el estatus
         response = requests.post(
