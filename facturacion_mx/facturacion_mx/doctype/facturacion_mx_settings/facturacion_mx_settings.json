@@ -14,6 +14,7 @@
   "endpoint_enviar_correo",
   "endpoint_descarga_factura",
   "endpoint_facturar_recibo",
+  "endpoint_factura_global_recibos",
   "api_settings_section",
   "live_secret_key",
   "column_break_rgni",
@@ -101,12 +102,17 @@
    "fieldname": "endpoint_facturar_recibo",
    "fieldtype": "Data",
    "label": "Endpoint Facturar Recibo"
+  },
+  {
+   "fieldname": "endpoint_factura_global_recibos",
+   "fieldtype": "Data",
+   "label": "Endpoint Factura Global Recibos"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-12-12 15:20:45.686034",
+ "modified": "2024-12-13 18:32:55.201943",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
