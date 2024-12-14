@@ -9,6 +9,7 @@
   "nota_de_venta_para_emision_de_recibo_autofactura_section",
   "sales_invoice_id",
   "fecha_hora_recibo",
+  "total_factura",
   "column_break_amdu",
   "fecha_nota_de_venta",
   "forma_de_pago_registrada",
@@ -63,7 +64,7 @@
   {
    "fetch_from": "sales_invoice_id.posting_date",
    "fieldname": "fecha_nota_de_venta",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "label": "Fecha Nota de Venta",
    "read_only": 1
   },
@@ -156,12 +157,18 @@
    "hidden": 1,
    "label": "Status",
    "options": "Abierto\nCancelado\nFacturado\nFactura Global\nSolicitud Rechazada"
+  },
+  {
+   "fetch_from": "sales_invoice_id.grand_total",
+   "fieldname": "total_factura",
+   "fieldtype": "Data",
+   "label": "Total Factura"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-09 22:44:42.304870",
+ "modified": "2024-12-13 01:39:24.516137",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Recibo Autofactura",
