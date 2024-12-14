@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-13 19:44:31.971473",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "id",
+  "created_at",
+  "livemode",
+  "status",
+  "cancellation_status",
+  "verification_url",
+  "date",
+  "address",
+  "type",
+  "customer",
+  "total",
+  "uuid",
+  "folio_number",
+  "series",
+  "external_id",
+  "idempotency_key",
+  "payment_form",
+  "is_ready_to_stamp",
+  "related_documents",
+  "currency",
+  "exchange",
+  "complements",
+  "pdf_custom_section",
+  "addenda",
+  "namespaces",
+  "stamp",
+  "payment_related_ids"
+ ],
+ "fields": [
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "ID"
+  },
+  {
+   "fieldname": "created_at",
+   "fieldtype": "Data",
+   "label": "Created at"
+  },
+  {
+   "fieldname": "livemode",
+   "fieldtype": "Data",
+   "label": "Livemode"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status"
+  },
+  {
+   "fieldname": "cancellation_status",
+   "fieldtype": "Data",
+   "label": "Cancellation Status"
+  },
+  {
+   "fieldname": "verification_url",
+   "fieldtype": "Long Text",
+   "label": "Verification URL"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Data",
+   "label": "Date"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "JSON",
+   "label": "Address"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "JSON",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Int",
+   "label": "Total"
+  },
+  {
+   "fieldname": "uuid",
+   "fieldtype": "Data",
+   "label": "UUID"
+  },
+  {
+   "fieldname": "folio_number",
+   "fieldtype": "Int",
+   "label": "Folio Number"
+  },
+  {
+   "fieldname": "series",
+   "fieldtype": "Data",
+   "label": "Series"
+  },
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "External ID"
+  },
+  {
+   "fieldname": "idempotency_key",
+   "fieldtype": "Data",
+   "label": "idempotency key"
+  },
+  {
+   "fieldname": "payment_form",
+   "fieldtype": "Data",
+   "label": "Payment Form"
+  },
+  {
+   "fieldname": "is_ready_to_stamp",
+   "fieldtype": "Data",
+   "label": "Is ready to stamp"
+  },
+  {
+   "fieldname": "related_documents",
+   "fieldtype": "Data",
+   "label": "Related Documents"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Data",
+   "label": "Currency"
+  },
+  {
+   "fieldname": "exchange",
+   "fieldtype": "Float",
+   "label": "Exchange"
+  },
+  {
+   "fieldname": "complements",
+   "fieldtype": "Data",
+   "label": "Complements"
+  },
+  {
+   "fieldname": "pdf_custom_section",
+   "fieldtype": "Data",
+   "label": "Pdf Custom Section"
+  },
+  {
+   "fieldname": "addenda",
+   "fieldtype": "Data",
+   "label": "Addenda"
+  },
+  {
+   "fieldname": "namespaces",
+   "fieldtype": "Data",
+   "label": "Namespaces"
+  },
+  {
+   "fieldname": "stamp",
+   "fieldtype": "JSON",
+   "label": "Stamp"
+  },
+  {
+   "fieldname": "payment_related_ids",
+   "fieldtype": "Data",
+   "label": "Payment Related IDs"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-14 12:04:00.245000",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Invoice Object",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

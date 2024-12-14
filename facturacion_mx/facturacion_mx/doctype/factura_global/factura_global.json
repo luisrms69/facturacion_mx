@@ -76,14 +76,14 @@
   {
    "default": "Today",
    "fieldname": "fecha_inicial",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "label": "Fecha Inicial",
    "reqd": 1
   },
   {
    "default": "Today",
    "fieldname": "fecha_final",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "in_list_view": 1,
    "label": "Fecha Final",
    "reqd": 1
@@ -120,7 +120,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-12 23:05:46.722064",
+ "modified": "2024-12-13 18:48:18.703442",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura Global",

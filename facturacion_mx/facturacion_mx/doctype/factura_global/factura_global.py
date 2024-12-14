@@ -28,25 +28,25 @@ class FacturaGlobal(Document):
 		months = frappe.db.get_value('Factura Global', current_document, 'months')
 		# year = frappe.db.get_value('Factura Global', current_document, 'year')
 
-		frappe.msgprint(str(forma_de_pago))
+		# frappe.msgprint(str(forma_de_pago))
 
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
 #Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
 
-		facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
+		facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_factura_global_recibos')
 		api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
 		headers = {"Authorization": f"Bearer {api_token}"}
 		data = {
 			"periodicity": periodicity,
-			"from": fecha_inicial,
-			"to": fecha_final,
+			"from": str(fecha_inicial),
+			"to": str(fecha_final),
 			"months" : months,
             "payment_form": forma_de_pago[:2],
             "receipts": ereceipts_id
         }
 
-
+		frappe.msgprint(str(data))
 
 
 		# 		data = {
@@ -75,8 +75,10 @@ class FacturaGlobal(Document):
 		#Cambia el estado de las notaas de venta a enviadas a PAC
 		# cambia_status_invoice_list_global(invoice_list,"Enviado a PAC")
 
-		# response = requests.post(facturapi_endpoint, json=data, headers=headers)
-		# data_response =response.json()
+		response = requests.post(facturapi_endpoint, json=data, headers=headers)
+		data_response =response.json()
+
+		frappe.msgprint(str(data_response))
 
 		# if check_pac_response_success(response) == 1:
 		# 	table_respuestas = "respuestas_del_pac"
