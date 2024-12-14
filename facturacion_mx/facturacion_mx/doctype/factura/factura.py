@@ -23,6 +23,33 @@ class Factura(Document):
         tax_id = get_tax_id(cliente)
         email_id = datos_direccion.email_id
 
+
+# Pendiente configuración o automatización
+        type = "I"
+        folio_number = 0
+        series = ""
+        addenda = ""
+        pdf_custom_section = ""
+
+# Pendiente configuración de estos campos, NO SE VAN A OCUPAR, SE DEJA EL PLACER
+        currency = "MXN"
+        exchange = 1  # ESTO DEBERA CONFIGURARSE DE OTRA MANERA
+        conditions = ""
+        related_documents = []
+        export = "01"
+        complements = []
+        status = "pending"
+        date = "" # ESTE CAMPO NO LO VOY A CONFIGURAR, EL DEFAULT ES NOW
+        address = {}
+        external_id = ""
+        idempotency_key = ""
+        namespaces = []
+        pdf_options = {}
+
+        
+
+        
+
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
 #Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
@@ -33,6 +60,21 @@ class Factura(Document):
             "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
             "use": frappe.db.get_value('Factura', current_document, 'usocfdi'),
             "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
+            "type": type,
+            # "currency": currency,
+            # "exchange": exchange,
+            # "conditions": conditions,
+            # "realted_documents": related_documents,
+            # "export": export,
+            # "complements": complements,
+            # "status": status,
+            # "external_id": external_id,
+            # "folio_number": folio_number,
+            # "series": series,
+            # "pdf_custom_section": pdf_custom_section,
+            # "addenda": addenda,
+            # "namespaces": namespaces,
+            # "pdf_options": pdf_options,
             "customer": {
                 "legal_name": cliente,
                 "tax_id": tax_id,
@@ -46,12 +88,13 @@ class Factura(Document):
         }
 
 		#Cambia el estado de las notaas de venta a enviadas a PAC
-        actualizar_status_sales_invoice(sales_invoice_id,"Enviado a PAC")
+        # actualizar_status_sales_invoice(sales_invoice_id,"Enviado a PAC")
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
         
-        data_response =response.json()
+        # data_response =response.json()
+        status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
 
         update_pac_response(self, response)
         
@@ -82,4 +125,5 @@ class Factura(Document):
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
+        actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
         self.create_cfdi()
