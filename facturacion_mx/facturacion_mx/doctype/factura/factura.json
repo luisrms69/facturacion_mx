@@ -13,9 +13,9 @@
   "fecha_nota_de_venta",
   "tax_id",
   "tax_category",
+  "usocfdi",
   "email_id",
   "column_break_fbwf",
-  "usocfdi",
   "metodo_pago_sat",
   "foma_de_pago_sat",
   "referencia_de_pago",
@@ -118,10 +118,12 @@
    "search_index": 1
   },
   {
+   "fetch_from": "cliente.custom_uso_cfdi",
    "fieldname": "usocfdi",
    "fieldtype": "Link",
    "label": "Uso CFDI",
    "options": "Uso CFDI",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -246,7 +248,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-14 11:42:45.392830",
+ "modified": "2024-12-14 15:29:39.505074",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
