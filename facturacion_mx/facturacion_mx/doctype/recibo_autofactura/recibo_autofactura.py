@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
-from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
+# from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 from facturacion_mx.facturacion_mx.api import *
 
 class ReciboAutofactura(Document):
@@ -14,7 +14,7 @@ class ReciboAutofactura(Document):
     def create_recibo(self):
 # Arma http request. endpoint, headers y data.
 
-        facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_recibo_autofactura')
+        facturapi_endpoint = get_endpoint('endpoint_crear_recibo_autofactura')
         api_token = get_api_token_live()
         headers = {"Authorization": f"Bearer {api_token}"}
         data = payload_recibo_autofactura(self)
@@ -35,6 +35,7 @@ class ReciboAutofactura(Document):
     def validate(self):
         validate_rfc_factura(self.rfc)
         validate_cp_factura(self.cp)
+        # refactor: en realidad lo unico que se requiere validar es payment_form y productos.
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):

@@ -271,6 +271,11 @@ def despliega_aviso(title="Aviso", msg="", color="green"):
      frappe.msgprint(title=title, msg=msg, indicator=color)
     
 
+def get_endpoint(endpoint):
+     endpoint_value = frappe.db.get_single_value('Facturacion MX Settings',endpoint)
+
+     return endpoint_value
+
 def get_api_token_live():
      api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
 
