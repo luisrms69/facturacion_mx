@@ -759,8 +759,8 @@ def get_ereceipts_id_factura_global(recibo_autofactura_list):
 
         #  frappe.msgprint(str(recibo_autofactura))
 
-    for renglon in receipts_list:
-         frappe.msgprint(str(renglon))
+    # for renglon in receipts_list:
+    #      frappe.msgprint(str(renglon))
     #      frappe.msgprint(renglon.created_at)
     #      frappe.msgprint(renglon.total)
     #      frappe.msgprint(renglon.status_receipt)
@@ -805,10 +805,10 @@ def get_nota_mayor(invoice_id_list):
      nota_mayor = ""
      monto_nota_mayor = 0
      for nota_venta in invoice_id_list:
-          frappe.msgprint(str(nota_venta))
+        #   frappe.msgprint(str(nota_venta))
           grand_total = frappe.db.get_value("Sales Invoice", nota_venta, "grand_total")
           name = frappe.db.get_value("Sales Invoice", nota_venta, "name")
-          frappe.msgprint(str(grand_total))
+        #   frappe.msgprint(str(grand_total))
           if grand_total > monto_nota_mayor:
             monto_nota_mayor = grand_total
             nota_mayor = name
@@ -819,14 +819,14 @@ def get_nota_mayor(invoice_id_list):
 #Metodo que devuelve la forma de pago a utilizar, es la que se tiene en el monto mayor
 def get_forma_de_pago_global(recibos_list):
 
-    frappe.msgprint(str(recibos_list))
+    # frappe.msgprint(str(recibos_list))
      
 #refactor: lo copio tal cual de ereceipts id hay que evitar el cuplicado, se tiene que hacer una funcion que tome el parametro que se da en get y regrese el listado fix fix fix fix
     receipts_invoice_id_list = []
     for recibo in recibos_list:
         #  frappe.msgprint(str(recibo))
          recibo_sales_invoice_id = recibo.get('sales_invoice_id')
-         frappe.msgprint(str(recibo_sales_invoice_id))
+        #  frappe.msgprint(str(recibo_sales_invoice_id))
         #  recibo_invoice = frappe.get_doc("Sales Invoice", recibo_sales_invoice_id)
         #  frappe.msgprint(str(recibo_invoice))
         #  recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo_name)
@@ -837,7 +837,7 @@ def get_forma_de_pago_global(recibos_list):
     nota_mayor = get_nota_mayor(receipts_invoice_id_list)
     forma_de_pago = get_forma_de_pago(nota_mayor)
 
-    frappe.msgprint(str(forma_de_pago))
+    # frappe.msgprint(str(forma_de_pago))
 
     return forma_de_pago
 
