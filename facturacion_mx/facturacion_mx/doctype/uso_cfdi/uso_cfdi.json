@@ -38,9 +38,10 @@
    "label": "Descripcion"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-07 20:54:29.972450",
+ "modified": "2024-12-14 15:24:55.315787",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Uso CFDI",
