@@ -98,11 +98,6 @@ class Factura(Document):
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
     def validate(self):
         validate_data_invoice(self)
-        # validate_rfc_factura(self.tax_id)
-        # validate_cp_factura(self.zip_code)
-        # validate_tax_category_factura(self.tax_category)
-        # validate_uso_cfid(self.usocfdi)
-        # validate_email_factura(self.email_id)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
