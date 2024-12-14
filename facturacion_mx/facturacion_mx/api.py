@@ -694,6 +694,20 @@ def status_check_receipt(id_receipt, receipt_docname):
 
     return
 
+def payload_recibo_autofactura(doc):
+        current_document = doc.get_title()
+        sales_invoice_id = frappe.db.get_value(
+            'Recibo Autofactura', current_document, 'sales_invoice_id')
+        invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
+        data = {
+            "payment_form": frappe.db.get_value('Recibo Autofactura', current_document, 'forma_de_pago_registrada')[:2],
+            "items": get_items_info(invoice_data)
+        }
+
+        return data
+
+
+
 
 def get_ereceipts_id_factura_global(recibo_autofactura_list):
     receipts_list = []
