@@ -13,54 +13,6 @@ from frappe.utils.password import get_decrypted_password
 from facturacion_mx.facturacion_mx.api import *
 
 class CancelacionFactura(Document):
-#Metodo para obtener el id de la factura que se va a cancelar, este es el ID proporcionado por el PAC   
-	# def get_factura_id(self):
-	# 	factura_id = frappe.db.get_value(
-	# 		"Cancelacion Factura", self.get_title(), 'id_pac'
-	# 	)
-
-	# 	return factura_id
-
-#Metodo para evaluar si la respuesta del PAC es de exito o fracaso, en fracasos no hay id	
-	# def determine_resultado(data_response):
-	# 	if 'id' in data_response.keys():
-	# 		return 1
-	# 	else:
-	# 		return 0
-
-# #Metodo que llama al metodo que añade en el child table de cancelar factura el response del PAC		
-# 	def anadir_response_record(self,pac_response):	#refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-# 		if check_pac_response_success(pac_response) == 1:
-# 			pac_response_json = pac_response.json()
-# 			anade_response_record("respuestas",self,pac_response_json)
-
-# #Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
-# # Retorna ademas un valor de status que se utilizara para la actualizacion de los documentos		
-# 	def actualizar_cancelacion_respuesta_pac(self, pac_response):  #refactor: esto se deberia poder mejorar, demasiado texto hardcoded
-# 		if check_pac_response_success(pac_response) == 1:
-# 			pac_response_json = pac_response.json()			
-# 			status = status_respuesta_pac(pac_response_json)
-# 		else:
-# 			frappe.msgprint(
-#                 msg=str(pac_response),
-#                 title='La solicitud de facturacion no fue exitosa',
-#                 indicator='red'
-# 			)
-# 			self.db_set({
-#             'mensaje_de_error' : pac_response['message']
-#         })
-# 			status = "Solicitud Rechazada"
-			
-# 		return status
-
-# Metodo que jala el motivo de cancelacion introducido por el usuario
-	# def get_motivo_cancelacion(self):
-	# 	motivo_cancelacion = frappe.db.get_value(
-	# 		"Cancelacion Factura", self.get_title(), 'motivo_de_cancelacion'
-	# 	)
-	# 	id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
-
-	# 	return id_motivo_cancelacion
 
 # Metodo que se encarga de enviar a cancelar
 # Primero determina los valores del query que se adicionaran al http request
