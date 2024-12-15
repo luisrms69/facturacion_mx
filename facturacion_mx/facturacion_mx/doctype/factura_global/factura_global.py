@@ -28,7 +28,7 @@ class FacturaGlobal(Document):
 		months = frappe.db.get_value('Factura Global', current_document, 'months')
 		# year = frappe.db.get_value('Factura Global', current_document, 'year')
 
-		# frappe.msgprint(str(forma_de_pago))
+		frappe.msgprint(str(forma_de_pago))
 
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
@@ -45,7 +45,7 @@ class FacturaGlobal(Document):
             "payment_form": forma_de_pago[:2],
             "receipts": ereceipts_id
         }
-
+		frappe.msgprint("Payload")
 		frappe.msgprint(str(data))
 
 
@@ -76,9 +76,21 @@ class FacturaGlobal(Document):
 		# cambia_status_invoice_list_global(invoice_list,"Enviado a PAC")
 
 		response = requests.post(facturapi_endpoint, json=data, headers=headers)
-		data_response =response.json()
+		# data_response =response.json()
 
-		frappe.msgprint(str(data_response))
+		frappe.msgprint("response")
+		frappe.msgprint(str(response.json()))
+		
+		# status , status_sales_invoice = respuesta_pac_factura_global(self,response)
+		# actualizar_status_doc(self,status)
+		# actualizar_status_sales_invoice(self.sales_invoice_id, status_sales_invoice)
+		
+		# if check_pac_response_success(response) ==1:
+		# 	table_respuestas = "respuestas_del_pac"
+		# 	add_response(table_respuestas, self,response.json())
+
+
+
 
 		# if check_pac_response_success(response) == 1:
 		# 	table_respuestas = "respuestas_del_pac"
@@ -111,7 +123,7 @@ class FacturaGlobal(Document):
 
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
-	def on_update(self):
+	def on_submit(self):
 		self.create_cfdi_global()
 
 

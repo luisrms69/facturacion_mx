@@ -57,6 +57,7 @@ frappe.ui.form.on('Recibo Autofactura', {
                     sales_invoice_id: frm.doc.sales_invoice_id
                 },
                 callback: function (t) {
+                    console.log(t.message)
                     if (t.message) {
                     frm.set_value('forma_de_pago_registrada', t.message);
                     } else {

@@ -19,6 +19,9 @@ class ReciboAutofactura(Document):
         headers = {"Authorization": f"Bearer {api_token}"}
         data = payload_recibo_autofactura(self)
 
+
+        frappe.msgprint(str(data))
+
 # Almacena respuesta y define el estatus
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)

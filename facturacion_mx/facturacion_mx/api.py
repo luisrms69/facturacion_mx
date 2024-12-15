@@ -12,6 +12,7 @@ from frappe.utils.response import *
 import re  # fix: Se incluye por que venía en el metodo para obtener el nombre del archivo en descarga factura, no estoy seguro si se usa
 import json  # lo cargo para utilizar json.loads
 import ast
+from frappe.utils import add_to_date # Funcion add_to_date para la fecha de creacion de e-receipts
 
 #  DEFINICION DE VARIABLES GLOBALES
     
@@ -21,6 +22,9 @@ status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt",
 invoice_object = {'id': 'id', 'created_at':'created_at', 'date':'date','livemode':'livemode', 'status':'status', 'cancellation_status': 'cancellation_status', 'verification_url':'verification_url', 'type':'type', 'customer':'customer', 'total': 'total', 'uuid': 'uuid', 'folio_number':'folio_number', 'series':'series', 'external_id':'external_id', 'idempotency_key': 'idempotency_key', 'payment_form': 'payment_form', 'is_ready_to_stamp':'is_ready_to_stamp','currency': 'currency', 'exchange':'exchange','pdf_custom_section': 'pdf_custom_section', 'addenda':'addenda','stamp': 'stamp', 'use':'use','payment_method':'payment_method','export':'export'}
 status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
 invoice_object_additionals = {'related_documents': 'related_documents', 'complements': 'complements','namespaces':'namespaces', 'payment_related_ids': 'payment_related_ids'}
+# status_options_invoice_global = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
+
+
 
 # invoice object additionals on response: CFDI Version, 
 # campos que no se pueden incluir siempre, debera haber un diccionario especial  yconformar los objectos acorde con el tipo de respeusta: namespaces, complements, related_documents, payment_related_ids
@@ -326,7 +330,7 @@ def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: es
     return status
 
 
-#refactor:fix: misma funcion para factura y e-receipt, en esta version tendresmos dos versiones
+#refactor:fix: misma funcion para factura, factura global y e-receipt, en esta version tendresmos  versiones para cada uno, debe quedar una sola
 def respuesta_pac(document, pac_response):
     
     pac_response_json = pac_response.json()	
@@ -355,7 +359,7 @@ def respuesta_pac_factura(document, pac_response):
     
     pac_response_json = pac_response.json()	
     if check_pac_response_success(pac_response) == 1:		
-        status = status_options_sales_invoice.get(pac_response_json['status'])
+        status = status_options_invoice.get(pac_response_json['status'])
         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
         table_respuestas = "response_pac"
         add_response(table_respuestas,document,pac_response.json())
@@ -376,6 +380,30 @@ def respuesta_pac_factura(document, pac_response):
         
     return status, status_sales_invoice
 
+def respuesta_pac_factura_global(document, pac_response):
+    
+    pac_response_json = pac_response.json()	
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_options_sales_invoice.get(pac_response_json['status'])
+        status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        table_respuestas = "response_pac"
+        add_response(table_respuestas,document,pac_response.json())
+        title = 'Solicitud Exitosa!!!!!'
+        message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
+        indicator = "green"
+    else:
+        title = 'La solicitud de facturacion no fue exitosa'
+        message = str(pac_response)
+        indicator = "red"
+        status = status_options_invoice.get("rechazado")
+        status_sales_invoice = status_options_sales_invoice.get("initial")
+        document.db_set({
+        'response_rechazada' : pac_response_json['message']  #refactor:deberia poder usar la funcion add_error_message es un asunto de nombres de campos
+    })
+
+    despliega_aviso(title=title,msg=message,color=indicator)
+        
+    return status, status_sales_invoice
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
 def get_factura_object(factura_a_revisar):
@@ -603,8 +631,15 @@ def get_forma_de_pago(sales_invoice_id):
         ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
     ]
     pay_entry = frappe.get_all("Payment Entry", filters=filters)
+
+# Para casos donde haya cancelacioens de pagos o equivocaciones, tomara la ultima entrada
+    if len(pay_entry) > 1:
+         use_pay_entry = pay_entry[0]
+    else:
+         use_pay_entry = pay_entry
+    
     forma_de_pago = frappe.db.get_value(
-        "Payment Entry", pay_entry, "mode_of_payment")
+        "Payment Entry", use_pay_entry, "mode_of_payment")
 
     return forma_de_pago
 
@@ -706,7 +741,9 @@ def payload_recibo_autofactura(doc):
         invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
         data = {
             "payment_form": frappe.db.get_value('Recibo Autofactura', current_document, 'forma_de_pago_registrada')[:2],
-            "items": get_items_info(invoice_data)
+            "items": get_items_info(invoice_data),
+            # "date" : str(add_to_date(str(invoice_data.posting_date), minutes=1))
+            "date" : add_to_date(str(invoice_data.posting_date), minutes=15, as_string = True, as_datetime= True)
         }
 
         return data
@@ -739,10 +776,16 @@ def get_ereceipts_id_factura_global(recibo_autofactura_list):
 def get_receipts_factura_global(fecha_inicial, fecha_final):
      recibo_autofactura_list = frappe.db.get_list('Recibo Autofactura', filters={
           'status': status_options_receipts.get("open"),
-          'fecha_nota_de_venta': ['between',[fecha_inicial,fecha_final]]
+          'fecha_nota_de_venta': ['between',[fecha_inicial,fecha_final]],
+          'cliente' : frappe.db.get_single_value('Facturacion MX Settings','cliente_factura_global')
           },
         fields = ['name', 'cliente', 'sales_invoice_id','creation','total_factura']  #fix: esto deber{ia estar en alguna variable}, hay dependencias en que name sea el indice cero
      )
+     
+    #  cliente_p_g = frappe.db.get_single_value('Facturacion MX Settings','cliente_factura_global')
+
+    #  frappe.msgprint(cliente_p_g)
+     frappe.msgprint(str(recibo_autofactura_list))
 
      return recibo_autofactura_list
 
