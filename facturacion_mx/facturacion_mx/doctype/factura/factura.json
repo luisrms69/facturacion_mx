@@ -171,7 +171,7 @@
    "fieldtype": "Small Text",
    "hidden": 1,
    "label": "Status",
-   "options": "Sin enviar\nRecibo\nFacturado\nRechazada\nDesconocido\nCancelada"
+   "options": "Sin enviar\nRecibo\nFacturado\nRechazada\nDesconocido\nCancelado"
   },
   {
    "fieldname": "fecha_timbrado",
@@ -248,7 +248,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-14 15:59:52.422502",
+ "modified": "2024-12-15 21:29:34.395239",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
