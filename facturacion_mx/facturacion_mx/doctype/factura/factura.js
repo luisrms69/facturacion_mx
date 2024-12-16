@@ -78,6 +78,7 @@ frappe.ui.form.on('Factura', {
 
 //refactor:deberia poder llamar a la funcion con el dotted path
 //refactor: debe tenerse el codigo hardocded en alguna variable
+//refactor: las siguientes funciones dependen que la factura tenga estado facturado, creo que pueden meterse en uno solo
 
 // Codigo que genera boton en la Factura para hacer el envio por correo y llama al método PY de envio
 frappe.ui.form.on('Factura', {
@@ -165,3 +166,28 @@ frappe.ui.form.on('Factura', {
     }
 });
 
+
+
+// Codigo que genera boton en la Factura para cancelar y llama al método PY de envio
+// Se deben tener que automatizar para utilizar el doctype Motivo de Cancelacion
+frappe.ui.form.on('Factura', {
+    refresh: function (frm) {
+            // if (frm.doc.status == "Facturado") {  //refactor: tomar de la variable global
+            frm.add_custom_button(__("01 Comprobante emitido con errores con relación"), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: "01"
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                            console.log("#######server script message#########");
+                            console.log(r.message);
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+        );
+    }
+});

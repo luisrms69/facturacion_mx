@@ -13,6 +13,7 @@ import re  # fix: Se incluye por que venía en el metodo para obtener el nombre 
 import json  # lo cargo para utilizar json.loads
 import ast
 from frappe.utils import add_to_date # Funcion add_to_date para la fecha de creacion de e-receipts
+import datetime
 
 #  DEFINICION DE VARIABLES GLOBALES
     
@@ -23,8 +24,6 @@ invoice_object = {'id': 'id', 'created_at':'created_at', 'date':'date','livemode
 status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
 invoice_object_additionals = {'related_documents': 'related_documents', 'complements': 'complements','namespaces':'namespaces', 'payment_related_ids': 'payment_related_ids'}
 # status_options_invoice_global = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
-
-
 
 # invoice object additionals on response: CFDI Version, 
 # campos que no se pueden incluir siempre, debera haber un diccionario especial  yconformar los objectos acorde con el tipo de respeusta: namespaces, complements, related_documents, payment_related_ids
@@ -292,11 +291,21 @@ def get_api_token_live():
 
 #Metodo para obtener el id de la factura que se va a cancelar, este es el ID proporcionado por el PAC   
 def get_factura_id(document):
-    factura_id = frappe.db.get_value(
-        "Cancelacion Factura", document.get_title(), 'id_pac'
-    )
+    factura_id = document.response_pac[0].id
 
     return factura_id
+
+
+# Método para preparar una respuesta negativa como object invoice (limitado) y que se pueda añadir a la tabla de respuestas
+def objetizar_respuesta_negativa_pac(invoice_id, json_response):
+
+
+     respuesta_negativa ={}
+     respuesta_negativa[invoice_object.get('id')] = invoice_id
+     respuesta_negativa[invoice_object.get('date')] = str(datetime.datetime.now())
+     respuesta_negativa[invoice_object.get('cancellation_status')] = str(json_response)
+
+     return respuesta_negativa
 
 
 # Metodo que jala el motivo de cancelacion introducido por el usuario
@@ -307,6 +316,13 @@ def get_motivo_cancelacion(document):
     id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
 
     return id_motivo_cancelacion
+
+
+def get_id_motivo_cancelacion(motivo):
+    id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo, 'motivo_de_cancelación')
+
+    return id_motivo_cancelacion
+
 
 #Metodo que evalua la respuesta obtenida y en base a esta avisa por medio de un mensaje el resultado
 # refactor: voy a duplicar esta funcion usada en CX para ver si puedo mejorarla
@@ -330,7 +346,7 @@ def actualizar_cancelacion_respuesta_pac(document, pac_response):  #refactor: es
     return status
 
 
-#refactor:fix: misma funcion para factura, factura global y e-receipt, en esta version tendresmos  versiones para cada uno, debe quedar una sola
+#refactor:fix: misma funcion para factura, factura global y e-receipt y cancelacion, en esta version tendresmos  versiones para cada uno, debe quedar una sola
 def respuesta_pac(document, pac_response):
     
     pac_response_json = pac_response.json()	
@@ -355,8 +371,45 @@ def respuesta_pac(document, pac_response):
     return status, status_sales_invoice
 
 
-def respuesta_pac_factura(document, pac_response):
+def respuesta_pac_cancelacion(document, pac_response):
+
+    table_respuestas = "response_pac"
     
+    pac_response_json = pac_response.json()	
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_options_invoice.get(pac_response_json['status'])
+        cancel_status = status_options_invoice.get(pac_response_json['cancellation_status'])
+        # status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        # table_respuestas = "response_pac"
+        add_response(table_respuestas,document,pac_response.json())
+        title = 'Solicitud de Cancelación Recibida y Aceptada'
+        # message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
+        message=f"El PAC ha aceptado la solicitud de cancelación, el estatus reportado es: {status} y el estado de cancelación es: {cancel_status}, considera que en algunos casos se requiere la validación por parte del cliente antes de la cancelación definitiva de la factura"
+        indicator = "green"
+        if status == status_options_invoice.get('canceled'):
+            actualizar_status_doc(document,status)
+            actualizar_status_sales_invoice(document.sales_invoice_id,status_options_invoice.get('initial'))
+        else:
+            actualizar_status_doc(document,status_options_invoice.get('pending'))
+            actualizar_status_sales_invoice(document.sales_invoice_id,status_options_invoice.get('pending'))            
+             
+    else:
+        title = 'La solicitud fue rechazada'
+        message = str(pac_response_json)
+        indicator = "red"
+
+        
+        registro_rechazo = objetizar_respuesta_negativa_pac(get_factura_id(document),pac_response_json)
+        add_response(table_respuestas,document,registro_rechazo)
+
+
+    despliega_aviso(title=title,msg=message,color=indicator)
+        
+    # return status, status_sales_invoice
+
+
+def respuesta_pac_factura(document, pac_response):
+
     pac_response_json = pac_response.json()	
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_invoice.get(pac_response_json['status'])
@@ -369,6 +422,11 @@ def respuesta_pac_factura(document, pac_response):
     else:
         title = 'La solicitud de facturacion no fue exitosa'
         message = str(pac_response_json)
+
+# formar respuesta para añadir a table respuestas
+        # add_response(table_respuestas,document,pac_response.json())
+
+
         indicator = "red"
         status = status_options_invoice.get("rechazado")
         status_sales_invoice = status_options_sales_invoice.get("initial")
@@ -389,7 +447,7 @@ def respuesta_pac_factura_global(document, pac_response):
         table_respuestas = "response_pac"
         add_response(table_respuestas,document,pac_response.json())
         title = 'Solicitud Exitosa!!!!!'
-        message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
+        message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas, "
         indicator = "green"
     else:
         title = 'La solicitud de facturacion no fue exitosa'
@@ -471,6 +529,14 @@ def actualizar_status_doc(doc, status):
       })
 
 
+      # Actualiza el valor de status de la cancelacion de un docuemtno
+def actualizar_status_cancelacion(doc, status):
+
+      doc.db_set({
+            'status': status
+      })
+
+
 # Método para actualizar el status de un documento
 # fix: debe sustituir todos los metodos que traigo para actualizar status
 #fix:debe utilizarse ENUM para los status posibles
@@ -534,8 +600,8 @@ def add_response(table_respuestas, doc, pac_response):
     object_type = get_object_type(doc)
 
     for key in object_type:
-         if key in object_type.keys():
-              response_record[object_type[key]] = pac_response[key]
+         if key in pac_response.keys():  # REVIEW, SE CAMBIO EL 15 DICIEMBRE MEDIA NOCHE, POR SI DEJA DE JALAR REVISAR ESE COMMITT
+                   response_record[object_type[key]] = pac_response[key]
          
     doc.append(table_respuestas, response_record)
     doc.save()
@@ -852,3 +918,25 @@ def validate_orden_fechas(fecha_inicial,fecha_final,msg):
 def cambia_status_invoice_list_global(invoice_list, status):
     for invoice in invoice_list:
             actualizar_status_sales_invoice(invoice, status)
+
+
+# Método para cancelar una factura
+
+@frappe.whitelist()
+def cancela_factura(doc, motivo):
+    
+    factura_document = frappe.get_doc('Factura', doc)
+    factura_a_cancelar = get_factura_id(factura_document)
+    api_token = get_api_token_live()
+
+    headers ={ "Authorization": f"Bearer {api_token}"}
+    factura_endpoint = frappe.db.get_single_value('Facturacion MX Settings', 'endpoint_cancelar_facturas')
+    q = f"{factura_a_cancelar}?motive={motivo}"
+    final_url= f"{factura_endpoint}{q}"
+    
+    response = requests.delete(final_url, headers=headers)
+    
+    respuesta_pac_cancelacion(factura_document, response)
+
+
+    return response
