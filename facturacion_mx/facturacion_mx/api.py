@@ -368,7 +368,7 @@ def respuesta_pac_factura(document, pac_response):
         indicator = "green"
     else:
         title = 'La solicitud de facturacion no fue exitosa'
-        message = str(pac_response)
+        message = str(pac_response_json)
         indicator = "red"
         status = status_options_invoice.get("rechazado")
         status_sales_invoice = status_options_sales_invoice.get("initial")
