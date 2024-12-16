@@ -172,7 +172,7 @@ frappe.ui.form.on('Factura', {
 // Se deben tener que automatizar para utilizar el doctype Motivo de Cancelacion
 frappe.ui.form.on('Factura', {
     refresh: function (frm) {
-            // if (frm.doc.status == "Facturado") {  //refactor: tomar de la variable global
+            if (frm.doc.status == "Facturado") {  //refactor: tomar de la variable global
             frm.add_custom_button(__("01 Comprobante emitido con errores con relación"), function () {  // Debo obtener el valor de la cancelacion automaticamente
                 frappe.call({
                     method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
@@ -190,4 +190,4 @@ frappe.ui.form.on('Factura', {
             }, __("Cancelaciones")
         );
     }
-});
+}});

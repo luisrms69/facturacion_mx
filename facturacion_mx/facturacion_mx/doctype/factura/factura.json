@@ -22,6 +22,7 @@
   "billing_address_invoice",
   "full_address",
   "zip_code",
+  "status",
   "productos_section",
   "factura_product_array",
   "amended_from",
@@ -35,7 +36,6 @@
   "fecha_timbrado",
   "serie_de_la_factura",
   "folio_de_factura",
-  "status",
   "monto_total",
   "informe_sobre_la_solicitud_rechazada_datos_del_pac_section",
   "response_rechazada"
@@ -166,10 +166,10 @@
    "label": "ID PAC"
   },
   {
+   "allow_on_submit": 1,
    "default": "Sin enviar",
    "fieldname": "status",
    "fieldtype": "Small Text",
-   "hidden": 1,
    "label": "Status",
    "options": "Sin enviar\nRecibo\nFacturado\nRechazada\nDesconocido\nCancelado"
   },
@@ -248,7 +248,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-15 21:29:34.395239",
+ "modified": "2024-12-16 01:00:12.133118",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",

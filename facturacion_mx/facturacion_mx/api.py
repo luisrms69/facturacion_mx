@@ -378,7 +378,7 @@ def respuesta_pac_cancelacion(document, pac_response):
     pac_response_json = pac_response.json()	
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_invoice.get(pac_response_json['status'])
-        cancel_status = status_options_invoice.get(pac_response_json['cancellation_status'])
+        cancel_status = invoice_object.get(pac_response_json['cancellation_status'])   #la bronca esta en la aplicacion del get, ya son muchas horas y me sigue dadno none
         # status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
         # table_respuestas = "response_pac"
         add_response(table_respuestas,document,pac_response.json())
@@ -386,17 +386,18 @@ def respuesta_pac_cancelacion(document, pac_response):
         # message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
         message=f"El PAC ha aceptado la solicitud de cancelación, el estatus reportado es: {status} y el estado de cancelación es: {cancel_status}, considera que en algunos casos se requiere la validación por parte del cliente antes de la cancelación definitiva de la factura"
         indicator = "green"
-        if status == status_options_invoice.get('canceled'):
+        if status == status_options_invoice.get('canceled'):       
             actualizar_status_doc(document,status)
-            actualizar_status_sales_invoice(document.sales_invoice_id,status_options_invoice.get('initial'))
-        else:
+            actualizar_status_sales_invoice(document.sales_invoice_id,status_options_sales_invoice.get('initial'))
+        else:      
             actualizar_status_doc(document,status_options_invoice.get('pending'))
-            actualizar_status_sales_invoice(document.sales_invoice_id,status_options_invoice.get('pending'))            
+            actualizar_status_sales_invoice(document.sales_invoice_id,status_options_sales_invoice.get('pending'))            
              
     else:
         title = 'La solicitud fue rechazada'
         message = str(pac_response_json)
         indicator = "red"
+        actualizar_status_sales_invoice(document.sales_invoice_id,"Sin Facturar")
 
         
         registro_rechazo = objetizar_respuesta_negativa_pac(get_factura_id(document),pac_response_json)
@@ -524,8 +525,8 @@ def status_respuesta_pac(pac_response):
 
 # Actualiza el valor de status de la cancelacion de un docuemtno
 def actualizar_status_doc(doc, status):
-      doc.db_set({
-            'status': status
+    doc.db_set({
+         'status': status
       })
 
 
@@ -939,4 +940,4 @@ def cancela_factura(doc, motivo):
     respuesta_pac_cancelacion(factura_document, response)
 
 
-    return response
+    return response.json()
