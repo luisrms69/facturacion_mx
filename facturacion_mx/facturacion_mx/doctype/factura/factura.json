@@ -120,7 +120,7 @@
   {
    "fetch_from": "cliente.custom_uso_cfdi",
    "fieldname": "usocfdi",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Uso CFDI",
    "options": "Uso CFDI",
    "read_only": 1,
@@ -248,7 +248,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-16 01:00:12.133118",
+ "modified": "2024-12-17 17:01:53.466696",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
@@ -295,28 +295,28 @@
  "sort_order": "DESC",
  "states": [
   {
-   "color": "Blue",
-   "title": "Sin enviar"
+   "color": "Pink",
+   "title": "Enviada a PAC"
   },
   {
    "color": "Green",
    "title": "Facturado"
   },
   {
-   "color": "Red",
-   "title": "Rechazada"
+   "color": "Yellow",
+   "title": "Borrador"
   },
   {
    "color": "Gray",
    "title": "Desconocido"
   },
   {
-   "color": "Purple",
-   "title": "Cancelada"
+   "color": "Red",
+   "title": "Cancelado"
   },
   {
-   "color": "Yellow",
-   "title": "Recibo"
+   "color": "Orange",
+   "title": "Soicitud Rechazada"
   }
  ]
 }
