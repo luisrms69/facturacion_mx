@@ -22,6 +22,7 @@ status_options_receipts = {"open" : "Abierto","canceled" : "Cancelado","invoiced
 status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt","pending" : "Enviado a PAC","invoiced_to_customer" : "Autofactura","invoiced_globally": "Factura Global", "rechazado": "Solicitud Rechazada", "unknown":"Desconocido","canceled" : "Sin Facturar","valid" : "Facturado","draft": "Enviado a PAC"}
 invoice_object = {'id': 'id', 'created_at':'created_at', 'date':'date','livemode':'livemode', 'status':'status', 'cancellation_status': 'cancellation_status', 'verification_url':'verification_url', 'type':'type', 'customer':'customer', 'total': 'total', 'uuid': 'uuid', 'folio_number':'folio_number', 'series':'series', 'external_id':'external_id', 'idempotency_key': 'idempotency_key', 'payment_form': 'payment_form', 'is_ready_to_stamp':'is_ready_to_stamp','currency': 'currency', 'exchange':'exchange','pdf_custom_section': 'pdf_custom_section', 'addenda':'addenda','stamp': 'stamp', 'use':'use','payment_method':'payment_method','export':'export'}
 status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
+cancellation_status_options_invoice = {"none" : "Sin Estado","pending" : "Pendiente o en Proceso","accepted" : "Solicitud Aprobada","rejected": "Solicitud de Cancelación Rechazada", "expired": "Solicitud Expiro"}
 invoice_object_additionals = {'related_documents': 'related_documents', 'complements': 'complements','namespaces':'namespaces', 'payment_related_ids': 'payment_related_ids'}
 # status_options_invoice_global = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
 
@@ -378,7 +379,7 @@ def respuesta_pac_cancelacion(document, pac_response):
     pac_response_json = pac_response.json()	
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_invoice.get(pac_response_json['status'])
-        cancel_status = invoice_object.get(pac_response_json['cancellation_status'])   #la bronca esta en la aplicacion del get, ya son muchas horas y me sigue dadno none
+        cancel_status = cancellation_status_options_invoice.get(pac_response_json.get(invoice_object['cancellation_status']))   #la bronca esta en la aplicacion del get, ya son muchas horas y me sigue dadno none
         # status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
         # table_respuestas = "response_pac"
         add_response(table_respuestas,document,pac_response.json())
