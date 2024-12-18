@@ -173,7 +173,7 @@
    "fieldname": "status",
    "fieldtype": "Small Text",
    "label": "Status",
-   "options": "Sin enviar\nRecibo\nFacturado\nRechazada\nDesconocido\nCancelado"
+   "options": "Sin enviar\nRecibo\nFacturado\nSolicitud Rechazada\nDesconocido\nCancelado"
   },
   {
    "fieldname": "fecha_timbrado",
@@ -259,7 +259,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-17 21:58:48.896179",
+ "modified": "2024-12-18 00:20:14.197424",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
@@ -327,7 +327,7 @@
   },
   {
    "color": "Orange",
-   "title": "Soicitud Rechazada"
+   "title": "Solicitud Rechazada"
   }
  ]
 }
