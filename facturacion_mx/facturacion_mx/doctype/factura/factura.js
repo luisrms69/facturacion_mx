@@ -170,15 +170,18 @@ frappe.ui.form.on('Factura', {
 
 // Codigo que genera boton en la Factura para cancelar y llama al método PY de envio
 // Se deben tener que automatizar para utilizar el doctype Motivo de Cancelacion
+//refactor: estaba originalmente en un loop pero al seleccionar cualquier opcion se tomaba el valor de "i", que era el final del loop
+
+motivos_cancelacion =["01 Comprobante emitido con errores con relación", "02 Comprobante emitido con errores sin relación", "03 No se llevó a cabo la operación", "04 Operación nominativa relacionada en la factura global"] //refactor: tomar de la variable global
 frappe.ui.form.on('Factura', {
     refresh: function (frm) {
-            if (frm.doc.status == "Facturado") {  //refactor: tomar de la variable global
-            frm.add_custom_button(__("01 Comprobante emitido con errores con relación"), function () {  // Debo obtener el valor de la cancelacion automaticamente
+        if (frm.doc.status == "Facturado") {  //refactor: tomar de la variable global
+            frm.add_custom_button(__(motivos_cancelacion[0]), function () {  // Debo obtener el valor de la cancelacion automaticamente
                 frappe.call({
                     method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
                     args: {
                         doc: frm.doc.name,
-                        motivo: "01"
+                        motivo: motivos_cancelacion[0].substring(0,2)
                     },
                     callback: function (r) {
                         if (r.message) {
@@ -188,6 +191,57 @@ frappe.ui.form.on('Factura', {
                     }
                 });
             }, __("Cancelaciones")
-        );
+            );
+            frm.add_custom_button(__(motivos_cancelacion[1]), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_cancelacion[1].substring(0,2)
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                            console.log("#######server script message#########");
+                            console.log(r.message);
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+            frm.add_custom_button(__(motivos_cancelacion[2]), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_cancelacion[2].substring(0,2)
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                            console.log("#######server script message#########");
+                            console.log(r.message);
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+
+            frm.add_custom_button(__(motivos_cancelacion[3]), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_cancelacion[3].substring(0,2)
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                            console.log("#######server script message#########");
+                            console.log(r.message);
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+
+        }
     }
-}});
+});
