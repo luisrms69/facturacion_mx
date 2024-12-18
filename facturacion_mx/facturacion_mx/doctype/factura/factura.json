@@ -215,11 +215,10 @@
    "label": "Forma de Pago Registrada"
   },
   {
-   "default": "METODOPAGO-PUE-Pago en una sola exhibici\u00f3n",
    "depends_on": "eval:doc.metodo_pago_sat!=\"METODOPAGO-PPD-Pago en parcialidades o diferido\"",
    "fieldname": "foma_de_pago_sat",
    "fieldtype": "Link",
-   "label": "Foma de Pago (SAT)",
+   "label": "Forma de Pago (SAT)",
    "options": "Forma de Pago",
    "reqd": 1
   },
@@ -259,7 +258,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-18 00:20:14.197424",
+ "modified": "2024-12-18 01:34:32.402537",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",

@@ -263,3 +263,13 @@ frappe.ui.form.on('Factura', {
         }
     }
 });
+
+
+forma_pago_ppd_ingreso = "99" //refactor: tomar del doctype ambas
+name_metodo_ppd = "METODOPAGO-PPD-Pago en parcialidades o diferido"
+
+frappe.ui.form.on("Factura", "metodo_pago_sat", function (frm) {
+    if (frm.doc.metodo_pago_sat == name_metodo_ppd) {
+        frm.set_value("foma_de_pago_sat", forma_pago_ppd_ingreso)
+    };
+})
