@@ -1,0 +1,42 @@
+[
+ {
+  "descripcion_tipo_de_comprobante": "Egreso",
+  "docstatus": 0,
+  "doctype": "Tipo de Comprobante",
+  "modified": "2024-12-17 19:36:26.380990",
+  "name": "TIP0-E-Egreso",
+  "tipo_de_comprobante": "E"
+ },
+ {
+  "descripcion_tipo_de_comprobante": "Traslado",
+  "docstatus": 0,
+  "doctype": "Tipo de Comprobante",
+  "modified": "2024-12-17 19:37:39.479993",
+  "name": "TIP0-T-Traslado",
+  "tipo_de_comprobante": "T"
+ },
+ {
+  "descripcion_tipo_de_comprobante": "Nómina",
+  "docstatus": 0,
+  "doctype": "Tipo de Comprobante",
+  "modified": "2024-12-17 19:38:01.475335",
+  "name": "TIP0-N-Nómina",
+  "tipo_de_comprobante": "N"
+ },
+ {
+  "descripcion_tipo_de_comprobante": "Pago",
+  "docstatus": 0,
+  "doctype": "Tipo de Comprobante",
+  "modified": "2024-12-17 19:38:12.289800",
+  "name": "TIP0-P-Pago",
+  "tipo_de_comprobante": "P"
+ },
+ {
+  "descripcion_tipo_de_comprobante": "Ingreso",
+  "docstatus": 0,
+  "doctype": "Tipo de Comprobante",
+  "modified": "2024-12-17 19:36:09.848772",
+  "name": "TIP0-I-Ingreso",
+  "tipo_de_comprobante": "I"
+ }
+]

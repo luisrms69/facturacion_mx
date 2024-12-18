@@ -242,6 +242,7 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
-fixtures = [ "Custom Field", "Uso CFDI", "Mode of Payment", "Forma de Pago", "Tax Category" , "Motivo de Cancelacion", "Periodicidad SAT", "Meses y Bimestres SAT", "UOM","UOM Conversion Factor" ]
+# fixtures = [ "Custom Field", "Uso CFDI", "Mode of Payment", "Forma de Pago", "Tax Category" , "Motivo de Cancelacion", "Periodicidad SAT", "Meses y Bimestres SAT", "UOM","UOM Conversion Factor","Metodo de Pago", "Tipo de Comprobante" ]
 # fixtures = [ "Custom Field"]
 # fixtures = [ "UOM","UOM Conversion Factor" ]
+fixtures = ["Metodo de Pago", "Tipo de Comprobante" ]

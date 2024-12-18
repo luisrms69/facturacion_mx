@@ -1,0 +1,18 @@
+[
+ {
+  "descripcion": "Pago en parcialidades o diferido",
+  "docstatus": 0,
+  "doctype": "Metodo de Pago",
+  "metodo_pago": "PPD",
+  "modified": "2024-12-17 21:30:58.107897",
+  "name": "METODOPAGO-PPD-Pago en parcialidades o diferido"
+ },
+ {
+  "descripcion": "Pago en una sola exhibición",
+  "docstatus": 0,
+  "doctype": "Metodo de Pago",
+  "metodo_pago": "PUE",
+  "modified": "2024-12-17 21:30:33.226147",
+  "name": "METODOPAGO-PUE-Pago en una sola exhibición"
+ }
+]
