@@ -23,7 +23,7 @@ class Factura(Document):
         tax_id = get_tax_id(cliente)
         email_id = datos_direccion.email_id
         tipo = frappe.db.get_value('Tipo de Comprobante', frappe.db.get_value(
-            'Factura', current_document, 'tipo'), 'tipo_de_comprobante')
+            'Factura', current_document, 'tipo'), 'tipo_de_comprobante') 
 
 
 # Pendiente configuración o automatización
@@ -33,6 +33,7 @@ class Factura(Document):
         addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
         pdf_custom_section = ""
         payment_related_ids =[]
+        payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
 
 # Pendiente configuración de estos campos, NO SE VAN A OCUPAR, SE DEJA EL PLACER
         currency = "MXN"
@@ -58,7 +59,7 @@ class Factura(Document):
         data = {
             "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
             "use": use,
-            "payment_method": frappe.db.get_value('Factura', current_document, 'metodo_pago_sat')[:3],
+            "payment_method": payment_method,
             "type": type,
             # "currency": currency, VIENE POR DEFAULT
             # "exchange": exchange, VIENE POR DEFAULT
