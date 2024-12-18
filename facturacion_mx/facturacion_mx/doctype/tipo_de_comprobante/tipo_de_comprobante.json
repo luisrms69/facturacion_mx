@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TIP0-{tipo_de_comprobante}-{descripcion_tipo_de_comprobante}",
+ "creation": "2024-12-17 19:26:53.488296",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "definicion_de_propiedades_section",
+  "tipo_de_comprobante",
+  "descripcion_tipo_de_comprobante"
+ ],
+ "fields": [
+  {
+   "fieldname": "definicion_de_propiedades_section",
+   "fieldtype": "Section Break",
+   "label": "Definicion de propiedades"
+  },
+  {
+   "fieldname": "tipo_de_comprobante",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tipo de Comprobante",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "descripcion_tipo_de_comprobante",
+   "fieldtype": "Data",
+   "label": "Descripcion Tipo de Comprobante"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-17 19:35:49.422634",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Tipo de Comprobante",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
