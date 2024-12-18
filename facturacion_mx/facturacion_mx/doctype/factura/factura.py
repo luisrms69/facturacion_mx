@@ -89,13 +89,17 @@ class Factura(Document):
             "items": get_items_info(invoice_data)
         }
 
-        response = requests.post(
-            facturapi_endpoint, json=data, headers=headers)
+        frappe.msgprint(str(facturapi_endpoint))
+        frappe.msgprint(str(data))
+        frappe.msgprint(str(headers))
 
-        status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
+        # response = requests.post(
+        #     facturapi_endpoint, json=data, headers=headers)
 
-        actualizar_status_doc(self,status_doc)
-        actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
+        # status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
+
+        # actualizar_status_doc(self,status_doc)
+        # actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
  
 #Metodo que se corre para validar si los campos son correctos
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
