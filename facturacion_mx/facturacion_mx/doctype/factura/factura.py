@@ -34,6 +34,10 @@ class Factura(Document):
         pdf_custom_section = ""
         payment_related_ids =[]
         payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
+        # payment_form = frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
+
+        # frappe.msgprint(str(frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')))
+
 
 # Pendiente configuración de estos campos, NO SE VAN A OCUPAR, SE DEJA EL PLACER
         currency = "MXN"
@@ -57,7 +61,7 @@ class Factura(Document):
         # api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
-            "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat')[:2],
+            "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat'),
             "use": use,
             "payment_method": payment_method,
             "type": type,
