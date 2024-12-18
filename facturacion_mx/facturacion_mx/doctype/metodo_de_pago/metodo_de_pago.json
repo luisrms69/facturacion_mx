@@ -32,7 +32,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-17 23:47:54.212669",
+ "modified": "2024-12-18 09:36:41.955255",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Metodo de Pago",
@@ -52,7 +52,6 @@
    "write": 1
   }
  ],
- "read_only": 1,
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
