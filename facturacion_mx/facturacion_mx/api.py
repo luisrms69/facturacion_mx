@@ -719,6 +719,8 @@ def envia_factura_por_email(current_document, email_id):
 
 # Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
 # Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
+        factura_id = get_factura_id(frappe.get_doc('Factura', current_document))
+        
         factura_endpoint = frappe.db.get_single_value(
             'Facturacion MX Settings', 'endpoint_enviar_correo')
         api_token = get_decrypted_password(
@@ -727,7 +729,7 @@ def envia_factura_por_email(current_document, email_id):
         data = {
                 "email": email_id
             }
-        final_url = f"{factura_endpoint}/{current_document}/email"
+        final_url = f"{factura_endpoint}/{factura_id}/email"
 
 # La respuesta se muestra en la pantalla
         response = requests.post(
