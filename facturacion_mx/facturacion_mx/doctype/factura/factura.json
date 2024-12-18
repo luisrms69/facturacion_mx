@@ -182,11 +182,11 @@
    "read_only": 1
   },
   {
-   "default": "PUE Pago en una sola exhibici\u00f3n",
+   "default": "METODOPAGO-PUE-Pago en una sola exhibici\u00f3n",
    "fieldname": "metodo_pago_sat",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "M\u00e9todo de Pago",
-   "options": "PUE Pago en una sola exhibici\u00f3n\nPPD Pago en parcialidades o diferido",
+   "options": "Metodo de Pago",
    "reqd": 1
   },
   {
@@ -215,6 +215,8 @@
    "label": "Forma de Pago Registrada"
   },
   {
+   "default": "METODOPAGO-PUE-Pago en una sola exhibici\u00f3n",
+   "depends_on": "eval:doc.metodo_pago_sat!=\"METODOPAGO-PPD-Pago en parcialidades o diferido\"",
    "fieldname": "foma_de_pago_sat",
    "fieldtype": "Link",
    "label": "Foma de Pago (SAT)",
@@ -257,7 +259,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-17 20:59:09.164491",
+ "modified": "2024-12-17 21:58:48.896179",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
