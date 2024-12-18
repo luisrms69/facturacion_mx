@@ -146,7 +146,7 @@ frappe.ui.form.on('Factura', {
                             method: 'facturacion_mx.facturacion_mx.api.descarga_factura',
                             args: {
                                 document_name: frm.doc.name,
-                                current_document: frm.doc.id_pac,
+                                // current_document: frm.doc.id_pac,
                                 format: data.format
                             },
                             callback: function (r) {

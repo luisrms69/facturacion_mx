@@ -631,8 +631,8 @@ def presenta_ultimos_caracteres(str_var, caracteres):
 
 
 def save_to_factura(document_name, filename_dir):
-        api_secret = 'b93d45547b0fa48'
-        api_key = '542c9e12488dca5'
+        api_secret = '9bd911d08dde7c0'
+        api_key = '5179b2eff067a90'
         url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
                    'Accept': "application/json"
@@ -649,9 +649,10 @@ def save_to_factura(document_name, filename_dir):
         response = requests.post(
             url=url, data=data, headers=headers, files=files)
         # response.dict = json.loads(response.text)
-
+        # frappe.msgprint(str(response.dict))
         # file_name = response.dict['message']['name']
         file_name = json.loads(response.text)['message']['name']
+
         # frappe.errprint(response.__dict__)
 
         return file_name
@@ -660,9 +661,10 @@ def save_to_factura(document_name, filename_dir):
 
 
 @frappe.whitelist()
-def descarga_factura(document_name, current_document, format):
+def descarga_factura(document_name, format):
 
 # Despues se arma el http request. endpoint, headers. Los valores de headers y endpoint se toman de settings
+        current_document = get_factura_id(frappe.get_doc('Factura', document_name))
 
         factura_endpoint = frappe.db.get_single_value(
             'Facturacion MX Settings', 'endpoint_descarga_factura')
@@ -674,6 +676,7 @@ def descarga_factura(document_name, current_document, format):
 
         response = requests.get(final_url, headers=headers)
 
+# fix: no podemos dejar esto manual, se pierde en cada actualizacion
         path = "/home/erpnext/files/"  # Se requiere crear por separado manualmente
         filename = get_filename_from_cd(
             response.headers.get('content-disposition'))[1:-1]
