@@ -22,10 +22,12 @@ class Factura(Document):
         use = get_uso_cfdi(cliente)
         tax_id = get_tax_id(cliente)
         email_id = datos_direccion.email_id
+        tipo = frappe.db.get_value('Tipo de Comprobante', frappe.db.get_value(
+            'Factura', current_document, 'tipo'), 'tipo_de_comprobante')
 
 
 # Pendiente configuración o automatización
-        type = "I"
+        type = tipo
         folio_number = 0
         series = ""
         addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"

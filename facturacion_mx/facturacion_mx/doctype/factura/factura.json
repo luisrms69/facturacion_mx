@@ -15,14 +15,15 @@
   "tax_category",
   "usocfdi",
   "email_id",
+  "status",
   "column_break_fbwf",
+  "tipo",
   "metodo_pago_sat",
   "foma_de_pago_sat",
   "referencia_de_pago",
   "billing_address_invoice",
   "full_address",
   "zip_code",
-  "status",
   "productos_section",
   "factura_product_array",
   "amended_from",
@@ -99,7 +100,8 @@
    "fieldname": "billing_address_invoice",
    "fieldtype": "Link",
    "label": "Direccion Registrada",
-   "options": "Address"
+   "options": "Address",
+   "read_only": 1
   },
   {
    "fetch_from": "cliente.primary_address",
@@ -243,12 +245,19 @@
    "label": "Response PAC",
    "options": "Invoice Object",
    "read_only": 1
+  },
+  {
+   "fieldname": "tipo",
+   "fieldtype": "Link",
+   "label": "Tipo",
+   "options": "Tipo de Comprobante",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-17 17:01:53.466696",
+ "modified": "2024-12-17 20:59:09.164491",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
