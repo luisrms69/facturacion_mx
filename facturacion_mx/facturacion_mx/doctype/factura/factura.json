@@ -15,7 +15,6 @@
   "tax_category",
   "usocfdi",
   "email_id",
-  "status",
   "column_break_fbwf",
   "tipo",
   "metodo_pago_sat",
@@ -24,6 +23,11 @@
   "billing_address_invoice",
   "full_address",
   "zip_code",
+  "status_transacciones_section",
+  "status",
+  "column_break_otfj",
+  "status_nota_de_venta",
+  "status_facturacion_nota_de_venta",
   "productos_section",
   "factura_product_array",
   "amended_from",
@@ -172,7 +176,7 @@
    "default": "Sin enviar",
    "fieldname": "status",
    "fieldtype": "Small Text",
-   "label": "Status",
+   "label": "Status de este Documento",
    "options": "Sin enviar\nRecibo\nFacturado\nSolicitud Rechazada\nDesconocido\nCancelado"
   },
   {
@@ -253,12 +257,35 @@
    "label": "Tipo",
    "options": "Tipo de Comprobante",
    "reqd": 1
+  },
+  {
+   "fieldname": "status_transacciones_section",
+   "fieldtype": "Section Break",
+   "label": "Status Transacciones Relacionadas"
+  },
+  {
+   "allow_on_submit": 1,
+   "fetch_from": "sales_invoice_id.status",
+   "fieldname": "status_nota_de_venta",
+   "fieldtype": "Data",
+   "label": "Status Nota de Venta"
+  },
+  {
+   "allow_on_submit": 1,
+   "fetch_from": "sales_invoice_id.custom_status_facturacion",
+   "fieldname": "status_facturacion_nota_de_venta",
+   "fieldtype": "Data",
+   "label": "Status Facturacion Nota de Venta"
+  },
+  {
+   "fieldname": "column_break_otfj",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-18 01:34:32.402537",
+ "modified": "2024-12-18 01:55:43.765099",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
