@@ -30,7 +30,7 @@ class Factura(Document):
         type = tipo
         folio_number = 0
         series = ""
-        addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
+        # addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
         pdf_custom_section = ""
         payment_related_ids =[]
         payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
@@ -72,7 +72,7 @@ class Factura(Document):
             # "folio_number": folio_number,
             # "series": series,
             "pdf_custom_section": pdf_custom_section,
-            "addenda": addenda,
+            # "addenda": addenda,
             "namespaces": namespaces,
             # "pdf_options": pdf_options,
             "idempotency_key" : idempotency_key,
@@ -89,17 +89,17 @@ class Factura(Document):
             "items": get_items_info(invoice_data)
         }
 
-        frappe.msgprint(str(facturapi_endpoint))
-        frappe.msgprint(str(data))
-        frappe.msgprint(str(headers))
+        # frappe.msgprint(str(facturapi_endpoint))
+        # frappe.msgprint(str(data))
+        # frappe.msgprint(str(headers))
 
-        # response = requests.post(
-        #     facturapi_endpoint, json=data, headers=headers)
+        response = requests.post(
+            facturapi_endpoint, json=data, headers=headers)
 
-        # status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
+        status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
 
-        # actualizar_status_doc(self,status_doc)
-        # actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
+        actualizar_status_doc(self,status_doc)
+        actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
  
 #Metodo que se corre para validar si los campos son correctos
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
