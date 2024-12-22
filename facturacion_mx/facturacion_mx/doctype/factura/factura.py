@@ -89,9 +89,9 @@ class Factura(Document):
             "items": get_items_info(invoice_data)
         }
 
-        # frappe.msgprint(str(facturapi_endpoint))
-        # frappe.msgprint(str(data))
-        # frappe.msgprint(str(headers))
+        frappe.msgprint(str(facturapi_endpoint))
+        frappe.msgprint(str(data))
+        frappe.msgprint(str(headers))
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
@@ -99,7 +99,7 @@ class Factura(Document):
         status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
 
         actualizar_status_doc(self,status_doc)
-        actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
+        # actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
  
 #Metodo que se corre para validar si los campos son correctos
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
@@ -108,5 +108,5 @@ class Factura(Document):
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
-        actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
+        # actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
         self.create_cfdi()
