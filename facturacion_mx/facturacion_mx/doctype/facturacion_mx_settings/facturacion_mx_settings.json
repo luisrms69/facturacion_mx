@@ -17,8 +17,10 @@
   "endpoint_factura_global_recibos",
   "api_settings_section",
   "live_secret_key",
-  "column_break_rgni",
   "user_secret_key",
+  "column_break_rgni",
+  "facturacion_user_key",
+  "facturacion_user_secret",
   "configuracion_facturas_globales_section",
   "serie",
   "cliente_factura_global"
@@ -107,12 +109,22 @@
    "fieldname": "endpoint_factura_global_recibos",
    "fieldtype": "Data",
    "label": "Endpoint Factura Global Recibos"
+  },
+  {
+   "fieldname": "facturacion_user_key",
+   "fieldtype": "Data",
+   "label": "Facturacion User Key"
+  },
+  {
+   "fieldname": "facturacion_user_secret",
+   "fieldtype": "Password",
+   "label": "Facturacion User Secret"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-12-13 18:32:55.201943",
+ "modified": "2024-12-22 14:22:51.031715",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",

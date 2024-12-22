@@ -631,8 +631,13 @@ def presenta_ultimos_caracteres(str_var, caracteres):
 
 
 def save_to_factura(document_name, filename_dir):
-        api_secret = '5b0504450091157'
-        api_key = 'd52ae25e20591f4'
+        # api_secret = '5b0504450091157'
+        api_key = frappe.db.get_single_value(
+            'Facturacion MX Settings', 'facturacion_user_key')
+        api_secret = get_decrypted_password(
+            'Facturacion MX Settings', 'Facturacion MX Settings', "facturacion_user_secret")
+
+        # api_key = 'd52ae25e20591f4'
         url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
                    'Accept': "application/json"
