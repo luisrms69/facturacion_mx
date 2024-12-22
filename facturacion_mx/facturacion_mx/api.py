@@ -631,8 +631,8 @@ def presenta_ultimos_caracteres(str_var, caracteres):
 
 
 def save_to_factura(document_name, filename_dir):
-        api_secret = '9bd911d08dde7c0'
-        api_key = '5179b2eff067a90'
+        api_secret = '5b0504450091157'
+        api_key = 'd52ae25e20591f4'
         url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
                    'Accept': "application/json"
@@ -648,12 +648,12 @@ def save_to_factura(document_name, filename_dir):
         }
         response = requests.post(
             url=url, data=data, headers=headers, files=files)
-        # response.dict = json.loads(response.text)
-        # frappe.msgprint(str(response.dict))
+        response.dict = json.loads(response.text)
+        frappe.msgprint(str(response.dict))
         # file_name = response.dict['message']['name']
         file_name = json.loads(response.text)['message']['name']
 
-        # frappe.errprint(response.__dict__)
+        frappe.errprint(response.__dict__)
 
         return file_name
 
@@ -677,13 +677,15 @@ def descarga_factura(document_name, format):
         response = requests.get(final_url, headers=headers)
 
 # fix: no podemos dejar esto manual, se pierde en cada actualizacion
-        path = "/home/erpnext/files/"  # Se requiere crear por separado manualmente
+        # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
+        path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
+
         filename = get_filename_from_cd(
             response.headers.get('content-disposition'))[1:-1]
         filename_short = presenta_ultimos_caracteres(filename, 15)
         filename_dir = path + filename_short
         with open(filename_dir, 'wb') as file:
-                # refactor: ver opcion señalada abajo para no ocupar tanto ram
+        #         # refactor: ver opcion señalada abajo para no ocupar tanto ram
                 file.write(response.content)
 
         save_to_factura(document_name, filename_dir)
