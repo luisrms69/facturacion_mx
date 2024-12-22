@@ -246,13 +246,20 @@ def validate_tax_category_factura(tax_category):
         frappe.throw("El regimen fiscal no es correcto, debe iniciar con tres números entre el 601 y 626. Para modificar este dato debes acceder a los datos del cliente en la pestaña de impuestos")
 
 
-# Verifica que el regimen fiscal este entre los numeros esperados y que no este vacía
-
+# Verifica que la empresa tiene definido CFDI
 
 def validate_uso_cfid(uso_cfdi):
      if not uso_cfdi:
         frappe.throw(
             "La empresa no tiene registrado el Uso de CFDI para sus facturas. Para incluirlo debes acceder a los datos del cliente en la pestaña de impuestos")
+
+
+# Verifica que la empresa tiene definido CFDI
+
+def validate_api_secret_api_key(api_secret, api_key):
+     if not api_secret or not api_key:
+        frappe.throw(
+            "Para descargar facturas se requiere definir un usuario API, este dato se captura en Factura MX Settings")
 
 
 # Verifica que el correo electrónico no este vacío y su formato sea correcto
@@ -637,6 +644,8 @@ def save_to_factura(document_name, filename_dir):
         api_secret = get_decrypted_password(
             'Facturacion MX Settings', 'Facturacion MX Settings', "facturacion_user_secret")
 
+#feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
+        validate_api_secret_api_key(api_secret, api_key)
         # api_key = 'd52ae25e20591f4'
         url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
