@@ -110,8 +110,9 @@
   {
    "fetch_from": "cliente.primary_address",
    "fieldname": "full_address",
-   "fieldtype": "Read Only",
-   "label": "Direccion de Facturacion"
+   "fieldtype": "Text",
+   "label": "Direccion de Facturacion",
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -285,7 +286,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-18 01:55:43.765099",
+ "modified": "2024-12-22 11:29:24.514258",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
