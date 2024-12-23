@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TIPORELACION-{tipo_relacion}-{descripcion}",
+ "creation": "2024-12-23 13:46:15.484083",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "campos_section",
+  "tipo_relacion",
+  "descripcion"
+ ],
+ "fields": [
+  {
+   "fieldname": "campos_section",
+   "fieldtype": "Section Break",
+   "label": "Campos"
+  },
+  {
+   "fieldname": "tipo_relacion",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tipo Relacion",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "descripcion",
+   "fieldtype": "Data",
+   "label": "Descripcion"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-23 14:04:30.088138",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Tipos de Relacion",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Facturacion MX Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
