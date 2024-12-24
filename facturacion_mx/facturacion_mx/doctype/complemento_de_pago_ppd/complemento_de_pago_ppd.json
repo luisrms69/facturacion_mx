@@ -1,13 +1,18 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:COMPEMENTO-PPD-{YY}-{MM}-{DD}-{####}",
  "creation": "2024-12-24 08:25:56.565773",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "datos_del_complemento_de_pago_section",
   "entrada_de_pago_id",
-  "cliente"
+  "cliente",
+  "fecha_de_pago",
+  "forma_de_pago",
+  "relacion_documentos_relacionados_section",
+  "documentos_relacionados_con_el_pago"
  ],
  "fields": [
   {
@@ -20,23 +25,48 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Entrada de Pago ID",
-   "link_filters": "[[\"Payment Entry\",\"status\",\"=\",\"Submitted\"],[\"Payment Entry\",\"custom_status_payment_ppd\",\"=\",\"\\\"Sin Facturar\\\"\"]]",
+   "link_filters": "[[\"Payment Entry\",\"custom_status_payment_ppd\",\"=\",\"Sin Facturar\"]]",
    "options": "Payment Entry",
    "reqd": 1
   },
   {
+   "fetch_from": "entrada_de_pago_id.party_name",
    "fieldname": "cliente",
    "fieldtype": "Link",
    "label": "Cliente",
    "options": "Customer"
+  },
+  {
+   "fieldname": "fecha_de_pago",
+   "fieldtype": "Data",
+   "label": "Fecha de Pago",
+   "read_only": 1
+  },
+  {
+   "fieldname": "forma_de_pago",
+   "fieldtype": "Data",
+   "label": "Forma de Pago",
+   "read_only": 1
+  },
+  {
+   "fieldname": "relacion_documentos_relacionados_section",
+   "fieldtype": "Section Break",
+   "label": "Relacion Documentos Relacionados"
+  },
+  {
+   "fieldname": "documentos_relacionados_con_el_pago",
+   "fieldtype": "Table",
+   "label": "Documentos Relacionados con el Pago",
+   "options": "Documentos Relacionados"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-24 08:46:44.391370",
+ "modified": "2024-12-24 12:11:54.969456",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
