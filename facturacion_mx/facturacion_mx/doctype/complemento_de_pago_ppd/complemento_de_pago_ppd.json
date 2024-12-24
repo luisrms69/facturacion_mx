@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-24 08:25:56.565773",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "datos_del_complemento_de_pago_section",
+  "entrada_de_pago_id",
+  "cliente"
+ ],
+ "fields": [
+  {
+   "fieldname": "datos_del_complemento_de_pago_section",
+   "fieldtype": "Section Break",
+   "label": "Datos del complemento de pago"
+  },
+  {
+   "fieldname": "entrada_de_pago_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Entrada de Pago ID",
+   "link_filters": "[[\"Payment Entry\",\"status\",\"=\",\"Submitted\"],[\"Payment Entry\",\"custom_status_payment_ppd\",\"=\",\"\\\"Sin Facturar\\\"\"]]",
+   "options": "Payment Entry",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cliente",
+   "fieldtype": "Link",
+   "label": "Cliente",
+   "options": "Customer"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-24 08:46:44.391370",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Complemento de Pago PPD",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
