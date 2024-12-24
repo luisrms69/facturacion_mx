@@ -167,6 +167,34 @@ def get_items_info(invoice_data):
     return items_info
 
 
+# Se obtienen los datos de producto, estan en un child table
+
+
+def get_complements_info(payment_data):
+     pass
+    # items_info = []
+    # invoice_tax = get_invoice_tax(payment_data.taxes)
+    # for producto in payment_data.items:
+    #     detalle_item = {
+    #         'quantity': producto.qty,
+    #         'discount': producto.amount - producto.net_amount,
+    #         'product': {
+    #             'description': producto.item_name,
+    #             'product_key': get_product_key(producto.item_code),
+    #             'price': producto.rate,
+    #             'tax_included': "false",
+    #             'taxes' : get_tax_info(producto.item_tax_rate,invoice_tax),
+    #             'unit_key': producto.uom.partition(" ")[0]
+    #         }
+    #     }
+    #     if not detalle_item['product']['product_key']:
+    #         frappe.throw(
+    #             "Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
+    #     items_info.append(detalle_item)
+
+    # return items_info
+
+
 def prepare_conceptos_cfdi_global(invoice_list):
     clave_producto_servicio = "01010101"
     cantidad = 1
