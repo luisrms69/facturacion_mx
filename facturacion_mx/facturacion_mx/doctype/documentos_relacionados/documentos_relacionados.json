@@ -1,0 +1,42 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-24 09:25:19.453687",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "datos_de_los_documentos_section",
+  "uuid",
+  "cantidad"
+ ],
+ "fields": [
+  {
+   "fieldname": "datos_de_los_documentos_section",
+   "fieldtype": "Section Break",
+   "label": "Datos de los documentos"
+  },
+  {
+   "fieldname": "uuid",
+   "fieldtype": "Data",
+   "label": "UUID"
+  },
+  {
+   "fieldname": "cantidad",
+   "fieldtype": "Float",
+   "label": "Cantidad"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-24 09:29:40.998201",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Documentos Relacionados",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
