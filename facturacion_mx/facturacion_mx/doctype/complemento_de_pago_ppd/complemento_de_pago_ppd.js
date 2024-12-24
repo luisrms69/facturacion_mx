@@ -7,14 +7,6 @@
 // 	},
 // });
 
-
-//GET FECHA DE VENTA, PRODUCTOS, RFC Y REGIMEN FISCAL
-// Se hace una llamada al metod client.get utilizando como entrada el sales_invoice_id capturado
-// El callback se utiliza para definir la fecha de venta, los productos, el RFC y el regimen fiscal
-// Para los productos se tiene que hacer un loop
-// Para el RFC y el regimen fiscal se tiene que utilizar un segundo call a client get utilizando el valor de customer obtenido
-// El tercer call es a un script elaborado en esta app para encontrar, si existiera, alguna forma de pago utilizada para pagar la venta
-// El valor del tercer call se utiliza como referencia al usuario, pero este tiene que seleccionar manualmente
 frappe.ui.form.on("Complemento de Pago PPD", {
     entrada_de_pago_id: function (frm) {
         if (frm.doc.entrada_de_pago_id) {
