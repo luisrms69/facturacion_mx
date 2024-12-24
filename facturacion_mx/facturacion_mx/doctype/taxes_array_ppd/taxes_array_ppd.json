@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-24 09:42:33.009696",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "datos_taxes_array_ppd_section",
+  "base",
+  "type",
+  "rate",
+  "factor"
+ ],
+ "fields": [
+  {
+   "fieldname": "datos_taxes_array_ppd_section",
+   "fieldtype": "Section Break",
+   "label": "Datos Taxes Array PPD"
+  },
+  {
+   "fieldname": "base",
+   "fieldtype": "Float",
+   "label": "Base"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Float",
+   "label": "Rate"
+  },
+  {
+   "fieldname": "factor",
+   "fieldtype": "Data",
+   "label": "Factor"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-24 09:52:54.456055",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Taxes Array PPD",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
