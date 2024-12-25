@@ -171,32 +171,63 @@ def get_items_info(invoice_data):
     return items_info
 
 
+def get_uuid_from_invoice(sales_invoice_id):
+    #  factura = frappe.get_doc('Factura', sales_inovice_id)
+    # factura = frappe.db.get_list('Factura',
+    #                              filters = {
+    #                                   'sales_invoice_id': sales_inovice_id,
+    #                                   'status':status_options_invoice.get('valid')
+    #                              })
+    factura_id = frappe.db.get_value('Factura',{
+         'sales_invoice_id': sales_invoice_id,
+                                'status':status_options_invoice.get('valid')
+                            }, 'name')
+
+    factura = factura = frappe.get_doc('Factura', factura_id)
+
+    # frappe.msgprint(str(sales_inovice_id))
+    # frappe.msgprint(str(factura))
+    uuid = factura.response_pac[0].uuid
+
+    # frappe.msgprint(str(uuid))
+
+    return uuid
+
+
+
 # Se obtienen los datos de producto, estan en un child table
 
 
 def get_complements_info(payment_data):
-     pass
-    # items_info = []
+    complements_info = []
+    data = []
     # invoice_tax = get_invoice_tax(payment_data.taxes)
-    # for producto in payment_data.items:
-    #     detalle_item = {
-    #         'quantity': producto.qty,
-    #         'discount': producto.amount - producto.net_amount,
-    #         'product': {
-    #             'description': producto.item_name,
-    #             'product_key': get_product_key(producto.item_code),
-    #             'price': producto.rate,
-    #             'tax_included': "false",
-    #             'taxes' : get_tax_info(producto.item_tax_rate,invoice_tax),
-    #             'unit_key': producto.uom.partition(" ")[0]
-    #         }
-    #     }
-    #     if not detalle_item['product']['product_key']:
-    #         frappe.throw(
-    #             "Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
-    #     items_info.append(detalle_item)
+# fix: los datos no deben venir hardcoded
+    data = [{
+         'payment_form': payment_data.mode_of_payment,
+    }]
+    for relateddocument in payment_data.references:         
+         related_documents = [{
+            'uuid' : get_uuid_from_invoice(relateddocument.reference_name),
+            'amount' : relateddocument.allocated_amount,
+            'taxes' : {
+                'base': relateddocument.allocated_amount,
+                'type': "IVA",
+                'rate': 16,
+                'factor': "Tasa",
+                'withholding': False
+                },
+                'installment' : 1,
+                'last_balance': relateddocument.allocated_amount + relateddocument.outstanding_amount,
+                'taxability': "02"
+         }]
+         data.append(related_documents)
+    complements_info = [{
+         'type': "pago"
+    }]
+    complements_info.append(data)
 
-    # return items_info
+    return complements_info
 
 
 def prepare_conceptos_cfdi_global(invoice_list):
