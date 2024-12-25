@@ -155,7 +155,11 @@ def get_items_info(invoice_data):
                 'product_key': get_product_key(producto.item_code),
                 'price': producto.rate,
                 'tax_included': "false",
-                'taxes' : get_tax_info(producto.item_tax_rate,invoice_tax),
+                # 'taxes' : get_tax_info(producto.item_tax_rate,invoice_tax),
+                'taxes': [{
+                     'rate': 0.16,
+                     'type': "IVA"  # fix: Hardcoded mejorar
+                     }],
                 'unit_key': producto.uom.partition(" ")[0]
             }
         }
