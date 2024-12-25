@@ -57,11 +57,13 @@
    "read_only": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "relacion_documentos_relacionados_section",
    "fieldtype": "Section Break",
    "label": "Relacion Documentos Relacionados"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "documentos_relacionados_con_el_pago",
    "fieldtype": "Table",
    "label": "Documentos Relacionados con el Pago",
@@ -117,7 +119,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-25 10:56:41.526396",
+ "modified": "2024-12-25 11:13:31.918801",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
