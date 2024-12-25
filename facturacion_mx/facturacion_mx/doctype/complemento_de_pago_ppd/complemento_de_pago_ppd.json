@@ -13,7 +13,8 @@
   "cliente",
   "forma_de_pago",
   "relacion_documentos_relacionados_section",
-  "documentos_relacionados_con_el_pago"
+  "documentos_relacionados_con_el_pago",
+  "amended_from"
  ],
  "fields": [
   {
@@ -65,11 +66,22 @@
   {
    "fieldname": "column_break_rsfq",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Complemento de Pago PPD",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-12-24 16:42:49.668419",
+ "modified": "2024-12-25 09:45:16.864736",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
