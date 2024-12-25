@@ -85,12 +85,12 @@ class ComplementodePagoPPD(Document):
         frappe.msgprint(str(data))
         # frappe.msgprint(str(complements))
 
-        # response = requests.post(
-        #     facturapi_endpoint, json=data, headers=headers)
+        response = requests.post(
+            facturapi_endpoint, json=data, headers=headers)
 
-        # status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
+        status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
 
-        # actualizar_status_doc(self,status_doc)
+        actualizar_status_doc(self,status_doc)
         # actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
  
 #Metodo que se corre para validar si los campos son correctos
@@ -100,6 +100,6 @@ class ComplementodePagoPPD(Document):
         # validate_data_invoice(self)
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
-    def on_update(self):
+    def on_submit(self):
         # actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
         self.create_complemento()

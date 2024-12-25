@@ -220,22 +220,27 @@ def get_complements_info(payment_data):
          related_documents = [{
             'uuid' : get_uuid_from_invoice(relateddocument.reference_name),
             'amount' : relateddocument.allocated_amount,
-            'taxes' : {
+            'taxes' : [{
                 'base': relateddocument.allocated_amount,
                 'type': "IVA",
                 'rate': 16,
                 'factor': "Tasa",
                 'withholding': False
-                },
+                }],
                 'installment' : 1,
                 'last_balance': relateddocument.allocated_amount + relateddocument.outstanding_amount,
                 'taxability': "02"
          }]
-         data.append(related_documents)
-    complements_info = [{
-         'type': "pago"
+        #  data.append(related_documents)
+    data = [{
+         'payment_form': get_payment_form(payment_data),
+         'related_documents': related_documents
     }]
-    complements_info.append(data)
+    complements_info = [{
+         'type': "pago",
+         'data': data
+    }]
+    # complements_info.append(data)
 
     return complements_info
 
@@ -671,6 +676,8 @@ def get_object_type(doc):
                object_type = invoice_object
           case "Recibo Autofactura":
                object_type =receipt_object
+          case "Complemento de Pago PPD":
+               object_type = invoice_object
 
      return object_type
 
