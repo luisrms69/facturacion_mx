@@ -193,7 +193,17 @@ def get_uuid_from_invoice(sales_invoice_id):
 
     return uuid
 
+def get_payment_form(payment_data):
+    valor_inferior = 1
+    valor_superior = 99
+    if payment_data.mode_of_payment is None:
+        frappe.throw("El pago se capturo sin forma de pago,  este dato es necesario para facturar el complemento de pago PPD")
+    else:
+        payment_form = payment_data.mode_of_payment[:2]
+        if not valor_inferior <= int(payment_form) <= valor_superior:
+            frappe.throw("La forma de pago tiene un valor incorrecto, este dato es necesario para facturar el complemento de pago PPD")
 
+    return payment_form
 
 # Se obtienen los datos de producto, estan en un child table
 
@@ -204,7 +214,7 @@ def get_complements_info(payment_data):
     # invoice_tax = get_invoice_tax(payment_data.taxes)
 # fix: los datos no deben venir hardcoded
     data = [{
-         'payment_form': payment_data.mode_of_payment,
+         'payment_form': get_payment_form(payment_data),
     }]
     for relateddocument in payment_data.references:         
          related_documents = [{
