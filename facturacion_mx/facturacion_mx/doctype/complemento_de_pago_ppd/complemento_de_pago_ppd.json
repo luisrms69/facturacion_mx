@@ -32,7 +32,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Entrada de Pago ID",
-   "link_filters": "[[\"Payment Entry\",\"custom_status_payment_ppd\",\"=\",\"Sin Facturar\"]]",
+   "link_filters": "[[\"Payment Entry\",\"custom_status_payment_ppd\",\"=\",\"Sin Facturar\"],[\"Payment Entry\",\"status\",\"=\",\"Submitted\"]]",
    "options": "Payment Entry",
    "reqd": 1
   },
@@ -117,7 +117,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-25 10:21:34.177498",
+ "modified": "2024-12-25 10:56:41.526396",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
