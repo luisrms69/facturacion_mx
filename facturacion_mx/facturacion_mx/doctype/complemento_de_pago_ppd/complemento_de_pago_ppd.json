@@ -14,7 +14,12 @@
   "forma_de_pago",
   "relacion_documentos_relacionados_section",
   "documentos_relacionados_con_el_pago",
-  "amended_from"
+  "respuestas_del_pac_section",
+  "response_pac",
+  "respuesta_de_rechazo_del_pac_error_al_envio_section",
+  "response_rechazada",
+  "amended_from",
+  "status"
  ],
  "fields": [
   {
@@ -76,12 +81,43 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "respuesta_de_rechazo_del_pac_error_al_envio_section",
+   "fieldtype": "Section Break",
+   "label": "Respuesta de rechazo del PAC (Error al envio)"
+  },
+  {
+   "fieldname": "response_rechazada",
+   "fieldtype": "Data",
+   "label": "Mensaje de Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "label": "Status de este documento",
+   "options": "Sin enviar\nRecibo\nFacturado\nSolicitud Rechazada\nDesconocido\nCancelado",
+   "read_only": 1
+  },
+  {
+   "fieldname": "respuestas_del_pac_section",
+   "fieldtype": "Section Break",
+   "label": "Respuestas del PAC"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "response_pac",
+   "fieldtype": "Table",
+   "label": "Respuestas obtenidas para este documento",
+   "options": "Invoice Object",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-25 09:45:16.864736",
+ "modified": "2024-12-25 10:21:34.177498",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
@@ -103,5 +139,30 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Pink",
+   "title": "Enviada a PAC"
+  },
+  {
+   "color": "Green",
+   "title": "Facturado"
+  },
+  {
+   "color": "Yellow",
+   "title": "Borrador"
+  },
+  {
+   "color": "Gray",
+   "title": "Desconocido"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelado"
+  },
+  {
+   "color": "Orange",
+   "title": "Solicitud Rechazada"
+  }
+ ]
 }
