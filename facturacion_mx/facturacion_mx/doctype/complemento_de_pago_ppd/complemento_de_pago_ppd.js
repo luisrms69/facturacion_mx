@@ -24,17 +24,22 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                     if (r.message) {
                         frm.set_value('fecha_de_pago', r.message.posting_date);
                         frm.set_value('forma_de_pago', r.message.mode_of_payment);
-                        // frm.clear_table('documentos_relacionados_con_el_pago')
+                        frm.clear_table('documentos_relacionados_con_el_pago')
                         console.log(r.message)
-
-                        // r.message.items.forEach(function (item) {
-                        //     var child = frm.add_child('factura_product_array');
-                        //     child.producto = item.item_code;
-                        //     child.descripcion = item.description;
-                        //     child.cantidad = item.qty;
-                        //     child.precio = item.rate;
-                        };
-                        // frm.refresh_field('factura_product_array');
+                        // refactor: los siguietnes datos deben quedar programados y no hardcoded
+                        r.message.references.forEach(function (reference) {
+                            var child = frm.add_child('documentos_relacionados_con_el_pago');
+                            child.cantidad = reference.allocated_amount;
+                            child.numero_de_pago = 1; //fix:requiere calcularse
+                            child.saldo_pendiente = reference.allocated_amount + reference.outstanding_amount;
+                            child.sales_invoice_id = reference.reference_name;
+                            child.base = reference.allocated_amount;
+                            child.type = "IVA";
+                            child.rate = 16;
+                            child.factor = "Tasa";
+                            child.withholding = false;
+                        }),
+                            frm.refresh_field('documentos_relacionados_con_el_pago');
                         // frappe.call({
                         //     method: 'frappe.client.get',
                         //     args: {
@@ -51,8 +56,8 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                         //     }
                         // });
                     }
-                })
-            }
+                }
+            })
             // }),
                 // frappe.call({
                 //     method: 'facturacion_mx.facturacion_mx.api.get_forma_de_pago',
@@ -72,7 +77,7 @@ frappe.ui.form.on("Complemento de Pago PPD", {
         }
     }
 // });
-)
+})
 
 
 //refactor:deberia poder llamar a la funcion con el dotted path
