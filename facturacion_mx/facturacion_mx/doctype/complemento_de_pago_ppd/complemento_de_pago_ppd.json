@@ -8,8 +8,9 @@
  "field_order": [
   "datos_del_complemento_de_pago_section",
   "entrada_de_pago_id",
-  "cliente",
   "fecha_de_pago",
+  "column_break_rsfq",
+  "cliente",
   "forma_de_pago",
   "relacion_documentos_relacionados_section",
   "documentos_relacionados_con_el_pago"
@@ -34,7 +35,8 @@
    "fieldname": "cliente",
    "fieldtype": "Link",
    "label": "Cliente",
-   "options": "Customer"
+   "options": "Customer",
+   "read_only": 1
   },
   {
    "fieldname": "fecha_de_pago",
@@ -57,12 +59,17 @@
    "fieldname": "documentos_relacionados_con_el_pago",
    "fieldtype": "Table",
    "label": "Documentos Relacionados con el Pago",
-   "options": "Documentos Relacionados"
+   "options": "Documentos Relacionados",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rsfq",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-24 12:11:54.969456",
+ "modified": "2024-12-24 16:42:49.668419",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
