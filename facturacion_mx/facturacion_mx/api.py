@@ -223,7 +223,7 @@ def get_complements_info(payment_data):
             'taxes' : [{
                 'base': relateddocument.allocated_amount,
                 'type': "IVA",
-                'rate': 16,
+                'rate': .16,
                 'factor': "Tasa",
                 'withholding': False
                 }],
