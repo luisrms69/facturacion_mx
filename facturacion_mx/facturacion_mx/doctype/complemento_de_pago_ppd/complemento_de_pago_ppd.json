@@ -12,14 +12,14 @@
   "column_break_rsfq",
   "cliente",
   "forma_de_pago",
+  "status",
   "relacion_documentos_relacionados_section",
   "documentos_relacionados_con_el_pago",
   "respuestas_del_pac_section",
   "response_pac",
   "respuesta_de_rechazo_del_pac_error_al_envio_section",
   "response_rechazada",
-  "amended_from",
-  "status"
+  "amended_from"
  ],
  "fields": [
   {
@@ -87,7 +87,8 @@
   {
    "fieldname": "respuesta_de_rechazo_del_pac_error_al_envio_section",
    "fieldtype": "Section Break",
-   "label": "Respuesta de rechazo del PAC (Error al envio)"
+   "label": "Respuesta de rechazo del PAC (Error al envio)",
+   "read_only": 1
   },
   {
    "fieldname": "response_rechazada",
@@ -119,7 +120,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-25 11:13:31.918801",
+ "modified": "2024-12-25 16:36:26.665561",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",
