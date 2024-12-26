@@ -149,7 +149,7 @@ def get_items_info(invoice_data):
     for producto in invoice_data.items:
         detalle_item = {
             'quantity': producto.qty,
-            'discount': producto.net_rate - producto.net_amount,
+            'discount': producto.discount_amount,
             'product': {
                 'description': producto.item_name,
                 'product_key': get_product_key(producto.item_code),
@@ -183,7 +183,10 @@ def get_uuid_from_invoice(sales_invoice_id):
                                 'status':status_options_invoice.get('valid')
                             }, 'name')
 
-    factura = factura = frappe.get_doc('Factura', factura_id)
+    if factura_id is None:
+        frappe.throw("No se ha encontrado ninguna factura  con el numero de referencia, verifica que ya se haya elaborado la factura PPD por el pago que quieres facturar")
+    else:
+        factura = frappe.get_doc('Factura', factura_id)
 
     # frappe.msgprint(str(sales_inovice_id))
     # frappe.msgprint(str(factura))
@@ -213,10 +216,10 @@ def get_complements_info(payment_data):
     data = []
     # invoice_tax = get_invoice_tax(payment_data.taxes)
 # fix: los datos no deben venir hardcoded
-    data = [{
-         'payment_form': get_payment_form(payment_data),
-    }]
-    for relateddocument in payment_data.references:         
+    # data = [{
+    #      'payment_form': get_payment_form(payment_data),
+    # }]
+    for relateddocument in payment_data.references:       
          related_documents = [{
             'uuid' : get_uuid_from_invoice(relateddocument.reference_name),
             'amount' : relateddocument.allocated_amount,
@@ -234,7 +237,9 @@ def get_complements_info(payment_data):
         #  data.append(related_documents)
     data = [{
          'payment_form': get_payment_form(payment_data),
-         'related_documents': related_documents
+         'related_documents': related_documents,
+         'currency': "MXN",
+         'exchange': 1
     }]
     complements_info = [{
          'type': "pago",
@@ -631,6 +636,10 @@ def actualizar_status_cancelacion(doc, status):
 def actualizar_status_sales_invoice(invoice, status):
            frappe.db.set_value("Sales Invoice", invoice,
                           'custom_status_facturacion', status)
+           
+def actualizar_status_payment_entry(payment_entry, status):
+           frappe.db.set_value("Payment Entry", payment_entry,
+                          'custom_status_payment_ppd', status)           
 
 # refactor: no lo puedo ocupar porque los campos de mensaje de error son diferentes en factura y receipt
 def add_error_response(document,response):
@@ -743,7 +752,7 @@ def save_to_factura(document_name, filename_dir):
         response = requests.post(
             url=url, data=data, headers=headers, files=files)
         response.dict = json.loads(response.text)
-        frappe.msgprint(str(response.dict))
+        # frappe.msgprint(str(response.dict))
         # file_name = response.dict['message']['name']
         file_name = json.loads(response.text)['message']['name']
 
@@ -793,6 +802,7 @@ def descarga_factura(document_name, format):
 # Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
 @frappe.whitelist()
 def get_forma_de_pago(sales_invoice_id):
+    # Esto se ocupa cuando el pago se hizo por aparte, no en la misma compra
     filters = [
         ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
         ["Payment Entry Reference", "reference_name", "=", sales_invoice_id]
@@ -807,6 +817,11 @@ def get_forma_de_pago(sales_invoice_id):
     
     forma_de_pago = frappe.db.get_value(
         "Payment Entry", use_pay_entry, "mode_of_payment")
+    
+    # Si el pago se hubiera hecho de manera simultanea, utilizando POS, entonces aqui se obtendria el dato
+    if forma_de_pago is None:
+         doc = frappe.get_doc('Sales Invoice', sales_invoice_id)
+         forma_de_pago = doc.payments[0].mode_of_payment
 
     return forma_de_pago
 
