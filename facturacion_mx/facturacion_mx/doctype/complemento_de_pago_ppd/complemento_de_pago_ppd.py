@@ -24,7 +24,7 @@ class ComplementodePagoPPD(Document):
 # Pendiente configuración o automatización
         type = "P"
         payment_related_ids =[]
-        payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
+        # payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
 
 # Pendiente configuración de estos campos, NO SE VAN A OCUPAR, SE DEJA EL PLACER
         currency = "MXN"
@@ -79,19 +79,17 @@ class ComplementodePagoPPD(Document):
             # "payment_related_ids": payment_related_ids, SOLO LO ACEPTA CUANDO SE TRATA DE PPD
         }
 
-        # frappe.msgprint("** MENSAJE MENSAJE **")
-        # frappe.msgprint(str(payment_data))
         # frappe.msgprint(str(complements))
-        frappe.msgprint(str(data))
+        # frappe.msgprint(str(data))
         # frappe.msgprint(str(complements))
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
 
-        status_doc , status_sales_invoice = respuesta_pac_factura(self, response)
+        status_doc , status_payment_entry = respuesta_pac_factura(self, response)
 
         actualizar_status_doc(self,status_doc)
-        # actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
+        actualizar_status_payment_entry(self.entrada_de_pago_id,status_payment_entry)
  
 #Metodo que se corre para validar si los campos son correctos
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
