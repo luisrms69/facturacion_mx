@@ -253,6 +253,7 @@
    "read_only": 1
   },
   {
+   "default": "TIP0-I-Ingreso",
    "fieldname": "tipo",
    "fieldtype": "Link",
    "label": "Tipo",
@@ -286,7 +287,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-22 11:29:24.514258",
+ "modified": "2024-12-25 12:37:28.514412",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
