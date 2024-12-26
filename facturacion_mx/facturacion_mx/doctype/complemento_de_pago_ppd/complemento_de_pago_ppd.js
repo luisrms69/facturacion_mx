@@ -38,8 +38,8 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                             child.rate = 16;
                             child.factor = "Tasa";
                             child.withholding = false;
-                        }),
-                            frm.refresh_field('documentos_relacionados_con_el_pago');
+                        });
+                            // frm.refresh_field('documentos_relacionados_con_el_pago');
                         // frappe.call({
                         //     method: 'frappe.client.get',
                         //     args: {
