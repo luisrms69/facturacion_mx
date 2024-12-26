@@ -20,7 +20,7 @@ class ReciboAutofactura(Document):
         data = payload_recibo_autofactura(self)
 
 
-        frappe.msgprint(str(data))
+        # frappe.msgprint(str(data))
 
 # Almacena respuesta y define el estatus
         response = requests.post(
