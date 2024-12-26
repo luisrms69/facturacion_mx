@@ -15,6 +15,7 @@
   "tax_category",
   "usocfdi",
   "email_id",
+  "status",
   "column_break_fbwf",
   "tipo",
   "metodo_pago_sat",
@@ -24,10 +25,9 @@
   "full_address",
   "zip_code",
   "status_transacciones_section",
-  "status",
+  "status_facturacion_nota_de_venta",
   "column_break_otfj",
   "status_nota_de_venta",
-  "status_facturacion_nota_de_venta",
   "productos_section",
   "factura_product_array",
   "amended_from",
@@ -263,21 +263,25 @@
   {
    "fieldname": "status_transacciones_section",
    "fieldtype": "Section Break",
-   "label": "Status Transacciones Relacionadas"
+   "hidden": 1,
+   "label": "Status Transacciones Relacionadas",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fetch_from": "sales_invoice_id.status",
    "fieldname": "status_nota_de_venta",
    "fieldtype": "Data",
-   "label": "Status Nota de Venta"
+   "label": "Status Nota de Venta",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
    "fetch_from": "sales_invoice_id.custom_status_facturacion",
    "fieldname": "status_facturacion_nota_de_venta",
    "fieldtype": "Data",
-   "label": "Status Facturacion Nota de Venta"
+   "label": "Status Facturacion Nota de Venta",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_otfj",
@@ -287,7 +291,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-12-25 12:37:28.514412",
+ "modified": "2024-12-25 18:49:59.297685",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
