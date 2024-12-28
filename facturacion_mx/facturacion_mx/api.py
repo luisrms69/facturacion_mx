@@ -14,6 +14,8 @@ import json  # lo cargo para utilizar json.loads
 import ast
 from frappe.utils import add_to_date # Funcion add_to_date para la fecha de creacion de e-receipts
 import datetime
+from frappe.utils import get_site_base_path
+
 
 #  DEFINICION DE VARIABLES GLOBALES
     
@@ -723,6 +725,14 @@ def presenta_ultimos_caracteres(str_var, caracteres):
 
         return str_final
 
+
+# Toma un string y devuelve el mismo string eliminado caracteres antes y despues
+
+def elimina_caracteres(str_var, al_principio):
+    str_final = str_var[al_principio:]
+
+    return str_final
+
 # Graba el archivo de factura descargado y lo añade al documento Factura respectivo
 
 
@@ -771,8 +781,10 @@ def descarga_factura(document_name, format):
 
         factura_endpoint = frappe.db.get_single_value(
             'Facturacion MX Settings', 'endpoint_descarga_factura')
-        api_token = get_decrypted_password(
-            'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        # api_token = get_decrypted_password(
+        #     'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        api_token = get_api_token_live()
+
         headers = {"Authorization": f"Bearer {api_token}"}
 
         final_url = f"{factura_endpoint}/{current_document}/{format}"
@@ -781,6 +793,8 @@ def descarga_factura(document_name, format):
 
 # fix: no podemos dejar esto manual, se pierde en cada actualizacion
         # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
+        site_name_auto = elimina_caracteres(get_site_base_path(),2)
+        # path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
         path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
 
         filename = get_filename_from_cd(
