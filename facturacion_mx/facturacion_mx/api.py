@@ -794,8 +794,8 @@ def descarga_factura(document_name, format):
 # fix: no podemos dejar esto manual, se pierde en cada actualizacion
         # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
         site_name_auto = elimina_caracteres(get_site_base_path(),2)
-        # path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
-        path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
+        path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
+        # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
 
         filename = get_filename_from_cd(
             response.headers.get('content-disposition'))[1:-1]
