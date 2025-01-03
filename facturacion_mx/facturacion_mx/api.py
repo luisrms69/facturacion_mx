@@ -764,7 +764,7 @@ def save_to_factura(document_name, filename_dir):
         }
         response = requests.post(
             url=url, data=data, headers=headers, files=files)
-        frappe.msgprint(str(response.__dict__))
+        # frappe.msgprint(str(response.__dict__))
         response.dict = json.loads(response.text)
         # frappe.msgprint(str(response.dict))
         # file_name = response.dict['message']['name']
