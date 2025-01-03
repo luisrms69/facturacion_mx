@@ -15,6 +15,8 @@ import ast
 from frappe.utils import add_to_date # Funcion add_to_date para la fecha de creacion de e-receipts
 import datetime
 from frappe.utils import get_site_base_path
+from frappe.utils import get_url
+
 
 
 #  DEFINICION DE VARIABLES GLOBALES
@@ -746,7 +748,11 @@ def save_to_factura(document_name, filename_dir):
 #feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
         validate_api_secret_api_key(api_secret, api_key)
         # api_key = 'd52ae25e20591f4'
-        url = 'http://127.0.0.1:8000/api/method/upload_file'
+        # urllocal = frappe.utils.get_url()
+        # localurl = f"{frappe.utils.get_url()}/api/method/upload_file"
+        # frappe.msgprint(str(localurl))
+        url = f"{frappe.utils.get_url()}/api/method/upload_file"
+        # url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
                    'Accept': "application/json"
                 #    'Content-Type': "pdf"
