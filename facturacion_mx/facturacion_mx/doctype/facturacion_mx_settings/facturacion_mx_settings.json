@@ -23,7 +23,10 @@
   "facturacion_user_secret",
   "configuracion_facturas_globales_section",
   "serie",
-  "cliente_factura_global"
+  "cliente_factura_global",
+  "configuracion_de_notas_de_impresion_section",
+  "plantilla_ppd",
+  "plantilla_info_facturas"
  ],
  "fields": [
   {
@@ -119,12 +122,29 @@
    "fieldname": "facturacion_user_secret",
    "fieldtype": "Password",
    "label": "Facturacion User Secret"
+  },
+  {
+   "fieldname": "configuracion_de_notas_de_impresion_section",
+   "fieldtype": "Section Break",
+   "label": "Configuracion de Notas de Impresion"
+  },
+  {
+   "fieldname": "plantilla_ppd",
+   "fieldtype": "Link",
+   "label": "Plantilla PPD",
+   "options": "Terms and Conditions"
+  },
+  {
+   "fieldname": "plantilla_info_facturas",
+   "fieldtype": "Link",
+   "label": "Plantilla Info Facturas",
+   "options": "Terms and Conditions"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-12-22 14:22:51.031715",
+ "modified": "2025-01-06 22:06:11.745144",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",

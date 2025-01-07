@@ -76,6 +76,42 @@ frappe.ui.form.on('Factura', {
 });
 
 
+
+// GET notes from factura depending on mode of payment
+frappe.ui.form.on('Factura', {
+    // metodo_pago_sat: function (frm) {
+        refresh: function (frm) {
+        if (frm.doc.metodo_pago_sat && frm.doc.sales_invoice_id) {
+            frm.refresh_field('notas');
+            frappe.call({
+                method: 'facturacion_mx.facturacion_mx.api.get_factura_notes',
+                args: {
+                    metodo_de_pago: frm.doc.metodo_pago_sat,
+                    sales_invoice_id: frm.doc.sales_invoice_id,
+                },
+                callback: function (r) {
+                    console.log("#######notas son#########")
+                    console.log(r.message);
+
+                    if (r.message) {
+                        frm.set_value('notas', r.message);
+                    }
+                    else {
+                        frm.set_value('notas',"")
+                    }
+                    frm.refresh_field('notas');
+                }
+            });
+        }
+    }
+});
+
+
+
+
+
+
+
 //refactor:deberia poder llamar a la funcion con el dotted path
 //refactor: debe tenerse el codigo hardocded en alguna variable
 //refactor: las siguientes funciones dependen que la factura tenga estado facturado, creo que pueden meterse en uno solo
