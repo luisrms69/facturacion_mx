@@ -31,10 +31,8 @@ class Factura(Document):
         folio_number = 0
         series = ""
         # addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
-        # pdf_custom_section = get_factura_notes(payment_method)
         payment_related_ids =[]
         payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
-        # pdf_custom_section = get_factura_notes(payment_method, sales_invoice_id)
         metodo_de_pago = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'))
 
 
@@ -91,9 +89,6 @@ class Factura(Document):
             },
             "items": get_items_info(invoice_data)
         }
-
-
-        frappe.msgprint(str(data))
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)

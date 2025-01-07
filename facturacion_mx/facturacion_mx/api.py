@@ -373,23 +373,16 @@ def despliega_aviso(title="Aviso", msg="", color="green"):
 def get_factura_payment_terms(sales_invoice_id):
     invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
     termino_ppd = ""
-    # invoice_tax = get_invoice_tax(invoice_data.taxes)
     if invoice_data.payment_schedule:
         termino_ppd += "Fecha(s) limite de pago: "
         for term in invoice_data.payment_schedule:
             termino_ppd += f"{format_date(term.due_date)} por {frappe.utils.fmt_money(term.payment_amount,currency='$')}. "
-        # termino_ppd += f"Fecha limite de pago {format_date(term.due_date)}, ${frappe.utils.fmt_money(term.payment_amount,currency='$')}, "
-
-    # frappe.msgprint("terminos ppd")
-    # frappe.msgprint(termino_ppd)
 
     return termino_ppd
     
 @frappe.whitelist()
 def get_factura_notes(metodo_de_pago, sales_invoice_id):
-    # frappe.msgprint(metodo_de_pago)
     notas_factura =""
-    # notas_factura = f"{frappe.db.get_value('Terms and Conditions', frappe.db.get_single_value('Facturacion MX Settings', 'plantilla_info_facturas'),'terms')}\n"
     purchase_order = frappe.db.get_value('Sales Invoice', sales_invoice_id, 'po_no')
     remarks = frappe.db.get_value('Sales Invoice', sales_invoice_id, 'remarks')
 
@@ -410,9 +403,6 @@ def get_factura_notes(metodo_de_pago, sales_invoice_id):
          notas_factura += "Gracias por su Compra"
 
     return notas_factura
-
-
-
 
 
 def get_endpoint(endpoint):
