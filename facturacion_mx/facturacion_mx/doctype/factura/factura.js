@@ -90,9 +90,8 @@ frappe.ui.form.on('Factura', {
                     sales_invoice_id: frm.doc.sales_invoice_id,
                 },
                 callback: function (r) {
-                    console.log("#######notas son#########")
-                    console.log(r.message);
-
+                    // console.log("#######notas son#########")
+                    // console.log(r.message);
                     if (r.message) {
                         frm.set_value('notas', r.message);
                     }
