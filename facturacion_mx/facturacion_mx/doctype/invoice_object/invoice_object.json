@@ -147,7 +147,7 @@
   },
   {
    "fieldname": "pdf_custom_section",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Pdf Custom Section"
   },
   {
@@ -174,7 +174,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-12-14 12:04:00.245000",
+ "modified": "2025-01-08 21:13:54.985647",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Invoice Object",
