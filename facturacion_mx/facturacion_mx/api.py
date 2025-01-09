@@ -369,14 +369,14 @@ def validate_data_invoice(doc):
 def despliega_aviso(title="Aviso", msg="", color="green"):
      frappe.msgprint(title=title, msg=msg, indicator=color)
 
-
+#REFACTOR:ELIMINAR hardcode, debe ir settings de facturacion
 def get_factura_payment_terms(sales_invoice_id):
     invoice_data = frappe.get_doc('Sales Invoice', sales_invoice_id)
     termino_ppd = ""
     if invoice_data.payment_schedule:
-        termino_ppd += "Fecha(s) limite de pago: "
-        for term in invoice_data.payment_schedule:
-            termino_ppd += f"{format_date(term.due_date)} por {frappe.utils.fmt_money(term.payment_amount,currency='$')}. "
+        termino_ppd += f"Me obligo incondicionalmente a pagar a la orden de {invoice_data.company}, la cantidad de {frappe.utils.fmt_money(invoice_data.grand_total,currency='$')} con fecha límite {format_date(invoice_data.payment_schedule[0].due_date)}"
+        # for term in invoice_data.payment_schedule:
+        #     termino_ppd += f"{format_date(term.due_date)} por {frappe.utils.fmt_money(term.payment_amount,currency='$')}. "
 
     return termino_ppd
     
@@ -806,7 +806,7 @@ def save_to_factura(document_name, filename_dir):
         # file_name = response.dict['message']['name']
         file_name = json.loads(response.text)['message']['name']
 
-        frappe.errprint(response.__dict__)
+        # frappe.errprint(response.__dict__)
 
         return file_name
 
