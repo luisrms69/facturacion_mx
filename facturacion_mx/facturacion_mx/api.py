@@ -542,23 +542,22 @@ def respuesta_pac_cancelacion(document, pac_response):
 
 def respuesta_pac_factura(document, pac_response):
 
-    pac_response_json = pac_response.json()	
+    pac_response_json = pac_response.json()
+    # frappe.msgprint(str(pac_response_json))
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_invoice.get(pac_response_json['status'])
         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        folio_number = pac_response_json['folio_number']
+        metodo_de_pago = pac_response_json['payment_method']
         table_respuestas = "response_pac"
         add_response(table_respuestas,document,pac_response.json())
         title = 'Solicitud Exitosa!!!!!'
         message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
         indicator = "green"
+        actualizar_datos_factura_sales_invoice(document.sales_invoice_id, folio_number, metodo_de_pago)
     else:
         title = 'La solicitud de facturacion no fue exitosa'
         message = str(pac_response_json)
-
-# formar respuesta para añadir a table respuestas
-        # add_response(table_respuestas,document,pac_response.json())
-
-
         indicator = "red"
         status = status_options_invoice.get("rechazado")
         status_sales_invoice = status_options_sales_invoice.get("initial")
@@ -566,9 +565,12 @@ def respuesta_pac_factura(document, pac_response):
         'response_rechazada' : pac_response_json['message']  #refactor:deberia poder usar la funcion add_error_message es un asunto de nombres de campos
     })
 
+    actualizar_status_doc(document, status)
+    actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
+
     despliega_aviso(title=title,msg=message,color=indicator)
         
-    return status, status_sales_invoice
+    # return status, status_sales_invoice, metodo_de_pago, folio_number
 
 def respuesta_pac_factura_global(document, pac_response):
     
@@ -676,6 +678,15 @@ def actualizar_status_cancelacion(doc, status):
 def actualizar_status_sales_invoice(invoice, status):
            frappe.db.set_value("Sales Invoice", invoice,
                           'custom_status_facturacion', status)
+           
+
+
+def actualizar_datos_factura_sales_invoice(invoice, folio_number, metodo_de_pago):
+        #    actualizar_status_sales_invoice(invoice, status)
+           frappe.db.set_value("Sales Invoice", invoice,
+                          'custom_metodo_de_pago', metodo_de_pago)
+           frappe.db.set_value("Sales Invoice", invoice,
+                          'custom_folio_fiscal', folio_number)
            
 def actualizar_status_payment_entry(payment_entry, status):
            frappe.db.set_value("Payment Entry", payment_entry,

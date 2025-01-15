@@ -92,13 +92,15 @@
    "fieldname": "tax_id",
    "fieldtype": "Data",
    "label": "RFC",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "tax_category",
    "fieldtype": "Data",
    "label": "Regimen Fiscal",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fetch_from": "cliente.customer_primary_address",
@@ -297,7 +299,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-08 21:07:33.136783",
+ "modified": "2025-01-14 22:21:45.954404",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
