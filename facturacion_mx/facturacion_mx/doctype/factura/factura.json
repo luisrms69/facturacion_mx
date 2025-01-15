@@ -56,7 +56,7 @@
    "fieldname": "sales_invoice_id",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Sales Invoice ID",
+   "label": "Factura de Venta",
    "link_filters": "[[\"Sales Invoice\",\"status\",\"not in\",[\"Draft\",\"Return\",\"Cancelled\",\"Canceled\",null]],[\"Sales Invoice\",\"custom_status_facturacion\",\"=\",\"Sin Facturar\"]]",
    "options": "Sales Invoice",
    "reqd": 1
@@ -299,7 +299,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-14 22:21:45.954404",
+ "modified": "2025-01-15 00:20:15.658076",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
