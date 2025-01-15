@@ -543,7 +543,6 @@ def respuesta_pac_cancelacion(document, pac_response):
 def respuesta_pac_factura(document, pac_response):
 
     pac_response_json = pac_response.json()
-    # frappe.msgprint(str(pac_response_json))
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_invoice.get(pac_response_json['status'])
         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
@@ -569,8 +568,7 @@ def respuesta_pac_factura(document, pac_response):
     actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
 
     despliega_aviso(title=title,msg=message,color=indicator)
-        
-    # return status, status_sales_invoice, metodo_de_pago, folio_number
+
 
 def respuesta_pac_factura_global(document, pac_response):
     

@@ -93,11 +93,7 @@ class Factura(Document):
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
 
-        # status_doc , status_sales_invoice, folio_number = respuesta_pac_factura(self, response)
         respuesta_pac_factura(self, response)
-
-        # actualizar_status_doc(self,status_doc)
-        # actualizar_status_sales_invoice(self.sales_invoice_id,status_sales_invoice)
  
 #Metodo que se corre para validar si los campos son correctos
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
