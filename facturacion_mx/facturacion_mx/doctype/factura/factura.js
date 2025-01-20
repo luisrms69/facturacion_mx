@@ -229,7 +229,7 @@ frappe.call({
 // motivos_cancelacion =["01 Comprobante emitido con errores con relación", "02 Comprobante emitido con errores sin relación", "03 No se llevó a cabo la operación", "04 Operación nominativa relacionada en la factura global"] //refactor: tomar de la variable global
 frappe.ui.form.on('Factura', {
     refresh: function (frm) {
-        if (frm.doc.status == "Facturado") {  //refactor: tomar de la variable global
+        if (frm.doc.status == "Facturado" && frappe.user.has_role('Facturacion MX Manager')) {  //refactor: tomar de la variable global
             frm.add_custom_button(__(motivos_de_cancelacion[0].descripcion), function () {  // Debo obtener el valor de la cancelacion automaticamente
                 frappe.call({
                     method: 'facturacion_mx.facturacion_mx.api.cancela_factura',
