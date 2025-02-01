@@ -269,7 +269,8 @@ def get_complements_info(payment_data):
          'payment_form': get_payment_form(payment_data),
          'related_documents': related_documents,
          'currency': "MXN",
-         'exchange': 1
+         'exchange': 1,
+         'date': str(payment_data.posting_date)
     }]
     complements_info = [{
          'type': "pago",
