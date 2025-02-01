@@ -8,6 +8,7 @@ from frappe.model.document import Document
 import requests  # Se utiliza para hacer el http request
 from frappe.utils.password import get_decrypted_password #se importa para poder acceder al password
 from facturacion_mx.facturacion_mx.api import *
+from datetime import datetime, timedelta
 
 class ComplementodePagoPPD(Document):
     def create_complemento(self):
@@ -59,6 +60,8 @@ class ComplementodePagoPPD(Document):
                 },
             },
             "complements": get_complements_info(payment_data),
+            # "date": "2025-01-31T13:04:09.916399",
+            "date": str(datetime.today() - timedelta(days=1, hours=2, minutes=30)),
             # "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat'),
             # "payment_method": payment_method,
             
