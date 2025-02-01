@@ -50,6 +50,7 @@ frappe.ui.form.on('Factura', {
                                 if (s.message) {
                                     frm.set_value('tax_id', s.message.tax_id);
                                     frm.set_value('tax_category', s.message.tax_category);
+                                    frm.set_value('usocfdi', s.message.custom_uso_cfdi)
                                 }
                             }
                         });

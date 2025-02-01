@@ -128,9 +128,8 @@
    "search_index": 1
   },
   {
-   "fetch_from": "cliente.custom_uso_cfdi",
    "fieldname": "usocfdi",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Uso CFDI",
    "options": "Uso CFDI",
    "read_only": 1,
@@ -299,7 +298,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-15 00:44:17.633439",
+ "modified": "2025-01-31 23:37:10.336325",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
