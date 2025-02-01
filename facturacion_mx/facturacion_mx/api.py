@@ -217,7 +217,7 @@ def get_folio_from_invoice(sales_invoice_id):
     # frappe.msgprint(str(factura))
     folio = factura.response_pac[0].folio_number
 
-    frappe.msgprint(str(folio))
+    # frappe.msgprint(str(folio))
 
     return folio
 
@@ -1196,7 +1196,7 @@ def get_numero_de_pago(sales_invoice_id, payment_entry_id):
     ]
     pay_entry = frappe.get_all("Payment Entry", filters=filters, order_by='posting_date asc', pluck='name' )
 
-    frappe.msgprint(str(pay_entry))
+    # frappe.msgprint(str(pay_entry))
 
     position = pay_entry.index(payment_entry_id) + 1
 
