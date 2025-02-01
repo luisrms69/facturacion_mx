@@ -253,7 +253,7 @@ def get_complements_info(payment_data):
             'folio_number' : str(get_folio_from_invoice(relateddocument.reference_name)),
             'amount' : relateddocument.allocated_amount,
             'taxes' : [{
-                'base': relateddocument.allocated_amount,
+                'base': relateddocument.allocated_amount/1.16,
                 'type': "IVA",
                 'rate': .16,
                 'factor': "Tasa",
