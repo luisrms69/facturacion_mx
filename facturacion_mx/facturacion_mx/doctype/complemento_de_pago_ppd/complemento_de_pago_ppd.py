@@ -80,13 +80,12 @@ class ComplementodePagoPPD(Document):
         }
 
         # frappe.msgprint(str(complements))
-        # frappe.msgprint(str(data))
         # frappe.msgprint(str(complements))
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
 
-        status_doc , status_payment_entry = respuesta_pac_factura(self, response)
+        status_doc , status_payment_entry = respuesta_pac_complemento(self, response)
 
         actualizar_status_doc(self,status_doc)
         actualizar_status_payment_entry(self.entrada_de_pago_id,status_payment_entry)

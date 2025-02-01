@@ -8,6 +8,7 @@
  "field_order": [
   "datos_de_los_documentos_section",
   "uuid",
+  "folio",
   "cantidad",
   "numero_de_pago",
   "saldo_pendiente",
@@ -72,6 +73,7 @@
    "label": "Factor"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "withholding",
    "fieldtype": "Data",
    "label": "Withholding"
@@ -85,12 +87,17 @@
    "fieldname": "sales_invoice_id",
    "fieldtype": "Data",
    "label": "Sales Invoice ID"
+  },
+  {
+   "fieldname": "folio",
+   "fieldtype": "Int",
+   "label": "Folio"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-12-24 16:22:36.388168",
+ "modified": "2025-01-31 20:13:33.435835",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Documentos Relacionados",

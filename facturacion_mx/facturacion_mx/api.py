@@ -175,7 +175,7 @@ def get_items_info(invoice_data):
 
     return items_info
 
-
+@frappe.whitelist()
 def get_uuid_from_invoice(sales_invoice_id):
     #  factura = frappe.get_doc('Factura', sales_inovice_id)
     # factura = frappe.db.get_list('Factura',
@@ -200,6 +200,29 @@ def get_uuid_from_invoice(sales_invoice_id):
     # frappe.msgprint(str(uuid))
 
     return uuid
+
+@frappe.whitelist()
+def get_folio_from_invoice(sales_invoice_id):
+    factura_id = frappe.db.get_value('Factura',{
+         'sales_invoice_id': sales_invoice_id,
+                                'status':status_options_invoice.get('valid')
+                            }, 'name')
+
+    if factura_id is None:
+        frappe.throw("No se ha encontrado ninguna factura  con el numero de referencia, verifica que ya se haya elaborado la factura PPD por el pago que quieres facturar")
+    else:
+        factura = frappe.get_doc('Factura', factura_id)
+
+    # frappe.msgprint(str(sales_inovice_id))
+    # frappe.msgprint(str(factura))
+    folio = factura.response_pac[0].folio_number
+
+    frappe.msgprint(str(folio))
+
+    return folio
+
+
+
 
 def get_payment_form(payment_data):
     valor_inferior = 1
@@ -227,6 +250,7 @@ def get_complements_info(payment_data):
     for relateddocument in payment_data.references:       
          related_documents = [{
             'uuid' : get_uuid_from_invoice(relateddocument.reference_name),
+            'folio_number' : str(get_folio_from_invoice(relateddocument.reference_name)),
             'amount' : relateddocument.allocated_amount,
             'taxes' : [{
                 'base': relateddocument.allocated_amount,
@@ -235,7 +259,8 @@ def get_complements_info(payment_data):
                 'factor': "Tasa",
                 'withholding': False
                 }],
-                'installment' : 1,
+                # 'installment' : 1,
+                'installment' : get_numero_de_pago(relateddocument.reference_name, relateddocument.parent),
                 'last_balance': relateddocument.allocated_amount + relateddocument.outstanding_amount,
                 'taxability': "02"
          }]
@@ -568,6 +593,44 @@ def respuesta_pac_factura(document, pac_response):
     actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
 
     despliega_aviso(title=title,msg=message,color=indicator)
+
+
+def respuesta_pac_complemento(document, pac_response):
+
+    pac_response_json = pac_response.json()
+
+    # frappe.msgprint(str(pac_response_json))
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_options_invoice.get(pac_response_json['status'])
+        status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        # folio_number = pac_response_json['folio_number']
+        # metodo_de_pago = pac_response_json['payment_method']
+        table_respuestas = "response_pac"
+        add_response(table_respuestas,document,pac_response.json())
+        title = 'Solicitud Exitosa!!!!!'
+        message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
+        indicator = "green"
+        # actualizar_datos_factura_sales_invoice(document.sales_invoice_id, folio_number, metodo_de_pago)
+    else:
+        title = 'La solicitud de facturacion no fue exitosa'
+        message = str(pac_response_json)
+        indicator = "red"
+        status = status_options_invoice.get("rechazado")
+        status_sales_invoice = status_options_sales_invoice.get("initial")
+        document.db_set({
+        'response_rechazada' : pac_response_json['message']  #refactor:deberia poder usar la funcion add_error_message es un asunto de nombres de campos
+    })
+
+    # actualizar_status_doc(document, status)
+    # actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
+
+    despliega_aviso(title=title,msg=message,color=indicator)
+
+    return status, status_sales_invoice
+
+
+
+
 
 
 def respuesta_pac_factura_global(document, pac_response):
@@ -1121,3 +1184,20 @@ def cancela_factura(doc, motivo):
 
 
     return response.json()
+
+#  Metodo que se llama en complemento de pago para obtener el numero de pago para la factura
+@frappe.whitelist()
+def get_numero_de_pago(sales_invoice_id, payment_entry_id):
+    # Esto se ocupa cuando el pago se hizo por aparte, no en la misma compra
+    filters = [
+        ["Payment Entry Reference", "reference_doctype", "=", "Sales Invoice"],
+        ["Payment Entry Reference", "reference_name", "=", sales_invoice_id],
+        ["status", "!=", "cancelled"]
+    ]
+    pay_entry = frappe.get_all("Payment Entry", filters=filters, order_by='posting_date asc', pluck='name' )
+
+    frappe.msgprint(str(pay_entry))
+
+    position = pay_entry.index(payment_entry_id) + 1
+
+    return position

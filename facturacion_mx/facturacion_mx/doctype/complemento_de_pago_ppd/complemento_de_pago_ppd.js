@@ -10,6 +10,7 @@
 frappe.ui.form.on("Complemento de Pago PPD", {
     entrada_de_pago_id: function (frm) {
         if (frm.doc.entrada_de_pago_id) {
+            frm.clear_table('documentos_relacionados_con_el_pago')
             frappe.call({
                 method: 'frappe.client.get',
                 args: {
@@ -19,42 +20,60 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                     }
                 },
                 callback: function (r) {
-                    console.log("#######r message#########")
-                    console.log(r.message);
                     if (r.message) {
                         frm.set_value('fecha_de_pago', r.message.posting_date);
                         frm.set_value('forma_de_pago', r.message.mode_of_payment);
                         frm.clear_table('documentos_relacionados_con_el_pago')
-                        console.log(r.message)
+                        // console.log(r.message)
                         // refactor: los siguietnes datos deben quedar programados y no hardcoded
                         r.message.references.forEach(function (reference) {
                             var child = frm.add_child('documentos_relacionados_con_el_pago');
                             child.cantidad = reference.allocated_amount;
-                            child.numero_de_pago = 1; //fix:requiere calcularse
+                            frappe.call({
+                                method: 'facturacion_mx.facturacion_mx.api.get_numero_de_pago',
+                                args: {
+                                    sales_invoice_id : reference.reference_name,
+                                    payment_entry_id : frm.doc.entrada_de_pago_id
+                                },
+                                callback: function (t) {
+                                    if (t.message) {
+                                            child.numero_de_pago = t.message;
+                                    }
+                                }
+                            })
+                            // child.numero_de_pago = 1; //fix:requiere calcularse
                             child.saldo_pendiente = reference.allocated_amount + reference.outstanding_amount;
                             child.sales_invoice_id = reference.reference_name;
+                            frappe.call({
+                                method: 'facturacion_mx.facturacion_mx.api.get_folio_from_invoice',
+                                args: {
+                                    sales_invoice_id : reference.reference_name
+                                },
+                                callback: function (s) {
+                                    if (s.message) {
+                                            child.folio = s.message;
+                                    }
+                                }
+                            })
+                            frappe.call({
+                                method: 'facturacion_mx.facturacion_mx.api.get_uuid_from_invoice',
+                                args: {
+                                    sales_invoice_id : reference.reference_name
+                                },
+                                callback: function (u) {
+                                    console.log("Entra a uuid")
+                                    console.log(u.message)
+                                    if (u.message) {
+                                            child.uuid = u.message;
+                                    }
+                                }
+                            })
                             child.base = reference.allocated_amount;
-                            child.type = "IVA";
-                            child.rate = 16;
-                            child.factor = "Tasa";
+                            child.type = "IVA"; //fix:requiere calcularse
+                            child.rate = 16;  //fix:requiere calcularse
+                            child.factor = "Tasa";  //fix:requiere calcularse
                             child.withholding = false;
                         });
-                            // frm.refresh_field('documentos_relacionados_con_el_pago');
-                        // frappe.call({
-                        //     method: 'frappe.client.get',
-                        //     args: {
-                        //         doctype: "Customer",
-                        //         filters: {
-                        //             name: r.message.party_name
-                        //         }
-                        //     },
-                        //     callback: function (s) {
-                        //         if (s.message) {
-                        //             frm.set_value('tax_id', s.message.tax_id);
-                        //             frm.set_value('tax_category', s.message.tax_category);
-                        //         }
-                        //     }
-                        // });
                     }
                 }
             })
