@@ -309,3 +309,29 @@ frappe.ui.form.on("Factura", "metodo_pago_sat", function (frm) {
         frm.set_value("foma_de_pago_sat", forma_pago_ppd_ingreso)
     };
 })
+
+
+
+//refactor: deberia aparecer solo cuando ya hay info en la tabla
+
+frappe.ui.form.on('Factura', {
+	refresh: function(frm) {
+        if (frappe.user.has_role('Facturacion MX Manager')){
+            frm.add_custom_button(__('Revisar Status'), function(){
+                frappe.call({
+                        method: 'facturacion_mx.facturacion_mx.api.status_check_factura',
+                        args: {
+                            id_factura: frm.doc.response_pac[0].id,
+                            factura_docname: frm.docname
+                        },
+                        callback: function (r) {
+                            if (r.message) {
+                            // console.log("#######server script message#########");
+                            // console.log(r.message);
+                            }
+                        }
+                    });
+            });
+        }
+	}
+});

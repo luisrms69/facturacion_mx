@@ -661,8 +661,9 @@ def respuesta_pac_factura_global(document, pac_response):
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
 def get_factura_object(factura_a_revisar):
-        api_token = get_decrypted_password(
-            'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        # api_token = get_decrypted_password(
+        #     'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        api_token = get_api_token_live()
         headers = {"Authorization": f"Bearer {api_token}"}
         factura_endpoint = frappe.db.get_single_value(
             'Facturacion MX Settings', 'endpoint_obtener_facturas')
@@ -1202,3 +1203,26 @@ def get_numero_de_pago(sales_invoice_id, payment_entry_id):
     position = pay_entry.index(payment_entry_id) + 1
 
     return position
+
+
+# Metodo al que se llaman en JS para revisar cual es el status de la factura, se utiliza 
+# para verificar el estado de la factura
+
+@frappe.whitelist()
+def status_check_factura(id_factura, factura_docname):    
+    # refactor: falta condición para asegurar que no hubo error
+
+    factura_object_update = get_factura_object(id_factura)
+    status = status_options_invoice.get(factura_object_update.get('status'))
+    status_sales_invoice =status_options_sales_invoice.get(factura_object_update.get('status'))
+
+# refactor:lo estoy tomando todo de recibo_autofactura.py debe mejorarse
+    
+    table_respuestas = "response_pac"
+    doc = frappe.get_doc("Factura", factura_docname)
+    add_response(table_respuestas,doc,factura_object_update)
+
+    actualizar_status_doc(doc,status)
+    actualizar_status_sales_invoice(doc.sales_invoice_id,status_sales_invoice)
+
+    return status, status_sales_invoice
