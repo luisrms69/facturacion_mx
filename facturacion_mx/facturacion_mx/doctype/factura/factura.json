@@ -290,6 +290,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "notas",
    "fieldtype": "Text",
    "label": "Notas"
@@ -298,7 +299,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-31 23:37:10.336325",
+ "modified": "2025-02-01 19:59:55.485493",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Factura",
