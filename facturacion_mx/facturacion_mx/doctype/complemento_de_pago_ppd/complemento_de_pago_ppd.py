@@ -34,15 +34,13 @@ class ComplementodePagoPPD(Document):
         export = "01"
         complements = []
         status = "pending"
-        date = "" # ESTE CAMPO NO LO VOY A CONFIGURAR, EL DEFAULT ES NOW
+        # date = "" # ESTE CAMPO NO LO VOY A CONFIGURAR, EL DEFAULT ES NOW, ACTUALIZACION SI SE CONFIGURO
         address = {}
         external_id = ""
         idempotency_key = ""
         namespaces = []
         pdf_options = {}
 
-#Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
-#Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
         api_token = get_api_token_live()
         headers = {"Authorization": f"Bearer {api_token}"}

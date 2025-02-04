@@ -60,7 +60,7 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                                     }
                                 }
                             })
-                            child.base = reference.allocated_amount;
+                            child.base = reference.allocated_amount/(1+child.rate);
                             child.type = "IVA"; //fix:requiere calcularse
                             child.rate = 16;  //fix:requiere calcularse
                             child.factor = "Tasa";  //fix:requiere calcularse
