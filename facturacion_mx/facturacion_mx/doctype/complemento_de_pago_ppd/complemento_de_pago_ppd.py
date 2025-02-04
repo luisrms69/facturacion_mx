@@ -61,7 +61,7 @@ class ComplementodePagoPPD(Document):
             },
             "complements": get_complements_info(payment_data),
             # "date": "2025-01-31T13:04:09.916399",
-            "date": str(datetime.today() - timedelta(days=1, hours=2, minutes=30)),
+            "date": str(datetime.today()),
             # "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat'),
             # "payment_method": payment_method,
             
