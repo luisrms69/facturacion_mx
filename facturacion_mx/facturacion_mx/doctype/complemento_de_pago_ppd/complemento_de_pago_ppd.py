@@ -25,7 +25,6 @@ class ComplementodePagoPPD(Document):
 # Pendiente configuración o automatización
         type = "P"
         payment_related_ids =[]
-        # payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
 
 # Pendiente configuración de estos campos, NO SE VAN A OCUPAR, SE DEJA EL PLACER
         currency = "MXN"
@@ -46,7 +45,6 @@ class ComplementodePagoPPD(Document):
 #Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
         facturapi_endpoint = frappe.db.get_single_value('Facturacion MX Settings','endpoint_crear_facturas')
         api_token = get_api_token_live()
-        # api_token = get_decrypted_password('Facturacion MX Settings','Facturacion MX Settings',"live_secret_key")
         headers = {"Authorization": f"Bearer {api_token}"}
         data = {
             "type": type,
@@ -60,30 +58,8 @@ class ComplementodePagoPPD(Document):
                 },
             },
             "complements": get_complements_info(payment_data),
-            # "date": "2025-01-31T13:04:09.916399",
             "date": str(datetime.today()),
-            # "payment_form": frappe.db.get_value('Factura', current_document, 'foma_de_pago_sat'),
-            # "payment_method": payment_method,
-            
-            # "currency": currency, VIENE POR DEFAULT
-            # "exchange": exchange, VIENE POR DEFAULT
-            # "conditions": conditions, NO VIENE PORQUE NO SE ENVIA, NO LO TENGO INCLUIDO EN LA DEFINICION DE INVOICE OBJECT
-            # "related_documents": related_documents,
-            # "export": export,
-            # "status": status,
-            # "external_id": external_id,
-            # "folio_number": folio_number,
-            # "series": series,
-            # "pdf_custom_section": pdf_custom_section,
-            # "addenda": addenda,
-            # "namespaces": namespaces,
-            # "pdf_options": pdf_options,
-            # "idempotency_key" : idempotency_key,
-            # "payment_related_ids": payment_related_ids, SOLO LO ACEPTA CUANDO SE TRATA DE PPD
         }
-
-        # frappe.msgprint(str(complements))
-        # frappe.msgprint(str(complements))
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
@@ -97,9 +73,8 @@ class ComplementodePagoPPD(Document):
 # refactor: si es lo mismo en receipts, crear funcion que agrupe todo   
     def validate(self):
      pass
-        # validate_data_invoice(self)
+
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
-        # actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
         self.create_complemento()
