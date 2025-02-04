@@ -53,14 +53,14 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                                     sales_invoice_id : reference.reference_name
                                 },
                                 callback: function (u) {
-                                    console.log("Entra a uuid")
-                                    console.log(u.message)
+                                    // console.log("Entra a uuid")
+                                    // console.log(u.message)
                                     if (u.message) {
                                             child.uuid = u.message;
                                     }
                                 }
                             })
-                            child.base = reference.allocated_amount/(1+child.rate);
+                            child.base = reference.allocated_amount/1.16;
                             child.type = "IVA"; //fix:requiere calcularse
                             child.rate = 16;  //fix:requiere calcularse
                             child.factor = "Tasa";  //fix:requiere calcularse
