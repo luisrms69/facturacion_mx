@@ -933,47 +933,47 @@ def save_to_document(document_name, filename_dir, doctype):
 # refactor: la funcion de abajo descarga_archivo debe servir para ambos, solamente se añade el doctype
 
 
-@frappe.whitelist()
-def descarga_factura(document_name, format):
+# @frappe.whitelist()
+# def descarga_factura(document_name, format):
 
-# Despues se arma el http request. endpoint, headers. Los valores de headers y endpoint se toman de settings
-        current_document = get_factura_id(frappe.get_doc('Factura', document_name))
+# # Despues se arma el http request. endpoint, headers. Los valores de headers y endpoint se toman de settings
+#         current_document = get_factura_id(frappe.get_doc('Factura', document_name))
 
-        factura_endpoint = frappe.db.get_single_value(
-            'Facturacion MX Settings', 'endpoint_descarga_factura')
-        # api_token = get_decrypted_password(
-        #     'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
-        api_token = get_api_token_live()
+#         factura_endpoint = frappe.db.get_single_value(
+#             'Facturacion MX Settings', 'endpoint_descarga_factura')
+#         # api_token = get_decrypted_password(
+#         #     'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+#         api_token = get_api_token_live()
 
-        headers = {"Authorization": f"Bearer {api_token}"}
+#         headers = {"Authorization": f"Bearer {api_token}"}
 
-        final_url = f"{factura_endpoint}/{current_document}/{format}"
+#         final_url = f"{factura_endpoint}/{current_document}/{format}"
 
-        response = requests.get(final_url, headers=headers)
+#         response = requests.get(final_url, headers=headers)
 
-# fix: no podemos dejar esto manual, se pierde en cada actualizacion
-        # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
-        site_name_auto = elimina_caracteres(get_site_base_path(),2)
-        path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
-        # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
+# # fix: no podemos dejar esto manual, se pierde en cada actualizacion
+#         # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
+#         site_name_auto = elimina_caracteres(get_site_base_path(),2)
+#         path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
+#         # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
 
-        filename = get_filename_from_cd(
-            response.headers.get('content-disposition'))[1:-1]
-        filename_short = presenta_ultimos_caracteres(filename, 15)
-        filename_dir = path + filename_short
-        with open(filename_dir, 'wb') as file:
-        #         # refactor: ver opcion señalada abajo para no ocupar tanto ram
-                file.write(response.content)
+#         filename = get_filename_from_cd(
+#             response.headers.get('content-disposition'))[1:-1]
+#         filename_short = presenta_ultimos_caracteres(filename, 15)
+#         filename_dir = path + filename_short
+#         with open(filename_dir, 'wb') as file:
+#         #         # refactor: ver opcion señalada abajo para no ocupar tanto ram
+#                 file.write(response.content)
 
-        save_to_factura(document_name, filename_dir)
+#         save_to_factura(document_name, filename_dir)
 
-        # refactor option: con esto podemos disminuir el uso del ram
-        # with open("/home/erpnext/frappe-bench/apps/facturacion_mx/archivo.xml", 'wb') as local_file:
-        #       for chunk in response.iter_content(chunk_size=128):
-        #              local_file.write(chunk)
+#         # refactor option: con esto podemos disminuir el uso del ram
+#         # with open("/home/erpnext/frappe-bench/apps/facturacion_mx/archivo.xml", 'wb') as local_file:
+#         #       for chunk in response.iter_content(chunk_size=128):
+#         #              local_file.write(chunk)
 
 
-# Metodo que se llaman en Coplemento de Pago PPD.js para descargar la factura
+# Metodo que se llaman en Factura y Coplemento de Pago PPD.js para descargar la factura
 @frappe.whitelist()
 def descarga_archivo(document_name, format, doctype):
 
