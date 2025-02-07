@@ -144,7 +144,7 @@ frappe.ui.form.on('Factura', {
                             label: 'Formato Deseado',
                             fieldname: 'format',
                             fieldtype: 'Select',
-                            default: 'zip',
+                            default: 'pdf',
                             options: "xml\npdf\nzip"
                         }
                     ],
@@ -163,6 +163,7 @@ frappe.ui.form.on('Factura', {
                                     console.log("#######server script message#########");
                                     console.log(r.message);
                                 }
+                                frm.reload_doc()
                                 d.hide();
                             }
                         });
