@@ -72,3 +72,49 @@ frappe.ui.form.on("Complemento de Pago PPD", {
         }
     }
 })
+
+
+// Codigo que genera boton en la Factura para desccargar el archivo deseados y llama al método PY de envio
+frappe.ui.form.on('Complemento de Pago PPD', {
+    refresh: function (frm) {
+        if (frm.doc.status == "Facturado") {
+            frm.add_custom_button(__('Descargar'), function () {
+                let d = new frappe.ui.Dialog({
+                    title: 'Selecciona el formato en que quieres descargar la factura del complemento de pago',
+                    fields: [
+                        {
+                            label: 'Formato Deseado',
+                            fieldname: 'format',
+                            fieldtype: 'Select',
+                            default: 'pdf',
+                            options: "xml\npdf\nzip"
+                        }
+                    ],
+                    size: 'small', // small, large, extra-large 
+                    primary_action_label: 'Descargar',
+                    primary_action: function () {
+                        var data = d.get_values();
+                        frappe.call({
+                            method: 'facturacion_mx.facturacion_mx.api.descarga_archivo',
+                            args: {
+                                document_name: frm.doc.name,
+                                format: data.format,
+                                doctype: "Complemento de Pago PPD"
+                            },
+                            callback: function (r) {
+                                // if (r.message) {
+                                //     // console.log("#######server script message#########");
+                                //     // console.log(r.message);
+                                // }
+                                frm.reload_doc()
+                                d.hide();
+                            }
+                        });
+                    }
+                });
+
+                d.show();
+            })
+        }
+    }
+});

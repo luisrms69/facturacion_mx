@@ -846,7 +846,7 @@ def elimina_caracteres(str_var, al_principio):
     return str_final
 
 # Graba el archivo de factura descargado y lo añade al documento Factura respectivo
-
+# refactor: cree save_to_document abajo, se debera sustituir save_to factura con esta nueva funcion, se añade unicamente el doctype
 
 def save_to_factura(document_name, filename_dir):
         # api_secret = '5b0504450091157'
@@ -884,7 +884,53 @@ def save_to_factura(document_name, filename_dir):
 
         return file_name
 
+
+# Graba el archivo de factura descargado y lo añade al documento Factura respectivo
+
+
+def save_to_document(document_name, filename_dir, doctype):
+        # api_secret = '5b0504450091157'
+        api_key = frappe.db.get_single_value(
+            'Facturacion MX Settings', 'facturacion_user_key')
+        api_secret = get_decrypted_password(
+            'Facturacion MX Settings', 'Facturacion MX Settings', "facturacion_user_secret")
+
+#feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
+        validate_api_secret_api_key(api_secret, api_key)
+        # api_key = 'd52ae25e20591f4'
+        url = f"{frappe.utils.get_url()}/api/method/upload_file"
+        # url = 'http://127.0.0.1:8000/api/method/upload_file'
+        headers = {"Authorization": f"token {api_key}:{api_secret}",
+                   'Accept': "application/json"
+                #    'Content-Type': "pdf"
+                   }
+        files = {
+                'file': open(filename_dir, 'rb'),
+        }
+        data = {
+                'is_private': 1,
+                'doctype': doctype,
+                'docname': document_name
+        }
+        response = requests.post(
+            url=url, data=data, headers=headers, files=files)
+        # frappe.msgprint(str(response.__dict__))
+        response.dict = json.loads(response.text)
+        # frappe.msgprint(str(response.dict))
+        # file_name = response.dict['message']['name']
+        file_name = json.loads(response.text)['message']['name']
+
+        # frappe.errprint(response.__dict__)
+
+        return file_name
+
+
+
+
+
+
 # Metodo que se llaman en factura.js para descargar la factura
+# refactor: la funcion de abajo descarga_archivo debe servir para ambos, solamente se añade el doctype
 
 
 @frappe.whitelist()
@@ -925,6 +971,34 @@ def descarga_factura(document_name, format):
         # with open("/home/erpnext/frappe-bench/apps/facturacion_mx/archivo.xml", 'wb') as local_file:
         #       for chunk in response.iter_content(chunk_size=128):
         #              local_file.write(chunk)
+
+
+# Metodo que se llaman en Coplemento de Pago PPD.js para descargar la factura
+@frappe.whitelist()
+def descarga_archivo(document_name, format, doctype):
+
+        current_document = get_factura_id(frappe.get_doc(doctype, document_name))
+
+# refactor: hacer funcion para que se comparta, por lo menos con descarga_factura de arriba
+        factura_endpoint = frappe.db.get_single_value(
+            'Facturacion MX Settings', 'endpoint_descarga_factura')
+        api_token = get_api_token_live()
+        headers = {"Authorization": f"Bearer {api_token}"}
+        final_url = f"{factura_endpoint}/{current_document}/{format}"
+        response = requests.get(final_url, headers=headers)
+
+        site_name_auto = elimina_caracteres(get_site_base_path(),2)
+        path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
+
+        filename = get_filename_from_cd(
+            response.headers.get('content-disposition'))[1:-1]
+        filename_short = presenta_ultimos_caracteres(filename, 15)
+        filename_dir = path + filename_short
+        with open(filename_dir, 'wb') as file:
+                file.write(response.content)
+
+        save_to_document(document_name, filename_dir,doctype)
+
 
 
 # Metodo que se llaman en factura.js para obtener alguna forma de pago, en caso de que exista
