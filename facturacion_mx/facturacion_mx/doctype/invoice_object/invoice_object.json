@@ -87,7 +87,7 @@
   },
   {
    "fieldname": "total",
-   "fieldtype": "Int",
+   "fieldtype": "Float",
    "label": "Total"
   },
   {
@@ -174,7 +174,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-08 21:13:54.985647",
+ "modified": "2025-02-06 23:57:37.529537",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Invoice Object",
