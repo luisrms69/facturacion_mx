@@ -154,16 +154,17 @@ frappe.ui.form.on('Factura', {
                     primary_action: function () {
                         var data = d.get_values();
                         frappe.call({
-                            method: 'facturacion_mx.facturacion_mx.api.descarga_factura',
+                            method: 'facturacion_mx.facturacion_mx.api.descarga_archivo',
                             args: {
                                 document_name: frm.doc.name,
-                                format: data.format
+                                format: data.format,
+                                doctype:'Factura'
                             },
                             callback: function (r) {
-                                if (r.message) {
-                                    console.log("#######server script message#########");
-                                    console.log(r.message);
-                                }
+                                // if (r.message) {
+                                //     console.log("#######server script message#########");
+                                //     console.log(r.message);
+                                // }
                                 frm.reload_doc()
                                 d.hide();
                             }
