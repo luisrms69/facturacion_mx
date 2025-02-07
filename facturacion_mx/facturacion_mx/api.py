@@ -1095,20 +1095,15 @@ def envia_documento_por_email(current_document, email_id, doctype):
 
 # refactor: Los textos no me gustan hardcoded,
         if check_pac_response_success(response) == 1:
-                # frappe.msgprint(
-                #     # refactor: Sería mejor que se incluyera el correo
-                    msg="La información se envió al correo proporcionado",
-                    title='Solicitud exitosa!!',
-                    indicator='green'
-                # )
+            msg=f"Los archivos se enviaron exitosamente al correo {email_id}"
+            title='Solicitud exitosa!!'
+            indicator='green'
         else:
-                # frappe.msgprint(
-                msg=str(data_response),
-                title='No se envió el correo',
-                indicator='red'
-            # )
+            msg=str(data_response)
+            title='No se envió el correo'
+            indicator='red'
                 
-                despliega_aviso(title=title, msg=msg, color=indicator)
+        despliega_aviso(title=title, msg=msg, color=indicator)
 
 
 

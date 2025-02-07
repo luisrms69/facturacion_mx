@@ -110,10 +110,11 @@ frappe.ui.form.on('Factura', {
                     primary_action: function () {
                         var data = d.get_values();
                         frappe.call({
-                            method: 'facturacion_mx.facturacion_mx.api.envia_factura_por_email',
+                            method: 'facturacion_mx.facturacion_mx.api.envia_documento_por_email',
                             args: {
                                 current_document: frm.doc.name,
-                                email_id: data.email_id
+                                email_id: data.email_id,
+                                doctype: 'Factura'
                             },
                             callback: function (r) {
                                 if (r.message) {
