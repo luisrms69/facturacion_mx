@@ -118,3 +118,46 @@ frappe.ui.form.on('Complemento de Pago PPD', {
         }
     }
 });
+
+// Codigo que genera boton en el complemento para hacer el envio por correo y llama al método PY de envio
+frappe.ui.form.on('Complemento de Pago PPD', {
+    refresh: function (frm) {
+        if (frm.doc.status == "Facturado") {
+            frm.add_custom_button(__('Enviar por Correo'), function () {
+                let d = new frappe.ui.Dialog({
+                    title: 'Selecciona el correo electronico al que quieres enviar la factura (pdf y XML) del complemento de pago',
+                    fields: [
+                        {
+                            label: 'Correo Electronico',
+                            fieldname: 'email_id',
+                            fieldtype: 'Data'
+                            // default: frm.doc.email_id
+                        }
+                    ],
+                    size: 'small', // small, large, extra-large 
+                    primary_action_label: 'Submit',
+                    primary_action: function () {
+                        var data = d.get_values();
+                        frappe.call({
+                            method: 'facturacion_mx.facturacion_mx.api.envia_documento_por_email',
+                            args: {
+                                current_document: frm.doc.name,
+                                email_id: data.email_id,
+                                doctype: 'Complemento de Pago PPD'
+                            },
+                            callback: function (r) {
+                                // if (r.message) {
+                                //     // console.log("#######server script message#########");
+                                //     // console.log(r.message);
+                                // }
+                                d.hide();
+                            }
+                        });
+                    }
+                });
+
+                d.show();
+            })
+        }
+    }
+});

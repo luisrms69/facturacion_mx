@@ -1029,6 +1029,7 @@ def get_forma_de_pago(sales_invoice_id):
 
 
 # Metodo que se llaman en factura.js para enviar un correo de la factura
+# refactor: se debera usar el metodo envia_documento_por_email creado abajo, se añade el doctype
 @frappe.whitelist()
 def envia_factura_por_email(current_document, email_id):
 # Primero solicita la definicion de variables del documento actual
@@ -1067,6 +1068,48 @@ def envia_factura_por_email(current_document, email_id):
                 title='No se envió el correo',
                 indicator='red'
             )
+
+
+
+# Metodo que se llaman en factura.js para enviar un correo de la factura
+@frappe.whitelist()
+def envia_documento_por_email(current_document, email_id, doctype):
+
+        factura_id = get_factura_id(frappe.get_doc(doctype, current_document))
+        
+        factura_endpoint = frappe.db.get_single_value(
+            'Facturacion MX Settings', 'endpoint_enviar_correo')
+        api_token = get_decrypted_password(
+            'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
+        headers = {"Authorization": f"Bearer {api_token}"}
+        data = {
+                "email": email_id
+            }
+        final_url = f"{factura_endpoint}/{factura_id}/email"
+
+# La respuesta se muestra en la pantalla
+        response = requests.post(
+            final_url, json=data, headers=headers)
+
+        data_response = response.json()
+
+# refactor: Los textos no me gustan hardcoded,
+        if check_pac_response_success(response) == 1:
+                # frappe.msgprint(
+                #     # refactor: Sería mejor que se incluyera el correo
+                    msg="La información se envió al correo proporcionado",
+                    title='Solicitud exitosa!!',
+                    indicator='green'
+                # )
+        else:
+                # frappe.msgprint(
+                msg=str(data_response),
+                title='No se envió el correo',
+                indicator='red'
+            # )
+                
+                despliega_aviso(title=title, msg=msg, color=indicator)
+
 
 
 # Metodo al que se llaman en JS para revisar cual es el status de la factura, se utiliza en aquellos
