@@ -311,16 +311,6 @@ frappe.ui.form.on("Factura", "metodo_pago_sat", function (frm) {
 })
 
 
-
-var idsfacturas = {
-	"FACT-25-01-02-0004": "6776d3561c2224b3a0a07ac1",
-	"FACT-25-01-02-0010": "6776ecab259a0b25cd04f230",
-	"FACT-25-01-02-0008": "6776eafb259a0b25cd04a2b6",
-	"FACT-25-01-02-0018": "677719962288b758ebf06238",
-	"FACT-25-01-02-0019": "67771a0e3ed0bf606166751d"
-}
-
-
 //refactor: deberia aparecer solo cuando ya hay info en la tabla
 
 frappe.ui.form.on('Factura', {
@@ -330,8 +320,7 @@ frappe.ui.form.on('Factura', {
                 frappe.call({
                         method: 'facturacion_mx.facturacion_mx.api.status_check_factura',
                         args: {
-                            // id_factura: frm.doc.response_pac[0].id,
-                            id_factura: idsfacturas[frm.docname],
+                            id_factura: frm.doc.response_pac[0].id,
                             factura_docname: frm.docname
                         },
                         callback: function (r) {
