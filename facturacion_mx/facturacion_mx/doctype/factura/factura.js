@@ -16,8 +16,6 @@ frappe.ui.form.on('Factura', {
                     }
                 },
                 callback: function (r) {
-                    // console.log("#######r message#########")
-                    // console.log(r.message);
                     if (r.message) {
                         frm.set_value('fecha_nota_de_venta', r.message.posting_date);
                         frm.clear_table('factura_product_array')
@@ -58,7 +56,6 @@ frappe.ui.form.on('Factura', {
 
 // GET notes from factura depending on mode of payment
 frappe.ui.form.on('Factura', {
-    // metodo_pago_sat: function (frm) {
         refresh: function (frm) {
         if (frm.doc.metodo_pago_sat && frm.doc.sales_invoice_id) {
             frm.refresh_field('notas');
@@ -69,8 +66,6 @@ frappe.ui.form.on('Factura', {
                     sales_invoice_id: frm.doc.sales_invoice_id,
                 },
                 callback: function (r) {
-                    // console.log("#######notas son#########")
-                    // console.log(r.message);
                     if (r.message) {
                         frm.set_value('notas', r.message);
                     }
@@ -118,8 +113,6 @@ frappe.ui.form.on('Factura', {
                             },
                             callback: function (r) {
                                 if (r.message) {
-                                    // console.log("#######server script message#########");
-                                    // console.log(r.message);
                                 }
                                 d.hide();
                             }
@@ -161,10 +154,6 @@ frappe.ui.form.on('Factura', {
                                 doctype:'Factura'
                             },
                             callback: function (r) {
-                                // if (r.message) {
-                                //     console.log("#######server script message#########");
-                                //     console.log(r.message);
-                                // }
                                 frm.reload_doc()
                                 d.hide();
                             }
@@ -198,7 +187,6 @@ frappe.call({
     },
 });
 
-// motivos_cancelacion =["01 Comprobante emitido con errores con relación", "02 Comprobante emitido con errores sin relación", "03 No se llevó a cabo la operación", "04 Operación nominativa relacionada en la factura global"] //refactor: tomar de la variable global
 frappe.ui.form.on('Factura', {
     refresh: function (frm) {
         if (frm.doc.status == "Facturado" && frappe.user.has_role('Facturacion MX Manager')) {  //refactor: tomar de la variable global
@@ -211,8 +199,6 @@ frappe.ui.form.on('Factura', {
                     },
                     callback: function (r) {
                         if (r.message) {
-                            // console.log("#######server script message#########");
-                            // console.log(r.message);
                         }
                     }
                 });
@@ -227,8 +213,6 @@ frappe.ui.form.on('Factura', {
                     },
                     callback: function (r) {
                         if (r.message) {
-                            // console.log("#######server script message#########");
-                            // console.log(r.message);
                         }
                     }
                 });
@@ -243,8 +227,6 @@ frappe.ui.form.on('Factura', {
                     },
                     callback: function (r) {
                         if (r.message) {
-                            // console.log("#######server script message#########");
-                            // console.log(r.message);
                         }
                     }
                 });
@@ -260,8 +242,6 @@ frappe.ui.form.on('Factura', {
                     },
                     callback: function (r) {
                         if (r.message) {
-                            // console.log("#######server script message#########");
-                            // console.log(r.message);
                         }
                     }
                 });
@@ -296,8 +276,6 @@ frappe.ui.form.on('Factura', {
                         },
                         callback: function (r) {
                             if (r.message) {
-                            // console.log("#######server script message#########");
-                            // console.log(r.message);
                             }
                         }
                     });
