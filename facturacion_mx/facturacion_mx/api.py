@@ -177,12 +177,6 @@ def get_items_info(invoice_data):
 
 @frappe.whitelist()
 def get_uuid_from_invoice(sales_invoice_id):
-    #  factura = frappe.get_doc('Factura', sales_inovice_id)
-    # factura = frappe.db.get_list('Factura',
-    #                              filters = {
-    #                                   'sales_invoice_id': sales_inovice_id,
-    #                                   'status':status_options_invoice.get('valid')
-    #                              })
     factura_id = frappe.db.get_value('Factura',{
          'sales_invoice_id': sales_invoice_id,
                                 'status':status_options_invoice.get('valid')
@@ -193,11 +187,7 @@ def get_uuid_from_invoice(sales_invoice_id):
     else:
         factura = frappe.get_doc('Factura', factura_id)
 
-    # frappe.msgprint(str(sales_inovice_id))
-    # frappe.msgprint(str(factura))
     uuid = factura.response_pac[0].uuid
-
-    # frappe.msgprint(str(uuid))
 
     return uuid
 
@@ -213,11 +203,7 @@ def get_folio_from_invoice(sales_invoice_id):
     else:
         factura = frappe.get_doc('Factura', factura_id)
 
-    # frappe.msgprint(str(sales_inovice_id))
-    # frappe.msgprint(str(factura))
     folio = factura.response_pac[0].folio_number
-
-    # frappe.msgprint(str(folio))
 
     return folio
 
@@ -242,11 +228,6 @@ def get_payment_form(payment_data):
 def get_complements_info(payment_data):
     complements_info = []
     data = []
-    # invoice_tax = get_invoice_tax(payment_data.taxes)
-# fix: los datos no deben venir hardcoded
-    # data = [{
-    #      'payment_form': get_payment_form(payment_data),
-    # }]
     for relateddocument in payment_data.references:       
          related_documents = [{
             'uuid' : get_uuid_from_invoice(relateddocument.reference_name),
@@ -259,7 +240,6 @@ def get_complements_info(payment_data):
                 'factor': "Tasa",
                 'withholding': False
                 }],
-                # 'installment' : 1,
                 'installment' : get_numero_de_pago(relateddocument.reference_name, relateddocument.parent),
                 'last_balance': relateddocument.allocated_amount + relateddocument.outstanding_amount,
                 'taxability': "02"
@@ -600,7 +580,6 @@ def respuesta_pac_complemento(document, pac_response):
 
     pac_response_json = pac_response.json()
 
-    # frappe.msgprint(str(pac_response_json))
     if check_pac_response_success(pac_response) == 1:		
         status = status_options_invoice.get(pac_response_json['status'])
         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
@@ -630,10 +609,6 @@ def respuesta_pac_complemento(document, pac_response):
     return status, status_sales_invoice
 
 
-
-
-
-
 def respuesta_pac_factura_global(document, pac_response):
     
     pac_response_json = pac_response.json()	
@@ -661,8 +636,6 @@ def respuesta_pac_factura_global(document, pac_response):
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
 def get_factura_object(factura_a_revisar):
-        # api_token = get_decrypted_password(
-        #     'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
         api_token = get_api_token_live()
         headers = {"Authorization": f"Bearer {api_token}"}
         factura_endpoint = frappe.db.get_single_value(
@@ -857,9 +830,7 @@ def save_to_factura(document_name, filename_dir):
 
 #feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
         validate_api_secret_api_key(api_secret, api_key)
-        # api_key = 'd52ae25e20591f4'
         url = f"{frappe.utils.get_url()}/api/method/upload_file"
-        # url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
                    'Accept': "application/json"
                 #    'Content-Type': "pdf"
@@ -889,7 +860,6 @@ def save_to_factura(document_name, filename_dir):
 
 
 def save_to_document(document_name, filename_dir, doctype):
-        # api_secret = '5b0504450091157'
         api_key = frappe.db.get_single_value(
             'Facturacion MX Settings', 'facturacion_user_key')
         api_secret = get_decrypted_password(
@@ -897,9 +867,7 @@ def save_to_document(document_name, filename_dir, doctype):
 
 #feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
         validate_api_secret_api_key(api_secret, api_key)
-        # api_key = 'd52ae25e20591f4'
         url = f"{frappe.utils.get_url()}/api/method/upload_file"
-        # url = 'http://127.0.0.1:8000/api/method/upload_file'
         headers = {"Authorization": f"token {api_key}:{api_secret}",
                    'Accept': "application/json"
                 #    'Content-Type': "pdf"
@@ -923,54 +891,6 @@ def save_to_document(document_name, filename_dir, doctype):
         # frappe.errprint(response.__dict__)
 
         return file_name
-
-
-
-
-
-
-# Metodo que se llaman en factura.js para descargar la factura
-# refactor: la funcion de abajo descarga_archivo debe servir para ambos, solamente se añade el doctype
-
-
-# @frappe.whitelist()
-# def descarga_factura(document_name, format):
-
-# # Despues se arma el http request. endpoint, headers. Los valores de headers y endpoint se toman de settings
-#         current_document = get_factura_id(frappe.get_doc('Factura', document_name))
-
-#         factura_endpoint = frappe.db.get_single_value(
-#             'Facturacion MX Settings', 'endpoint_descarga_factura')
-#         # api_token = get_decrypted_password(
-#         #     'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
-#         api_token = get_api_token_live()
-
-#         headers = {"Authorization": f"Bearer {api_token}"}
-
-#         final_url = f"{factura_endpoint}/{current_document}/{format}"
-
-#         response = requests.get(final_url, headers=headers)
-
-# # fix: no podemos dejar esto manual, se pierde en cada actualizacion
-#         # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
-#         site_name_auto = elimina_caracteres(get_site_base_path(),2)
-#         path = f"/home/erpnext/frappe-bench/sites/{site_name_auto}/private/files/"
-#         # path = "/home/erpnext/frappe-bench/sites/llantascs.dev/private/files/"  # Se requiere crear por separado manualmente
-
-#         filename = get_filename_from_cd(
-#             response.headers.get('content-disposition'))[1:-1]
-#         filename_short = presenta_ultimos_caracteres(filename, 15)
-#         filename_dir = path + filename_short
-#         with open(filename_dir, 'wb') as file:
-#         #         # refactor: ver opcion señalada abajo para no ocupar tanto ram
-#                 file.write(response.content)
-
-#         save_to_factura(document_name, filename_dir)
-
-#         # refactor option: con esto podemos disminuir el uso del ram
-#         # with open("/home/erpnext/frappe-bench/apps/facturacion_mx/archivo.xml", 'wb') as local_file:
-#         #       for chunk in response.iter_content(chunk_size=128):
-#         #              local_file.write(chunk)
 
 
 # Metodo que se llaman en Factura y Coplemento de Pago PPD.js para descargar la factura
@@ -1029,49 +949,6 @@ def get_forma_de_pago(sales_invoice_id):
 
 
 # Metodo que se llaman en factura.js para enviar un correo de la factura
-# refactor: se debera usar el metodo envia_documento_por_email creado abajo, se añade el doctype
-# @frappe.whitelist()
-# def envia_factura_por_email(current_document, email_id):
-# # Primero solicita la definicion de variables del documento actual
-
-# # Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
-# # Los valores de data se arman en este metodo, hacen llamadas a los metodos de la clase creada (Factura)
-#         factura_id = get_factura_id(frappe.get_doc('Factura', current_document))
-        
-#         factura_endpoint = frappe.db.get_single_value(
-#             'Facturacion MX Settings', 'endpoint_enviar_correo')
-#         api_token = get_decrypted_password(
-#             'Facturacion MX Settings', 'Facturacion MX Settings', "live_secret_key")
-#         headers = {"Authorization": f"Bearer {api_token}"}
-#         data = {
-#                 "email": email_id
-#             }
-#         final_url = f"{factura_endpoint}/{factura_id}/email"
-
-# # La respuesta se muestra en la pantalla
-#         response = requests.post(
-#             final_url, json=data, headers=headers)
-
-#         data_response = response.json()
-
-# # refactor: Los textos no me gustan hardcoded,
-#         if check_pac_response_success(response) == 1:
-#                 frappe.msgprint(
-#                     # refactor: Sería mejor que se incluyera el correo
-#                     msg="La información se envió al correo proporcionado",
-#                     title='Solicitud exitosa!!',
-#                     indicator='green'
-#                 )
-#         else:
-#                 frappe.msgprint(
-#                 msg=str(data_response),
-#                 title='No se envió el correo',
-#                 indicator='red'
-#             )
-
-
-
-# Metodo que se llaman en factura.js para enviar un correo de la factura
 @frappe.whitelist()
 def envia_documento_por_email(current_document, email_id, doctype):
 
@@ -1119,8 +996,6 @@ def status_check_cx_factura(id_cx_factura, factura_cx):
         actualizar_status_cx_factura(doc, status)
         if check_status_actual == 1:
               actualizar_status_factura_invoice(factura_cx)
-
-
 
 
 # Metodo para  obtern un objeto actualizado de un e-receipt
@@ -1178,18 +1053,9 @@ def payload_recibo_autofactura(doc):
 def get_ereceipts_id_factura_global(recibo_autofactura_list):
     receipts_list = []
     for recibo in recibo_autofactura_list:
-        #  frappe.msgprint(str(recibo))
          recibo_name = recibo.get('name')
          recibo_autofactura = frappe.get_doc("Recibo Autofactura", recibo_name)
          receipts_list.append(recibo_autofactura.respuestas_del_pac[0].id)
-
-        #  frappe.msgprint(str(recibo_autofactura))
-
-    # for renglon in receipts_list:
-    #      frappe.msgprint(str(renglon))
-    #      frappe.msgprint(renglon.created_at)
-    #      frappe.msgprint(renglon.total)
-    #      frappe.msgprint(renglon.status_receipt)
         
     return receipts_list
 
@@ -1205,11 +1071,6 @@ def get_receipts_factura_global(fecha_inicial, fecha_final):
           },
         fields = ['name', 'cliente', 'sales_invoice_id','creation','total_factura']  #fix: esto deber{ia estar en alguna variable}, hay dependencias en que name sea el indice cero
      )
-     
-    #  cliente_p_g = frappe.db.get_single_value('Facturacion MX Settings','cliente_factura_global')
-
-    #  frappe.msgprint(cliente_p_g)
-     frappe.msgprint(str(recibo_autofactura_list))
 
      return recibo_autofactura_list
 
@@ -1309,8 +1170,6 @@ def get_numero_de_pago(sales_invoice_id, payment_entry_id):
         ["status", "!=", "cancelled"]
     ]
     pay_entry = frappe.get_all("Payment Entry", filters=filters, order_by='posting_date asc', pluck='name' )
-
-    # frappe.msgprint(str(pay_entry))
 
     position = pay_entry.index(payment_entry_id) + 1
 
