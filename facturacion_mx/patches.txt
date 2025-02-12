@@ -5,3 +5,4 @@
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
 facturacion_mx.facturacion_mx.patches.v1_1.facturas_bind_marcar_facturadas_patch #Corre
+facturacion_mx.facturacion_mx.patches.v1_1.cambia_status_sin_facturar_enero
