@@ -72,6 +72,7 @@ def get_regimen_fiscal(cliente):
 # El regreso ya viene configurado para ser añadido al http request (data)
 
 #refactor: evaluar juntar con el siguiente metodo, la opcion sería dividir esto en dos y la parte comun juntarla
+@frappe.whitelist()
 def get_datos_direccion_facturacion(cliente):
     filters = [
         ["Dynamic Link", "link_doctype", "=", "Customer"],

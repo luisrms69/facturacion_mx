@@ -9,6 +9,7 @@
   "datos_del_complemento_de_pago_section",
   "entrada_de_pago_id",
   "fecha_de_pago",
+  "email_facturacion",
   "column_break_rsfq",
   "cliente",
   "forma_de_pago",
@@ -113,12 +114,17 @@
    "label": "Respuestas obtenidas para este documento",
    "options": "Invoice Object",
    "read_only": 1
+  },
+  {
+   "fieldname": "email_facturacion",
+   "fieldtype": "Read Only",
+   "label": "Email Facturacion"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-05 15:39:10.866725",
+ "modified": "2025-02-16 17:58:00.124732",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Complemento de Pago PPD",

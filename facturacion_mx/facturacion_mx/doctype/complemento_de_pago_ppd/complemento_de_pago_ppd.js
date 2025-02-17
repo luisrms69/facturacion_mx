@@ -15,6 +15,34 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                 },
                 callback: function (r) {
                     if (r.message) {
+
+                        frappe.call({
+                            method: 'frappe.client.get',
+                            args: {
+                                doctype: "Customer",
+                                filters: {
+                                    name: r.message.party
+                                }
+                            },
+                            callback: function (s) {
+                                if (s.message) {
+                                    frappe.call({
+                                        method: 'facturacion_mx.facturacion_mx.api.get_datos_direccion_facturacion',
+                                        args: {
+                                            cliente: s.message.customer_name
+                                        },
+                                        callback: function (t) {
+                                            if (t.message) {
+                                                frm.set_value('email_facturacion', t.message.email_id);                                                
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        })
+
+
+
                         frm.set_value('fecha_de_pago', r.message.posting_date);
                         frm.set_value('forma_de_pago', r.message.mode_of_payment);
                         frm.clear_table('documentos_relacionados_con_el_pago')
@@ -130,8 +158,8 @@ frappe.ui.form.on('Complemento de Pago PPD', {
                         {
                             label: 'Correo Electronico',
                             fieldname: 'email_id',
-                            fieldtype: 'Data'
-                            // default: frm.doc.email_id
+                            fieldtype: 'Data',
+                            default: frm.doc.email_facturacion
                         }
                     ],
                     size: 'small', // small, large, extra-large 
