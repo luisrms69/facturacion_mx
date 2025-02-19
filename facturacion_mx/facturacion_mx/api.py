@@ -509,6 +509,7 @@ def respuesta_pac(document, pac_response):
     return status, status_sales_invoice
 
 
+#refactor: se duplica practicamente este metodo para cancelar PPD, podria ser solo uno, pero requiere modificar los argumentos
 def respuesta_pac_cancelacion(document, pac_response):
 
     table_respuestas = "response_pac"
@@ -545,6 +546,47 @@ def respuesta_pac_cancelacion(document, pac_response):
     despliega_aviso(title=title,msg=message,color=indicator)
         
     # return status, status_sales_invoice
+
+# refactor: este metodo deberia juntarse con el metodo superior, solo cambia donde se indica en el codigo
+def respuesta_pac_cancelacion_ppd(document, pac_response):
+
+    table_respuestas = "response_pac"
+    
+    pac_response_json = pac_response.json()	
+    if check_pac_response_success(pac_response) == 1:		
+        status = status_options_invoice.get(pac_response_json['status'])
+        cancel_status = cancellation_status_options_invoice.get(pac_response_json.get(invoice_object['cancellation_status']))   #la bronca esta en la aplicacion del get, ya son muchas horas y me sigue dadno none
+        # status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+        # table_respuestas = "response_pac"
+        add_response(table_respuestas,document,pac_response.json())
+        title = 'Solicitud de Cancelación Recibida y Aceptada'
+        # message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas"
+        message=f"El PAC ha aceptado la solicitud de cancelación, el estatus reportado es: {status} y el estado de cancelación es: {cancel_status}, considera que en algunos casos se requiere la validación por parte del cliente antes de la cancelación definitiva de la factura"
+        indicator = "green"
+        if status == status_options_invoice.get('canceled'):       
+            actualizar_status_doc(document,status)
+            # actualizar_status_sales_invoice(document.sales_invoice_id,status_options_sales_invoice.get('initial')) 
+            actualizar_status_payment_entry(document.entrada_de_pago_id,status_options_sales_invoice.get('initial')) #refactor: esta linea cambia con respecto al metodo superior
+        else:      
+            actualizar_status_doc(document,status_options_invoice.get('pending'))
+            # actualizar_status_sales_invoice(document.sales_invoice_id,status_options_sales_invoice.get('pending'))    
+            actualizar_status_payment_entry(document.entrada_de_pago_id,status_options_sales_invoice.get('pending'))   #refactor: esta linea cambia con respecto al metodo superior
+             
+    else:
+        title = 'La solicitud fue rechazada'
+        message = str(pac_response_json)
+        indicator = "red"
+        actualizar_status_sales_invoice(document.sales_invoice_id,"Sin Facturar")
+
+        
+        registro_rechazo = objetizar_respuesta_negativa_pac(get_factura_id(document),pac_response_json)
+        add_response(table_respuestas,document,registro_rechazo)
+
+
+    despliega_aviso(title=title,msg=message,color=indicator)
+
+
+
 
 
 def respuesta_pac_factura(document, pac_response):
@@ -1160,6 +1202,31 @@ def cancela_factura(doc, motivo):
 
 
     return response.json()
+
+
+# Método para cancelar una factura complemento PPD
+# refactor: puede juntarse con el metodo de arriba que cancela facturas de ingresos
+
+@frappe.whitelist()
+def cancela_factura_ppd(doc, motivo):
+    
+    factura_document = frappe.get_doc('Complemento de Pago PPD', doc)  #refactor: esta linea cambia
+    factura_a_cancelar = get_factura_id(factura_document)
+    api_token = get_api_token_live()
+
+    headers ={ "Authorization": f"Bearer {api_token}"}
+    factura_endpoint = frappe.db.get_single_value('Facturacion MX Settings', 'endpoint_cancelar_facturas')
+    q = f"{factura_a_cancelar}?motive={motivo}"
+    final_url= f"{factura_endpoint}{q}"
+    
+    response = requests.delete(final_url, headers=headers)
+    
+    respuesta_pac_cancelacion_ppd(factura_document, response) #refactor: en lugar de respuesta_pac_cancelacion, tendria que ser un solo metodo
+
+
+    return response.json()
+
+
 
 #  Metodo que se llama en complemento de pago para obtener el numero de pago para la factura
 @frappe.whitelist()

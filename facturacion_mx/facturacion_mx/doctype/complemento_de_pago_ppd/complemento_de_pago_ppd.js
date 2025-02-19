@@ -189,3 +189,90 @@ frappe.ui.form.on('Complemento de Pago PPD', {
         }
     }
 });
+
+
+
+
+
+
+// Codigo que genera boton en la Factura para cancelar y llama al método PY de envio
+// Se deben tener que automatizar para utilizar el doctype Motivo de Cancelacion
+//refactor: estaba originalmente en un loop pero al seleccionar cualquier opcion se tomaba el valor de "i", que era el final del loop
+
+frappe.call({
+    method: "frappe.client.get_list",
+    args: {
+        doctype: "Motivo de Cancelacion",
+        fields: ["motivo_de_cancelación", "descripcion"],
+    },
+    async: false,
+    callback(r) {
+        if (r.message) {
+            motivos_de_cancelacion = r.message
+        }
+    },
+});
+
+frappe.ui.form.on('Complemento de Pago PPD', {
+    refresh: function (frm) {
+        if (frm.doc.status == "Facturado" && frappe.user.has_role('Facturacion MX Manager')) {  //refactor: tomar de la variable global
+            frm.add_custom_button(__(motivos_de_cancelacion[0].descripcion), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura_ppd',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_de_cancelacion[0].motivo_de_cancelación
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+            frm.add_custom_button(__(motivos_de_cancelacion[1].descripcion), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura_ppd',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_de_cancelacion[1].motivo_de_cancelación
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+            frm.add_custom_button(__(motivos_de_cancelacion[2].descripcion), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura_ppd',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_de_cancelacion[2].motivo_de_cancelación
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+
+            frm.add_custom_button(__(motivos_de_cancelacion[3].descripcion), function () {  // Debo obtener el valor de la cancelacion automaticamente
+                frappe.call({
+                    method: 'facturacion_mx.facturacion_mx.api.cancela_factura_ppd',
+                    args: {
+                        doc: frm.doc.name,
+                        motivo: motivos_de_cancelacion[3].motivo_de_cancelación
+                    },
+                    callback: function (r) {
+                        if (r.message) {
+                        }
+                    }
+                });
+            }, __("Cancelaciones")
+            );
+        }
+    }
+});
