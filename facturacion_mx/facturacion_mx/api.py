@@ -225,12 +225,14 @@ def get_payment_form(payment_data):
 
 # Se obtienen los datos de producto, estan en un child table
 
+# refactor: IVA tasa debe salir automatico
 
 def get_complements_info(payment_data):
     complements_info = []
     data = []
+    related_documents = []
     for relateddocument in payment_data.references:       
-         related_documents = [{
+         related_document = {
             'uuid' : get_uuid_from_invoice(relateddocument.reference_name),
             'folio_number' : str(get_folio_from_invoice(relateddocument.reference_name)),
             'amount' : relateddocument.allocated_amount,
@@ -244,7 +246,9 @@ def get_complements_info(payment_data):
                 'installment' : get_numero_de_pago(relateddocument.reference_name, relateddocument.parent),
                 'last_balance': relateddocument.allocated_amount + relateddocument.outstanding_amount,
                 'taxability': "02"
-         }]
+         }
+         related_documents.append(related_document)
+        #  frappe.msgprint(str(related_documents))
         #  data.append(related_documents)
     data = [{
          'payment_form': get_payment_form(payment_data),

@@ -19,10 +19,13 @@ class ComplementodePagoPPD(Document):
         cliente = payment_data.party_name
         datos_direccion = get_datos_direccion_facturacion(cliente)
         tax_id = get_tax_id(cliente)
+
+# refactor, pasar email id directo abajo y eliminar aqui
         email_id = datos_direccion.email_id
 
 
 # Pendiente configuración o automatización
+# refactor: eliminar type, poner P directamente abajo
         type = "P"
         payment_related_ids =[]
 
