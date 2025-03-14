@@ -21,6 +21,12 @@
   "column_break_rgni",
   "facturacion_user_key",
   "facturacion_user_secret",
+  "seleccion_de_configuracion_section",
+  "utilizar_complementos",
+  "utilizar_addendas",
+  "column_break_jixl",
+  "utilizar_gln",
+  "gln_empresa",
   "configuracion_facturas_globales_section",
   "serie",
   "cliente_factura_global",
@@ -90,6 +96,7 @@
   {
    "fieldname": "configuracion_facturas_globales_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Configuracion Facturas Globales"
   },
   {
@@ -126,6 +133,7 @@
   {
    "fieldname": "configuracion_de_notas_de_impresion_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Configuracion de Notas de Impresion"
   },
   {
@@ -139,12 +147,45 @@
    "fieldtype": "Link",
    "label": "Plantilla Info Facturas",
    "options": "Terms and Conditions"
+  },
+  {
+   "fieldname": "seleccion_de_configuracion_section",
+   "fieldtype": "Section Break",
+   "label": "Seleccion de Configuracion"
+  },
+  {
+   "default": "0",
+   "fieldname": "utilizar_complementos",
+   "fieldtype": "Check",
+   "label": "Utilizar Complementos"
+  },
+  {
+   "default": "0",
+   "fieldname": "utilizar_addendas",
+   "fieldtype": "Check",
+   "label": "Utilizar Addendas"
+  },
+  {
+   "default": "0",
+   "fieldname": "utilizar_gln",
+   "fieldtype": "Check",
+   "label": "Utilizar Global Location Number (GLN)"
+  },
+  {
+   "fieldname": "column_break_jixl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.utilizar_gln == \"1\"",
+   "fieldname": "gln_empresa",
+   "fieldtype": "Data",
+   "label": "GLN Empresa"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-01-06 22:06:11.745144",
+ "modified": "2025-03-13 19:43:54.357708",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Facturacion MX Settings",
