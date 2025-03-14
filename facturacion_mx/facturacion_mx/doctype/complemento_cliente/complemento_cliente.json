@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-11 22:23:45.051390",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "datos_section",
+  "cliente",
+  "formato_de_adenda"
+ ],
+ "fields": [
+  {
+   "fieldname": "datos_section",
+   "fieldtype": "Section Break",
+   "label": "Datos"
+  },
+  {
+   "fieldname": "cliente",
+   "fieldtype": "Link",
+   "label": "Cliente",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "formato_de_adenda",
+   "fieldtype": "Text",
+   "label": "Formato de adenda"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-11 22:27:07.211810",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Complemento Cliente",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
