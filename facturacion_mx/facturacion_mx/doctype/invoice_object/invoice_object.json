@@ -142,7 +142,7 @@
   },
   {
    "fieldname": "complements",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Complements"
   },
   {
@@ -152,7 +152,7 @@
   },
   {
    "fieldname": "addenda",
-   "fieldtype": "Data",
+   "fieldtype": "Text",
    "label": "Addenda"
   },
   {
@@ -171,10 +171,11 @@
    "label": "Payment Related IDs"
   }
  ],
+ "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-02-06 23:57:37.529537",
+ "modified": "2025-03-20 11:44:41.418456",
  "modified_by": "Administrator",
  "module": "Facturacion Mx",
  "name": "Invoice Object",
