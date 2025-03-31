@@ -1294,12 +1294,12 @@ def complement_adenda_cartaporte_required(cliente):
 
 
 def get_addenda_data(invoice_data):
-     data = []
+     data = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
      cliente = get_customer_data(get_cliente(invoice_data))
 
      if complement_adenda_cartaporte_required(cliente) and not cliente.custom_adenda_xml == 0:
           data = cliente.custom_adenda_xml
 
-     frappe.msgprint(str(data))
+    #  frappe.msgprint(str(data))
 
      return data
