@@ -618,7 +618,7 @@ def respuesta_pac_factura(document, pac_response):
     })
 
     actualizar_status_doc(document, status)
-    actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
+    # actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
 
     despliega_aviso(title=title,msg=message,color=indicator)
 
@@ -1269,3 +1269,37 @@ def status_check_factura(id_factura, factura_docname):
     actualizar_status_sales_invoice(doc.sales_invoice_id,status_sales_invoice)
 
     return status, status_sales_invoice
+
+def complement_adenda_cartaporte_required(cliente):
+    complement_adenda_cartaporte = cliente.custom_requiere_complemento_adenda_o_cartaporte
+
+    frappe.msgprint(str(complement_adenda_cartaporte))
+
+    return complement_adenda_cartaporte
+
+
+# def get_complement_data(invoice_data):
+#      type = "custom"
+#      cliente = get_cliente(invoice_data)
+
+#      data = get_customer_data(cliente).custom_complemento_xml
+#      complement_data = [{
+#           "type" : "custom",
+#           "data" : data
+#      }]
+
+#      frappe.msgprint(str(complement_data))
+
+#      return complement_data
+
+
+def get_addenda_data(invoice_data):
+     data = []
+     cliente = get_customer_data(get_cliente(invoice_data))
+
+     if complement_adenda_cartaporte_required(cliente) and not cliente.custom_adenda_xml == 0:
+          data = cliente.custom_adenda_xml
+
+     frappe.msgprint(str(data))
+
+     return data

@@ -31,6 +31,7 @@ class Factura(Document):
         folio_number = 0
         series = ""
         # addenda = "<?xml version='1.0' encoding='UTF-8'?> <root></root>"
+        addenda = get_addenda_data(invoice_data)
         payment_related_ids =[]
         payment_method = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'), 'metodo_pago')
         metodo_de_pago = frappe.db.get_value('Metodo de Pago', frappe.db.get_value('Factura', current_document, 'metodo_pago_sat'))
@@ -42,13 +43,21 @@ class Factura(Document):
         conditions = ""
         related_documents = []
         export = "01"
+        # complements = get_complement_data(invoice_data)
         complements = []
         status = "pending"
         date = "" # ESTE CAMPO NO LO VOY A CONFIGURAR, EL DEFAULT ES NOW
         address = {}
         external_id = ""
         idempotency_key = ""
-        namespaces = []
+        namespaces = [
+            {
+                "prefix" : "detallista",
+                "uri" : "https://www.sat.gob.mx/detallista",
+                "schema_location" : 'https://www.sat.gob.mx/sitio_internet/cfd/detallista/detallista.xsd'
+            }
+        ]
+        # namespaces = []
         pdf_options = {}
 
 #Despues se arma el http request. endpoint, headers y data. Los valores de headers y endpoint se toman de settings
@@ -73,7 +82,7 @@ class Factura(Document):
             # "folio_number": folio_number,
             # "series": series,
             "pdf_custom_section": get_factura_notes(metodo_de_pago, sales_invoice_id),
-            # "addenda": addenda,
+            "addenda": addenda,
             "namespaces": namespaces,
             # "pdf_options": pdf_options,
             "idempotency_key" : idempotency_key,
@@ -90,6 +99,9 @@ class Factura(Document):
             "items": get_items_info(invoice_data)
         }
 
+
+        frappe.msgprint(str(data))
+
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
 
@@ -102,5 +114,5 @@ class Factura(Document):
 
 #Metodo que se corre al enviar (submit) solicitar creacion de la factura
     def on_submit(self):
-        actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
+        # actualizar_status_sales_invoice(self.sales_invoice_id,"Enviado a PAC")  #fix:debera tomarse de la variable global, mismo caso que Recibo Autofactura
         self.create_cfdi()
