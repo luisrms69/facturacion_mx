@@ -243,6 +243,10 @@ app_license = "mit"
 # }
 
 # fixtures = [ "Custom Field", "Uso CFDI", "Mode of Payment", "Forma de Pago", "Tax Category" , "Motivo de Cancelacion", "Periodicidad SAT", "Meses y Bimestres SAT", "UOM","UOM Conversion Factor","Metodo de Pago", "Tipo de Comprobante" ]
-fixtures = [ "Custom Field"]
+# fixtures = [ "Custom Field"]
 # fixtures = [ "UOM","UOM Conversion Factor" ]
 # fixtures = ["Metodo de Pago", "Tipo de Comprobante" ]
+
+
+fixtures = [{"dt":"Custom Field",
+             "filters":{"module":"Facturacion MX"}}]
