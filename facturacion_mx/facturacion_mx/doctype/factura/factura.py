@@ -100,7 +100,7 @@ class Factura(Document):
         }
 
 
-        frappe.msgprint(str(data))
+        # frappe.msgprint(str(data))
 
         response = requests.post(
             facturapi_endpoint, json=data, headers=headers)
