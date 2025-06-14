@@ -970,26 +970,26 @@ def save_to_factura(document_name, filename_dir):
 
 
 
-def save_to_document(document_name, content, filename, doctype, is_private=True):
-    # Verifica si ya existe un archivo con mismo nombre (opcional)
-    if frappe.db.exists("File", {
-        "attached_to_doctype": doctype,
-        "attached_to_name": document_name,
-        "file_name": filename
-    }):
-        frappe.logger().info(f"{filename} ya está adjunto a {doctype} {document_name}")
-        return
+# def save_to_document(document_name, content, filename, doctype, is_private=True):
+#     # Verifica si ya existe un archivo con mismo nombre (opcional)
+#     if frappe.db.exists("File", {
+#         "attached_to_doctype": doctype,
+#         "attached_to_name": document_name,
+#         "file_name": filename
+#     }):
+#         frappe.logger().info(f"{filename} ya está adjunto a {doctype} {document_name}")
+#         return
 
-    # Guarda y permite que dfp_external_storage decida dónde almacenar
-    file_doc = save_file(
-        fname=filename,
-        content=content,
-        dt=doctype,
-        dn=document_name,
-        is_private=is_private
-    )
+#     # Guarda y permite que dfp_external_storage decida dónde almacenar
+#     file_doc = save_file(
+#         fname=filename,
+#         content=content,
+#         dt=doctype,
+#         dn=document_name,
+#         is_private=is_private
+#     )
 
-    return file_doc.name
+#     return file_doc.name
 
 
 
@@ -1017,12 +1017,12 @@ def descarga_archivo(document_name, format, doctype):
     # Obtener nombre del archivo desde cabecera HTTP
     content_disposition = response.headers.get("content-disposition")
     if not content_disposition:
-        frappe.logger().error({
-    "error": "Falta content-disposition",
-    "status_code": response.status_code,
-    "headers": dict(response.headers),
-    "body": response.text[:500],  # limitado por seguridad
-})
+#         frappe.logger().error({
+#     "error": "Falta content-disposition",
+#     "status_code": response.status_code,
+#     "headers": dict(response.headers),
+#     "body": response.text[:500],  # limitado por seguridad
+# })
 
         frappe.throw("No se pudo obtener el nombre del archivo descargado.")
 
