@@ -14,9 +14,9 @@ import json  # lo cargo para utilizar json.loads
 import ast
 from frappe.utils import add_to_date # Funcion add_to_date para la fecha de creacion de e-receipts
 import datetime
-from frappe.utils import get_site_base_path
+# from frappe.utils import get_site_base_path
 from frappe.utils import get_url
-from frappe.utils import format_date, pretty_date
+# from frappe.utils import format_date, pretty_date
 from frappe.utils.file_manager import save_file
 
 
@@ -28,7 +28,7 @@ status_options_sales_invoice = {"initial" : "Sin Facturar","open" : "E-Receipt",
 invoice_object = {'id': 'id', 'created_at':'created_at', 'date':'date','livemode':'livemode', 'status':'status', 'cancellation_status': 'cancellation_status', 'verification_url':'verification_url', 'type':'type', 'customer':'customer', 'total': 'total', 'uuid': 'uuid', 'folio_number':'folio_number', 'series':'series', 'external_id':'external_id', 'idempotency_key': 'idempotency_key', 'payment_form': 'payment_form', 'is_ready_to_stamp':'is_ready_to_stamp','currency': 'currency', 'exchange':'exchange','pdf_custom_section': 'pdf_custom_section', 'addenda':'addenda','stamp': 'stamp', 'use':'use','payment_method':'payment_method','export':'export'}
 status_options_invoice = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
 cancellation_status_options_invoice = {"none" : "Sin Estado","pending" : "Pendiente o en Proceso","accepted" : "Solicitud Aprobada","rejected": "Solicitud de Cancelación Rechazada", "expired": "Solicitud Expiro"}
-invoice_object_additionals = {'related_documents': 'related_documents', 'complements': 'complements','namespaces':'namespaces', 'payment_related_ids': 'payment_related_ids'}
+# invoice_object_additionals = {'related_documents': 'related_documents', 'complements': 'complements','namespaces':'namespaces', 'payment_related_ids': 'payment_related_ids'}
 # status_options_invoice_global = {"pending" : "Enviada a PAC","canceled" : "Cancelado","valid" : "Facturado","draft": "Borrador", "rechazado": "Solicitud Rechazada"}
 
 # invoice object additionals on response: CFDI Version, 
@@ -37,12 +37,12 @@ invoice_object_additionals = {'related_documents': 'related_documents', 'complem
 
 # Metodos de operaciones con matrices, listas, diccionarios
 
-def get_dictionary_keys(dict):
-    keys_list = []
-    for key in dict.keys():
-        keys_list.append(key)
+# def get_dictionary_keys(dict):
+#     keys_list = []
+#     for key in dict.keys():
+#         keys_list.append(key)
         
-    return keys_list
+#     return keys_list
 
 # Métodos que utilizan por los doctypes de facturacion_mx.
 # Se agrupan por funcionalidades
@@ -88,14 +88,14 @@ def get_datos_direccion_facturacion(cliente):
 
     return datos_direccion
 
-def get_zipcode_email_from_address(address):
-    datos_direccion = frappe.db.get_value('Address', address, [
-                                            'pincode', 'email_id'], as_dict=1)
-    if datos_direccion == "":
-        frappe.throw(
-            "Hay un problema con la dirección registrada, revisa en la configuración")
+# def get_zipcode_email_from_address(address):
+#     datos_direccion = frappe.db.get_value('Address', address, [
+#                                             'pincode', 'email_id'], as_dict=1)
+#     if datos_direccion == "":
+#         frappe.throw(
+#             "Hay un problema con la dirección registrada, revisa en la configuración")
 
-    return datos_direccion
+#     return datos_direccion
      
 # Utilizando los datos obtenidos del cliente, se obtiene el RFC
 def get_tax_id(cliente):
@@ -266,39 +266,39 @@ def get_complements_info(payment_data):
     return complements_info
 
 
-def prepare_conceptos_cfdi_global(invoice_list):
-    clave_producto_servicio = "01010101"
-    cantidad = 1
-    clave_unidad = "ACT"
-    descripcion = "Venta"
-    taxability = "02" # fix: esto se debe definir en otro lugar
-    tax_type ="IVA"  # fix: esto se debe definir en otro lugar
-    tax_rate = 0.16  # fix: esto se debe definir en otro lugar
-    items_info = []  #Se define como conceptos en la guia de CFDI
-    for invoice in invoice_list:
-        detalle_item = {
-            'quantity': cantidad,
-            'discount' : invoice.base_total - invoice.base_net_total,
-            'product': {
-                'description': descripcion,
-                'product_key': clave_producto_servicio,
-                'price': invoice.base_total,
-                'unit_key': clave_unidad,
-                'taxability' : taxability,
-                'taxes':[
-                     {
-                          'type': tax_type,
-                          'rate': tax_rate
-                     }
-                ]
-            }
-        }
-        if not detalle_item['product']['product_key']:
-            frappe.throw(
-                "Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
-        items_info.append(detalle_item)
+# def prepare_conceptos_cfdi_global(invoice_list):
+#     clave_producto_servicio = "01010101"
+#     cantidad = 1
+#     clave_unidad = "ACT"
+#     descripcion = "Venta"
+#     taxability = "02" # fix: esto se debe definir en otro lugar
+#     tax_type ="IVA"  # fix: esto se debe definir en otro lugar
+#     tax_rate = 0.16  # fix: esto se debe definir en otro lugar
+#     items_info = []  #Se define como conceptos en la guia de CFDI
+#     for invoice in invoice_list:
+#         detalle_item = {
+#             'quantity': cantidad,
+#             'discount' : invoice.base_total - invoice.base_net_total,
+#             'product': {
+#                 'description': descripcion,
+#                 'product_key': clave_producto_servicio,
+#                 'price': invoice.base_total,
+#                 'unit_key': clave_unidad,
+#                 'taxability' : taxability,
+#                 'taxes':[
+#                      {
+#                           'type': tax_type,
+#                           'rate': tax_rate
+#                      }
+#                 ]
+#             }
+#         }
+#         if not detalle_item['product']['product_key']:
+#             frappe.throw(
+#                 "Todos los productos deben tener un código SAT válido (product_key).  Añadir en los productos seleccionados")
+#         items_info.append(detalle_item)
 
-    return items_info
+#     return items_info
 
 # Verifica si la respuesta fue exitosa, buscando la llave id en la respuesta
 # refactor:fix: utilizar el metodo de abajo, corregir en Factura, CX Factura y Recibo
@@ -451,13 +451,13 @@ def objetizar_respuesta_negativa_pac(invoice_id, json_response):
 
 
 # Metodo que jala el motivo de cancelacion introducido por el usuario
-def get_motivo_cancelacion(document):
-    motivo_cancelacion = frappe.db.get_value(
-        "Cancelacion Factura", document.get_title(), 'motivo_de_cancelacion'
-    )
-    id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
+# def get_motivo_cancelacion(document):
+#     motivo_cancelacion = frappe.db.get_value(
+#         "Cancelacion Factura", document.get_title(), 'motivo_de_cancelacion'
+#     )
+#     id_motivo_cancelacion = frappe.db.get_value("Motivo de Cancelacion", motivo_cancelacion, 'motivo_de_cancelación')
 
-    return id_motivo_cancelacion
+#     return id_motivo_cancelacion
 
 
 def get_id_motivo_cancelacion(motivo):
@@ -656,30 +656,30 @@ def respuesta_pac_complemento(document, pac_response):
     return status, status_sales_invoice
 
 
-def respuesta_pac_factura_global(document, pac_response):
+# def respuesta_pac_factura_global(document, pac_response):
     
-    pac_response_json = pac_response.json()	
-    if check_pac_response_success(pac_response) == 1:		
-        status = status_options_sales_invoice.get(pac_response_json['status'])
-        status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
-        table_respuestas = "response_pac"
-        add_response(table_respuestas,document,pac_response.json())
-        title = 'Solicitud Exitosa!!!!!'
-        message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas, "
-        indicator = "green"
-    else:
-        title = 'La solicitud de facturacion no fue exitosa'
-        message = str(pac_response)
-        indicator = "red"
-        status = status_options_invoice.get("rechazado")
-        status_sales_invoice = status_options_sales_invoice.get("initial")
-        document.db_set({
-        'response_rechazada' : pac_response_json['message']  #refactor:deberia poder usar la funcion add_error_message es un asunto de nombres de campos
-    })
+#     pac_response_json = pac_response.json()	
+#     if check_pac_response_success(pac_response) == 1:		
+#         status = status_options_sales_invoice.get(pac_response_json['status'])
+#         status_sales_invoice =  status_options_sales_invoice.get(pac_response_json['status'])
+#         table_respuestas = "response_pac"
+#         add_response(table_respuestas,document,pac_response.json())
+#         title = 'Solicitud Exitosa!!!!!'
+#         message = "El PAC ha respondido a la solicitud, puedes revisar el estado actual en la tabla de respuestas, "
+#         indicator = "green"
+#     else:
+#         title = 'La solicitud de facturacion no fue exitosa'
+#         message = str(pac_response)
+#         indicator = "red"
+#         status = status_options_invoice.get("rechazado")
+#         status_sales_invoice = status_options_sales_invoice.get("initial")
+#         document.db_set({
+#         'response_rechazada' : pac_response_json['message']  #refactor:deberia poder usar la funcion add_error_message es un asunto de nombres de campos
+#     })
 
-    despliega_aviso(title=title,msg=message,color=indicator)
+#     despliega_aviso(title=title,msg=message,color=indicator)
         
-    return status, status_sales_invoice
+#     return status, status_sales_invoice
 
 # Metodo para  obtern un objeto en forma de JSON de la factura
 def get_factura_object(factura_a_revisar):
@@ -747,11 +747,11 @@ def actualizar_status_doc(doc, status):
 
 
       # Actualiza el valor de status de la cancelacion de un docuemtno
-def actualizar_status_cancelacion(doc, status):
+# def actualizar_status_cancelacion(doc, status):
 
-      doc.db_set({
-            'status': status
-      })
+#       doc.db_set({
+#             'status': status
+#       })
 
 
 # Método para actualizar el status de un documento
@@ -776,39 +776,39 @@ def actualizar_status_payment_entry(payment_entry, status):
                           'custom_status_payment_ppd', status)           
 
 # refactor: no lo puedo ocupar porque los campos de mensaje de error son diferentes en factura y receipt
-def add_error_response(document,response):
-    pac_response = response.json()
-    document.db_set({
-         'mensaje_de_error' : pac_response['message']
-    })
+# def add_error_response(document,response):
+#     pac_response = response.json()
+#     document.db_set({
+#          'mensaje_de_error' : pac_response['message']
+#     })
 
 
 # Metodo que añade en el doctype cancelar factura en el childtable la respuesta obtenida del PAC
 
 # fix: voy a duplicar esta funcion, la idea es que la primera desparezca y quede solo la inferior, por el momento esta no puede desarparecer porque se usa en CX factura
 # refactor: esta lista debera estar en una variable para hacer un foreach o algo por el estilo
-def anade_response_record(table_respuestas, doc, pac_response):
-    doc.append(table_respuestas,
-                {
-                    'response_id': pac_response['id'],
-                    'status_response': pac_response['status'],
-                    'cancellation_status': pac_response['cancellation_status'],
-                    'verification_url': pac_response['verification_url'],
-                    'uuid': pac_response['uuid'],
-                    'fecha_de_creacion': pac_response['created_at'],
-                    'folio': pac_response['folio_number'],
-                    'serie_de_facturacion': pac_response['series'],
-                    'monto_total': pac_response['total'],
-                    'forma_de_pago': pac_response['payment_form'],
-                    'id_del_cliente': pac_response['customer']['id'],
-                    'nombre_del_cliente': pac_response['customer']['legal_name'],
-                    'rfc': pac_response['customer']['tax_id'],
-                    'signature': pac_response['stamp']['signature'],
-                    'fecha_de_sellado': pac_response['stamp']['date'],
-                    'numero_de_certificado_sat': pac_response['stamp']['sat_cert_number'],
-                    'firma_sat': pac_response['stamp']['signature']
-                    })
-    doc.save()
+# def anade_response_record(table_respuestas, doc, pac_response):
+#     doc.append(table_respuestas,
+#                 {
+#                     'response_id': pac_response['id'],
+#                     'status_response': pac_response['status'],
+#                     'cancellation_status': pac_response['cancellation_status'],
+#                     'verification_url': pac_response['verification_url'],
+#                     'uuid': pac_response['uuid'],
+#                     'fecha_de_creacion': pac_response['created_at'],
+#                     'folio': pac_response['folio_number'],
+#                     'serie_de_facturacion': pac_response['series'],
+#                     'monto_total': pac_response['total'],
+#                     'forma_de_pago': pac_response['payment_form'],
+#                     'id_del_cliente': pac_response['customer']['id'],
+#                     'nombre_del_cliente': pac_response['customer']['legal_name'],
+#                     'rfc': pac_response['customer']['tax_id'],
+#                     'signature': pac_response['stamp']['signature'],
+#                     'fecha_de_sellado': pac_response['stamp']['date'],
+#                     'numero_de_certificado_sat': pac_response['stamp']['sat_cert_number'],
+#                     'firma_sat': pac_response['stamp']['signature']
+#                     })
+#     doc.save()
 
 
 def get_object_type(doc):
@@ -860,47 +860,47 @@ def presenta_ultimos_caracteres(str_var, caracteres):
 
 # Toma un string y devuelve el mismo string eliminado caracteres antes y despues
 
-def elimina_caracteres(str_var, al_principio):
-    str_final = str_var[al_principio:]
+# def elimina_caracteres(str_var, al_principio):
+#     str_final = str_var[al_principio:]
 
-    return str_final
+#     return str_final
 
 # Graba el archivo de factura descargado y lo añade al documento Factura respectivo
 # refactor: cree save_to_document abajo, se debera sustituir save_to factura con esta nueva funcion, se añade unicamente el doctype
 
-def save_to_factura(document_name, filename_dir):
-        # api_secret = '5b0504450091157'
-        api_key = frappe.db.get_single_value(
-            'Facturacion MX Settings', 'facturacion_user_key')
-        api_secret = get_decrypted_password(
-            'Facturacion MX Settings', 'Facturacion MX Settings', "facturacion_user_secret")
+# def save_to_factura(document_name, filename_dir):
+#         # api_secret = '5b0504450091157'
+#         api_key = frappe.db.get_single_value(
+#             'Facturacion MX Settings', 'facturacion_user_key')
+#         api_secret = get_decrypted_password(
+#             'Facturacion MX Settings', 'Facturacion MX Settings', "facturacion_user_secret")
 
-#feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
-        validate_api_secret_api_key(api_secret, api_key)
-        url = f"{frappe.utils.get_url()}/api/method/upload_file"
-        headers = {"Authorization": f"token {api_key}:{api_secret}",
-                   'Accept': "application/json"
-                #    'Content-Type': "pdf"
-                   }
-        files = {
-                'file': open(filename_dir, 'rb'),
-        }
-        data = {
-                'is_private': 1,
-                'doctype': "Factura",
-                'docname': document_name
-        }
-        response = requests.post(
-            url=url, data=data, headers=headers, files=files)
-        # frappe.msgprint(str(response.__dict__))
-        response.dict = json.loads(response.text)
-        # frappe.msgprint(str(response.dict))
-        # file_name = response.dict['message']['name']
-        file_name = json.loads(response.text)['message']['name']
+# #feat: validate function para comprobar que existen estos campos, si no throw mensaje de que estan vacios
+#         validate_api_secret_api_key(api_secret, api_key)
+#         url = f"{frappe.utils.get_url()}/api/method/upload_file"
+#         headers = {"Authorization": f"token {api_key}:{api_secret}",
+#                    'Accept': "application/json"
+#                 #    'Content-Type': "pdf"
+#                    }
+#         files = {
+#                 'file': open(filename_dir, 'rb'),
+#         }
+#         data = {
+#                 'is_private': 1,
+#                 'doctype': "Factura",
+#                 'docname': document_name
+#         }
+#         response = requests.post(
+#             url=url, data=data, headers=headers, files=files)
+#         # frappe.msgprint(str(response.__dict__))
+#         response.dict = json.loads(response.text)
+#         # frappe.msgprint(str(response.dict))
+#         # file_name = response.dict['message']['name']
+#         file_name = json.loads(response.text)['message']['name']
 
-        # frappe.errprint(response.__dict__)
+#         # frappe.errprint(response.__dict__)
 
-        return file_name
+#         return file_name
 
 
 # Graba el archivo de factura descargado y lo añade al documento Factura respectivo
@@ -1113,15 +1113,15 @@ def envia_documento_por_email(current_document, email_id, doctype):
 # Metodo al que se llaman en JS para revisar cual es el status de la factura, se utiliza en aquellos
 # casos donde la primer respuesta es que se requiere VOBO del cliente, se llama con un boton
 # unicamente disponible para Cancelaciones en este status
-@frappe.whitelist()
-def status_check_cx_factura(id_cx_factura, factura_cx):
-        factura_object = get_factura_object(id_cx_factura)
-        status = actualizar_cancelacion_respuesta_pac(factura_object)
-        doc = frappe.get_doc("Cancelacion Factura", factura_cx)
-        anade_response_record(doc, factura_object)
-        actualizar_status_cx_factura(doc, status)
-        if check_status_actual == 1:
-              actualizar_status_factura_invoice(factura_cx)
+# @frappe.whitelist()
+# def status_check_cx_factura(id_cx_factura, factura_cx):
+#         factura_object = get_factura_object(id_cx_factura)
+#         status = actualizar_cancelacion_respuesta_pac(factura_object)
+#         doc = frappe.get_doc("Cancelacion Factura", factura_cx)
+#         anade_response_record(doc, factura_object)
+#         actualizar_status_cx_factura(doc, status)
+#         if check_status_actual == 1:
+#               actualizar_status_factura_invoice(factura_cx)
 
 
 # Metodo para  obtern un objeto actualizado de un e-receipt
@@ -1233,7 +1233,7 @@ def get_forma_de_pago_global(recibos_list):
 
 # Metodo que Verfica que se haya definido el usuario PUBLICO EN GENERAL de mnaera correcta
 
-
+# OJO OJO OJO OJO identificado por vulture y claude como codigo a ser borrado
 def validate_cliente_publico_en_general():
     msg_cliente_no_existe = "El cliente Público en General no ha sido definido o no ha sido asignado. Revisa que exista como cliente y que este dado de alta en la configuración de facturación"
     msg_rfc_incorrecto = "El RFC del cliente Público en General es incorrecto"
@@ -1249,20 +1249,21 @@ def validate_cliente_publico_en_general():
 
     return cliente_publico_general
 
+# estas funciones se utilizaron en un pathc de facturacion voy a comentarlas
+# OJO OJO OJO OJO identificado por vulture y claude como codigo a ser borrado
+# def validate_not_empty(variable, msg):
+#      if len(variable) == 0:
+#           frappe.throw(msg)
 
-def validate_not_empty(variable, msg):
-     if len(variable) == 0:
-          frappe.throw(msg)
+# OJO OJO OJO OJO identificado por vulture y claude como codigo a ser borrado
+# def validate_orden_fechas(fecha_inicial,fecha_final,msg):
+#      if (fecha_inicial > fecha_final):
+#           frappe.throw(msg)
 
-
-def validate_orden_fechas(fecha_inicial,fecha_final,msg):
-     if (fecha_inicial > fecha_final):
-          frappe.throw(msg)
-
-
-def cambia_status_invoice_list_global(invoice_list, status):
-    for invoice in invoice_list:
-            actualizar_status_sales_invoice(invoice, status)
+# OJO OJO OJO OJO identificado por vulture y claude como codigo a ser borrado
+# def cambia_status_invoice_list_global(invoice_list, status):
+#     for invoice in invoice_list:
+#             actualizar_status_sales_invoice(invoice, status)
 
 
 # Método para cancelar una factura
@@ -1352,7 +1353,7 @@ def status_check_factura(id_factura, factura_docname):
 def complement_adenda_cartaporte_required(cliente):
     complement_adenda_cartaporte = cliente.custom_requiere_complemento_adenda_o_cartaporte
 
-    frappe.msgprint(str(complement_adenda_cartaporte))
+    # frappe.msgprint(str(complement_adenda_cartaporte))
 
     return complement_adenda_cartaporte
 
