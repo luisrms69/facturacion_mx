@@ -1,0 +1,81 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [
+  {
+   "fieldname": "p.name",
+   "fieldtype": "Link",
+   "label": "Entrada de Pago",
+   "options": "Payment Entry",
+   "width": 0
+  },
+  {
+   "fieldname": "p.posting_date",
+   "fieldtype": "Date",
+   "label": "Fecha de Pago",
+   "width": 0
+  },
+  {
+   "fieldname": "p.paid_amount",
+   "fieldtype": "Currency",
+   "label": "Monto del Pago",
+   "width": 0
+  },
+  {
+   "fieldname": "c.reference_name",
+   "fieldtype": "Link",
+   "label": "Factura de Venta",
+   "options": "Sales Invoice",
+   "width": 0
+  },
+  {
+   "fieldname": "c.custom_folio_fiscal",
+   "fieldtype": "Data",
+   "label": "Folio Fiscal",
+   "width": 0
+  },
+  {
+   "fieldname": "c.total_amount",
+   "fieldtype": "Currency",
+   "label": "Monto Total Factura",
+   "width": 0
+  }
+ ],
+ "creation": "2025-06-23 08:40:40.556538",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "default": "\"2025-12-31\"",
+   "fieldname": "fecha_tope",
+   "fieldtype": "Date",
+   "label": "Hasta la Fecha",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Letter head Llantascs",
+ "letterhead": null,
+ "modified": "2025-06-23 08:40:59.044057",
+ "modified_by": "Administrator",
+ "module": "Facturacion Mx",
+ "name": "Facturas PPD pendientes",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT p.name, p.posting_date, p.paid_amount, c.reference_name, s.custom_folio_fiscal, c.total_amount\nFROM `tabPayment Entry` AS p\nJOIN `tabPayment Entry Reference` AS c\nON p.name=c.parent\nJOIN `tabSales Invoice` as s\nON c.reference_name=s.name\nWHERE p.custom_status_payment_ppd=\"Sin Facturar\"\nAND p.docstatus=1\nAND p.payment_type=\"Receive\"\nAND s.custom_metodo_de_pago=\"PPD\"\nAND s.posting_date >=\"2025-01-01\"\nAND p.posting_date between \"2025-01-01\" and %(fecha_tope)s\nORDER BY p.posting_date ASC",
+ "ref_doctype": "Payment Entry",
+ "report_name": "Facturas PPD pendientes",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Manager"
+  }
+ ],
+ "timeout": 0
+}
