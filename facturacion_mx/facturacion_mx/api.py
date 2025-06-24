@@ -16,7 +16,7 @@ from frappe.utils import add_to_date # Funcion add_to_date para la fecha de crea
 import datetime
 # from frappe.utils import get_site_base_path
 from frappe.utils import get_url
-# from frappe.utils import format_date, pretty_date
+from frappe.utils import format_date, pretty_date
 from frappe.utils.file_manager import save_file
 
 
