@@ -2,6 +2,15 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Complemento de Pago PPD", {
+    setup: function(frm) {
+        // Configurar filtro personalizado para Payment Entries válidos
+        frm.set_query('entrada_de_pago_id', () => {
+            return {
+                query: 'facturacion_mx.facturacion_mx.doctype.complemento_de_pago_ppd.complemento_de_pago_ppd.get_valid_payment_entries_for_ppd'
+            };
+        });
+    },
+
     entrada_de_pago_id: function (frm) {
         if (frm.doc.entrada_de_pago_id) {
             frm.clear_table('documentos_relacionados_con_el_pago')
@@ -15,6 +24,36 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                 },
                 callback: function (r) {
                     if (r.message) {
+                        // Validación: Solo Payment Entries tipo "Receive" son válidos para complemento PPD
+                        if (r.message.payment_type !== 'Receive') {
+                            frappe.msgprint({
+                                title: 'Payment Entry No Válido',
+                                indicator: 'red',
+                                message: `El Payment Entry <b>${frm.doc.entrada_de_pago_id}</b> es de tipo "<b>${r.message.payment_type}</b>".<br><br>
+                                         Los Complementos de Pago PPD solo aplican para cobros a clientes (tipo "Receive").<br><br>
+                                         Por favor selecciona un Payment Entry válido.`
+                            });
+                            frm.set_value('entrada_de_pago_id', null);
+                            return;
+                        }
+
+                        // Validación: Debe tener al menos una referencia a Sales Invoice
+                        let has_sales_invoice = false;
+                        if (r.message.references && r.message.references.length > 0) {
+                            has_sales_invoice = r.message.references.some(ref => ref.reference_doctype === 'Sales Invoice');
+                        }
+
+                        if (!has_sales_invoice) {
+                            frappe.msgprint({
+                                title: 'Payment Entry No Válido',
+                                indicator: 'red',
+                                message: `El Payment Entry <b>${frm.doc.entrada_de_pago_id}</b> no tiene referencias a Sales Invoices.<br><br>
+                                         Los Complementos de Pago PPD requieren Payment Entries que paguen facturas de venta.<br><br>
+                                         Por favor selecciona un Payment Entry válido.`
+                            });
+                            frm.set_value('entrada_de_pago_id', null);
+                            return;
+                        }
 
                         frappe.call({
                             method: 'frappe.client.get',
@@ -48,6 +87,11 @@ frappe.ui.form.on("Complemento de Pago PPD", {
                         frm.clear_table('documentos_relacionados_con_el_pago')
                         // refactor: los siguietnes datos deben quedar programados y no hardcoded
                         r.message.references.forEach(function (reference) {
+                            // Solo procesar Sales Invoices, ignorar otros tipos (Purchase Invoice, etc.)
+                            if (reference.reference_doctype !== 'Sales Invoice') {
+                                return;
+                            }
+
                             var child = frm.add_child('documentos_relacionados_con_el_pago');
                             child.cantidad = reference.allocated_amount;
                             frappe.call({

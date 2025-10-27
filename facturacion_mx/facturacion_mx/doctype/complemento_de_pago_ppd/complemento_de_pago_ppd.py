@@ -10,6 +10,63 @@ from frappe.utils.password import get_decrypted_password #se importa para poder 
 from facturacion_mx.facturacion_mx.api import *
 from datetime import datetime, timedelta
 
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_valid_payment_entries_for_ppd(doctype, txt, searchfield, start, page_len, filters):
+    """
+    Retorna Payment Entries válidos para Complemento de Pago PPD.
+
+    Criterios de validación:
+    1. Payment Entry en status 'Submitted' (docstatus=1)
+    2. custom_status_payment_ppd = 'Sin Facturar'
+    3. payment_type = 'Receive' (solo ingresos)
+    4. TODAS las Sales Invoices relacionadas deben:
+       - Tener custom_metodo_de_pago = 'PPD' (no NULL, no PUE)
+       - Ser del año 2025 o posterior (posting_date >= 2025-01-01)
+    5. Debe tener al menos una referencia a Sales Invoice
+    """
+    # Construir parámetros
+    search_txt = f"%{txt}%" if txt else "%"
+
+    # Query SQL que respeta todos los criterios
+    return frappe.db.sql("""
+        SELECT DISTINCT
+            p.{key},
+            p.posting_date,
+            p.paid_amount
+        FROM `tabPayment Entry` AS p
+        WHERE p.custom_status_payment_ppd = 'Sin Facturar'
+            AND p.docstatus = 1
+            AND p.payment_type = 'Receive'
+            AND (p.{key} LIKE %(txt)s OR p.posting_date LIKE %(txt)s)
+            AND NOT EXISTS (
+                SELECT 1
+                FROM `tabPayment Entry Reference` AS per
+                JOIN `tabSales Invoice` AS si ON per.reference_name = si.name
+                WHERE per.parent = p.name
+                    AND (
+                        si.custom_metodo_de_pago IS NULL
+                        OR si.custom_metodo_de_pago != 'PPD'
+                        OR si.posting_date < '2025-01-01'
+                    )
+            )
+            AND EXISTS (
+                SELECT 1
+                FROM `tabPayment Entry Reference` AS per2
+                WHERE per2.parent = p.name
+            )
+        ORDER BY
+            CASE WHEN p.{key} LIKE %(txt)s THEN 0 ELSE 1 END,
+            p.posting_date DESC
+        LIMIT %(page_len)s OFFSET %(start)s
+    """.format(key=searchfield), {
+        'txt': search_txt,
+        'start': start or 0,
+        'page_len': page_len or 20
+    })
+
+
 class ComplementodePagoPPD(Document):
     def create_complemento(self):
         current_document = self.get_title()

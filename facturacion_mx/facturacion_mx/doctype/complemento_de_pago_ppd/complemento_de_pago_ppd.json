@@ -33,7 +33,6 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Entrada de Pago ID",
-   "link_filters": "[[\"Payment Entry\",\"custom_status_payment_ppd\",\"=\",\"Sin Facturar\"],[\"Payment Entry\",\"status\",\"=\",\"Submitted\"]]",
    "options": "Payment Entry",
    "reqd": 1
   },
