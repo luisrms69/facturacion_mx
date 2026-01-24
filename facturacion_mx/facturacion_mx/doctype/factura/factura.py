@@ -82,7 +82,6 @@ class Factura(Document):
             # "folio_number": folio_number,
             # "series": series,
             "pdf_custom_section": get_factura_notes(metodo_de_pago, sales_invoice_id),
-            "addenda": addenda,
             "namespaces": namespaces,
             # "pdf_options": pdf_options,
             "idempotency_key" : idempotency_key,
@@ -98,6 +97,10 @@ class Factura(Document):
             },
             "items": get_items_info(invoice_data)
         }
+
+        # Solo incluir addenda si tiene valor
+        if addenda:
+            data["addenda"] = addenda
 
 
         # frappe.msgprint(str(data))
