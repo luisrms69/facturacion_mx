@@ -618,7 +618,7 @@ def respuesta_pac_factura(document, pac_response):
     })
 
     actualizar_status_doc(document, status)
-    # actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
+    actualizar_status_sales_invoice(document.sales_invoice_id,status_sales_invoice)
 
     despliega_aviso(title=title,msg=message,color=indicator)
 
