@@ -4,16 +4,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTR Metro",
-  "modified": "2022-11-26 17:22:07.073177",
-  "name": "MAT-UOM-CNV-00001",
-  "to_uom": "MTR Metro",
-  "value": 1.0
- },
- {
-  "category": "Largo",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTR Metro",
   "modified": "2022-11-26 17:22:07.166577",
   "name": "MAT-UOM-CNV-00007",
   "to_uom": "LC Centimetro lineal",
@@ -174,16 +164,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "MTK Metro cuadrado",
-  "modified": "2022-11-26 17:22:07.313173",
-  "name": "MAT-UOM-CNV-00032",
-  "to_uom": "MTK Metro cuadrado",
-  "value": 1.0
- },
- {
-  "category": "Zona",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTK Metro cuadrado",
   "modified": "2024-10-04 19:21:04.179591",
   "name": "MAT-UOM-CNV-00036",
   "to_uom": "KMK Kilómetro cuadrado",
@@ -268,16 +248,6 @@
   "name": "MAT-UOM-CNV-00045",
   "to_uom": "MIK Milla cuadrada",
   "value": 3.86e-07
- },
- {
-  "category": "Speed",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "MTS Metro por segundo",
-  "modified": "2024-10-04 19:24:53.574645",
-  "name": "MAT-UOM-CNV-00046",
-  "to_uom": "MTS Metro por segundo",
-  "value": 1.0
  },
  {
   "category": "Speed",
@@ -408,16 +378,6 @@
   "name": "MAT-UOM-CNV-00062",
   "to_uom": "CWI Hundredweight (US)",
   "value": 0.022046
- },
- {
-  "category": "Mass",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "KGM Kilogramo",
-  "modified": "2022-11-26 17:22:07.518443",
-  "name": "MAT-UOM-CNV-00064",
-  "to_uom": "KGM Kilogramo",
-  "value": 1.0
  },
  {
   "category": "Mass",
@@ -664,16 +624,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "LTR Litro",
-  "modified": "2022-11-26 17:22:07.699121",
-  "name": "MAT-UOM-CNV-00093",
-  "to_uom": "LTR Litro",
-  "value": 1.0
- },
- {
-  "category": "Volume",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "LTR Litro",
   "modified": "2022-11-26 17:22:07.711128",
   "name": "MAT-UOM-CNV-00094",
   "to_uom": "MLT Millilitro",
@@ -804,16 +754,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "SEC Segundo",
-  "modified": "2022-11-26 17:22:07.830519",
-  "name": "MAT-UOM-CNV-00107",
-  "to_uom": "SEC Segundo",
-  "value": 1.0
- },
- {
-  "category": "Hora",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "SEC Segundo",
   "modified": "2022-11-26 17:22:07.838602",
   "name": "MAT-UOM-CNV-00108",
   "to_uom": "C26 Milisegundo",
@@ -858,16 +798,6 @@
   "name": "MAT-UOM-CNV-00112",
   "to_uom": "ATM Atmósfera",
   "value": 9.869e-06
- },
- {
-  "category": "Pressure",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "PAL Pascal",
-  "modified": "2022-11-26 17:22:07.881373",
-  "name": "MAT-UOM-CNV-00113",
-  "to_uom": "PAL Pascal",
-  "value": 1.0
  },
  {
   "category": "Pressure",
@@ -1064,16 +994,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "NEW Newton",
-  "modified": "2022-11-26 17:22:08.105150",
-  "name": "MAT-UOM-CNV-00133",
-  "to_uom": "NEW Newton",
-  "value": 1.0
- },
- {
-  "category": "Fuerza",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "NEW Newton",
   "modified": "2022-11-26 17:22:08.115974",
   "name": "MAT-UOM-CNV-00134",
   "to_uom": "L40 Onza Fuerza",
@@ -1244,16 +1164,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "JOU Joule",
-  "modified": "2022-11-26 17:22:08.275431",
-  "name": "MAT-UOM-CNV-00151",
-  "to_uom": "JOU Joule",
-  "value": 1.0
- },
- {
-  "category": "Energía",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "JOU Joule",
   "modified": "2022-11-26 17:22:08.282408",
   "name": "MAT-UOM-CNV-00152",
   "to_uom": "KJO Kilojoule",
@@ -1390,16 +1300,6 @@
   "value": 1.0
  },
  {
-  "category": "Power",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "WTT Watt",
-  "modified": "2022-11-26 17:22:08.384836",
-  "name": "MAT-UOM-CNV-00166",
-  "to_uom": "WTT Watt",
-  "value": 1.0
- },
- {
   "category": "Density",
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
@@ -1418,16 +1318,6 @@
   "name": "MAT-UOM-CNV-00172",
   "to_uom": "23 Gramo por centímetro cúbico",
   "value": 0.001
- },
- {
-  "category": "Density",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "GL Gramo por litro",
-  "modified": "2022-11-26 17:22:08.439618",
-  "name": "MAT-UOM-CNV-00174",
-  "to_uom": "GL Gramo por litro",
-  "value": 1.0
  },
  {
   "category": "Density",
@@ -1594,16 +1484,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "CEL Celsius",
-  "modified": "2022-11-26 17:22:08.636738",
-  "name": "MAT-UOM-CNV-00201",
-  "to_uom": "CEL Celsius",
-  "value": 1.0
- },
- {
-  "category": "Temperature",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "CEL Celsius",
   "modified": "2022-11-26 17:22:08.643521",
   "name": "MAT-UOM-CNV-00202",
   "to_uom": "FAH Fahrenheit",
@@ -1627,16 +1507,6 @@
   "modified": "2022-11-26 17:22:08.657781",
   "name": "MAT-UOM-CNV-00204",
   "to_uom": "Cycle/Second",
-  "value": 1.0
- },
- {
-  "category": "Frequency and Wavelength",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "HTZ Hertz",
-  "modified": "2022-11-26 17:22:08.680751",
-  "name": "MAT-UOM-CNV-00207",
-  "to_uom": "HTZ Hertz",
   "value": 1.0
  },
  {
@@ -1724,16 +1594,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "COU Culombio",
-  "modified": "2022-11-26 17:22:08.779793",
-  "name": "MAT-UOM-CNV-00216",
-  "to_uom": "COU Culombio",
-  "value": 1.0
- },
- {
-  "category": "Electrical Charge",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "COU Culombio",
   "modified": "2022-11-26 17:22:08.785774",
   "name": "MAT-UOM-CNV-00217",
   "to_uom": "EMU Of Charge",
@@ -1794,16 +1654,6 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "AMP Amperio",
-  "modified": "2022-11-26 17:22:08.821367",
-  "name": "MAT-UOM-CNV-00223",
-  "to_uom": "AMP Amperio",
-  "value": 1.0
- },
- {
-  "category": "Electric Current",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "AMP Amperio",
   "modified": "2022-11-26 17:22:08.831874",
   "name": "MAT-UOM-CNV-00225",
   "to_uom": "Biot",
@@ -1854,30 +1704,10 @@
   "docstatus": 0,
   "doctype": "UOM Conversion Factor",
   "from_uom": "76 Gauss",
-  "modified": "2022-11-26 17:22:08.859338",
-  "name": "MAT-UOM-CNV-00230",
-  "to_uom": "76 Gauss",
-  "value": 1.0
- },
- {
-  "category": "Magnetic Induction",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "76 Gauss",
   "modified": "2022-11-26 17:22:08.863947",
   "name": "MAT-UOM-CNV-00231",
   "to_uom": "Tesla",
   "value": 0.0001
- },
- {
-  "category": "Agricultura",
-  "docstatus": 0,
-  "doctype": "UOM Conversion Factor",
-  "from_uom": "Por ciento",
-  "modified": "2022-11-26 17:22:08.870244",
-  "name": "MAT-UOM-CNV-00232",
-  "to_uom": "Por ciento",
-  "value": 1.0
  },
  {
   "category": "Agricultura",
